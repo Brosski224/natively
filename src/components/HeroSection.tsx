@@ -1,8 +1,10 @@
 import JellyClayButton from "@/components/JellyClayButton";
+import NativelyInterfaceCard from "@/components/NativelyInterfaceCard";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-import heroBackdrop from "@/assets/hero.webp";
+import heroBackdropMp4 from "@/assets/hero.mp4";
+import heroJpeg from "@/assets/hero.jpeg";
 import desktopUI from "@/assets/desktopui.webp";
 import heroVideo from "@/assets/hero.webm";
 import heroPoster from "@/assets/hero-poster.webp";
@@ -11,15 +13,18 @@ const HeroSection = () => {
   const { t } = useTranslation();
   return (
     <section className="relative pt-24 md:pt-32 pb-24 overflow-hidden min-h-screen flex items-center">
-      {/* Backdrop Image - Full Width */}
+      {/* Backdrop Video - Full Width */}
       <div className="absolute -top-20 left-0 z-0 w-full h-[600px] md:h-[800px] overflow-hidden pointer-events-none">
-        <img
-          src={heroBackdrop}
-          alt="Hero Backdrop"
-          loading="eager" // Keep eager for LCP
-          className="w-full h-full object-cover object-top opacity-100"
+        <video
+          src={heroBackdropMp4}
+          poster={heroJpeg}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover object-top"
         />
-        {/* Cubic eased gradient mask */}
+        {/* Gradient fade to white at bottom */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -33,7 +38,7 @@ const HeroSection = () => {
         <div className="mb-6 flex flex-col items-center">
           {/* Main Heading Line 1 */}
           <motion.h1
-            initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
+            initial={{ opacity: 0, y: 24, filter: "blur(3px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.8, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="hero-headline text-[#111827] drop-shadow-sm"
@@ -137,7 +142,6 @@ const HeroSection = () => {
                 preload="metadata"
                 className="w-full h-full object-cover"
                 autoPlay
-                loop
                 muted
                 playsInline
               />
@@ -203,7 +207,6 @@ const HeroSection = () => {
                 preload="metadata"
                 className="w-full h-full object-cover"
                 autoPlay
-                loop
                 muted
                 playsInline
               />
@@ -291,80 +294,12 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Desktop Interface Card */}
-            <NativelyInterfaceCard className="absolute top-[15%] left-1/2 w-[45%] z-30" isMobile={false} />
+            <NativelyInterfaceCard className="absolute top-[12%] left-[46%] w-[52%] z-30" isMobile={false} />
           </motion.div>
         </div>
       </div>
     </section >
   );
 };
-
-// Extracted sub-component for Natively Interface Card
-const NativelyInterfaceCard = ({ className, isMobile }: { className: string, isMobile: boolean }) => {
-  const { t } = useTranslation();
-  return (
-    <motion.div
-      initial={isMobile ? { opacity: 0, y: 20 } : { scale: 0.985, x: "-50%" }}
-      animate={isMobile ? { opacity: 1, y: 0 } : { scale: 1, x: "-50%" }}
-      transition={isMobile ? { delay: 2.2, duration: 1, ease: "easeOut" } : { delay: 5.5, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={isMobile ? { delay: 2.2, duration: 1 } : { delay: 5.5, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-        className="bg-black/40 backdrop-blur-xl rounded-2xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] overflow-hidden"
-      >
-        {/* Header */}
-        <div className="p-4 pb-2 flex justify-end">
-          <div className="relative bg-gradient-to-br from-blue-400 to-blue-600 px-3 py-1.5 rounded-full text-white text-[13px] font-semibold tracking-wide shadow-[0_8px_20px_rgba(37,99,235,0.35)] border border-white/20">
-            {/* Gloss effect */}
-            <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none" />
-            <span className="relative drop-shadow-sm">{t('hero.interface_title')}</span>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="px-5 pb-5">
-          <p className="text-white/90 text-[14px] leading-relaxed font-light font-geist text-left mb-6 drop-shadow-md">
-            {t('hero.interface_desc')}
-          </p>
-
-          <div className="flex items-center justify-between mb-4 text-[11px] text-white/50 font-medium">
-            <div className="flex items-center gap-1.5 hover:text-white/80 transition-colors cursor-pointer">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-              {t('hero.interface_title')}
-            </div>
-            <span>•</span>
-            <div className="flex items-center gap-2 hover:text-white/80 transition-colors cursor-pointer">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
-              {t('hero.interface_followup')}
-            </div>
-            <span>•</span>
-            <div className="flex items-center gap-2 hover:text-white/80 transition-colors cursor-pointer">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
-              {t('hero.interface_recap')}
-            </div>
-            <span>•</span>
-            <div className="flex items-center gap-2 hover:text-white/80 transition-colors cursor-pointer">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-              {t('hero.interface_answer')}
-            </div>
-          </div>
-
-          {/* Input Field */}
-          <div className="relative group">
-            <input
-              type="text"
-              placeholder={t('hero.input_placeholder')}
-              className="w-full bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-[13px] text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all font-light"
-              readOnly
-            />
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
 
 export default HeroSection;

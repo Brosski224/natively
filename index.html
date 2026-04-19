@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Natively — AI Interview Assistant | Local Alternative to Cluely</title>
+  <title>Natively — Live AI Meeting Assistant | Real Time Meeting Notes & AI Assistance</title>
   <meta name="description"
-    content="Natively is an AI interview assistant that runs locally on your device. It helps with coding interviews and technical questions in real time, preserving privacy." />
+    content="Natively is the most flexible AI interview assistant — run it 100% locally with Ollama for zero cloud exposure, or plug in your own OpenAI/Anthropic/Gemini key for cloud-grade AI. Privacy or power, your call." />
   <meta name="author" content="Natively" />
+  <meta name="keywords" content="AI interview assistant, interview copilot, local AI interview, cloud AI interview, coding interview AI, free AI interview tool, offline AI interview, LeetCode AI helper, bring your own API key, privacy AI interview, OpenAI interview tool, Ollama interview, Cluely Alternative, FinalRoundAI alternative, LockedIn AI alternative, InterviewAI alternative, InterviewSpark alternative, InterviewPal alternative, Free Cluely , Free final round ai , Free locked in ai , Free interview ai , Free interview spark , Free interview pal , Free natively" /> 
   <meta name="msvalidate.01" content="E586EA3F8E67D81CF738473C5EA6766C" />
   <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png" />
   <link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png" />
@@ -15,7 +16,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&family=Geist:wght@400;500;600&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&family=Geist:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
     rel="stylesheet">
   <link rel="preload" href="https://fonts.gstatic.com/s/ebgaramond/v27/SlGEmSBy6KsJDAvjrL-96UCVvX6K.woff2" as="font"
     type="font/woff2" crossorigin>
@@ -23,40 +24,328 @@
   <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" href="https://natively.software/" />
 
-  <meta property="og:title" content="Natively — AI Interview Assistant | Local Alternative to Cluely" />
+  <meta property="og:title" content="Natively — AI Interview Assistant | Local or Cloud, Your Choice" />
   <meta property="og:description"
-    content="Natively is an AI interview assistant that runs locally on your device. It helps with coding interviews and technical questions in real time, preserving privacy." />
+    content="Natively is the most flexible AI interview assistant — run it 100% locally with Ollama for zero cloud exposure, or plug in OpenAI/Anthropic/Gemini for cloud-grade AI. Privacy or power, your call." />
   <meta property="og:url" content="https://natively.software/" />
   <meta property="og:site_name" content="Natively" />
   <meta property="og:image" content="https://natively.software/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:type" content="website" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@nativelyapp" />
-  <meta name="twitter:title" content="Natively — AI Interview Assistant | Local Alternative to Cluely" />
+  <meta name="twitter:title" content="Natively — AI Interview Assistant | Local or Cloud, Your Choice" />
   <meta name="twitter:description"
-    content="Natively is an AI interview assistant that runs locally on your device. It helps with coding interviews and technical questions." />
+    content="Natively is the most flexible AI interview assistant — run it 100% locally with Ollama, or plug in OpenAI/Anthropic/Gemini for cloud-grade AI." />
   <meta name="twitter:image" content="https://natively.software/og-image.png" />
 
+  <!-- Schema: SoftwareApplication -->
   <script type="application/ld+json">
   {
-   "@context": "https://schema.org",
-   "@type": "SoftwareApplication",
-   "name": "Natively",
-   "url": "https://natively.software",
-   "applicationCategory": "DeveloperApplication",
-   "operatingSystem": "macOS",
-   "description": "Local AI interview assistant that helps with coding interviews.",
-   "featureList": [
-     "Real-time coding interview help",
-     "Runs locally for absolute privacy",
-     "Works during live technical interviews",
-     "No cloud subscriptions or latency"
-   ],
-   "creator": {
-     "@type": "Organization",
-     "name": "Natively"
-   }
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Natively",
+    "url": "https://natively.software",
+    "applicationCategory": "DeveloperApplication",
+    "applicationSubCategory": "AI Interview Assistant",
+    "operatingSystem": "macOS, Windows",
+    "softwareVersion": "2.0.5",
+    "description": "Natively is the most flexible AI interview assistant — run it 100% locally with Ollama for zero cloud exposure, or plug in your own OpenAI/Anthropic/Gemini key for cloud-grade AI. Privacy or power, your call. Natively is a local AI interview assistant that runs entirely on your device. It provides real-time coding interview help, live transcription, meeting notes, and on-screen AI answers during technical interviews — with zero cloud dependency and complete privacy.",
+    "featureList": [
+      "Real-time coding interview assistance",
+      "Invisible overlay — undetectable by interviewers",
+      "Runs fully locally on macOS and Windows",
+      "Live transcription and smart meeting notes",
+      "Resume and job description aware advice",
+      "Works with Zoom, Google Meet, and Microsoft Teams",
+      "No internet connection required during interviews",
+      "One-click download, no account required for free tier"
+    ],
+    "screenshot": [
+      {
+        "@type": "ImageObject",
+        "url": "https://natively.software/og-image.png",
+        "caption": "Natively AI interview assistant overlay interface"
+      }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free plan with core AI interview assistance features",
+        "availability": "https://schema.org/InStock",
+        "url": "https://natively.software/"
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium",
+        "price": "19",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "19",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M",
+          "unitText": "month"
+        },
+        "description": "Unlimited meetings, custom templates, priority AI models, and advanced meeting notes",
+        "availability": "https://schema.org/InStock",
+        "url": "https://natively.software/"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "downloadUrl": "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/releases/download",
+    "releaseNotes": "https://natively.software/",
+    "creator": {
+      "@type": "Organization",
+      "name": "Natively",
+      "url": "https://natively.software/",
+      "logo": "https://natively.software/logowebsite.png"
+    }
+  }
+  </script>
+
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Natively",
+    "url": "https://natively.software/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://natively.software/logowebsite.png",
+      "width": 512,
+      "height": 512
+    },
+    "description": "Natively builds local-first AI tools that help developers and professionals succeed in technical interviews and meetings without sacrificing privacy.",
+    "foundingDate": "2024",
+    "sameAs": [
+      "https://twitter.com/nativelyapp",
+      "https://github.com/Natively-AI-assistant"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://natively.software/",
+      "availableLanguage": ["English", "Russian"]
+    }
+  }
+  </script>
+
+  <!-- Schema: WebSite with SearchAction (Sitelinks Searchbox) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Natively",
+    "url": "https://natively.software/",
+    "description": "Local AI interview assistant for coding interviews, technical questions, and real-time meeting help.",
+    "inLanguage": ["en", "ru"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://natively.software/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Schema: FAQPage (AI/LLM citation value; Google rich results restricted to gov/healthcare) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an AI interview assistant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An AI interview assistant is a software tool that provides real-time guidance, code suggestions, and contextual answers during technical job interviews. It listens to the interview conversation, analyzes questions, and surfaces relevant hints or solutions directly on your screen — acting as an invisible co-pilot without the interviewer being aware."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Natively work as a real-time interview assistant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natively uses local screen capture and audio transcription to follow your interview in real time. When a coding problem or technical question is asked, Natively's on-device AI model generates suggested approaches, code snippets, and explanations that appear in a discreet overlay on your screen. Everything runs locally — no data is sent to any cloud server."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is using an AI assistant during coding interviews cheating?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ethics depend on context. In take-home or open-book assessments, using AI tools is generally accepted and mirrors real-world engineering. For live proctored interviews, guidelines vary by company. Natively is often used for interview practice, confidence-building, and reducing performance anxiety. Many users treat it as a safety net during the transition to a new role, similar to how engineers use documentation in production work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best AI tool for coding interviews in 2025?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natively is considered the best local AI tool for coding interviews because it runs entirely on-device (macOS and Windows), requires no internet connection during sessions, and is completely invisible to screen-sharing software. Unlike cloud-based tools, Natively generates zero network traffic during an interview, making it undetectable while providing instant AI-powered coding guidance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI detect when you are using an interview assistant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cloud-based interview assistants can be detected through network monitoring tools that flag unusual outbound data during screen-share sessions. Natively avoids this entirely by processing everything locally on your device. There is no outbound streaming of your screen or audio, making it undetectable at the network level."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Natively work with Zoom, Google Meet, and Microsoft Teams?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Natively works as an overlay on top of any video conferencing platform including Zoom, Google Meet, and Microsoft Teams. It does not inject itself into the call or appear as a participant. It runs as a separate native application on your operating system, so it remains invisible to all call participants and recording software."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What operating systems does Natively support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natively supports macOS (both Apple Silicon M-series and Intel chips) and Windows. A Linux version is currently in development. Downloads are available directly from the Natively website for all supported platforms."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Natively free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natively offers a free tier that includes core AI interview assistance features with no account required. A Premium plan at $19 per month unlocks unlimited sessions, advanced AI models, custom templates, and priority support. You can download and start using Natively for free immediately."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Natively different from Cluely?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natively is a local-first alternative to Cluely. While Cluely routes data through the cloud, Natively runs its AI models entirely on your device. This means no subscription to a remote inference API, no network traffic during your interview, lower latency for real-time suggestions, and complete data privacy. Natively also supports both macOS and Windows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types of interview questions can Natively help with?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natively can assist with a wide range of interview formats: algorithmic coding problems (LeetCode-style), system design questions, behavioral questions with STAR-format guidance, take-home assessments, and product or strategy interviews. It is also resume and job-description aware, tailoring suggestions based on the specific role you are interviewing for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a local AI assistant and a cloud AI assistant for interviews?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A local AI assistant runs entirely on your hardware — the language model, transcription engine, and inference all happen on-device with no internet required. A cloud AI assistant sends your audio or screen content to remote servers for processing. Local AI offers lower latency, guaranteed privacy, and zero network detectability. Cloud AI typically offers more powerful models but introduces privacy risk, network dependency, and potential detection by network monitoring tools."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Natively handle system design interview questions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When a system design question is detected, Natively surfaces a structured breakdown covering scalability considerations, component architecture, database choices, caching strategies, and trade-off discussions. It adapts suggestions based on the job description you have provided, ensuring the recommended architecture aligns with the expected tech stack for the role."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Natively require an internet connection during the interview?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Once Natively is installed and the local AI model is downloaded, it operates completely offline. You do not need an internet connection during your interview session. This is a core design principle — the application is built for air-gapped, privacy-first operation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Natively generate meeting notes automatically?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Natively automatically generates structured meeting notes from live transcription. Notes include identified action items, key decisions, and conversation highlights. For interviews, it produces a session summary with the questions asked and the approaches discussed, which is useful for post-interview reflection and follow-up."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What AI models does Natively use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natively uses optimized local language models designed to run efficiently on consumer hardware without a GPU requirement. The Premium plan provides access to higher-capacity models for more complex reasoning tasks. All models are bundled with the application and do not require separate API keys or external model downloads after initial setup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Natively safe to use? Will it compromise my privacy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natively is designed with privacy as its primary constraint. All processing — screen capture, audio transcription, and AI inference — happens on your local device. No personal data, interview content, or audio is transmitted to external servers. Your interview questions, code, and employer information remain exclusively on your machine."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I install Natively on a Mac?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Download the appropriate DMG file from the Natively website — choose the Apple Silicon version (arm64) for M1/M2/M3/M4 Macs or the Intel version for older Macs. Open the DMG, drag Natively to your Applications folder, launch the app, and grant the required screen recording and microphone permissions in macOS System Settings. Setup takes under two minutes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Natively help with behavioral interview questions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Natively recognizes behavioral interview patterns — questions beginning with 'Tell me about a time' or 'Describe a situation where' — and provides STAR framework scaffolding (Situation, Task, Action, Result) in real time. When you have uploaded your resume, Natively can also surface relevant experiences from your background that match the question being asked."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Natively work for non-technical interview roles like product managers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. While Natively was built with software engineers in mind, it is effective for product management interviews, data analyst assessments, and strategy-heavy roles. It can assist with product sense questions, metric definition exercises, case studies, and estimation problems. Its resume-aware mode tailors responses to the specific role and company context."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Natively compare to using ChatGPT during an interview?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChatGPT requires manual copy-paste interaction and an active internet connection, creating detectable network traffic and a disruptive workflow. Natively runs passively in the background, automatically detecting questions from your live interview audio and displaying suggestions without any manual input. It is purpose-built for interviews, understands interview context, and generates zero outbound network traffic."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList — Homepage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://natively.software/"
+      }
+    ]
   }
   </script>
 

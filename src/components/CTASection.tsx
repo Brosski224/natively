@@ -3,7 +3,7 @@ import bottomImg from "@/assets/bottom.webp";
 import Footer from "./Footer";
 import { useTranslation } from "react-i18next";
 
-const GITHUB_URL = "https://github.com/evinjohnn/natively-cluely-ai-assistant/releases/latest";
+const GITHUB_URL = "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/releases/latest";
 
 const CTASection = () => {
   const { t } = useTranslation();

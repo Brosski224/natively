@@ -10,7 +10,7 @@ import previewVideo from "@/assets/preview.mp4";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const GITHUB_URL = "https://github.com/evinjohnn/natively-cluely-ai-assistant/releases/latest";
+const GITHUB_URL = "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/releases/latest";
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ const Navbar = () => {
   const navLinks: { label: string; href: string; isNew?: boolean; isPro?: boolean }[] = [
     { label: t('nav.preview'), href: "#" },
     { label: "Hacker News", href: "https://news.ycombinator.com/item?id=46923304" },
-    { label: t('nav.github'), href: "https://github.com/evinjohnn/natively-cluely-ai-assistant" },
+    { label: t('nav.github'), href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant" },
     { label: t('nav.pro'), href: localePath("/pro"), isPro: true },
     { label: t('nav.donate'), href: "https://buymeacoffee.com/evinjohnn" },
   ];

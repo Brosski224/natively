@@ -1,0 +1,566 @@
+"use client";
+import { useState, useRef, memo } from "react";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { Brain, Mic2, Globe, FileText, Building2, Target, Layers, Scan, TrendingUp, UserCheck, Database, ArrowUpRight } from "lucide-react";
+
+const EASE_OUT: [number, number, number, number] = [0.23, 1, 0.32, 1];
+const PROMO = "INSIDER25";
+
+const plans = [
+  {
+    id: "standard",
+    name: "Standard",
+    price: 8,
+    ai: 500, stt: 200, search: 20,
+    includesPro: false,
+    url: "https://checkout.dodopayments.com/buy/pdt_0NbFixGmD8CSeawb5qvVl",
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    price: 15,
+    ai: 1000, stt: 500, search: 100,
+    includesPro: true,
+    url: "https://checkout.dodopayments.com/buy/pdt_0NcM6Aw0IWdspbsgUeCLA",
+  },
+  {
+    id: "max",
+    name: "Max",
+    price: 25,
+    ai: 2000, stt: 1000, search: 200,
+    includesPro: true,
+    url: "https://checkout.dodopayments.com/buy/pdt_0NcM7JElX4Af6LNVFS1Yf",
+  },
+  {
+    id: "ultra",
+    name: "Ultra",
+    price: 35,
+    ai: 3000, stt: 2000, search: 300,
+    includesPro: true,
+    url: "https://checkout.dodopayments.com/buy/pdt_0NcM7rC2kAb69TFKsZnUU",
+  },
+] as const;
+
+type Plan = typeof plans[number];
+
+const proFeatures = [
+  { icon: Layers,    label: "Modes Manager",               desc: "7 expert personas that hard-override the LLM — Technical Interview, Sales, Recruiting, Lecture & more." },
+  { icon: UserCheck, label: "Resume Intelligence",         desc: "AI ingests your full resume so every answer is grounded in your lived experience, not generic MDN docs." },
+  { icon: Database,  label: "Custom Context Intelligence", desc: "Provide any custom files or documentation to ground the AI completely in your specific domain knowledge." },
+  { icon: TrendingUp,label: "Negotiation Assistance",      desc: "Live salary coaching with real-time counters and anchor strategies based on current market bands." },
+  { icon: Scan,      label: "System Design",               desc: "Chain screenshots for architecture questions. OCR extracts diagrams and renders answers in the invisible overlay." },
+  { icon: Target,    label: "Mock Interviews",             desc: "Strict hiring-manager persona with STAR coaching and live gap analysis against your identity graph." },
+  { icon: FileText,  label: "JD Intelligence",             desc: "Paste any job description. AI gap-analyzes your profile against the role and surfaces exactly what to highlight." },
+  { icon: Building2, label: "Company Research",            desc: "Real-time intel on culture, market positioning, and salary bands before you walk in." },
+];
+
+/* ─────────────────────────────────────────────────────────────
+   SpotlightCard — cursor-aware radial glow on card border.
+   Uses useMotionValue so mouse tracking NEVER triggers re-render.
+   Isolated with memo to prevent parent re-render cascade.
+───────────────────────────────────────────────────────────── */
+const SpotlightCard = memo(function SpotlightCard({
+  children,
+  className = "",
+  style,
+  onClick,
+  isDark = false,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+  isDark?: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  };
+
+  // Dark cards: soft white glow. Light cards: soft dark shadow.
+  const glow = useMotionTemplate`radial-gradient(
+    240px circle at ${mouseX}px ${mouseY}px,
+    ${isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.04)"},
+    transparent 80%
+  )`;
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onClick={onClick}
+      className={`relative group overflow-hidden cursor-pointer ${className}`}
+      style={style}
+    >
+      {/* Spotlight overlay — GPU-composited opacity transition only */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100"
+        style={{
+          background: glow,
+          borderRadius: "inherit",
+          transition: "opacity 350ms cubic-bezier(0.23,1,0.32,1)",
+        }}
+      />
+      {children}
+    </motion.div>
+  );
+});
+
+/* ─────────────────────────────────────────────────────────────
+   AmbientGlow — isolated perpetual motion for BYOK dark bg.
+   Memo-isolated so it NEVER causes parent re-renders.
+   GPU-only: only animates transform (scale/rotate), never layout.
+───────────────────────────────────────────────────────────── */
+const AmbientGlow = memo(function AmbientGlow() {
+  return (
+    <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div
+        className="absolute w-[800px] h-[800px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, rgba(250,204,21,0.045) 0%, transparent 65%)",
+          top: "-25%", right: "-12%",
+          willChange: "transform",
+        }}
+        animate={{ scale: [1, 1.12, 1], rotate: [0, 6, 0] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute w-[600px] h-[600px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 65%)",
+          bottom: "0%", left: "0%",
+          willChange: "transform",
+        }}
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut", delay: 8 }}
+      />
+    </div>
+  );
+});
+
+/* ─── Stagger orchestration variants ─────────────────────── */
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+};
+const fadeUp = {
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.52, ease: [0.23, 1, 0.32, 1] } },
+};
+const fadeUpFast = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.42, ease: [0.23, 1, 0.32, 1] } },
+};
+
+/* ─────────────────────────────────────────────────────────────
+   PricingSection
+───────────────────────────────────────────────────────────── */
+export default function PricingSection() {
+  const [selected, setSelected] = useState<Plan>(plans[1]);
+
+  return (
+    <section className="bg-white" id="pricing">
+
+      {/* ── 1. Heading ──────────────────────────────────────── */}
+      <div className="max-content pt-24 pb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div>
+            <h2
+              className="hero-headline !text-black leading-[1.0] mb-5"
+              style={{ fontSize: "clamp(52px, 8vw, 96px)", letterSpacing: "-0.038em" }}
+            >
+              Simple pricing.
+            </h2>
+            <p className="text-[18px] text-[#6B7280] font-geist leading-relaxed" style={{ maxWidth: "46ch" }}>
+              Start free with your own keys, or let us run the infrastructure.
+            </p>
+          </div>
+
+          {/* Promo badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: EASE_OUT }}
+            className="shrink-0 flex items-center gap-4 px-6 py-4 rounded-2xl self-start md:self-end"
+            style={{ background: "#FEFCE8", border: "1px solid #FEF08A" }}
+          >
+            <div>
+              <p className="text-[10px] font-semibold text-[#92400E] uppercase tracking-widest mb-0.5">Promo code</p>
+              <p className="text-[20px] font-bold font-mono text-[#78350F] tracking-widest">{PROMO}</p>
+            </div>
+            <div className="text-right">
+              <p className="text-[28px] font-bold text-[#CA8A04] leading-none">25%</p>
+              <p className="text-[11px] text-[#92400E] font-medium mt-0.5">off any plan</p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ── 2. API Plans ────────────────────────────────────── */}
+      <div className="max-content pb-24">
+        <div className="rounded-[40px] p-6 md:p-8" style={{ background: "#f5f5f7" }}>
+
+          <div className="mb-7">
+            <p className="text-[12px] font-semibold text-[#9CA3AF] uppercase tracking-widest mb-1.5">
+              Managed API Plans
+            </p>
+            <p className="text-[15px] text-[#4B5563] font-geist">
+              AI generation, speech-to-text, and web search — fully hosted. No setup.
+            </p>
+          </div>
+
+          {/* Stagger grid */}
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {plans.map((plan) => {
+              const isSelected = selected.id === plan.id;
+              return (
+                <motion.div key={plan.id} variants={fadeUp} className="relative">
+                  {/* "Most Popular" floating badge */}
+                  {plan.id === "pro" && (
+                    <div className={`absolute -top-3 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded-full
+                      text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-colors duration-300
+                      ${isSelected ? "bg-emerald-400 text-black" : "bg-[#111827] text-white"}`}>
+                      Most Popular
+                    </div>
+                  )}
+
+                  <SpotlightCard
+                    isDark={isSelected}
+                    onClick={() => setSelected(plan)}
+                    className="flex flex-col text-left p-6 rounded-[28px] h-full transition-all duration-300"
+                    style={{
+                      background: isSelected ? "#111827" : "#ffffff",
+                      boxShadow: isSelected
+                        ? "0 24px 60px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.06)"
+                        : "0 2px 8px rgba(0,0,0,0.06)",
+                    }}
+                  >
+                    {/* Name + Pro badge */}
+                    <div className="flex items-center gap-2 mb-5">
+                      <span className={`text-[14px] font-semibold tracking-tight transition-colors duration-300
+                        ${isSelected ? "text-white/65" : "text-[#6B7280]"}`}>
+                        {plan.name}
+                      </span>
+                      {plan.includesPro && (
+                        <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full border transition-colors duration-300
+                          ${isSelected
+                            ? "bg-emerald-500/15 border-emerald-500/25 text-emerald-400"
+                            : "bg-emerald-50 border-emerald-100 text-emerald-700"}`}>
+                          + Pro
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Price — tight tracked number */}
+                    <div className="mb-6">
+                      <div className="flex items-baseline gap-1">
+                        <span
+                          className={`font-semibold leading-none tabular-nums transition-colors duration-300
+                            ${isSelected ? "text-white" : "text-[#111827]"}`}
+                          style={{ fontSize: "clamp(38px, 5vw, 50px)", letterSpacing: "-0.04em" }}
+                        >
+                          ${plan.price}
+                        </span>
+                        <span className={`text-[13px] ml-0.5 transition-colors duration-300
+                          ${isSelected ? "text-white/30" : "text-[#9CA3AF]"}`}>/mo</span>
+                      </div>
+                    </div>
+
+                    {/* Quotas */}
+                    <div className="space-y-2.5 mb-7 flex-1">
+                      {([
+                        { Icon: Brain, label: `${plan.ai.toLocaleString()} AI requests` },
+                        { Icon: Mic2,  label: `${plan.stt} min speech-to-text` },
+                        { Icon: Globe, label: `${plan.search} web searches` },
+                      ] as const).map(({ Icon, label }) => (
+                        <div key={label} className="flex items-center gap-2.5">
+                          <div className={`w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0 transition-colors duration-300
+                            ${isSelected ? "bg-white/10" : "bg-[#F3F4F6]"}`}>
+                            <Icon size={9} className={`transition-colors duration-300 ${isSelected ? "text-white/50" : "text-[#9CA3AF]"}`} />
+                          </div>
+                          <span className={`text-[12px] font-geist transition-colors duration-300 ${isSelected ? "text-white/50" : "text-[#6B7280]"}`}>
+                            {label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* CTA — inverts with selected state */}
+                    <motion.a
+                      href={plan.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      whileTap={{ scale: 0.97, transition: { duration: 0.1, ease: EASE_OUT } }}
+                      className={`w-full py-3 rounded-[14px] text-[13px] font-semibold text-center block
+                        transition-colors duration-200
+                        ${isSelected
+                          ? "bg-white text-[#111827] hover:bg-white/90"
+                          : "bg-[#F0F0F2] text-[#111827] hover:bg-[#E5E5EA]"
+                        }`}
+                    >
+                      Get {plan.name}
+                    </motion.a>
+                  </SpotlightCard>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          {/* Free trial strip */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.35, duration: 0.5, ease: EASE_OUT }}
+            className="mt-5 inline-flex flex-wrap items-center gap-x-3 gap-y-1.5 px-4 py-2.5 rounded-[14px]"
+            style={{ background: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.85)" }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <span className="text-[12px] text-[#6B7280] font-geist">
+              Free trial · 10 AI req · 10 min STT · 2 searches · No card required
+            </span>
+            <span className="hidden md:inline text-[11px] font-mono font-semibold text-[#92400E]">{PROMO}</span>
+            <span className="hidden md:inline text-[11px] text-[#9CA3AF]">for 25% off</span>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ── 3. Pro — editorial dark section ─────────────────── */}
+      <div className="relative overflow-hidden" style={{ background: "#0a0a0a" }}>
+        <AmbientGlow />
+
+        {/* Grain texture */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.045]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+            backgroundSize: "200px 200px",
+          }}
+        />
+
+        {/* Amber horizon line */}
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[1px] pointer-events-none"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.2), transparent)" }}
+        />
+
+        <div className="max-content pt-28 pb-32 relative">
+
+          {/* ── Hero heading ── */}
+          <motion.div
+            className="mb-20"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.65, ease: EASE_OUT }}
+          >
+            <p className="text-[10px] font-bold text-amber-400/50 uppercase tracking-[0.3em] mb-7 font-geist">
+              Natively Pro
+            </p>
+            <h2
+              className="text-white mb-8"
+              style={{
+                fontFamily: "'Instrument Serif', serif",
+                fontSize: "clamp(58px, 8.5vw, 116px)",
+                lineHeight: 0.92,
+                letterSpacing: "-0.025em",
+                fontWeight: 400,
+              }}
+            >
+              Built to get<br />
+              <em style={{ color: "#f59e0b", fontStyle: "italic" }}>the offer.</em>
+            </h2>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+              <p className="text-[16px] text-white/35 font-geist leading-relaxed" style={{ maxWidth: "46ch" }}>
+                Connect your own API keys. One payment unlocks all 7 modes — no subscription, no metering.
+              </p>
+              <a
+                href="https://natively.software/pro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center gap-1.5 text-[13px] font-medium
+                  text-amber-400/50 hover:text-amber-400 transition-colors duration-200 group"
+              >
+                See Pro in action
+                <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* ── Body ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-start">
+
+            {/* Left — feature tile grid */}
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 overflow-hidden rounded-[28px]"
+              style={{ border: "1px solid rgba(255,255,255,0.07)" }}
+              variants={stagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-40px" }}
+            >
+              {proFeatures.map((f, i) => {
+                const isLastRow = i >= 6;
+                const isRightCol = i % 2 === 1;
+                return (
+                  <motion.div
+                    key={f.label}
+                    variants={fadeUpFast}
+                    className="flex items-start gap-4 p-5"
+                    style={{
+                      background: "rgba(255,255,255,0.025)",
+                      borderBottom: !isLastRow ? "1px solid rgba(255,255,255,0.06)" : "none",
+                      borderRight: !isRightCol ? "1px solid rgba(255,255,255,0.06)" : "none",
+                    }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5"
+                      style={{
+                        background: "rgba(245,158,11,0.08)",
+                        border: "1px solid rgba(245,158,11,0.14)",
+                        boxShadow: "inset 0 1px 0 rgba(245,158,11,0.08)",
+                      }}
+                    >
+                      <f.icon size={13} style={{ color: "#f59e0b", opacity: 0.65 }} />
+                    </div>
+                    <div>
+                      <p className="text-[13px] font-semibold text-white/85 font-geist leading-tight mb-1">{f.label}</p>
+                      <p className="text-[11px] text-white/30 font-geist leading-relaxed">{f.desc}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+
+            {/* Right — license cards */}
+            <motion.div
+              className="flex flex-col gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.15 }}
+            >
+
+              {/* Yearly */}
+              <motion.a
+                href="https://checkout.dodopayments.com/buy/pdt_0NcM4QBwy0CDcPV9CXaNP"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileTap={{ scale: 0.97, transition: { duration: 0.1 } }}
+                className="group flex items-center justify-between gap-4 p-6 rounded-[22px] cursor-pointer transition-all duration-200"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
+                }}
+              >
+                <div>
+                  <p
+                    className="text-white mb-1 tracking-tight"
+                    style={{ fontFamily: "'Instrument Serif', serif", fontSize: "22px", fontWeight: 400 }}
+                  >
+                    Yearly License
+                  </p>
+                  <p className="text-[12px] text-white/30 font-geist">All Pro features. Renews annually.</p>
+                </div>
+                <div
+                  className="shrink-0 px-4 py-2 rounded-[12px] text-[12px] font-semibold text-white/45
+                    whitespace-nowrap transition-all duration-200
+                    group-hover:text-white/80 group-hover:bg-white/[0.10]"
+                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.09)" }}
+                >
+                  Get Yearly →
+                </div>
+              </motion.a>
+
+              {/* Lifetime — hero (Peak-End Rule) */}
+              <motion.a
+                href="https://checkout.dodopayments.com/buy/pdt_0NbHo6EnXlNPqNcZ14OTi"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileTap={{ scale: 0.97, transition: { duration: 0.1 } }}
+                className="group relative flex flex-col gap-5 p-7 rounded-[22px] cursor-pointer overflow-hidden transition-all duration-200"
+                style={{
+                  background: "rgba(245,158,11,0.06)",
+                  border: "1px solid rgba(245,158,11,0.22)",
+                  boxShadow: "0 0 60px rgba(245,158,11,0.07), inset 0 1px 0 rgba(245,158,11,0.12)",
+                }}
+              >
+                {/* Top specular line */}
+                <div className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.45), transparent)" }} />
+
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p
+                      className="mb-1"
+                      style={{ fontFamily: "'Instrument Serif', serif", fontSize: "26px", fontWeight: 400, color: "#fbbf24", fontStyle: "italic" }}
+                    >
+                      Lifetime License
+                    </p>
+                    <p className="text-[12px] text-white/35 font-geist">One payment. All future updates included.</p>
+                  </div>
+                  <span
+                    className="shrink-0 text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-widest mt-1"
+                    style={{ background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.25)", color: "#fbbf24" }}
+                  >
+                    Best value
+                  </span>
+                </div>
+
+                <ul className="flex flex-col gap-2">
+                  {["Resume & JD context awareness", "Live negotiation coaching", "7 expert interview modes", "All future updates"].map((feat) => (
+                    <li key={feat} className="flex items-center gap-2.5 text-[12px] text-white/55 font-geist">
+                      <div
+                        className="w-4 h-4 rounded-full flex items-center justify-center shrink-0"
+                        style={{ background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.2)" }}
+                      >
+                        <svg width="7" height="7" viewBox="0 0 10 10" fill="none">
+                          <path d="M2.5 5l2 2 3-3" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+
+                <div
+                  className="w-full py-3.5 rounded-[14px] text-[14px] font-bold text-[#0a0a0a] text-center
+                    transition-all duration-200 group-hover:brightness-110"
+                  style={{
+                    background: "#f59e0b",
+                    boxShadow: "0 8px 32px rgba(245,158,11,0.4), inset 0 1px 0 rgba(255,255,255,0.3)",
+                  }}
+                >
+                  Get Lifetime →
+                </div>
+
+                <p className="text-center text-[10px] text-white/25 font-geist -mt-2">
+                  One-time purchase · No subscription · yours forever
+                </p>
+              </motion.a>
+
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  );
+}

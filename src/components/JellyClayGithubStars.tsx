@@ -65,7 +65,7 @@ function RollingNumber({ value }: { value: number }) {
 }
 
 export default function JellyClayGithubStars({ isDark = true }: { isDark?: boolean }) {
-    const [repo] = useState("evinjohnn/natively-cluely-ai-assistant");
+    const [repo] = useState("Natively-AI-assistant/natively-cluely-ai-assistant");
     const [stars, setStars] = useState<number>(0);
     const [loading, setLoading] = useState(false);
 

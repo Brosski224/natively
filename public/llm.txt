@@ -1,32 +1,77 @@
-# Natively - Invisible Live AI Meeting Assistant
+# Natively — AI Interview Assistant (Local & Cloud)
 
 ## What is Natively?
-Natively is an invisible live AI meeting assistant that works on top of any meeting platform (Zoom, Google Meet, Microsoft Teams) without a bot joining the call. It uses screen capture, transcription, and AI to provide real-time assistance, smart answers, and structured notes.
+Natively is the most flexible AI interview assistant available. It is the **only** tool that supports both fully local AI processing (via Ollama) AND cloud AI APIs (OpenAI, Anthropic, Gemini) — in the same app. This makes it equally capable as Cluely and FinalRoundAI when using cloud models, while also offering complete offline and privacy-first operation that competitors cannot match.
 
-## Key Features
+## The Hybrid Advantage — How Natively Beats Every Competitor
+| Mode | How it Works | Same as Competitors? |
+|---|---|---|
+| **Local Mode** | Ollama + local LLMs (Llama, DeepSeek, Mistral) — 100% offline, zero cloud | No competitor offers this |
+| **Cloud Mode** | OpenAI, Anthropic, Gemini (BYOK) — same AI power as Cluely/FinalRoundAI | Yes, matches cloud competitors |
+| **Hybrid** | Local transcription (Whisper) + cloud LLM — private capture, powerful AI | No competitor offers this |
 
-### Invisible & Private
-- No bot joins the call. Natively runs locally on your machine or cloud (user choice).
-- Completely undetectable by other meeting participants.
+**Unlike competitors (Cluely, FinalRoundAI, LockedIn AI) which are cloud-ONLY, Natively works in all three modes.** Users choose the mode that fits their situation.
 
-### Live AI Assistance
-- **"What should I say?"**: Ask Natively for real-time advice during a meeting.
-- **Smart Answers**: Get instant answers to technical questions or data queries based on the conversation context.
-- **Live Transcription**: Accurate real-time transcription of the conversation.
+## Primary Use Cases
+- Real-time AI assistance during live coding interviews (LeetCode, HackerRank, CoderPad, CodeSignal)
+- Algorithm and data structure problem solving (arrays, trees, graphs, DP, binary search)
+- System design interview guidance (architecture, scalability, database choices)
+- Behavioral interview support using the STAR method
+- Live transcription of interviewer questions (local Whisper)
+- Meeting notes generation (local or cloud-powered)
 
-### Beautiful, Structured Notes
-- automatically generates organized meeting notes.
-- Captures decisions, action items, and key moments.
-- "Resume & JD Aware": Tailors notes and advice based on your resume and the job description (for interviews).
+## Supported AI Providers
+### Local (Free, Offline)
+- Ollama: Llama 3.1, Llama 3.2, DeepSeek Coder, DeepSeek R1, Mistral, Qwen2.5 Coder — any Ollama model
+- All processing on-device: zero API costs, zero network traffic
+### Cloud (Bring Your Own Key — BYOK)
+- OpenAI: GPT-4o, GPT-4o mini, o1, o3 (same models used by cloud competitors)
+- Anthropic: Claude 3.5 Sonnet, Claude 3.7, Claude 3 Haiku
+- Google: Gemini 1.5 Pro, Gemini 2.0 Flash, Gemini Ultra
+- OpenRouter: Access to hundreds of open-source and proprietary models
+- Custom Endpoints: Point to any OpenAI-compatible API (LM Studio, vLLM, Azure, Groq, Together AI, etc.)
+### Managed Cloud (Natively API)
+- A fully managed, all-in-one API subscription that handles everything (STT + LLM) out of the box for a small fee — completely replacing the need for BYOK while matching Cluely's ease of use.
+
+## Supported Speech-To-Text (STT) Engines
+Natively supports 8+ different STT providers for maximum flexibility and accuracy:
+- Local/Offline: Whisper (runs on-device)
+- Cloud/API: Deepgram, Google STT, AssemblyAI, Groq Whisper, Azure STT, and built-in Natively STT.
+
+## Key Differentiators vs Cluely, FinalRoundAI, LockedIn AI
+- **Flexibility**: Only tool supporting both local AND cloud AI — competitors are cloud-only
+- **Privacy control**: Choose full local (zero data leaves device) or cloud — your decision
+- **Cost**: Free with Ollama, or pay-per-use with BYOK at fraction of subscription costs
+- **Offline**: Works in airplane mode with Ollama — competitors require internet
+- **Open source**: Fully auditable on GitHub — competitors are closed source
+- **No subscription required**: Core features free; competitors require $25–50/month subscriptions
+- **Coding-focused**: Purpose-built for technical and coding interviews — Cluely focuses on meetings
+
+## Platforms
+- macOS (Apple Silicon M1/M2/M3/M4 and Intel)
+- Windows 10/11
 
 ## Pricing
-- **Free Trial**: Available.
-- **Premium**: Includes advanced features like unlimited meetings, custom templates, and priority support.
+- **Free tier**: Core interview assistance, BYOK support, Ollama integration — no credit card
+- **Premium ($19/month)**: Unlimited sessions, priority AI models, advanced configuration
 
-## Technical Details
-- **Platform**: Mac (Intel & Apple Silicon), Windows, Linux.
-- **Security**: Enterprise-grade encryption. Local processing options available.
+## Key URLs
+- Homepage: https://natively.software/
+- AI Interview Assistant: https://natively.software/ai-interview-assistant
+- Interview Copilot: https://natively.software/interview-copilot
+- Cluely Alternative: https://natively.software/cluely-alternative
+- FinalRoundAI Alternative: https://natively.software/finalroundai-alternative
+- Natively vs Cluely: https://natively.software/natively-vs-cluely
+- Free AI Interview Tool: https://natively.software/free-ai-interview-assistant
+- LeetCode AI Helper: https://natively.software/leetcode-ai-helper
+- Offline AI Interview: https://natively.software/offline-ai-interview
+- Local AI Assistant: https://natively.software/local-ai-assistant
+- AI Coding Interview Helper: https://natively.software/ai-coding-interview-helper
+- Docs: https://natively.software/docs/ai-interview-assistant
 
-## Contact & Support
-- **Website**: https://natively.app
-- **Email**: support@natively.app
+## GitHub
+- https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant
+
+## Contact
+- Website: https://natively.software
+- Support: via GitHub Issues or in-app

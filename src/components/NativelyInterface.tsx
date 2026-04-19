@@ -1910,11 +1910,13 @@ Provide only the answer, nothing else.`;
                             onLogoClick={() => window.electronAPI?.setWindowMode?.('launcher')}
                         />
                         <div
-                            className={`relative w-[600px] max-w-full backdrop-blur-2xl border rounded-[24px] overflow-hidden flex flex-col draggable-area overlay-shell-surface ${overlayPanelClass}`}
+                            className={`relative w-[600px] max-w-full backdrop-blur-3xl border rounded-[24px] overflow-hidden flex flex-col draggable-area overlay-shell-surface ${overlayPanelClass} shadow-[0_20px_40px_rgba(0,0,0,0.4)]`}
                             style={{
                                 ...appearance.shellStyle,
-                                background: isLightTheme ? appearance.shellStyle?.background : 'rgba(43,43,51,0.65)',
-                                backdropFilter: isLightTheme ? appearance.shellStyle?.backdropFilter : 'blur(34px)'
+                                background: isLightTheme ? 'rgba(255, 255, 255, 0.75)' : 'linear-gradient(145deg, rgba(30,30,35,0.85) 0%, rgba(20,20,25,0.95) 100%)',
+                                backdropFilter: 'blur(40px)',
+                                borderColor: isLightTheme ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
+                                boxShadow: isLightTheme ? '0 10px 40px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5)' : '0 20px 40px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1)'
                             }}
                         >
 
@@ -1939,8 +1941,8 @@ Provide only the answer, nothing else.`;
                       ${msg.role === 'user' ? 'max-w-[72.25%] px-[13.6px] py-[10.2px]' : 'max-w-[85%] px-4 py-3'} text-[14px] leading-relaxed relative group whitespace-pre-wrap
                       ${msg.role === 'user'
                                                     ? (isLightTheme
-                                                        ? 'bg-blue-500/10 backdrop-blur-md border border-blue-500/20 text-blue-900 rounded-[20px] rounded-tr-[4px] shadow-sm font-medium'
-                                                        : 'bg-blue-600/20 backdrop-blur-md border border-blue-500/30 text-blue-100 rounded-[20px] rounded-tr-[4px] shadow-sm font-medium')
+                                                        ? 'bg-gradient-to-br from-blue-50 to-indigo-100 backdrop-blur-md border border-blue-200 text-blue-900 rounded-[22px] rounded-tr-[6px] shadow-sm font-semibold tracking-tight'
+                                                        : 'bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-xl border border-blue-400/30 text-blue-50 rounded-[22px] rounded-tr-[6px] shadow-[0_4px_24px_rgba(59,130,246,0.15)] font-medium tracking-tight')
                                                     : ''
                                                 }
                       ${msg.role === 'system'
@@ -2009,47 +2011,60 @@ Provide only the answer, nothing else.`;
                                         </div>
                                     )}
                                     <div ref={messagesEndRef} />
-                                                            {/* Quick Actions - Match Pro Parity with separators */}
-                            <div className={`flex items-center justify-center border-t px-[13px] py-[11px] gap-[6px] ${isLightTheme ? 'border-black/5' : 'border-white/5'}`} style={{ borderTopColor: appearance.shellStyle?.borderColor }}>
-                                <button onClick={handleWhatToSay} className="flex items-center justify-center gap-[5px] px-[12px] py-[6px] rounded-full text-[10px] font-medium border border-white/10 bg-white/5 hover:bg-white/10 transition-all active:scale-95 duration-200 interaction-base interaction-press text-white" style={appearance.chipStyle}>
-                                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M2 3.5h5M2 8.5h6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
-                                    What to answer?
+                                                            {/* Premium 3D Jelly Quick Actions */}
+                            <div className={`flex items-center justify-center px-[13px] py-[12px] gap-[8px] border-t ${isLightTheme ? 'border-black/5' : 'border-white/10'}`} style={{ borderTopColor: isLightTheme ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.08)' }}>
+                                <button onClick={handleWhatToSay} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(37,99,235,0.35)] hover:shadow-[0_6px_16px_rgba(37,99,235,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #60A5FA 0%, #3B82F6 50%, #2563EB 100%)" }}>
+                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                    <span className="relative flex items-center gap-[6px] drop-shadow-sm">
+                                        <Sparkles className="w-3.5 h-3.5" /> What to answer?
+                                    </span>
                                 </button>
-                                <div className="w-[3px] h-[3px] rounded-full bg-white/10 shrink-0" />
-                                <button onClick={handleClarify} className="flex items-center justify-center gap-[5px] px-[12px] py-[6px] rounded-full text-[10px] font-medium border border-white/10 bg-white/5 hover:bg-white/10 transition-all active:scale-95 duration-200 interaction-base interaction-press text-white" style={appearance.chipStyle}>
-                                    Clarify
+                                <button onClick={handleClarify} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(245,158,11,0.35)] hover:shadow-[0_6px_16px_rgba(245,158,11,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #FBBF24 0%, #F59E0B 50%, #D97706 100%)" }}>
+                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                    <span className="relative flex items-center gap-[5px] drop-shadow-sm">
+                                        <HelpCircle className="w-3.5 h-3.5" /> Clarify
+                                    </span>
                                 </button>
-                                <div className="w-[3px] h-[3px] rounded-full bg-white/10 shrink-0" />
-                                <button onClick={actionButtonMode === 'brainstorm' ? handleBrainstorm : handleRecap} className="flex items-center justify-center gap-[5px] px-[12px] py-[6px] rounded-full text-[10px] font-medium border border-white/10 bg-white/5 hover:bg-white/10 transition-all active:scale-95 duration-200 interaction-base interaction-press text-white" style={appearance.chipStyle}>
-                                    {actionButtonMode === 'brainstorm' ? 'Brainstorm' : 'Recap'}
+                                <button onClick={actionButtonMode === 'brainstorm' ? handleBrainstorm : handleRecap} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(99,102,241,0.35)] hover:shadow-[0_6px_16px_rgba(99,102,241,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #818CF8 0%, #6366F1 50%, #4F46E5 100%)" }}>
+                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                    <span className="relative flex items-center gap-[5px] drop-shadow-sm">
+                                        {actionButtonMode === 'brainstorm' ? <Lightbulb className="w-3 h-3" /> : <RefreshCw className="w-3 h-3" />} {actionButtonMode === 'brainstorm' ? 'Brainstorm' : 'Recap'}
+                                    </span>
                                 </button>
-                                <div className="w-[3px] h-[3px] rounded-full bg-white/10 shrink-0" />
-                                <button onClick={handleFollowUpQuestions} className="flex items-center justify-center gap-[5px] px-[12px] py-[6px] rounded-full text-[10px] font-medium border border-white/10 bg-white/5 hover:bg-white/10 transition-all active:scale-95 duration-200 interaction-base interaction-press text-white" style={appearance.chipStyle}>
-                                    Follow Up
+                                <button onClick={handleFollowUpQuestions} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(20,184,166,0.35)] hover:shadow-[0_6px_16px_rgba(20,184,166,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #2DD4BF 0%, #14B8A6 50%, #0D9488 100%)" }}>
+                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                    <span className="relative flex items-center gap-[5px] drop-shadow-sm">
+                                        <ArrowRight className="w-3.5 h-3.5" /> Follow Up
+                                    </span>
                                 </button>
-                                <div className="w-[3px] h-[3px] rounded-full bg-white/10 shrink-0" />
                                 <button
                                     onClick={handleAnswerNow}
-                                    className={`flex items-center justify-center gap-[5px] px-[12px] py-[6px] rounded-full text-[10px] font-medium transition-all active:scale-95 duration-200 interaction-base interaction-press ${
+                                    className={`relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 overflow-hidden group border-none ${
                                         isManualRecording 
-                                        ? 'bg-red-500/10 text-red-400 border border-red-500/20' 
-                                        : 'border border-white/10 bg-white/5 text-white'
+                                        ? 'shadow-[0_4px_12px_rgba(239,68,68,0.35)] hover:shadow-[0_6px_16px_rgba(239,68,68,0.5)]' 
+                                        : 'shadow-[0_4px_12px_rgba(16,185,129,0.35)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.5)]'
                                     }`}
-                                    style={isManualRecording ? undefined : appearance.chipStyle}
+                                    style={{
+                                        background: isManualRecording 
+                                            ? "linear-gradient(160deg, #F87171 0%, #EF4444 50%, #DC2626 100%)"
+                                            : "linear-gradient(160deg, #34D399 0%, #10B981 50%, #059669 100%)"
+                                    }}
                                 >
-                                    {isManualRecording ? (
-                                        <>
-                                            <div className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
-                                            Stop
-                                        </>
-                                    ) : (
-                                        <>
-                                            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.2 3.6H11L8.1 6.7l1.2 3.8L6 8.8l-3.3 1.7 1.2-3.8L1 4.6h3.8z" stroke="currentColor" strokeWidth="1.1"/></svg>
-                                            Answer
-                                        </>
-                                    )}
+                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                    <span className="relative flex items-center gap-[5px] drop-shadow-sm">
+                                        {isManualRecording ? (
+                                            <>
+                                                <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Stop
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Mic className="w-3.5 h-3.5" /> Answer
+                                            </>
+                                        )}
+                                    </span>
                                 </button>
                             </div>
+
 
                             {/* Input Area */}
                             <div className={`px-3 pb-[11px] pt-0 relative border-t ${isLightTheme ? 'border-black/5' : 'border-white/5'}`} style={{ borderTopColor: appearance.shellStyle?.borderColor }}>
@@ -2091,20 +2106,21 @@ Provide only the answer, nothing else.`;
                                     </div>
                                 )}
 
-                                <div className={`relative group w-full ${attachedContext.length === 0 ? 'mt-[10px]' : ''}`}>
+                                <div className={`relative group w-full mb-1 ${attachedContext.length === 0 ? 'mt-[6px]' : ''}`}>
+                                    <div className={`absolute inset-0 rounded-[14px] transition-all duration-300 pointer-events-none ${isLightTheme ? 'bg-gradient-to-b from-black/5 to-transparent' : 'bg-gradient-to-b from-white/5 to-transparent'}`} />
                                     <input
                                         ref={textInputRef}
                                         type="text"
                                         value={inputValue}
                                         onChange={(e) => setInputValue(e.target.value)}
                                         onKeyDown={(e) => e.key === 'Enter' && handleManualSubmit()}
-                                        className={`w-full border rounded-[12px] px-[13px] py-[9px] focus:outline-none transition-all duration-200 text-[12px] italic placeholder-transparent z-10 relative ${isLightTheme ? 'bg-black/5 border-black/10 text-black/80' : 'bg-white/5 border-white/10 text-white/80'}`}
-                                        style={appearance.inputStyle}
+                                        className={`w-full border rounded-[14px] px-[16px] py-[10px] focus:outline-none transition-all duration-300 text-[13px] placeholder-transparent z-10 relative shadow-inner ${isLightTheme ? 'bg-black/5 border-black/10 text-black/90 focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]' : 'bg-black/40 border-white/10 text-white/90 focus:border-blue-500/50 focus:bg-black/60 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15)]'}`}
+                                        style={{...appearance.inputStyle, backdropFilter: 'blur(8px)'}}
                                     />
                                     {/* Custom Rich Placeholder */}
                                     {!inputValue && (
                                         <div 
-                                            className="absolute left-[13px] top-1/2 -translate-y-1/2 flex items-center pointer-events-none text-[12px] italic opacity-50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%] z-0"
+                                            className="absolute left-[16px] top-1/2 -translate-y-1/2 flex items-center pointer-events-none text-[13px] italic opacity-50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%] z-0 transition-opacity"
                                             style={{ color: appearance.inputStyle?.color || 'inherit' }}
                                         >
                                             Ask anything — Natively knows your resume and this company...

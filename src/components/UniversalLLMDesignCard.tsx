@@ -27,7 +27,7 @@ export default function UniversalLLMDesignCard() {
 
                 {/* Heading */}
                 <div className="space-y-4 max-w-[85%]">
-                    <h3 className="text-[28px] md:text-[38px] leading-[1.1] font-semibold tracking-[-0.02em] text-[#2b3445]">
+                    <h3 className="text-[26px] md:text-[32px] leading-[1.1] font-semibold tracking-[-0.02em] text-[#2b3445]">
                         {t('features.card2_title')}
                     </h3>
                     <p className="text-[16px] md:text-[18px] text-[#7b8596] leading-[1.5] font-medium">

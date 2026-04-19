@@ -12,6 +12,7 @@ const seoRoutes = [
         path: '/ai-interview-assistant',
         title: 'Best AI Interview Assistant — Ace Coding Interviews | Natively',
         desc: 'Discover how an AI interview assistant running entirely locally on your device can help you ace technical and coding interviews without compromising your privacy.',
+        schemaType: 'SoftwareApplication',
         ru: {
             title: 'Лучший ИИ-ассистент для собеседований | Natively',
             desc: 'Узнайте, как ИИ-ассистент, работающий полностью локально на вашем устройстве, поможет пройти технические и код-собеседования без компромиссов с приватностью.'
@@ -143,6 +144,114 @@ const seoRoutes = [
             title: 'Подготовка к техническим собеседованиям с ИИ | Руководство',
             desc: 'Узнайте, как подготовиться к техническим и код-собеседованиям с помощью ИИ-ассистентов. Используйте офлайн-алгоритмы для практики системного дизайна и LeetCode.'
         }
+    },
+    // COMPARISON & HIGH-VALUE PAGES
+    {
+        path: '/finalroundai-alternative',
+        title: 'Best FinalRoundAI Alternative — Free, Local & Private | Natively',
+        desc: 'Looking for a FinalRoundAI alternative? Natively is a 100% free, local AI interview assistant for coding interviews — no subscription, no cloud, no privacy risks.',
+        schemaType: 'SoftwareApplication',
+        faqs: [
+            { q: "Is there a free alternative to FinalRoundAI?", a: "Yes, Natively is a completely free alternative to FinalRoundAI. It allows you to use your own API keys or run models locally for $0." },
+            { q: "How is Natively different from FinalRoundAI?", a: "Unlike FinalRoundAI which is cloud-based, Natively runs 100% locally on your machine, ensuring complete privacy and zero network detectability." }
+        ],
+        ru: {
+            title: 'Лучшая альтернатива FinalRoundAI — Бесплатно, Локально | Natively',
+            desc: 'Ищете альтернативу FinalRoundAI? Natively — это 100% бесплатный локальный ИИ-ассистент для собеседований без подписки, без облака и без рисков приватности.'
+        }
+    },
+    {
+        path: '/cluely-alternative',
+        title: 'The Top Local Cluely Alternative for Coding Interviews | Natively',
+        desc: 'Looking for an alternative to Cluely? Natively provides a 100% local, ultra-fast, and deeply private AI meeting assistant for technical interviews.',
+        schemaType: 'SoftwareApplication',
+        faqs: [
+            { q: "Is Cluely safe for job interviews?", a: "Cluely is cloud-based, meaning your data is processed on their servers. Natively is a safer alternative that processes everything locally on your device." },
+            { q: "What is the best local alternative to Cluely?", a: "Natively is the best local alternative, offering invisible real-time AI assistance without sending audio or video to the cloud." }
+        ],
+        ru: {
+            title: 'Лучшая локальная альтернатива Cluely | Natively',
+            desc: 'Ищете альтернативу Cluely? Natively — 100% локальный, сверхбыстрый и приватный ИИ-ассистент для технических собеседований.'
+        }
+    },
+    {
+        path: '/natively-vs-cluely',
+        title: 'Natively vs Cluely: Which AI Interview Assistant Is Better? (2026)',
+        desc: 'Natively vs Cluely — detailed comparison. Natively is local, free, and private. Cluely is cloud-based and focused on meetings. See which AI interview tool fits your needs.',
+        ru: {
+            title: 'Natively vs Cluely: Какой ИИ-ассистент лучше? (2026)',
+            desc: 'Сравнение Natively и Cluely. Natively — локальный, бесплатный и приватный. Cluely — облачный для встреч. Выберите подходящий инструмент.'
+        }
+    },
+    {
+        path: '/interview-copilot',
+        title: 'Local AI Interview Copilot — Real-Time Coding Help | Natively',
+        desc: 'Natively is the only local AI interview copilot that runs 100% on your device. Real-time coding, algorithm, and system design answers during live interviews — zero cloud, zero cost.',
+        ru: {
+            title: 'Локальный ИИ-копилот для собеседований — Помощь в реальном времени | Natively',
+            desc: 'Natively — единственный локальный ИИ-копилот для собеседований, работающий 100% на вашем устройстве. Помощь с кодингом и системным дизайном без облака.'
+        }
+    },
+    {
+        path: '/free-ai-interview-assistant',
+        title: 'Free AI Interview Assistant — No Subscription Required | Natively',
+        desc: 'The best free AI interview assistant for coding interviews. Natively runs locally — no subscription, no credit card, no cloud. Works with Ollama for fully offline, $0 operation.',
+        ru: {
+            title: 'Бесплатный ИИ-ассистент для собеседований — Без подписки | Natively',
+            desc: 'Лучший бесплатный ИИ-ассистент для интервью. Natively работает локально — без подписки, без карты, без облака. Работает с Ollama полностью офлайн.'
+        }
+    },
+    {
+        path: '/leetcode-ai-helper',
+        title: 'LeetCode AI Helper — Solve Hard Problems in Real Time | Natively',
+        desc: 'Natively is the best LeetCode AI helper for live coding interviews. Get instant algorithm suggestions, Big-O analysis, and code solutions — all running locally on your device.',
+        ru: {
+            title: 'ИИ-помощник для LeetCode — Решайте сложные задачи в реальном времени | Natively',
+            desc: 'Natively — лучший ИИ-помощник для LeetCode на живых собеседованиях. Мгновенные подсказки по алгоритмам, анализ Big-O и решения кода — всё работает локально.'
+        }
+    },
+    {
+        path: '/offline-ai-interview',
+        title: 'Offline AI Interview Assistant — Works Without Internet | Natively',
+        desc: 'Need an AI interview assistant that works offline? Natively runs 100% without internet — powered by Ollama and local models. Zero cloud, zero network, zero traceable traffic.',
+        ru: {
+            title: 'Офлайн ИИ-ассистент для собеседований — Без интернета | Natively',
+            desc: 'Natively работает 100% без интернета — на Ollama и локальных моделях. Без облака, без трафика, без риска обнаружения.'
+        }
+    },
+    {
+        path: '/blog/is-cluely-safe',
+        title: 'Is Cluely Safe? Privacy Facts Every User Must Know (2026)',
+        desc: 'Is Cluely safe to use? We analyze Cluely data practices, cloud architecture, and privacy risks — and show why local alternatives like Natively protect your interview data.',
+        schemaType: 'Article',
+        ru: {
+            title: 'Безопасен ли Cluely? Факты о конфиденциальности (2026)',
+            desc: 'Безопасен ли Cluely? Мы анализируем практику работы с данными Cluely и риски конфиденциальности — и объясняем, почему локальные альтернативы лучше.'
+        }
+    },
+    {
+        path: '/blog/best-ai-interview-assistants',
+        title: '7 Best AI Interview Assistants in 2026 (Tested & Ranked)',
+        desc: 'We tested 7 AI interview assistants in 2026. Compare FinalRoundAI, Cluely, Natively, LockedIn AI, and more — ranked by privacy, cost, coding support, and real-time performance.',
+        schemaType: 'Article',
+        ru: {
+            title: '7 лучших ИИ-ассистентов для интервью в 2026 (Протестировано и рейтинг)',
+            desc: 'Мы протестировали 7 ИИ-ассистентов для собеседований в 2026. Сравнение FinalRoundAI, Cluely, Natively и других по приватности, стоимости и поддержке кодинга.'
+        }
+    },
+    {
+        path: '/interview-copilot',
+        title: 'Local AI Interview Copilot — Real-Time Coding Help | Natively',
+        desc: 'Natively is the only local AI interview copilot that runs 100% on your device. Real-time coding, algorithm, and system design answers during live interviews — zero cloud, zero cost.',
+        schemaType: 'SoftwareApplication',
+        faqs: [
+            { q: "What is the best free AI interview copilot?", a: "Natively is the best free AI interview copilot. It runs completely offline using Ollama, costing $0 in API fees." },
+            { q: "Can interview copilots be detected?", a: "Cloud-based copilots generate network traffic. Natively with Ollama generates zero network traffic and uses an invisible overlay, making it undetectable." }
+        ],
+        ru: {
+            title: 'Локальный ИИ-копилот для собеседований — Помощь в реальном времени | Natively',
+            desc: 'Natively — единственный локальный ИИ-копилот для собеседований, работающий 100% на вашем устройстве. Помощь с кодингом и системным дизайном без облака.'
+        }
     }
 ];
 
@@ -195,6 +304,67 @@ async function prerenderMetaTags() {
             /<meta\s+name=["']twitter:description["']\s+content=["'][^"']*["']\s*\/?>/i,
             `<meta name="twitter:description" content="${route.desc}" />`
         );
+
+        // Inject hreflang tags for multilingual SEO
+        const hreflangTags = `\n  <link rel="alternate" hreflang="en" href="https://natively.software${route.path}" />\n  <link rel="alternate" hreflang="ru" href="https://natively.software/ru${route.path}" />\n  <link rel="alternate" hreflang="x-default" href="https://natively.software${route.path}" />`;
+        
+        // Ensure canonical tag matches the route
+        newHTML = newHTML.replace(
+            /<link\s+rel=["']canonical["']\s+href=["'][^"']*["']\s*\/?>/i,
+            `<link rel="canonical" href="https://natively.software${route.path}" />`
+        );
+
+        // Generate JSON-LD Schemas
+        const schemas = [];
+        
+        // 1. Breadcrumb Schema
+        const pathParts = route.path.split('/').filter(Boolean);
+        const breadcrumbItems = [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://natively.software/" }
+        ];
+        pathParts.forEach((part, i) => {
+            breadcrumbItems.push({
+                "@type": "ListItem",
+                "position": i + 2,
+                "name": part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                "item": `https://natively.software/${pathParts.slice(0, i + 1).join('/')}`
+            });
+        });
+        schemas.push({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbItems
+        });
+
+        // 2. Article/Software Schema
+        if (route.schemaType === 'Article') {
+            schemas.push({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": route.title,
+                "description": route.desc,
+                "author": { "@type": "Organization", "name": "Natively" },
+                "publisher": { "@type": "Organization", "name": "Natively", "logo": { "@type": "ImageObject", "url": "https://natively.software/logowebsite.png" } },
+                "datePublished": "2024-04-19T18:00:00Z",
+                "dateModified": new Date().toISOString()
+            });
+        }
+
+        // 3. FAQ Schema
+        if (route.faqs) {
+            schemas.push({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": route.faqs.map(f => ({
+                    "@type": "Question",
+                    "name": f.q,
+                    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+                }))
+            });
+        }
+
+        const schemaTags = schemas.map(s => `\n  <script type="application/ld+json">${JSON.stringify(s)}</script>`).join('');
+        newHTML = newHTML.replace('</head>', `${hreflangTags}${schemaTags}\n</head>`);
 
         // Save generated HTML to nested folder matching the route path
         const dir = path.join(distPath, route.path.slice(1));

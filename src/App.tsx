@@ -16,7 +16,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Pro = lazy(() => import("./pages/Pro"));
 
 const AIInterviewAssistant = lazy(() => import("./pages/seo/AIInterviewAssistant"));
-const CluelyAlternative = lazy(() => import("./pages/seo/CluelyAlternative"));
+const NativelyAlternative = lazy(() => import("./pages/seo/NativelyAlternative"));
 const AICodingInterviewHelper = lazy(() => import("./pages/seo/AICodingInterviewHelper"));
 const LocalAIAssistant = lazy(() => import("./pages/seo/LocalAIAssistant"));
 
@@ -33,7 +33,18 @@ const HowAIInterviewAssistantsWork = lazy(() => import('./pages/blog/HowAIInterv
 const BestAIToolsForCodingInterviews = lazy(() => import('./pages/blog/BestAIToolsForCodingInterviews'));
 const PreparingForTechnicalInterviewsWithAI = lazy(() => import('./pages/blog/PreparingForTechnicalInterviewsWithAI'));
 
+const IsCluelySafe = lazy(() => import('./pages/blog/IsCluelySafe'));
+const BestAIInterviewAssistants = lazy(() => import('./pages/blog/BestAIInterviewAssistants'));
+
+const LeetCodeAIHelper = lazy(() => import('./pages/seo/LeetCodeAIHelper'));
+const OfflineAIInterview = lazy(() => import('./pages/seo/OfflineAIInterview'));
+
 const DocsAIInterviewAssistant = lazy(() => import('./pages/seo/DocsAIInterviewAssistant'));
+
+const FinalRoundAIAlternative = lazy(() => import('./pages/seo/FinalRoundAIAlternative'));
+const NativelyVsCluely = lazy(() => import('./pages/seo/NativelyVsCluely'));
+const InterviewCopilot = lazy(() => import('./pages/seo/InterviewCopilot'));
+const FreeAIInterviewAssistant = lazy(() => import('./pages/seo/FreeAIInterviewAssistant'));
 
 const queryClient = new QueryClient();
 
@@ -57,7 +68,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/pro" element={<Pro />} />
               <Route path="/ai-interview-assistant" element={<AIInterviewAssistant />} />
-              <Route path="/cluely-alternative" element={<CluelyAlternative />} />
+              <Route path="/cluely-alternative" element={<NativelyAlternative />} />
               <Route path="/ai-coding-interview-helper" element={<AICodingInterviewHelper />} />
               <Route path="/local-ai-assistant" element={<LocalAIAssistant />} />
 
@@ -76,10 +87,20 @@ const App = () => (
 
               <Route path="/docs/ai-interview-assistant" element={<DocsAIInterviewAssistant />} />
 
+              <Route path="/finalroundai-alternative" element={<FinalRoundAIAlternative />} />
+              <Route path="/natively-vs-cluely" element={<NativelyVsCluely />} />
+              <Route path="/interview-copilot" element={<InterviewCopilot />} />
+              <Route path="/free-ai-interview-assistant" element={<FreeAIInterviewAssistant />} />
+              <Route path="/leetcode-ai-helper" element={<LeetCodeAIHelper />} />
+              <Route path="/offline-ai-interview" element={<OfflineAIInterview />} />
+
+              <Route path="/blog/is-cluely-safe" element={<IsCluelySafe />} />
+              <Route path="/blog/best-ai-interview-assistants" element={<BestAIInterviewAssistants />} />
+
               <Route path="/ru" element={<Index />} />
               <Route path="/ru/pro" element={<Pro />} />
               <Route path="/ru/ai-interview-assistant" element={<AIInterviewAssistant />} />
-              <Route path="/ru/cluely-alternative" element={<CluelyAlternative />} />
+              <Route path="/ru/cluely-alternative" element={<NativelyAlternative />} />
               <Route path="/ru/ai-coding-interview-helper" element={<AICodingInterviewHelper />} />
               <Route path="/ru/local-ai-assistant" element={<LocalAIAssistant />} />
 
@@ -97,6 +118,16 @@ const App = () => (
               <Route path="/ru/blog/preparing-for-technical-interviews-with-ai" element={<PreparingForTechnicalInterviewsWithAI />} />
 
               <Route path="/ru/docs/ai-interview-assistant" element={<DocsAIInterviewAssistant />} />
+
+              <Route path="/ru/finalroundai-alternative" element={<FinalRoundAIAlternative />} />
+              <Route path="/ru/natively-vs-cluely" element={<NativelyVsCluely />} />
+              <Route path="/ru/interview-copilot" element={<InterviewCopilot />} />
+              <Route path="/ru/free-ai-interview-assistant" element={<FreeAIInterviewAssistant />} />
+              <Route path="/ru/leetcode-ai-helper" element={<LeetCodeAIHelper />} />
+              <Route path="/ru/offline-ai-interview" element={<OfflineAIInterview />} />
+
+              <Route path="/ru/blog/is-cluely-safe" element={<IsCluelySafe />} />
+              <Route path="/ru/blog/best-ai-interview-assistants" element={<BestAIInterviewAssistants />} />
 
               <Route path="*" element={<NotFound />} />
             </Routes>

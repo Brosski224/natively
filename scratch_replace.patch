@@ -1,0 +1,8 @@
+--- src/components/ListeningCard.tsx
++++ src/components/ListeningCard.tsx
+@@ -107,3 +107,3 @@
+             background: "#F4F6F9",
+-            // Blended jelly border via pure CSS shadow inside!
+-            boxShadow: "inset 0 0 20px 6px white, inset 0 0 0 2px rgba(255,255,255,1), 0 10px 40px rgba(0,0,0,0.04)"
++            // Soft blended neumorphic edge without hard borders
++            boxShadow: "inset 0 0 40px 4px white, 0 10px 40px rgba(0,0,0,0.04)"

@@ -16,6 +16,6 @@ export const CONFIG = {
         LINUX: {
             VERSION: "Coming Soon",
         },
-        BASE_URL: "https://github.com/evinjohnn/natively-cluely-ai-assistant/releases/download",
+        BASE_URL: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/releases/download",
     },
 } as const;

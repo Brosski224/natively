@@ -10,25 +10,25 @@ const Footer = () => {
     {
       titleKey: "footer.product",
       links: [
-        { label: "GitHub", href: "https://github.com/evinjohnn/natively-cluely-ai-assistant" },
+        { label: "GitHub", href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant" },
         { label: "Hacker News", href: "https://news.ycombinator.com/item?id=46923304" },
-        { labelKey: "footer.contribute", href: "https://github.com/evinjohnn/natively-cluely-ai-assistant/pulls" },
-        { labelKey: "footer.license", href: "https://github.com/evinjohnn/natively-cluely-ai-assistant/blob/main/LICENSE" },
-        { labelKey: "footer.changelog", href: "https://github.com/evinjohnn/natively-cluely-ai-assistant/blob/main/CHANGELOG.md" },
+        { labelKey: "footer.contribute", href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/pulls" },
+        { labelKey: "footer.license", href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/blob/main/LICENSE" },
+        { labelKey: "footer.changelog", href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/blob/main/CHANGELOG.md" },
       ],
     },
     {
       titleKey: "footer.legal",
       links: [
-        { labelKey: "footer.security", href: "https://github.com/evinjohnn/natively-cluely-ai-assistant/blob/main/SECURITY.md" },
-        { labelKey: "footer.privacy", href: "https://github.com/evinjohnn/natively-cluely-ai-assistant/blob/main/PRIVACY.md" },
+        { labelKey: "footer.security", href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/blob/main/SECURITY.md" },
+        { labelKey: "footer.privacy", href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/blob/main/PRIVACY.md" },
       ],
     },
     {
       titleKey: "footer.resources",
       links: [
         { labelKey: "footer.ai_interview", href: "/ai-interview-assistant" },
-        { labelKey: "footer.cluely_alt", href: "/cluely-alternative" },
+        { labelKey: "footer.cluely_alt", href: "/natively-alternative" },
         { labelKey: "footer.coding_helper", href: "/ai-coding-interview-helper" },
         { labelKey: "footer.local_ai", href: "/local-ai-assistant" },
         { labelKey: "footer.ai_coding_exams", href: "/ai-assistant-for-coding-interviews" },
@@ -53,7 +53,7 @@ const Footer = () => {
       links: [
         { labelKey: "footer.donate", href: "https://buymeacoffee.com/evinjohnn" },
         { labelKey: "footer.contact", href: "mailto:natively.contact@gmail.com" },
-        { labelKey: "footer.report_bug", href: "https://github.com/evinjohnn/natively-cluely-ai-assistant/issues" },
+        { labelKey: "footer.report_bug", href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/issues" },
       ],
     },
   ];

@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Crawl-delay: 1
 
 User-agent: GPTBot
 Allow: /
@@ -12,5 +14,18 @@ Allow: /
 
 User-agent: PerplexityBot
 Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Disallow scrapers that don't respect robots.txt anyway
+User-agent: CCBot
+Disallow: /
 
 Sitemap: https://natively.software/sitemap.xml

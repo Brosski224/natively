@@ -1,0 +1,840 @@
+{
+  "meta": {
+    "site": "natively.software",
+    "generated": "2026-04-19",
+    "seed_keywords": [
+      "AI interview assistant",
+      "interview copilot",
+      "real-time interview help",
+      "interview AI tool"
+    ],
+    "targets_to_outrank": [
+      "cluely.com",
+      "finalroundai.com",
+      "interviewai.me",
+      "interviews.ai",
+      "yoodli.ai"
+    ],
+    "total_keywords_analyzed": 112,
+    "navigational_removed": 18,
+    "keywords_in_cluster": 94
+  },
+
+  "keyword_universe": {
+
+    "cluster_1_ai_interview_assistant": {
+      "seed": "AI interview assistant",
+      "pillar_keyword": "AI interview assistant",
+      "pillar_intent": "Commercial Investigation",
+      "estimated_volume": 22000,
+      "estimated_kd": 72,
+      "opportunity_score": 6160,
+
+      "keywords": [
+        { "keyword": "AI interview assistant", "intent": "Commercial Investigation", "volume_est": 22000, "kd_est": 72, "opp_score": 6160 },
+        { "keyword": "best AI interview assistant", "intent": "Commercial Investigation", "volume_est": 9400, "kd_est": 68, "opp_score": 3008 },
+        { "keyword": "AI interview assistant free", "intent": "Commercial Investigation", "volume_est": 6200, "kd_est": 54, "opp_score": 2852 },
+        { "keyword": "what is an AI interview assistant", "intent": "Informational", "volume_est": 2800, "kd_est": 34, "opp_score": 1848 },
+        { "keyword": "how does AI interview assistant work", "intent": "Informational", "volume_est": 2100, "kd_est": 31, "opp_score": 1449 },
+        { "keyword": "AI interview assistant undetectable", "intent": "Commercial Investigation", "volume_est": 4400, "kd_est": 58, "opp_score": 1848 },
+        { "keyword": "AI interview assistant for software engineers", "intent": "Commercial Investigation", "volume_est": 3100, "kd_est": 55, "opp_score": 1395 },
+        { "keyword": "AI interview assistant no subscription", "intent": "Commercial Investigation", "volume_est": 2600, "kd_est": 38, "opp_score": 1612 },
+        { "keyword": "open source AI interview assistant", "intent": "Commercial Investigation", "volume_est": 1900, "kd_est": 28, "opp_score": 1368 },
+        { "keyword": "AI interview assistant vs human coach", "intent": "Commercial Investigation", "volume_est": 1100, "kd_est": 42, "opp_score": 638 },
+        { "keyword": "AI interview assistant for behavioral questions", "intent": "Commercial Investigation", "volume_est": 1800, "kd_est": 44, "opp_score": 1008 },
+        { "keyword": "AI interview assistant Mac", "intent": "Commercial Investigation", "volume_est": 2200, "kd_est": 49, "opp_score": 1122 },
+        { "keyword": "AI interview assistant Windows", "intent": "Commercial Investigation", "volume_est": 1700, "kd_est": 46, "opp_score": 918 },
+        { "keyword": "real time AI interview assistant", "intent": "Commercial Investigation", "volume_est": 5800, "kd_est": 62, "opp_score": 2204 },
+        { "keyword": "AI interview assistant review", "intent": "Commercial Investigation", "volume_est": 3400, "kd_est": 51, "opp_score": 1666 },
+        { "keyword": "is AI interview assistant detectable", "intent": "Informational", "volume_est": 2900, "kd_est": 36, "opp_score": 1856 },
+        { "keyword": "AI interview assistant BYOK", "intent": "Commercial Investigation", "volume_est": 720, "kd_est": 18, "opp_score": 590 },
+        { "keyword": "AI interview assistant local model", "intent": "Commercial Investigation", "volume_est": 980, "kd_est": 22, "opp_score": 764 },
+        { "keyword": "AI interview assistant privacy", "intent": "Informational", "volume_est": 1400, "kd_est": 27, "opp_score": 1022 },
+        { "keyword": "does AI interview assistant work on Zoom", "intent": "Informational", "volume_est": 1600, "kd_est": 33, "opp_score": 1072 },
+        { "keyword": "AI interview assistant Google Meet", "intent": "Commercial Investigation", "volume_est": 1300, "kd_est": 35, "opp_score": 845 },
+        { "keyword": "top AI interview assistant 2026", "intent": "Commercial Investigation", "volume_est": 4100, "kd_est": 58, "opp_score": 1722 },
+        { "keyword": "AI interview assistant comparison", "intent": "Commercial Investigation", "volume_est": 2700, "kd_est": 55, "opp_score": 1215 },
+        { "keyword": "cluely alternative", "intent": "Commercial Investigation", "volume_est": 8800, "kd_est": 46, "opp_score": 4752 },
+        { "keyword": "final round ai alternative", "intent": "Commercial Investigation", "volume_est": 6500, "kd_est": 52, "opp_score": 3120 },
+        { "keyword": "lockedin ai alternative", "intent": "Commercial Investigation", "volume_est": 2900, "kd_est": 41, "opp_score": 1711 }
+      ],
+
+      "navigational_excluded": [
+        "natively interview assistant",
+        "cluely login",
+        "finalroundai login",
+        "lockedinai download"
+      ],
+
+      "featured_snippet_targets": [
+        {
+          "keyword": "what is an AI interview assistant",
+          "snippet_type": "definition",
+          "trigger": "Definition box",
+          "recommended_format": "40-60 word definition paragraph followed by 4-bullet feature list",
+          "current_winner": "beyz.ai/blog",
+          "difficulty_to_steal": "Low"
+        },
+        {
+          "keyword": "how does AI interview assistant work",
+          "snippet_type": "numbered list",
+          "trigger": "Process snippet",
+          "recommended_format": "H2 answer + numbered steps: listen > transcribe > generate > display",
+          "current_winner": "jamy.ai/blog",
+          "difficulty_to_steal": "Low"
+        },
+        {
+          "keyword": "is AI interview assistant detectable",
+          "snippet_type": "paragraph",
+          "trigger": "FAQ / PAA expansion",
+          "recommended_format": "Direct yes/no answer + 2-sentence technical explanation",
+          "current_winner": "None clearly dominant",
+          "difficulty_to_steal": "Very Low - open opportunity"
+        },
+        {
+          "keyword": "best AI interview assistant",
+          "snippet_type": "table",
+          "trigger": "Comparison table",
+          "recommended_format": "Tool | Price | Stealth | Local AI | Free Tier table with 8 rows",
+          "current_winner": "interviewsidekick.com",
+          "difficulty_to_steal": "Medium"
+        }
+      ],
+
+      "paa_questions": [
+        "What is the best AI interview assistant in 2026?",
+        "Can AI interview assistants be detected?",
+        "Is using an AI interview assistant cheating?",
+        "How do I use an AI assistant during a job interview?",
+        "What AI tools help during live interviews?",
+        "Does AI interview assistant work with screen sharing?"
+      ],
+
+      "ai_overview_opportunities": [
+        {
+          "query": "what is an AI interview assistant",
+          "citability_tactic": "Include a crisp definition in the first 100 words, use FAQ schema, cite 2+ studies on interview preparation effectiveness"
+        },
+        {
+          "query": "best AI interview assistant 2026",
+          "citability_tactic": "Structured comparison table with factual data points (price, features, compatibility), SoftwareApplication schema markup, mention in context of user intent (job seekers vs recruiters)"
+        }
+      ]
+    },
+
+    "cluster_2_interview_copilot": {
+      "seed": "interview copilot",
+      "pillar_keyword": "interview copilot",
+      "pillar_intent": "Commercial Investigation",
+      "estimated_volume": 18000,
+      "estimated_kd": 75,
+      "opportunity_score": 4500,
+
+      "keywords": [
+        { "keyword": "interview copilot", "intent": "Commercial Investigation", "volume_est": 18000, "kd_est": 75, "opp_score": 4500 },
+        { "keyword": "best interview copilot", "intent": "Commercial Investigation", "volume_est": 7200, "kd_est": 66, "opp_score": 2448 },
+        { "keyword": "interview copilot free", "intent": "Commercial Investigation", "volume_est": 5100, "kd_est": 51, "opp_score": 2499 },
+        { "keyword": "interview copilot vs final round ai", "intent": "Commercial Investigation", "volume_est": 2800, "kd_est": 48, "opp_score": 1456 },
+        { "keyword": "interview copilot undetectable", "intent": "Commercial Investigation", "volume_est": 3600, "kd_est": 55, "opp_score": 1620 },
+        { "keyword": "interview copilot real time", "intent": "Commercial Investigation", "volume_est": 4200, "kd_est": 58, "opp_score": 1764 },
+        { "keyword": "what is an interview copilot", "intent": "Informational", "volume_est": 1800, "kd_est": 28, "opp_score": 1296 },
+        { "keyword": "interview copilot for coding interviews", "intent": "Commercial Investigation", "volume_est": 3100, "kd_est": 52, "opp_score": 1488 },
+        { "keyword": "interview copilot open source", "intent": "Commercial Investigation", "volume_est": 1600, "kd_est": 24, "opp_score": 1216 },
+        { "keyword": "interview copilot stealth mode", "intent": "Commercial Investigation", "volume_est": 2900, "kd_est": 44, "opp_score": 1624 },
+        { "keyword": "interview copilot Mac app", "intent": "Commercial Investigation", "volume_est": 1900, "kd_est": 41, "opp_score": 1121 },
+        { "keyword": "interview copilot no data breach", "intent": "Commercial Investigation", "volume_est": 880, "kd_est": 19, "opp_score": 713 },
+        { "keyword": "interview copilot BYOK API key", "intent": "Commercial Investigation", "volume_est": 640, "kd_est": 15, "opp_score": 544 },
+        { "keyword": "how to use interview copilot", "intent": "Informational", "volume_est": 2200, "kd_est": 36, "opp_score": 1408 },
+        { "keyword": "interview copilot review 2026", "intent": "Commercial Investigation", "volume_est": 3800, "kd_est": 53, "opp_score": 1786 },
+        { "keyword": "interview copilot pricing", "intent": "Commercial Investigation", "volume_est": 4600, "kd_est": 61, "opp_score": 1794 },
+        { "keyword": "interview copilot for behavioral questions STAR", "intent": "Informational", "volume_est": 1400, "kd_est": 31, "opp_score": 966 },
+        { "keyword": "interview copilot local LLM ollama", "intent": "Commercial Investigation", "volume_est": 780, "kd_est": 16, "opp_score": 655 },
+        { "keyword": "cluely vs interview copilot", "intent": "Commercial Investigation", "volume_est": 3200, "kd_est": 47, "opp_score": 1696 },
+        { "keyword": "natively interview copilot", "intent": "Navigational", "volume_est": 0, "kd_est": 0, "opp_score": 0, "excluded": true }
+      ],
+
+      "navigational_excluded": [
+        "finalroundai interview copilot login",
+        "interview copilot download finalroundai"
+      ],
+
+      "featured_snippet_targets": [
+        {
+          "keyword": "what is an interview copilot",
+          "snippet_type": "definition",
+          "trigger": "Definition box",
+          "recommended_format": "50-word definition + 3 core capabilities listed",
+          "current_winner": "beyz.ai",
+          "difficulty_to_steal": "Low"
+        },
+        {
+          "keyword": "interview copilot pricing",
+          "snippet_type": "table",
+          "trigger": "Comparison table",
+          "recommended_format": "Tool | Monthly | Annual | Free Tier | Stealth table",
+          "current_winner": "vervecopilot.com",
+          "difficulty_to_steal": "Medium"
+        },
+        {
+          "keyword": "how to use interview copilot",
+          "snippet_type": "numbered list",
+          "trigger": "How-to snippet",
+          "recommended_format": "4-step numbered process with screenshot hints",
+          "current_winner": "finalroundai.com",
+          "difficulty_to_steal": "Medium - needs E-E-A-T signals"
+        }
+      ],
+
+      "paa_questions": [
+        "What does an interview copilot do?",
+        "Is interview copilot safe to use?",
+        "Can employers detect interview copilot?",
+        "What is the best free interview copilot?",
+        "How does interview copilot work on Zoom?",
+        "Does interview copilot store my data?"
+      ],
+
+      "ai_overview_opportunities": [
+        {
+          "query": "interview copilot free",
+          "citability_tactic": "Lead with factual pricing table, include SoftwareApplication schema, mention BYOK zero-cost model prominently"
+        },
+        {
+          "query": "interview copilot undetectable",
+          "citability_tactic": "Technical explanation of OS-level overlay vs browser capture, cite screen-sharing protocol research"
+        }
+      ]
+    },
+
+    "cluster_3_real_time_interview_help": {
+      "seed": "real-time interview help",
+      "pillar_keyword": "real-time interview help",
+      "pillar_intent": "Commercial Investigation",
+      "estimated_volume": 8400,
+      "estimated_kd": 52,
+      "opportunity_score": 4032,
+
+      "keywords": [
+        { "keyword": "real-time interview help", "intent": "Commercial Investigation", "volume_est": 8400, "kd_est": 52, "opp_score": 4032 },
+        { "keyword": "real-time AI answers during interview", "intent": "Commercial Investigation", "volume_est": 5200, "kd_est": 49, "opp_score": 2652 },
+        { "keyword": "live interview AI help", "intent": "Commercial Investigation", "volume_est": 4800, "kd_est": 56, "opp_score": 2112 },
+        { "keyword": "AI that answers interview questions live", "intent": "Commercial Investigation", "volume_est": 3600, "kd_est": 44, "opp_score": 2016 },
+        { "keyword": "how to get AI help during interview", "intent": "Informational", "volume_est": 2900, "kd_est": 38, "opp_score": 1798 },
+        { "keyword": "AI interview answer generator live", "intent": "Commercial Investigation", "volume_est": 2200, "kd_est": 41, "opp_score": 1298 },
+        { "keyword": "real time transcription interview AI", "intent": "Commercial Investigation", "volume_est": 3100, "kd_est": 47, "opp_score": 1643 },
+        { "keyword": "stealth interview AI tool", "intent": "Commercial Investigation", "volume_est": 4700, "kd_est": 53, "opp_score": 2209 },
+        { "keyword": "undetectable AI interview help", "intent": "Commercial Investigation", "volume_est": 5900, "kd_est": 58, "opp_score": 2478 },
+        { "keyword": "invisible interview assistant", "intent": "Commercial Investigation", "volume_est": 2600, "kd_est": 45, "opp_score": 1430 },
+        { "keyword": "AI interview whisper mode", "intent": "Commercial Investigation", "volume_est": 1800, "kd_est": 33, "opp_score": 1206 },
+        { "keyword": "AI interview help without bot joining meeting", "intent": "Informational", "volume_est": 1200, "kd_est": 28, "opp_score": 864 },
+        { "keyword": "local AI for interview privacy", "intent": "Commercial Investigation", "volume_est": 1100, "kd_est": 22, "opp_score": 858 },
+        { "keyword": "AI that helps you answer interview questions in real time", "intent": "Commercial Investigation", "volume_est": 2800, "kd_est": 41, "opp_score": 1652 },
+        { "keyword": "real time STAR answer generator", "intent": "Commercial Investigation", "volume_est": 1600, "kd_est": 35, "opp_score": 1040 },
+        { "keyword": "AI interview assistance without screen recording", "intent": "Informational", "volume_est": 940, "kd_est": 20, "opp_score": 752 },
+        { "keyword": "best tool for real time interview help 2026", "intent": "Commercial Investigation", "volume_est": 2400, "kd_est": 44, "opp_score": 1344 },
+        { "keyword": "real time coding help during technical interview", "intent": "Commercial Investigation", "volume_est": 3800, "kd_est": 56, "opp_score": 1672 },
+        { "keyword": "AI help for phone interview real time", "intent": "Commercial Investigation", "volume_est": 1900, "kd_est": 37, "opp_score": 1197 },
+        { "keyword": "AI meeting assistant real time answers", "intent": "Commercial Investigation", "volume_est": 2700, "kd_est": 49, "opp_score": 1377 }
+      ],
+
+      "navigational_excluded": [],
+
+      "featured_snippet_targets": [
+        {
+          "keyword": "how to get AI help during interview",
+          "snippet_type": "numbered list",
+          "trigger": "How-to snippet",
+          "recommended_format": "5-step setup guide: download app, configure API key, connect audio, start interview, review suggestions",
+          "current_winner": "None dominant",
+          "difficulty_to_steal": "Very Low - strong open opportunity"
+        },
+        {
+          "keyword": "undetectable AI interview help",
+          "snippet_type": "paragraph",
+          "trigger": "PAA / featured snippet",
+          "recommended_format": "Technical paragraph explaining OS overlay approach + what proctoring tools detect",
+          "current_winner": "finalroundai.com/blog",
+          "difficulty_to_steal": "Medium"
+        },
+        {
+          "keyword": "AI interview help without bot joining meeting",
+          "snippet_type": "paragraph",
+          "trigger": "Question-triggered PAA",
+          "recommended_format": "Direct 2-sentence answer explaining no-bot architecture + link to how-it-works page",
+          "current_winner": "None",
+          "difficulty_to_steal": "Very Low"
+        }
+      ],
+
+      "paa_questions": [
+        "Can you use AI to help during a live job interview?",
+        "What AI tools work in real time during interviews?",
+        "How do I hide AI assistance during an interview?",
+        "Is real-time interview AI detectable by Zoom?",
+        "What is stealth mode in AI interview tools?",
+        "Does Natively work without joining the meeting?"
+      ],
+
+      "ai_overview_opportunities": [
+        {
+          "query": "real-time interview help AI",
+          "citability_tactic": "Lead with a clear comparison of live vs prep tools, use HowTo schema, include specific latency benchmarks (e.g., answer in <1 second)"
+        },
+        {
+          "query": "stealth interview AI tool",
+          "citability_tactic": "Technical architecture explanation (OS overlay vs browser plugin), privacy data handling, no-data-storage claim with verifiable evidence"
+        }
+      ]
+    },
+
+    "cluster_4_interview_ai_tool": {
+      "seed": "interview AI tool",
+      "pillar_keyword": "interview AI tool",
+      "pillar_intent": "Commercial Investigation",
+      "estimated_volume": 11000,
+      "estimated_kd": 64,
+      "opportunity_score": 3960,
+
+      "keywords": [
+        { "keyword": "interview AI tool", "intent": "Commercial Investigation", "volume_est": 11000, "kd_est": 64, "opp_score": 3960 },
+        { "keyword": "best interview AI tools 2026", "intent": "Commercial Investigation", "volume_est": 8800, "kd_est": 62, "opp_score": 3344 },
+        { "keyword": "AI tools for job interviews", "intent": "Commercial Investigation", "volume_est": 9200, "kd_est": 65, "opp_score": 3220 },
+        { "keyword": "AI interview tool free", "intent": "Commercial Investigation", "volume_est": 6100, "kd_est": 52, "opp_score": 2928 },
+        { "keyword": "AI interview tool for developers", "intent": "Commercial Investigation", "volume_est": 4300, "kd_est": 54, "opp_score": 1978 },
+        { "keyword": "AI tool that helps in coding interviews", "intent": "Commercial Investigation", "volume_est": 3700, "kd_est": 57, "opp_score": 1591 },
+        { "keyword": "AI interview tool no credit card", "intent": "Transactional", "volume_est": 1900, "kd_est": 29, "opp_score": 1349 },
+        { "keyword": "interview AI tool comparison", "intent": "Commercial Investigation", "volume_est": 3200, "kd_est": 51, "opp_score": 1568 },
+        { "keyword": "AI interview tool privacy focused", "intent": "Commercial Investigation", "volume_est": 1700, "kd_est": 24, "opp_score": 1292 },
+        { "keyword": "interview AI tool vs human prep", "intent": "Commercial Investigation", "volume_est": 1400, "kd_est": 38, "opp_score": 868 },
+        { "keyword": "AI tool for technical interviews leetcode", "intent": "Commercial Investigation", "volume_est": 4800, "kd_est": 61, "opp_score": 1872 },
+        { "keyword": "AI interview tool Mac desktop", "intent": "Commercial Investigation", "volume_est": 2100, "kd_est": 43, "opp_score": 1197 },
+        { "keyword": "how to use AI in a job interview", "intent": "Informational", "volume_est": 5400, "kd_est": 41, "opp_score": 3186 },
+        { "keyword": "AI for job interview preparation 2026", "intent": "Commercial Investigation", "volume_est": 6200, "kd_est": 57, "opp_score": 2666 },
+        { "keyword": "AI mock interview tool", "intent": "Commercial Investigation", "volume_est": 4900, "kd_est": 55, "opp_score": 2205 },
+        { "keyword": "AI interview tool that works offline", "intent": "Commercial Investigation", "volume_est": 1200, "kd_est": 21, "opp_score": 948 },
+        { "keyword": "free AI mock interview no account", "intent": "Transactional", "volume_est": 2800, "kd_est": 32, "opp_score": 1904 },
+        { "keyword": "AI for system design interview", "intent": "Commercial Investigation", "volume_est": 3600, "kd_est": 53, "opp_score": 1692 },
+        { "keyword": "AI behavioral interview tool STAR method", "intent": "Commercial Investigation", "volume_est": 2900, "kd_est": 44, "opp_score": 1624 },
+        { "keyword": "cluely vs natively", "intent": "Commercial Investigation", "volume_est": 1800, "kd_est": 22, "opp_score": 1404 },
+        { "keyword": "interview coder alternative", "intent": "Commercial Investigation", "volume_est": 3400, "kd_est": 41, "opp_score": 2006 },
+        { "keyword": "AI interview tool with local RAG", "intent": "Commercial Investigation", "volume_est": 680, "kd_est": 12, "opp_score": 598 }
+      ],
+
+      "navigational_excluded": [
+        "natively software download",
+        "cluely pricing login"
+      ],
+
+      "featured_snippet_targets": [
+        {
+          "keyword": "how to use AI in a job interview",
+          "snippet_type": "numbered list",
+          "trigger": "How-to snippet",
+          "recommended_format": "Numbered guide: choose tool > configure profile > run mock > use live copilot > review transcript",
+          "current_winner": "No clear winner",
+          "difficulty_to_steal": "Low"
+        },
+        {
+          "keyword": "best interview AI tools 2026",
+          "snippet_type": "table",
+          "trigger": "Comparison table",
+          "recommended_format": "8-row comparison: Tool | Price | Stealth | Live Help | Local AI | Free",
+          "current_winner": "interviewsidekick.com",
+          "difficulty_to_steal": "Medium"
+        },
+        {
+          "keyword": "AI interview tool free",
+          "snippet_type": "paragraph + list",
+          "trigger": "PAA expansion",
+          "recommended_format": "Opening sentence naming free tools + 5-item bulleted list with one-line descriptions",
+          "current_winner": "linkjob.ai",
+          "difficulty_to_steal": "Medium"
+        }
+      ],
+
+      "paa_questions": [
+        "What is the best free AI interview tool?",
+        "Can AI help you pass a job interview?",
+        "Which AI tools are used for interview preparation?",
+        "How do AI interview tools work?",
+        "Is there an AI that answers interview questions for free?",
+        "What is the difference between an AI interview tool and a coaching service?"
+      ],
+
+      "ai_overview_opportunities": [
+        {
+          "query": "best interview AI tools 2026",
+          "citability_tactic": "Data-driven comparison table, updated April 2026 timestamp, include user stats (Natively GitHub stars, downloads), SoftwareApplication + ItemList schema"
+        },
+        {
+          "query": "AI for job interview preparation",
+          "citability_tactic": "E-E-A-T rich content with first-person use-case examples, cite employment outcome data, structured FAQ at page bottom"
+        }
+      ]
+    }
+  },
+
+  "competitor_gap_analysis": {
+    "cluely_com": {
+      "known_ranking_keywords": [
+        "AI meeting assistant",
+        "real-time meeting notes",
+        "AI that helps in meetings",
+        "AI screen reader live",
+        "meeting AI copilot",
+        "AI recruiter assistant",
+        "cluely AI"
+      ],
+      "gap_keywords_natively_should_target": [
+        "cluely alternative",
+        "cluely alternative free",
+        "cluely alternative open source",
+        "cluely vs natively",
+        "cluely alternative no subscription",
+        "cluely alternative privacy"
+      ],
+      "cluely_weakness": "Paid subscription, closed-source, data privacy concerns, ethics controversy — all exploitable by Natively's free/open-source/local positioning"
+    },
+    "finalroundai_com": {
+      "known_ranking_keywords": [
+        "interview copilot",
+        "AI interview prep",
+        "AI mock interview",
+        "real time interview assistance",
+        "interview copilot stealth",
+        "resume AI",
+        "final round ai"
+      ],
+      "gap_keywords_natively_should_target": [
+        "final round ai alternative",
+        "final round ai alternative free",
+        "final round ai too expensive",
+        "final round ai alternative open source",
+        "interview copilot free no credit card",
+        "interview copilot BYOK"
+      ],
+      "finalroundai_weakness": "Very expensive ($90-300/month), no refund policy, taskbar visible to proctoring — price and detection are attack vectors"
+    },
+    "interviewai_me": {
+      "known_ranking_keywords": [
+        "AI interview practice",
+        "mock interview AI",
+        "interview preparation AI"
+      ],
+      "gap_keywords_natively_should_target": [
+        "interviewai alternative",
+        "free AI interview practice unlimited"
+      ],
+      "weakness": "Limited real-time live help; focused on prep not live assistance"
+    },
+    "interviews_ai": {
+      "known_ranking_keywords": [
+        "AI video interview platform",
+        "automated interview screening",
+        "AI interviewer for recruiters"
+      ],
+      "gap_keywords_natively_should_target": [],
+      "note": "Different audience (B2B recruiter tool) — low direct competition for candidate-facing keywords"
+    },
+    "yoodli_ai": {
+      "known_ranking_keywords": [
+        "AI speech coach",
+        "AI interview coach",
+        "communication skills AI",
+        "interview preparation AI feedback",
+        "yoodli AI"
+      ],
+      "gap_keywords_natively_should_target": [
+        "yoodli alternative real time",
+        "AI interview help during live interview",
+        "real time AI interview vs practice tool"
+      ],
+      "yoodli_weakness": "Practice-only, no live real-time assistance — Natively wins on live help dimension"
+    }
+  },
+
+  "serp_overlap_matrix": {
+    "methodology": "Pairwise comparison of top-10 organic results. Score: 7-10 = same post, 4-6 = same cluster, 2-3 = interlink, 0-1 = separate.",
+    "pairs": [
+      { "kw_a": "AI interview assistant", "kw_b": "interview copilot", "shared_urls_est": 7, "threshold": "same_post" },
+      { "kw_a": "AI interview assistant", "kw_b": "real-time interview help", "shared_urls_est": 5, "threshold": "same_cluster" },
+      { "kw_a": "AI interview assistant", "kw_b": "interview AI tool", "shared_urls_est": 6, "threshold": "same_cluster" },
+      { "kw_a": "interview copilot", "kw_b": "real-time interview help", "shared_urls_est": 6, "threshold": "same_cluster" },
+      { "kw_a": "interview copilot", "kw_b": "interview AI tool", "shared_urls_est": 5, "threshold": "same_cluster" },
+      { "kw_a": "real-time interview help", "kw_b": "interview AI tool", "shared_urls_est": 4, "threshold": "same_cluster" },
+      { "kw_a": "AI interview assistant", "kw_b": "cluely alternative", "shared_urls_est": 5, "threshold": "same_cluster" },
+      { "kw_a": "interview copilot", "kw_b": "final round ai alternative", "shared_urls_est": 6, "threshold": "same_cluster" },
+      { "kw_a": "best AI interview assistant", "kw_b": "best interview AI tools 2026", "shared_urls_est": 8, "threshold": "same_post" },
+      { "kw_a": "AI interview assistant free", "kw_b": "interview copilot free", "shared_urls_est": 7, "threshold": "same_post" },
+      { "kw_a": "undetectable AI interview help", "kw_b": "AI interview assistant undetectable", "shared_urls_est": 9, "threshold": "same_post" },
+      { "kw_a": "open source AI interview assistant", "kw_b": "interview copilot open source", "shared_urls_est": 8, "threshold": "same_post" },
+      { "kw_a": "AI coding interview assistant", "kw_b": "AI tool for technical interviews leetcode", "shared_urls_est": 7, "threshold": "same_post" },
+      { "kw_a": "AI interview assistant BYOK", "kw_b": "interview copilot BYOK API key", "shared_urls_est": 9, "threshold": "same_post" },
+      { "kw_a": "cluely alternative", "kw_b": "final round ai alternative", "shared_urls_est": 5, "threshold": "same_cluster" },
+      { "kw_a": "AI mock interview tool", "kw_b": "free AI mock interview no account", "shared_urls_est": 6, "threshold": "same_cluster" },
+      { "kw_a": "how does AI interview assistant work", "kw_b": "what is an AI interview assistant", "shared_urls_est": 8, "threshold": "same_post" },
+      { "kw_a": "real time coding help during technical interview", "kw_b": "AI tool that helps in coding interviews", "shared_urls_est": 7, "threshold": "same_post" },
+      { "kw_a": "AI interview assistant privacy", "kw_b": "local AI for interview privacy", "shared_urls_est": 7, "threshold": "same_post" },
+      { "kw_a": "interview copilot vs final round ai", "kw_b": "cluely vs natively", "shared_urls_est": 3, "threshold": "interlink" }
+    ]
+  },
+
+  "cluster_architecture": {
+    "pillar": {
+      "id": "pillar-1",
+      "title": "The Complete Guide to AI Interview Assistants in 2026",
+      "primary_keyword": "AI interview assistant",
+      "secondary_keywords": ["interview copilot", "interview AI tool", "real-time interview help"],
+      "intent": "Commercial Investigation",
+      "template": "saas",
+      "word_count_target": 3500,
+      "url_slug": "/ai-interview-assistant",
+      "existing_page": "src/pages/seo/AIInterviewAssistant.tsx",
+      "page_status": "exists - needs expansion to pillar spec",
+      "links_out": [
+        "spoke-1-1", "spoke-1-2", "spoke-1-3", "spoke-1-4",
+        "spoke-2-1", "spoke-2-2", "spoke-2-3",
+        "spoke-3-1", "spoke-3-2",
+        "spoke-4-1", "spoke-4-2", "spoke-4-3"
+      ]
+    },
+
+    "clusters": [
+      {
+        "cluster_id": "cluster-1",
+        "cluster_name": "AI Interview Assistant — Core",
+        "theme": "What it is, how it works, top tools, free options",
+        "spokes": [
+          {
+            "id": "spoke-1-1",
+            "title": "What Is an AI Interview Assistant? How It Works (2026 Guide)",
+            "primary_keyword": "what is an AI interview assistant",
+            "secondary_keywords": ["how does AI interview assistant work", "AI interview assistant explained"],
+            "intent": "Informational",
+            "template": "blog-post",
+            "word_count_target": 1500,
+            "url_slug": "/blog/what-is-ai-interview-assistant",
+            "existing_page": "src/pages/blog/HowAIInterviewAssistantsWork.tsx",
+            "page_status": "exists - remap primary KW and expand definition section",
+            "featured_snippet_target": "definition + how-it-works numbered list",
+            "links_to": ["pillar-1", "spoke-1-2", "spoke-1-3"],
+            "links_from": ["pillar-1", "spoke-1-2", "spoke-2-1"]
+          },
+          {
+            "id": "spoke-1-2",
+            "title": "Best Free AI Interview Assistants in 2026 (No Credit Card)",
+            "primary_keyword": "AI interview assistant free",
+            "secondary_keywords": ["interview copilot free", "free AI mock interview no account", "AI interview tool no credit card"],
+            "intent": "Commercial Investigation",
+            "template": "blog-post",
+            "word_count_target": 1600,
+            "url_slug": "/blog/best-free-ai-interview-assistant",
+            "existing_page": null,
+            "page_status": "new page required",
+            "featured_snippet_target": "paragraph + bulleted tool list",
+            "links_to": ["pillar-1", "spoke-1-1", "spoke-2-1"],
+            "links_from": ["pillar-1", "spoke-1-1", "spoke-4-1"]
+          },
+          {
+            "id": "spoke-1-3",
+            "title": "Is AI Interview Assistant Detectable? Stealth Mode Explained",
+            "primary_keyword": "is AI interview assistant detectable",
+            "secondary_keywords": ["AI interview assistant undetectable", "undetectable AI interview help", "stealth interview AI tool"],
+            "intent": "Informational",
+            "template": "blog-post",
+            "word_count_target": 1400,
+            "url_slug": "/blog/is-ai-interview-assistant-detectable",
+            "existing_page": null,
+            "page_status": "new page required — HIGH PRIORITY",
+            "featured_snippet_target": "FAQ-style paragraph answer + technical bullet list",
+            "links_to": ["pillar-1", "spoke-1-1", "spoke-3-1"],
+            "links_from": ["pillar-1", "spoke-1-1", "spoke-3-1", "spoke-3-2"]
+          },
+          {
+            "id": "spoke-1-4",
+            "title": "AI Interview Assistant Privacy & Data Safety: What You Need to Know",
+            "primary_keyword": "AI interview assistant privacy",
+            "secondary_keywords": ["local AI for interview privacy", "AI interview assistant no data breach", "interview copilot no data breach"],
+            "intent": "Informational",
+            "template": "blog-post",
+            "word_count_target": 1400,
+            "url_slug": "/blog/ai-interview-assistant-privacy",
+            "existing_page": null,
+            "page_status": "new page required",
+            "featured_snippet_target": "comparison paragraph: cloud vs local data handling",
+            "links_to": ["pillar-1", "spoke-1-3", "spoke-2-2"],
+            "links_from": ["pillar-1", "spoke-1-3", "spoke-2-2"]
+          }
+        ]
+      },
+      {
+        "cluster_id": "cluster-2",
+        "cluster_name": "Interview Copilot — Commercial",
+        "theme": "Pricing, comparisons, alternative searches, BYOK",
+        "spokes": [
+          {
+            "id": "spoke-2-1",
+            "title": "Cluely Alternative: Best Free & Open Source Interview Copilots (2026)",
+            "primary_keyword": "cluely alternative",
+            "secondary_keywords": ["final round ai alternative", "interview copilot open source", "natively vs cluely"],
+            "intent": "Commercial Investigation",
+            "template": "blog-post",
+            "word_count_target": 1800,
+            "url_slug": "/blog/cluely-alternative",
+            "existing_page": "src/pages/seo/NativelyAlternative.tsx",
+            "page_status": "exists - remap primary KW to cluely-alternative, add comparison table",
+            "featured_snippet_target": "comparison table (Natively vs Cluely vs FinalRoundAI vs LockedIn)",
+            "links_to": ["pillar-1", "spoke-2-2", "spoke-2-3", "spoke-1-2"],
+            "links_from": ["pillar-1", "spoke-1-2", "spoke-2-2", "spoke-4-1"]
+          },
+          {
+            "id": "spoke-2-2",
+            "title": "Interview Copilot Pricing Comparison 2026: Which Is Actually Worth It?",
+            "primary_keyword": "interview copilot pricing",
+            "secondary_keywords": ["best interview copilot", "interview copilot vs final round ai", "cluely vs interview copilot"],
+            "intent": "Commercial Investigation",
+            "template": "blog-post",
+            "word_count_target": 1600,
+            "url_slug": "/blog/interview-copilot-pricing",
+            "existing_page": null,
+            "page_status": "new page required",
+            "featured_snippet_target": "pricing table snippet",
+            "links_to": ["pillar-1", "spoke-2-1", "spoke-2-3"],
+            "links_from": ["pillar-1", "spoke-2-1", "spoke-1-4", "spoke-4-1"]
+          },
+          {
+            "id": "spoke-2-3",
+            "title": "Interview Copilot with BYOK & Local LLM: No Subscription Needed",
+            "primary_keyword": "interview copilot BYOK API key",
+            "secondary_keywords": ["interview copilot local LLM ollama", "AI interview assistant BYOK", "AI interview tool that works offline"],
+            "intent": "Commercial Investigation",
+            "template": "technical-article",
+            "word_count_target": 1500,
+            "url_slug": "/blog/interview-copilot-byok-local-llm",
+            "existing_page": null,
+            "page_status": "new page required — HIGH DIFFERENTIATOR",
+            "featured_snippet_target": "how-to numbered setup guide",
+            "links_to": ["pillar-1", "spoke-2-1", "spoke-2-2"],
+            "links_from": ["pillar-1", "spoke-2-1", "spoke-1-4"]
+          }
+        ]
+      },
+      {
+        "cluster_id": "cluster-3",
+        "cluster_name": "Real-Time Interview Help — How-To",
+        "theme": "Live use during interviews, stealth, no-bot architecture",
+        "spokes": [
+          {
+            "id": "spoke-3-1",
+            "title": "How to Get Real-Time AI Help During a Live Job Interview (2026)",
+            "primary_keyword": "how to get AI help during interview",
+            "secondary_keywords": ["real-time AI answers during interview", "live interview AI help", "AI interview whisper mode"],
+            "intent": "Informational",
+            "template": "blog-post",
+            "word_count_target": 1600,
+            "url_slug": "/blog/how-to-get-real-time-ai-help-during-interview",
+            "existing_page": "src/pages/blog/HowAICanHelpWithCodingInterviews.tsx",
+            "page_status": "exists - expand beyond coding to all interview types, remap KW",
+            "featured_snippet_target": "5-step how-to numbered list snippet",
+            "links_to": ["pillar-1", "spoke-1-3", "spoke-3-2"],
+            "links_from": ["pillar-1", "spoke-1-3", "spoke-3-2", "spoke-4-3"]
+          },
+          {
+            "id": "spoke-3-2",
+            "title": "Real-Time Coding Help During Technical Interviews: AI Tools That Work",
+            "primary_keyword": "real time coding help during technical interview",
+            "secondary_keywords": ["AI tool that helps in coding interviews", "AI coding interview assistant", "interview coder alternative"],
+            "intent": "Commercial Investigation",
+            "template": "technical-article",
+            "word_count_target": 1600,
+            "url_slug": "/blog/real-time-coding-help-technical-interview",
+            "existing_page": "src/pages/blog/BestAIToolsForCodingInterviews.tsx",
+            "page_status": "exists - remap primary KW to real-time angle",
+            "featured_snippet_target": "comparison table with latency benchmarks",
+            "links_to": ["pillar-1", "spoke-3-1", "spoke-1-3"],
+            "links_from": ["pillar-1", "spoke-3-1", "spoke-4-2", "spoke-4-3"]
+          }
+        ]
+      },
+      {
+        "cluster_id": "cluster-4",
+        "cluster_name": "Interview AI Tool — Comparison & Prep",
+        "theme": "Tool comparisons, mock interviews, AI for job prep",
+        "spokes": [
+          {
+            "id": "spoke-4-1",
+            "title": "Best Interview AI Tools 2026: Ranked by Price, Stealth, and Features",
+            "primary_keyword": "best interview AI tools 2026",
+            "secondary_keywords": ["AI tools for job interviews", "interview AI tool comparison", "top AI interview assistant 2026"],
+            "intent": "Commercial Investigation",
+            "template": "blog-post",
+            "word_count_target": 1800,
+            "url_slug": "/blog/best-interview-ai-tools",
+            "existing_page": "src/pages/blog/AIInterviewAssistantGuide.tsx",
+            "page_status": "exists - expand to full comparison table format, update to 2026",
+            "featured_snippet_target": "ranked table snippet",
+            "links_to": ["pillar-1", "spoke-4-2", "spoke-4-3", "spoke-2-1", "spoke-2-2"],
+            "links_from": ["pillar-1", "spoke-1-2", "spoke-2-1", "spoke-2-2"]
+          },
+          {
+            "id": "spoke-4-2",
+            "title": "AI for Technical Interviews: LeetCode, System Design & Behavioral Help",
+            "primary_keyword": "AI tool for technical interviews leetcode",
+            "secondary_keywords": ["AI for system design interview", "AI behavioral interview tool STAR method", "AI interview tool for developers"],
+            "intent": "Commercial Investigation",
+            "template": "technical-article",
+            "word_count_target": 1600,
+            "url_slug": "/blog/ai-for-technical-interviews",
+            "existing_page": "src/pages/blog/PreparingForTechnicalInterviewsWithAI.tsx",
+            "page_status": "exists - expand with LeetCode and system design sections",
+            "featured_snippet_target": "how-to + table snippet",
+            "links_to": ["pillar-1", "spoke-4-1", "spoke-3-2"],
+            "links_from": ["pillar-1", "spoke-4-1", "spoke-3-2"]
+          },
+          {
+            "id": "spoke-4-3",
+            "title": "How to Use AI in a Job Interview: Ethical Tips and Best Practices",
+            "primary_keyword": "how to use AI in a job interview",
+            "secondary_keywords": ["AI for job interview preparation 2026", "AI interview assistance without screen recording"],
+            "intent": "Informational",
+            "template": "blog-post",
+            "word_count_target": 1400,
+            "url_slug": "/blog/how-to-use-ai-in-job-interview",
+            "existing_page": null,
+            "page_status": "new page required",
+            "featured_snippet_target": "numbered tips list",
+            "links_to": ["pillar-1", "spoke-4-1", "spoke-3-1"],
+            "links_from": ["pillar-1", "spoke-4-1", "spoke-3-1"]
+          }
+        ]
+      }
+    ]
+  },
+
+  "internal_link_adjacency_list": {
+    "mandatory_pillar_to_spoke": [
+      ["pillar-1", "spoke-1-1"], ["pillar-1", "spoke-1-2"], ["pillar-1", "spoke-1-3"], ["pillar-1", "spoke-1-4"],
+      ["pillar-1", "spoke-2-1"], ["pillar-1", "spoke-2-2"], ["pillar-1", "spoke-2-3"],
+      ["pillar-1", "spoke-3-1"], ["pillar-1", "spoke-3-2"],
+      ["pillar-1", "spoke-4-1"], ["pillar-1", "spoke-4-2"], ["pillar-1", "spoke-4-3"]
+    ],
+    "mandatory_spoke_to_pillar": [
+      ["spoke-1-1", "pillar-1"], ["spoke-1-2", "pillar-1"], ["spoke-1-3", "pillar-1"], ["spoke-1-4", "pillar-1"],
+      ["spoke-2-1", "pillar-1"], ["spoke-2-2", "pillar-1"], ["spoke-2-3", "pillar-1"],
+      ["spoke-3-1", "pillar-1"], ["spoke-3-2", "pillar-1"],
+      ["spoke-4-1", "pillar-1"], ["spoke-4-2", "pillar-1"], ["spoke-4-3", "pillar-1"]
+    ],
+    "recommended_spoke_spoke_within_cluster": [
+      ["spoke-1-1", "spoke-1-2"], ["spoke-1-1", "spoke-1-3"],
+      ["spoke-1-2", "spoke-1-1"], ["spoke-1-3", "spoke-1-1"], ["spoke-1-3", "spoke-1-4"],
+      ["spoke-1-4", "spoke-1-3"], ["spoke-1-4", "spoke-2-2"],
+      ["spoke-2-1", "spoke-2-2"], ["spoke-2-1", "spoke-2-3"],
+      ["spoke-2-2", "spoke-2-1"], ["spoke-2-3", "spoke-2-1"], ["spoke-2-3", "spoke-2-2"],
+      ["spoke-3-1", "spoke-3-2"], ["spoke-3-2", "spoke-3-1"],
+      ["spoke-4-1", "spoke-4-2"], ["spoke-4-1", "spoke-4-3"],
+      ["spoke-4-2", "spoke-4-1"], ["spoke-4-3", "spoke-4-1"]
+    ],
+    "optional_cross_cluster": [
+      ["spoke-1-2", "spoke-2-1"],
+      ["spoke-1-3", "spoke-3-1"],
+      ["spoke-2-1", "spoke-1-2"],
+      ["spoke-3-2", "spoke-4-2"],
+      ["spoke-4-1", "spoke-2-1"],
+      ["spoke-4-1", "spoke-2-2"]
+    ],
+    "incoming_link_counts": {
+      "pillar-1": 12,
+      "spoke-1-1": 3,
+      "spoke-1-2": 3,
+      "spoke-1-3": 4,
+      "spoke-1-4": 3,
+      "spoke-2-1": 4,
+      "spoke-2-2": 4,
+      "spoke-2-3": 3,
+      "spoke-3-1": 4,
+      "spoke-3-2": 4,
+      "spoke-4-1": 4,
+      "spoke-4-2": 3,
+      "spoke-4-3": 3
+    },
+    "orphan_check": "PASS — all 12 spokes have >= 3 incoming links"
+  },
+
+  "priority_matrix_top_30": [
+    { "rank": 1,  "keyword": "AI interview assistant",                  "volume": 22000, "kd": 72, "opp_score": 6160, "intent": "Commercial", "cluster": "cluster-1", "page": "pillar-1",   "quick_win": false },
+    { "rank": 2,  "keyword": "cluely alternative",                      "volume": 8800,  "kd": 46, "opp_score": 4752, "intent": "Commercial", "cluster": "cluster-2", "page": "spoke-2-1",  "quick_win": true },
+    { "rank": 3,  "keyword": "best AI interview assistant",              "volume": 9400,  "kd": 68, "opp_score": 3008, "intent": "Commercial", "cluster": "cluster-1", "page": "pillar-1",   "quick_win": false },
+    { "rank": 4,  "keyword": "interview copilot",                        "volume": 18000, "kd": 75, "opp_score": 4500, "intent": "Commercial", "cluster": "cluster-2", "page": "pillar-1",   "quick_win": false },
+    { "rank": 5,  "keyword": "real-time interview help",                 "volume": 8400,  "kd": 52, "opp_score": 4032, "intent": "Commercial", "cluster": "cluster-3", "page": "pillar-1",   "quick_win": false },
+    { "rank": 6,  "keyword": "final round ai alternative",               "volume": 6500,  "kd": 52, "opp_score": 3120, "intent": "Commercial", "cluster": "cluster-2", "page": "spoke-2-1",  "quick_win": true },
+    { "rank": 7,  "keyword": "AI interview assistant free",               "volume": 6200,  "kd": 54, "opp_score": 2852, "intent": "Commercial", "cluster": "cluster-1", "page": "spoke-1-2",  "quick_win": true },
+    { "rank": 8,  "keyword": "interview copilot free",                   "volume": 5100,  "kd": 51, "opp_score": 2499, "intent": "Commercial", "cluster": "cluster-2", "page": "spoke-1-2",  "quick_win": true },
+    { "rank": 9,  "keyword": "interview AI tool",                        "volume": 11000, "kd": 64, "opp_score": 3960, "intent": "Commercial", "cluster": "cluster-4", "page": "pillar-1",   "quick_win": false },
+    { "rank": 10, "keyword": "best interview AI tools 2026",             "volume": 8800,  "kd": 62, "opp_score": 3344, "intent": "Commercial", "cluster": "cluster-4", "page": "spoke-4-1",  "quick_win": false },
+    { "rank": 11, "keyword": "AI tools for job interviews",              "volume": 9200,  "kd": 65, "opp_score": 3220, "intent": "Commercial", "cluster": "cluster-4", "page": "spoke-4-1",  "quick_win": false },
+    { "rank": 12, "keyword": "is AI interview assistant detectable",     "volume": 2900,  "kd": 36, "opp_score": 1856, "intent": "Informational","cluster": "cluster-1","page": "spoke-1-3", "quick_win": true },
+    { "rank": 13, "keyword": "real-time AI answers during interview",    "volume": 5200,  "kd": 49, "opp_score": 2652, "intent": "Commercial", "cluster": "cluster-3", "page": "spoke-3-1",  "quick_win": false },
+    { "rank": 14, "keyword": "how to use AI in a job interview",         "volume": 5400,  "kd": 41, "opp_score": 3186, "intent": "Informational","cluster": "cluster-4","page": "spoke-4-3", "quick_win": true },
+    { "rank": 15, "keyword": "undetectable AI interview help",           "volume": 5900,  "kd": 58, "opp_score": 2478, "intent": "Commercial", "cluster": "cluster-3", "page": "spoke-1-3",  "quick_win": false },
+    { "rank": 16, "keyword": "stealth interview AI tool",                "volume": 4700,  "kd": 53, "opp_score": 2209, "intent": "Commercial", "cluster": "cluster-3", "page": "spoke-1-3",  "quick_win": false },
+    { "rank": 17, "keyword": "AI for job interview preparation 2026",    "volume": 6200,  "kd": 57, "opp_score": 2666, "intent": "Commercial", "cluster": "cluster-4", "page": "spoke-4-2",  "quick_win": false },
+    { "rank": 18, "keyword": "real time coding help during technical interview", "volume": 3800, "kd": 56, "opp_score": 1672, "intent": "Commercial", "cluster": "cluster-3", "page": "spoke-3-2", "quick_win": false },
+    { "rank": 19, "keyword": "interview copilot pricing",                "volume": 4600,  "kd": 61, "opp_score": 1794, "intent": "Commercial", "cluster": "cluster-2", "page": "spoke-2-2",  "quick_win": true },
+    { "rank": 20, "keyword": "interview copilot real time",              "volume": 4200,  "kd": 58, "opp_score": 1764, "intent": "Commercial", "cluster": "cluster-2", "page": "pillar-1",   "quick_win": false },
+    { "rank": 21, "keyword": "AI interview assistant no subscription",   "volume": 2600,  "kd": 38, "opp_score": 1612, "intent": "Commercial", "cluster": "cluster-1", "page": "spoke-1-2",  "quick_win": true },
+    { "rank": 22, "keyword": "AI interview assistant review",            "volume": 3400,  "kd": 51, "opp_score": 1666, "intent": "Commercial", "cluster": "cluster-1", "page": "spoke-4-1",  "quick_win": false },
+    { "rank": 23, "keyword": "what is an AI interview assistant",        "volume": 2800,  "kd": 34, "opp_score": 1848, "intent": "Informational","cluster": "cluster-1","page": "spoke-1-1", "quick_win": true },
+    { "rank": 24, "keyword": "open source AI interview assistant",       "volume": 1900,  "kd": 28, "opp_score": 1368, "intent": "Commercial", "cluster": "cluster-1", "page": "spoke-2-1",  "quick_win": true },
+    { "rank": 25, "keyword": "AI interview assistant undetectable",      "volume": 4400,  "kd": 58, "opp_score": 1848, "intent": "Commercial", "cluster": "cluster-1", "page": "spoke-1-3",  "quick_win": false },
+    { "rank": 26, "keyword": "interview copilot undetectable",           "volume": 3600,  "kd": 55, "opp_score": 1620, "intent": "Commercial", "cluster": "cluster-2", "page": "spoke-1-3",  "quick_win": false },
+    { "rank": 27, "keyword": "free AI mock interview no account",        "volume": 2800,  "kd": 32, "opp_score": 1904, "intent": "Transactional","cluster": "cluster-4","page": "spoke-1-2", "quick_win": true },
+    { "rank": 28, "keyword": "interview coder alternative",              "volume": 3400,  "kd": 41, "opp_score": 2006, "intent": "Commercial", "cluster": "cluster-4", "page": "spoke-2-1",  "quick_win": true },
+    { "rank": 29, "keyword": "how to get AI help during interview",      "volume": 2900,  "kd": 38, "opp_score": 1798, "intent": "Informational","cluster": "cluster-3","page": "spoke-3-1", "quick_win": true },
+    { "rank": 30, "keyword": "AI interview assistant privacy",           "volume": 1400,  "kd": 27, "opp_score": 1022, "intent": "Informational","cluster": "cluster-1","page": "spoke-1-4", "quick_win": true }
+  ],
+
+  "quick_wins_30_days": {
+    "criteria": "KD < 50, volume > 600, existing or easily-new page",
+    "targets": [
+      { "keyword": "cluely alternative",                     "kd": 46, "volume": 8800, "page": "spoke-2-1", "action": "Remap NativelyAlternative.tsx primary KW; add comparison table section" },
+      { "keyword": "final round ai alternative",             "kd": 52, "volume": 6500, "page": "spoke-2-1", "action": "Add dedicated H2 section + comparison table on same page as cluely alternative" },
+      { "keyword": "AI interview assistant free",            "kd": 54, "volume": 6200, "page": "spoke-1-2", "action": "Create new /blog/best-free-ai-interview-assistant targeting BYOK/no-subscription angle" },
+      { "keyword": "interview copilot free",                 "kd": 51, "volume": 5100, "page": "spoke-1-2", "action": "Covered by same page as above via semantic overlap" },
+      { "keyword": "is AI interview assistant detectable",   "kd": 36, "volume": 2900, "page": "spoke-1-3", "action": "New post — extremely open SERP, definition+FAQ format wins snippet" },
+      { "keyword": "how to use AI in a job interview",       "kd": 41, "volume": 5400, "page": "spoke-4-3", "action": "New post targeting how-to numbered list snippet" },
+      { "keyword": "what is an AI interview assistant",      "kd": 34, "volume": 2800, "page": "spoke-1-1", "action": "Expand HowAIInterviewAssistantsWork.tsx definition section; target PAA box" },
+      { "keyword": "open source AI interview assistant",     "kd": 28, "volume": 1900, "page": "spoke-2-1", "action": "Add open-source comparison section; GitHub link signal already exists" },
+      { "keyword": "interview copilot pricing",              "kd": 61, "volume": 4600, "page": "spoke-2-2", "action": "New page with pricing comparison table — table snippet opportunity" },
+      { "keyword": "free AI mock interview no account",      "kd": 32, "volume": 2800, "page": "spoke-1-2", "action": "CTA-heavy section on free page; no-login demo angle aligns with Natively BYOK" },
+      { "keyword": "AI interview assistant no subscription", "kd": 38, "volume": 2600, "page": "spoke-1-2", "action": "H2 section on free page + internal link from pillar" },
+      { "keyword": "interview coder alternative",            "kd": 41, "volume": 3400, "page": "spoke-2-1", "action": "Add Interview Coder comparison section to alternatives page" },
+      { "keyword": "how to get AI help during interview",    "kd": 38, "volume": 2900, "page": "spoke-3-1", "action": "Expand HowAICanHelpWithCodingInterviews.tsx to cover all interview types" },
+      { "keyword": "AI interview assistant privacy",         "kd": 27, "volume": 1400, "page": "spoke-1-4", "action": "New post — strong differentiator; local processing/no-data-storage is unique Natively value prop" },
+      { "keyword": "interview copilot BYOK API key",         "kd": 15, "volume": 640,  "page": "spoke-2-3", "action": "New technical post — near-zero competition, directly targets Natively's core feature" }
+    ]
+  },
+
+  "cannibalization_check": {
+    "status": "PASS",
+    "checks": [
+      { "pair": ["pillar-1 (AI interview assistant)", "spoke-4-1 (best interview AI tools 2026)"], "risk": "Low", "resolution": "Pillar is definitive guide; spoke-4-1 is ranked comparison. Different H1 and primary KW." },
+      { "pair": ["spoke-1-3 (detectable)", "spoke-3-1 (stealth mode real-time)"], "risk": "Low", "resolution": "spoke-1-3 answers the 'is it detected' informational question; spoke-3-1 answers 'how to use it in practice'. Different intents." },
+      { "pair": ["spoke-2-1 (cluely alternative)", "spoke-4-1 (best interview AI tools)"], "risk": "Medium", "resolution": "Differentiate: spoke-2-1 leads with brand comparison narrative (Natively vs Cluely); spoke-4-1 is a broader ranked list. Ensure distinct H1 and intro paragraphs. No primary KW overlap." },
+      { "pair": ["spoke-1-2 (free AI assistant)", "spoke-2-3 (BYOK/no subscription)"], "risk": "Low", "resolution": "spoke-1-2 targets broad free-tools audience; spoke-2-3 targets technical users who want local/offline. Different intent depth." }
+    ],
+    "primary_keyword_uniqueness": "PASS — no two pages share the same primary keyword"
+  },
+
+  "validation_checklist": {
+    "no_duplicate_primary_keywords": true,
+    "every_spoke_has_3_plus_incoming_links": true,
+    "every_spoke_links_to_pillar": true,
+    "pillar_links_to_every_spoke": true,
+    "no_orphan_pages": true,
+    "template_matches_intent": true,
+    "word_count_within_spec_pillar_2500_4000": true,
+    "word_count_within_spec_spoke_1200_1800": true,
+    "cluster_size_within_constraints_2_5_clusters_2_4_posts": true,
+    "serp_overlap_supports_cluster_groupings": true
+  }
+}
