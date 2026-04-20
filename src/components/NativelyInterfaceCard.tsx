@@ -45,7 +45,7 @@ const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = fa
       };
 
   return (
-    <div className={className} style={{ transform: (isStatic || isMobile) ? undefined : "scale(0.85)", transformOrigin: "top center" }}>
+    <div className={className} style={{ transform: isStatic ? undefined : (isMobile ? "scale(1)" : "scale(0.85)"), transformOrigin: "top center" }}>
       <motion.div
         {...motionProps}
         className="flex flex-col items-center gap-2 w-full"
@@ -122,11 +122,11 @@ const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = fa
           )}
 
           {/* Hotkeys */}
-          <div className={`flex flex-wrap md:flex-nowrap items-center gap-1.5 md:gap-0 md:justify-between px-[18px] pb-0 ${hideMessages ? "pt-5" : "pt-[6px]"}`}>
+          <div className={`flex items-center gap-2 px-[18px] pb-3 ${hideMessages ? "pt-5" : "pt-[6px]"} overflow-x-auto hide-scrollbar scroll-smooth w-full flex-nowrap`}>
             {hotkeys.map((a) => (
               <button
                 key={a.label}
-                className="flex items-center justify-center gap-[5px] px-[12px] py-[6px] rounded-full text-[10px] font-semibold whitespace-nowrap relative overflow-hidden"
+                className="flex items-center justify-center gap-[5px] px-[12px] py-[6px] rounded-full text-[10px] font-semibold flex-nowrap shrink-0 relative overflow-hidden"
                 style={dreamyVariant ? {
                   background: "rgba(255,255,255,0.08)",
                   color: "rgba(255,255,255,0.8)",

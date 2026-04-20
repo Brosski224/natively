@@ -48,8 +48,8 @@ const proFeatures = [
   { icon: UserCheck, label: "Resume Intelligence",         desc: "AI ingests your full resume so every answer is grounded in your lived experience, not generic MDN docs." },
   { icon: Database,  label: "Custom Context Intelligence", desc: "Provide any custom files or documentation to ground the AI completely in your specific domain knowledge." },
   { icon: TrendingUp,label: "Negotiation Assistance",      desc: "Live salary coaching with real-time counters and anchor strategies based on current market bands." },
-  { icon: Scan,      label: "System Design",               desc: "Chain screenshots for architecture questions. OCR extracts diagrams and renders answers in the invisible overlay." },
-  { icon: Target,    label: "Mock Interviews",             desc: "Strict hiring-manager persona with STAR coaching and live gap analysis against your identity graph." },
+  { icon: Scan,      label: "System Design",               desc: "Chain screenshots for architecture questions. OCR extracts diagrams and renders answers in the invisible overlay.", comingSoon: true },
+  { icon: Target,    label: "Mock Interviews",             desc: "Strict hiring-manager persona with STAR coaching and live gap analysis against your identity graph.", comingSoon: true },
   { icon: FileText,  label: "JD Intelligence",             desc: "Paste any job description. AI gap-analyzes your profile against the role and surfaces exactly what to highlight." },
   { icon: Building2, label: "Company Research",            desc: "Real-time intel on culture, market positioning, and salary bands before you walk in." },
 ];
@@ -442,7 +442,14 @@ export default function PricingSection() {
                       <f.icon size={15} style={{ color: "#fbbf24", opacity: 0.9 }} />
                     </div>
                     <div>
-                      <p className="text-[14px] font-semibold text-white/90 font-geist tracking-tight mb-0.5">{f.label}</p>
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <p className="text-[14px] font-semibold text-white/90 font-geist tracking-tight">{f.label}</p>
+                        {('comingSoon' in f && f.comingSoon) && (
+                          <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-full border bg-amber-400/10 border-amber-400/20 text-amber-400/80 uppercase tracking-wider">
+                            Soon
+                          </span>
+                        )}
+                      </div>
                       <p className="text-[12px] text-white/40 font-geist leading-snug line-clamp-2" title={f.desc}>{f.desc}</p>
                     </div>
                   </SpotlightCard>

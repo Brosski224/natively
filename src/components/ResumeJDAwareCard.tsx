@@ -161,7 +161,7 @@ export default function ResumeJDAwareCard() {
 
       {/* Text — pinned bottom */}
       <div className="relative p-8 pt-4 shrink-0">
-        <h3 className="text-[26px] md:text-[32px] leading-[1.1] font-semibold mb-2 text-[#2b3445] font-geist tracking-[-0.02em]">
+        <h3 className="text-[22px] md:text-[32px] leading-[1.1] font-semibold mb-2 text-[#2b3445] font-geist tracking-[-0.02em]">
           {t("features.card3_title")}
         </h3>
         <p className="text-[16px] leading-relaxed max-w-[90%] text-[#7b8596] font-geist">

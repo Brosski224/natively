@@ -50,7 +50,7 @@ const FirstFeatureCard = () => {
         />
         {/* Natively interface */}
         <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-10 pb-0">
-          <div className="w-full max-w-[500px]">
+          <div className="w-full max-w-[500px]" style={{ transform: "scale(0.909)", transformOrigin: "center center" }}>
             <NativelyInterfaceCard isStatic />
           </div>
         </div>

@@ -72,7 +72,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="body-text-geist !text-[#6B7280] max-w-[540px] drop-shadow-none font-medium text-base md:text-lg leading-relaxed px-2 md:px-0"
+            className="body-text-geist !text-[#6B7280] max-w-[540px] drop-shadow-none font-medium text-sm md:text-[17px] leading-relaxed px-2 md:px-0"
           >
             {t('hero.subtitle_line1')}
           </motion.p>
@@ -80,7 +80,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.85, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="body-text-geist !text-[#6B7280] max-w-[540px] drop-shadow-none font-medium text-base md:text-lg px-2 md:px-0"
+            className="body-text-geist !text-[#6B7280] max-w-[540px] drop-shadow-none font-medium text-sm md:text-[17px] px-2 md:px-0"
           >
             {t('hero.subtitle_line2')}
           </motion.p>
@@ -169,7 +169,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Mobile Interface Card */}
-            <NativelyInterfaceCard className="w-full -mt-20 relative z-10" isMobile={true} />
+            <NativelyInterfaceCard className="w-full mt-4 relative z-10" isMobile={true} hideMessages />
           </div>
 
           {/* --- DESKTOP LAYOUT (Monitor Composition) --- */}

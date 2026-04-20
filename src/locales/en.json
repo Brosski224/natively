@@ -33,9 +33,9 @@
   "features": {
     "title": "Four ways we make your<br/>meetings better",
     "card1_title": "AI that answers questions for you, real-time",
-    "card1_desc": "Run AI 100% locally with Ollama, or use cloud APIs (GPT-4o/Claude) for real-time answers without being detected.",
+    "card1_desc": "The right answer, right when you need it. Natively listens, understands, and whispers exactly what to say.",
     "card2_title": "Universal LLM Interface",
-    "card2_desc": "The only assistant supporting fully offline Local AI (Ollama) AND premium Cloud APIs (OpenAI, Anthropic, Gemini). Privacy or power—your choice.",
+    "card2_desc": "Your data stays yours. Or go cloud for maximum intelligence. Natively works beautifully either way.",
     "card2_add_key": "+ Add Key",
     "card2_models_active": "3 Models Active",
     "card2_connect": "Connect",
