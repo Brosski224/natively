@@ -35,7 +35,7 @@ export default function ListeningCard() {
       style={{ fontFamily: "'Biennale', sans-serif" }}
     >
       <h2 
-        className="hero-headline !text-[#3f3f46] text-[36px] md:text-[60px] lg:text-[68px] leading-[1.1] mb-10 text-center mx-auto w-full whitespace-nowrap tracking-tight block"
+        className="hero-headline !text-[#3f3f46] text-[28px] md:text-[60px] lg:text-[68px] leading-[1.1] mb-10 text-center mx-auto w-full md:whitespace-nowrap tracking-tight block"
         style={{ fontFamily: "'EB Garamond', serif" }}
       >
         How Natively helps during a meeting
@@ -45,7 +45,7 @@ export default function ListeningCard() {
         
         {/* LEFT CARD */}
         <div 
-          className="rounded-[40px] p-8 flex flex-col relative overflow-hidden aspect-square w-full max-w-[600px] mx-auto"
+          className="rounded-[32px] md:rounded-[40px] p-5 md:p-8 flex flex-col relative overflow-hidden aspect-square w-full max-w-[600px] mx-auto"
           style={{ 
             background: "radial-gradient(circle at 20% 20%, #7EABFB 0%, #6B9DF7 100%)",
             boxShadow: [
@@ -65,7 +65,7 @@ export default function ListeningCard() {
           <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-white/25 blur-[50px] rounded-full pointer-events-none" />
 
           {/* Header */}
-          <h3 className="text-white text-[20px] md:text-[28px] font-medium leading-[1.1] relative z-10 pr-4 tracking-tight whitespace-nowrap">
+          <h3 className="text-white text-[18px] md:text-[28px] font-medium leading-[1.3] relative z-10 pr-4 tracking-tight">
             Natively{" "}
             <span className="relative inline-flex items-center gap-2 px-4 py-1.5 bg-white/30 border border-white/40 rounded-full text-[14px] md:text-[18px] mx-1 align-middle backdrop-blur-xl shadow-[0_8px_16px_rgba(0,0,0,0.12),inset_0_1px_2px_rgba(255,255,255,0.4)] overflow-hidden group/jelly translate-y-[-1px]">
               {/* 3D Jelly Gloss highlight */}
@@ -80,13 +80,13 @@ export default function ListeningCard() {
             </span>{" "}
             in to the conversation
           </h3>
-          <p className="text-[17px] text-white/90 mt-5 leading-[1.6] max-w-[550px] relative z-10">
+          <p className="text-[14px] md:text-[17px] text-white/90 mt-3 md:mt-5 leading-[1.6] max-w-[550px] relative z-10">
             It picks up the context of your meeting in real time, so it can help when you need it.
           </p>
 
           {/* Record State */}
-          <div className="mt-6 flex flex-col items-center relative z-10 shrink-0">
-            <div className="text-[52px] font-medium text-white tracking-widest tabular-nums leading-none">
+          <div className="mt-3 md:mt-6 flex flex-col items-center relative z-10 shrink-0">
+            <div className="text-[36px] md:text-[52px] font-medium text-white tracking-widest tabular-nums leading-none">
               {mm}:{ss}
             </div>
             <div className="flex items-center justify-center gap-2 mt-4">
@@ -96,7 +96,7 @@ export default function ListeningCard() {
           </div>
 
           {/* Waveform - Apple Style Scrolling Left */}
-          <div className="mt-5 mb-4 relative z-10 mx-auto w-full max-w-[400px] h-[60px] flex items-center overflow-hidden shrink-0"
+          <div className="mt-3 md:mt-5 mb-2 md:mb-4 relative z-10 mx-auto w-full max-w-[400px] h-[48px] md:h-[60px] flex items-center overflow-hidden shrink-0"
             style={{
               WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
               maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
@@ -122,7 +122,7 @@ export default function ListeningCard() {
 
         {/* RIGHT CARD */}
         <div 
-          className="rounded-[40px] p-10 flex flex-col relative overflow-hidden aspect-square w-full max-w-[600px] mx-auto"
+          className="rounded-[32px] md:rounded-[40px] p-5 md:p-10 flex flex-col relative overflow-hidden aspect-square w-full max-w-[600px] mx-auto"
           style={{
             background: "#F2F4F8",
             boxShadow: [
@@ -137,7 +137,7 @@ export default function ListeningCard() {
           }}
         >
           {/* Title — matching reference exactly */}
-          <h3 className="text-[#111827] text-[26px] font-medium leading-[1.2] tracking-[-0.02em] relative z-10">
+          <h3 className="text-[#111827] text-[18px] md:text-[26px] font-medium leading-[1.2] tracking-[-0.02em] relative z-10">
             When you need help, Natively{" "}
             <span className="relative inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full text-[16px] md:text-[18px] align-text-bottom -translate-y-[2px] mx-1 shadow-[0_8px_20px_rgba(37,99,235,0.3),inset_0_1px_2px_rgba(255,255,255,0.4)] overflow-hidden">
               {/* Jelly Gloss */}
@@ -151,7 +151,7 @@ export default function ListeningCard() {
             you instantly
           </h3>
           
-          <p className="text-[17px] text-slate-500 mt-5 leading-relaxed max-w-[440px] relative z-10">
+          <p className="text-[14px] md:text-[17px] text-slate-500 mt-3 md:mt-5 leading-relaxed max-w-[440px] relative z-10">
             Hit Cmd/Ctrl + Enter and Natively helps you with AI in the moment.
           </p>
 

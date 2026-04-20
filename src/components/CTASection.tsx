@@ -8,7 +8,7 @@ const GITHUB_URL = "https://github.com/Natively-AI-assistant/natively-cluely-ai-
 const CTASection = () => {
   const { t } = useTranslation();
   return (
-    <section className="relative overflow-hidden min-h-[800px] flex flex-col justify-between bg-white">
+    <section className="relative overflow-hidden min-h-[600px] md:min-h-[800px] flex flex-col justify-between bg-white">
       {/* Background Image - Anchored Bottom */}
       <img
         src={bottomImg}
@@ -29,7 +29,7 @@ const CTASection = () => {
             <h2 className="font-medium text-[#111827] text-[32px] md:text-[40px] leading-tight mb-4 tracking-tight font-geist">
               {t('cta.title')}
             </h2>
-            <p className="font-geist text-[20px] text-[#64748B] mb-8 font-normal">
+            <p className="font-geist text-[16px] md:text-[20px] text-[#64748B] mb-8 font-normal">
               {t('cta.subtitle')}
             </p>
 

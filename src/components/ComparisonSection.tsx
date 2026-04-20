@@ -54,16 +54,16 @@ const ComparisonSection = () => {
       <div className="w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 flex flex-col items-center">
           <p className="text-[#3B82F6] font-medium mb-4 uppercase tracking-wider">{t('comparison.label')}</p>
-          <h2 className="hero-headline !text-black text-[36px] md:text-[80px] leading-[1.1] mb-4 text-center mx-auto max-w-4xl" dangerouslySetInnerHTML={{ __html: t('comparison.title') }} />
+          <h2 className="hero-headline !text-black text-[36px] md:text-[80px] leading-[1.1] mb-4 text-center mx-auto max-w-4xl px-4 md:px-0" dangerouslySetInnerHTML={{ __html: t('comparison.title') }} />
         </div>
 
-        <div className="w-full max-w-[1055px] grid grid-cols-1 lg:grid-cols-2 h-auto lg:h-[520px] rounded-[32px] overflow-hidden gap-8 lg:gap-0">
+        <div className="w-full max-w-[1055px] grid grid-cols-1 lg:grid-cols-2 h-auto lg:h-[520px] rounded-[32px] overflow-hidden gap-4 lg:gap-0">
 
           {/* Left Side - Competitors */}
-          <div className="bg-gray-50/80 pt-12 flex flex-col items-center text-center relative overflow-hidden group h-[520px] w-full rounded-[32px] lg:rounded-none">
+          <div className="bg-gray-50/80 pt-12 flex flex-col items-center text-center relative overflow-hidden group h-[360px] sm:h-[520px] w-full rounded-[32px] lg:rounded-none">
 
             <div className="relative z-10 flex flex-col items-center">
-              <h3 className="text-[32px] font-semibold text-gray-900 mb-4 font-geist tracking-tight">
+              <h3 className="text-[20px] sm:text-[32px] font-semibold text-gray-900 mb-4 font-geist tracking-tight">
                 {t('comparison.other_ai_title')}
               </h3>
               <div className="flex items-center gap-2 text-gray-400 font-medium">
@@ -105,7 +105,7 @@ const ComparisonSection = () => {
           </div>
 
           {/* Right Side - Natively */}
-          <div className="bg-gray-50/80 pt-12 flex flex-col items-center text-center relative overflow-hidden group h-[520px] w-full rounded-[32px] lg:rounded-none">
+          <div className="bg-gray-50/80 pt-12 flex flex-col items-center text-center relative overflow-hidden group h-[360px] sm:h-[520px] w-full rounded-[32px] lg:rounded-none">
             {/* Background Gradient/Texture */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none z-10" />
 
@@ -194,13 +194,15 @@ const ComparisonSection = () => {
                 </div>
               </div>
 
-              {/* Slider Handle */}
+              {/* Slider Handle — extended touch target */}
               <div
                 className="absolute top-0 bottom-0 w-0.5 bg-white z-30 cursor-ew-resize"
                 style={{ left: `${sliderPosition}%` }}
               >
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg transform transition-transform hover:scale-110 active:scale-95">
-                  <ChevronsLeftRight className="w-4 h-4 text-gray-900" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center">
+                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-lg transform transition-transform hover:scale-110 active:scale-95">
+                    <ChevronsLeftRight className="w-4 h-4 text-gray-900" />
+                  </div>
                 </div>
               </div>
 
@@ -209,7 +211,7 @@ const ComparisonSection = () => {
             <div className="relative z-10 flex flex-col items-center w-full">
               <div className="flex items-center gap-3 mb-4">
                 <img src={logo} alt="Natively Logo" className="w-8 h-8 brightness-0 invert" />
-                <h3 className="text-[32px] font-semibold text-white font-geist tracking-tight">
+                <h3 className="text-[20px] sm:text-[32px] font-semibold text-white font-geist tracking-tight">
                   {t('comparison.natively_title')}
                 </h3>
               </div>

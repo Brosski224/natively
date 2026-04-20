@@ -161,12 +161,12 @@ const AppMockup = memo(function AppMockup({ mode, onModeSelect }: { mode: Mode; 
       }}
     >
       {/* App body */}
-      <div className="flex flex-1 min-h-0">
+      <div className="flex flex-col md:flex-row flex-1 min-h-0">
 
         {/* Sidebar */}
         <div
-          className="w-[240px] shrink-0 flex flex-col"
-          style={{ background: "#FAFAFA", borderRight: "1px solid rgba(0,0,0,0.06)" }}
+          className="w-full md:w-[240px] shrink-0 flex flex-col border-b md:border-b-0 md:border-r border-black/5"
+          style={{ background: "#FAFAFA" }}
         >
           {/* MODES BETA header */}
           <div className="flex items-center gap-2 px-5 pt-6 pb-3">
@@ -191,7 +191,7 @@ const AppMockup = memo(function AppMockup({ mode, onModeSelect }: { mode: Mode; 
           </div>
 
           {/* Mode list */}
-          <div className="flex flex-col px-3 gap-0.5 flex-1 overflow-hidden">
+          <div className="flex flex-row md:flex-col px-3 py-2 md:py-0 gap-2 md:gap-0.5 overflow-x-auto md:overflow-hidden flex-1 touch-pan-x hide-scrollbar scroll-smooth">
             <AnimatePresence mode="wait">
               {modes.map((m) => {
                 const isActive = m.id === mode.id;
@@ -199,7 +199,7 @@ const AppMockup = memo(function AppMockup({ mode, onModeSelect }: { mode: Mode; 
                   <motion.div
                     key={`${m.id}-${mode.id}`}
                     onClick={() => onModeSelect(m)}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer hover:bg-black/5 transition-colors"
+                    className="flex md:flex items-center gap-3 px-4 md:px-3 py-2.5 rounded-lg cursor-pointer hover:bg-black/5 transition-colors shrink-0 snap-start min-h-[44px]"
                     style={{
                       background: isActive ? "rgba(0,0,0,0.06)" : "transparent",
                     }}
@@ -222,7 +222,7 @@ const AppMockup = memo(function AppMockup({ mode, onModeSelect }: { mode: Mode; 
           </div>
 
           {/* Bottom — Natively Templates */}
-          <div className="flex items-center gap-2.5 px-5 py-5 mt-auto" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+          <div className="hidden md:flex items-center gap-2.5 px-5 py-5 mt-auto" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
             <LayoutGrid size={15} className="text-black/30 shrink-0" />
             <span className="text-[13px] font-medium text-black/40">Natively Templates</span>
           </div>
@@ -237,25 +237,25 @@ const AppMockup = memo(function AppMockup({ mode, onModeSelect }: { mode: Mode; 
               animate={{ opacity: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, filter: "blur(4px)" }}
               transition={{ duration: 0.16, ease: EASE_OUT }}
-              className="h-full px-10 py-8 flex flex-col gap-6"
+              className="h-full px-4 py-5 md:px-10 md:py-8 flex flex-col gap-4 md:gap-6"
             >
               {/* Title row */}
-              <div className="flex items-center justify-between gap-3 shrink-0 mb-1">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shrink-0 mb-1">
                 <h3
-                  className="text-[32px] font-bold text-[#1a202c] leading-tight tracking-tight font-geist"
+                  className="text-[28px] md:text-[32px] font-bold text-[#1a202c] leading-tight tracking-tight font-geist"
                 >
                   {mode.name}
                 </h3>
                 <div className="flex items-center gap-2 shrink-0">
                   <div
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-medium text-black/60 cursor-pointer hover:bg-black/5 transition-colors"
+                    className="flex flex-1 md:flex-none items-center justify-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-medium text-black/60 cursor-pointer hover:bg-black/5 transition-colors min-h-[44px] md:min-h-0"
                     style={{ background: "rgba(0,0,0,0.04)" }}
                   >
                     <Check size={12} className="text-black/50" />
                     Set active
                   </div>
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/5 transition-colors"
+                    className="w-11 h-11 md:w-8 md:h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/5 transition-colors"
                     style={{ background: "rgba(0,0,0,0.04)" }}
                   >
                     <MoreHorizontal size={15} className="text-black/40" />
@@ -383,7 +383,7 @@ export default function ModesSection() {
         <div className="max-w-[800px] mx-auto w-full flex justify-center">
 
           <motion.div
-            className="w-full mx-auto min-h-[560px] aspect-auto md:aspect-[16/11]"
+            className="w-full mx-auto min-h-[480px] md:min-h-[560px] aspect-auto md:aspect-[16/11]"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

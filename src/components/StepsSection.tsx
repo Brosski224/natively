@@ -38,7 +38,7 @@ const StepsSection = () => {
       <div className="max-w-[1350px] mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="hero-headline !text-[#111827] text-[32px] md:text-[80px] leading-tight mb-4 mx-auto text-center">{t('steps.title')}</h2>
-          <p className="text-[20px] text-[#6B7280] font-normal font-geist">{t('steps.subtitle')}</p>
+          <p className="text-[16px] md:text-[20px] text-[#6B7280] font-normal font-geist px-2 md:px-0">{t('steps.subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-12 relative">

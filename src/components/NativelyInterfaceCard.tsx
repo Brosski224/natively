@@ -45,7 +45,7 @@ const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = fa
       };
 
   return (
-    <div className={className} style={{ transform: isStatic ? undefined : "scale(0.85)", transformOrigin: "top center" }}>
+    <div className={className} style={{ transform: (isStatic || isMobile) ? undefined : "scale(0.85)", transformOrigin: "top center" }}>
       <motion.div
         {...motionProps}
         className="flex flex-col items-center gap-2 w-full"
@@ -122,7 +122,7 @@ const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = fa
           )}
 
           {/* Hotkeys */}
-          <div className={`flex items-center justify-between px-[18px] pb-0 ${hideMessages ? "pt-5" : "pt-[6px]"}`}>
+          <div className={`flex flex-wrap md:flex-nowrap items-center gap-1.5 md:gap-0 md:justify-between px-[18px] pb-0 ${hideMessages ? "pt-5" : "pt-[6px]"}`}>
             {hotkeys.map((a) => (
               <button
                 key={a.label}

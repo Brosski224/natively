@@ -83,7 +83,7 @@ const Navbar = () => {
           </div>
 
           <button
-            className={`md:hidden p-2 ${isHomePage ? "text-white" : "text-foreground"}`}
+            className={`md:hidden p-3 min-h-[48px] min-w-[48px] flex items-center justify-center ${isHomePage ? "text-white" : "text-foreground"}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={t('nav.toggle_menu')}
           >
@@ -98,7 +98,7 @@ const Navbar = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-medium text-[#6B7280] hover:text-[#111827] transition-colors"
+                  className="text-sm font-medium text-[#6B7280] hover:text-[#111827] transition-colors py-3 block w-full"
                   onClick={(e) => handleLinkClick(e, link.label)}
                 >
                   {link.label}

@@ -174,7 +174,7 @@ export default function PricingSection() {
           <div>
             <h2
               className="hero-headline !text-black leading-[1.0] mb-5"
-              style={{ fontSize: "clamp(52px, 8vw, 96px)", letterSpacing: "-0.038em" }}
+              style={{ fontSize: "clamp(40px, 8vw, 96px)", letterSpacing: "-0.038em" }}
             >
               Simple pricing.
             </h2>
@@ -306,7 +306,7 @@ export default function PricingSection() {
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       whileTap={{ scale: 0.97, transition: { duration: 0.1, ease: EASE_OUT } }}
-                      className={`w-full py-3 rounded-[14px] text-[13px] font-semibold text-center block
+                      className={`w-full py-3 min-h-[48px] md:min-h-0 rounded-[14px] text-[13px] font-semibold text-center flex justify-center items-center
                         transition-colors duration-200
                         ${isSelected
                           ? "bg-white text-[#111827] hover:bg-white/90"
@@ -394,8 +394,8 @@ export default function PricingSection() {
                 href="https://natively.software/pro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider
-                  text-[#fbbf24] px-4 py-2 rounded-full transition-all duration-300 group
+                className="shrink-0 inline-flex items-center justify-center min-h-[48px] md:min-h-0 gap-1.5 text-[11px] font-bold uppercase tracking-wider
+                  text-[#fbbf24] px-5 py-2 md:px-4 rounded-full transition-all duration-300 group
                   hover:bg-[#fbbf24]/20 hover:border-[#fbbf24]/40"
                 style={{
                   background: "rgba(245,158,11,0.08)",
@@ -410,7 +410,7 @@ export default function PricingSection() {
           </motion.div>
 
           {/* ── Body ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 lg:gap-10 items-center">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_380px] gap-12 lg:gap-10 items-stretch lg:items-center">
 
             {/* Left — feature tile grid */}
             <motion.div
@@ -469,7 +469,7 @@ export default function PricingSection() {
               >
                 <SpotlightCard
                   isDark={true}
-                  className="group flex items-center justify-between gap-3 p-4 rounded-[20px] cursor-pointer transition-all duration-300 hover:bg-white/[0.04]"
+                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-3 p-5 sm:p-4 rounded-[20px] cursor-pointer transition-all duration-300 hover:bg-white/[0.04]"
                   style={{
                     background: "rgba(255,255,255,0.02)",
                     border: "1px solid rgba(255,255,255,0.08)",
@@ -487,8 +487,8 @@ export default function PricingSection() {
                     <p className="text-[12px] text-white/40 font-geist">All Pro features. Renews annually.</p>
                   </div>
                   <div
-                    className="shrink-0 px-3.5 py-2 rounded-[10px] text-[12px] font-semibold text-white/60
-                      whitespace-nowrap transition-all duration-300
+                    className="shrink-0 px-4 sm:px-3.5 py-2.5 sm:py-2 rounded-[12px] sm:rounded-[10px] text-[13px] sm:text-[12px] font-semibold text-white/60
+                      whitespace-nowrap transition-all duration-300 text-center
                       group-hover:text-white group-hover:bg-white/[0.12] group-hover:border-white/[0.15]"
                     style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)" }}
                   >
@@ -522,18 +522,18 @@ export default function PricingSection() {
                   {/* Corner glow */}
                   <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-amber-500/20 blur-3xl pointer-events-none group-hover:bg-amber-500/30 transition-colors duration-500" />
 
-                  <div className="flex items-start justify-between gap-2 relative z-10">
-                    <div>
+                  <div className="flex items-start justify-between gap-3 relative z-10 w-full">
+                    <div className="pr-2">
                       <p
                         className="mb-1"
                         style={{ fontFamily: "'Instrument Serif', serif", fontSize: "28px", fontWeight: 400, color: "#fbbf24", fontStyle: "italic", lineHeight: 1 }}
                       >
                         Lifetime License
                       </p>
-                      <p className="text-[12px] text-white/40 font-geist">One payment. All future updates included.</p>
+                      <p className="text-[11px] sm:text-[12px] text-white/40 font-geist leading-snug">One payment. All future updates included.</p>
                     </div>
                     <span
-                      className="shrink-0 text-[9px] font-bold px-2.5 py-1.5 rounded-full uppercase tracking-[0.1em] mt-1
+                      className="shrink-0 text-[8px] sm:text-[9px] font-bold px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full uppercase tracking-[0.1em] mt-1
                         group-hover:bg-amber-500/20 group-hover:border-amber-400/40 transition-all duration-300"
                       style={{ background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.25)", color: "#fbbf24" }}
                     >

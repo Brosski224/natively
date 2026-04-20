@@ -47,7 +47,7 @@ const HeroSection = () => {
           </motion.h1>
 
           {/* Main Heading Line 2 - Word by Word */}
-          <div className="hero-headline text-[#111827] drop-shadow-sm flex gap-3">
+          <div className="hero-headline text-[#111827] drop-shadow-sm flex flex-wrap justify-center gap-x-3 gap-y-1">
             {(t('hero.title_words', { returnObjects: true }) as string[]).map((word, i) => (
               <motion.span
                 key={i}
@@ -72,7 +72,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="body-text-geist !text-[#6B7280] max-w-[540px] drop-shadow-none font-medium text-lg leading-relaxed"
+            className="body-text-geist !text-[#6B7280] max-w-[540px] drop-shadow-none font-medium text-base md:text-lg leading-relaxed px-2 md:px-0"
           >
             {t('hero.subtitle_line1')}
           </motion.p>
@@ -80,7 +80,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.85, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="body-text-geist !text-[#6B7280] max-w-[540px] drop-shadow-none font-medium text-lg"
+            className="body-text-geist !text-[#6B7280] max-w-[540px] drop-shadow-none font-medium text-base md:text-lg px-2 md:px-0"
           >
             {t('hero.subtitle_line2')}
           </motion.p>
@@ -91,7 +91,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 3.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-24 flex flex-col items-center gap-4 scale-110"
+          className="mb-12 md:mb-24 flex flex-col items-center gap-4 scale-100 md:scale-110"
         >
           <div className="relative group">
             <JellyClayButton className="text-xl" />
@@ -110,7 +110,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Hero Mockup Composition */}
-        <div className="relative w-full max-w-[1040px] mx-auto mt-8 md:mt-12 md:scale-[1.1] md:-translate-y-12 px-0 md:px-0">
+        <div className="relative w-full max-w-[1040px] mx-auto mt-4 md:mt-12 md:scale-[1.1] md:-translate-y-12 px-3 md:px-0">
           {/* Main Aura: Orange -> Purple -> Blue vertical gradient */}
           <motion.div
             initial={{ opacity: 0 }}

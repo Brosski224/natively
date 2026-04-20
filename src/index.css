@@ -185,6 +185,11 @@
     @apply bg-[var(--background-hex)] text-[var(--primary-text)] font-sans antialiased;
     font-family: var(--font-body);
     font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  #root {
+    overflow-x: hidden;
   }
 }
 
@@ -194,14 +199,22 @@
   }
 
   .section-spacing {
-    @apply py-[var(--section-padding)];
+    @apply py-[48px] md:py-[var(--section-padding)];
+  }
+
+  /* ── Mobile scroll utility ── */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;             /* Chrome/Safari/Opera */
   }
 
   /* 2️⃣ HERO HEADLINE RULES */
   .hero-headline {
     font-family: var(--font-hero);
-    font-size: 48px;
-    /* Mobile default */
+    font-size: clamp(30px, 8vw, 48px); /* Mobile: 30px–48px */
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.5px;
