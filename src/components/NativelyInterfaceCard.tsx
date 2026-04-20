@@ -26,9 +26,11 @@ interface Props {
   hideMessages?: boolean;
   /** Apply dreamy translucent mystical effect */
   dreamyVariant?: boolean;
+  /** Spread hotkeys across full width */
+  spreadHotkeys?: boolean;
 }
 
-const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = false, hidePill = false, hideMessages = false, dreamyVariant = false }: Props) => {
+const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = false, hidePill = false, hideMessages = false, dreamyVariant = false, spreadHotkeys = false }: Props) => {
   const motionProps = isStatic
     ? {
         initial: { opacity: 0, y: 16 },
@@ -122,7 +124,7 @@ const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = fa
           )}
 
           {/* Hotkeys */}
-          <div className={`flex items-center gap-2 px-[18px] pb-3 ${hideMessages ? "pt-5" : "pt-[6px]"} overflow-x-auto hide-scrollbar scroll-smooth w-full flex-nowrap`}>
+          <div className={`flex items-center px-[18px] pb-0 ${hideMessages ? "pt-5" : "pt-[6px]"} w-full ${spreadHotkeys ? "justify-between gap-1" : "gap-2 overflow-x-auto hide-scrollbar scroll-smooth flex-nowrap"}`}>
             {hotkeys.map((a) => (
               <button
                 key={a.label}

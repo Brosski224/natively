@@ -294,7 +294,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Desktop Interface Card */}
-            <NativelyInterfaceCard className="absolute top-[12%] left-[46%] w-[52%] z-30" isMobile={false} />
+            <NativelyInterfaceCard className="absolute top-[12%] left-[46%] w-[52%] z-30" isMobile={false} spreadHotkeys />
           </motion.div>
         </div>
       </div>
