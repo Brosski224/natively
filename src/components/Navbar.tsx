@@ -20,10 +20,11 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
 
-  const navLinks: { label: string; href: string; isNew?: boolean; isPro?: boolean }[] = [
+  const navLinks: { label: string; href: string; isNew?: boolean; isPro?: boolean; isToken?: boolean }[] = [
     { label: "Product Hunt", href: "https://www.producthunt.com/products/natively-ai-2?utm_source=other&utm_medium=social" },
     { label: "Hacker News", href: "https://news.ycombinator.com/item?id=46923304" },
     { label: t('nav.github'), href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant" },
+    { label: "$NAT", href: "https://app.printr.money/trade/0xba1e50273ec14ca52b3fa64a5054c39470c2835392c6ecd06876f5bccd597d7b", isToken: true },
     { label: t('nav.pro'), href: localePath("/pro"), isPro: true },
   ];
 
@@ -60,12 +61,21 @@ const Navbar = () => {
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.label)}
                 className={`text-[14px] font-medium flex items-center gap-2 transition-colors ${
-                  link.isPro
+                  link.isToken
+                    ? "font-bold"
+                    : link.isPro
                     ? "text-amber-500 hover:text-amber-400 font-semibold"
                     : isHomePage
                       ? "text-white hover:opacity-70"
                       : "text-foreground/80 hover:text-foreground"
                 }`}
+                style={link.isToken ? {
+                  background: "linear-gradient(135deg, #6d28d9 0%, #0284c7 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  fontWeight: "800",
+                } : undefined}
               >
                 {link.label}
                 {link.isNew && (
@@ -98,7 +108,19 @@ const Navbar = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-medium text-[#6B7280] hover:text-[#111827] transition-colors py-3 block w-full"
+                  className={`text-sm py-3 block w-full ${
+                    link.isToken
+                      ? "font-bold"
+                      : link.isPro
+                      ? "text-amber-600 font-semibold"
+                      : "font-medium text-[#6B7280] hover:text-[#111827] transition-colors"
+                  }`}
+                  style={link.isToken ? {
+                    background: "linear-gradient(135deg, #6d28d9 0%, #0284c7 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  } : undefined}
                   onClick={(e) => handleLinkClick(e, link.label)}
                 >
                   {link.label}

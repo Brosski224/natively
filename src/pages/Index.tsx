@@ -8,6 +8,7 @@ const ModesSection = lazy(() => import("@/components/ModesSection"));
 const StepsSection = lazy(() => import("@/components/StepsSection"));
 const ComparisonSection = lazy(() => import("@/components/ComparisonSection"));
 const PricingSection = lazy(() => import("@/components/PricingSection"));
+const TokenSection = lazy(() => import("@/components/TokenSection"));
 const TranscriptionSection = lazy(() => import("@/components/TranscriptionSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const CTASection = lazy(() => import("@/components/CTASection"));
@@ -29,6 +30,7 @@ const Index = () => {
           <StepsSection />
           <ComparisonSection />
           <PricingSection />
+          <TokenSection />
           <TranscriptionSection />
           <FAQSection />
           <CTASection />

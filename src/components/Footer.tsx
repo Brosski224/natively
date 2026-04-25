@@ -51,6 +51,7 @@ const Footer = () => {
     {
       titleKey: "footer.support",
       links: [
+        { label: "$NAT Token", href: "https://app.printr.money/trade/0xba1e50273ec14ca52b3fa64a5054c39470c2835392c6ecd06876f5bccd597d7b" },
         { labelKey: "footer.donate", href: "https://buymeacoffee.com/evinjohnn" },
         { labelKey: "footer.contact", href: "mailto:natively.contact@gmail.com" },
         { labelKey: "footer.report_bug", href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/issues" },

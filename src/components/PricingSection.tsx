@@ -466,6 +466,65 @@ export default function PricingSection() {
               transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.15 }}
             >
 
+              {/* $NAT Token Holder Access */}
+              <motion.a
+                href="https://app.printr.money/trade/0xba1e50273ec14ca52b3fa64a5054c39470c2835392c6ecd06876f5bccd597d7b"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileTap={{ scale: 0.98, transition: { duration: 0.1 } }}
+                className="block"
+              >
+                <SpotlightCard
+                  isDark={true}
+                  className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-3 p-5 sm:p-4 rounded-[20px] cursor-pointer transition-all duration-300 hover:bg-white/[0.04] overflow-hidden"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(6,182,212,0.04) 100%)",
+                    border: "1px solid rgba(139,92,246,0.25)",
+                    backdropFilter: "blur(12px)",
+                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+                  }}
+                >
+                  {/* Top shimmer line */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+                    style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.6), rgba(6,182,212,0.4), transparent)" }}
+                  />
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <p
+                        className="transition-colors"
+                        style={{ fontFamily: "'Instrument Serif', serif", fontSize: "20px", fontWeight: 400, color: "#ffffff" }}
+                      >
+                        $NAT Token Holder
+                      </p>
+                      <span
+                        className="text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider"
+                        style={{
+                          background: "linear-gradient(135deg, rgba(139,92,246,0.25) 0%, rgba(6,182,212,0.15) 100%)",
+                          border: "1px solid rgba(139,92,246,0.3)",
+                          color: "#a78bfa",
+                        }}
+                      >
+                        Crypto
+                      </span>
+                    </div>
+                    <p className="text-[12px] font-geist" style={{ color: "rgba(255,255,255,0.4)" }}>
+                      Hold the required $NAT threshold · Pro unlocks automatically.
+                    </p>
+                  </div>
+                  <div
+                    className="shrink-0 px-4 sm:px-3.5 py-2.5 sm:py-2 rounded-[12px] sm:rounded-[10px] text-[13px] sm:text-[12px] font-semibold whitespace-nowrap transition-all duration-300 text-center"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(6,182,212,0.1) 100%)",
+                      border: "1px solid rgba(139,92,246,0.25)",
+                      color: "#a78bfa",
+                    }}
+                  >
+                    Buy $NAT →
+                  </div>
+                </SpotlightCard>
+              </motion.a>
+
               {/* Yearly */}
               <motion.a
                 href="https://checkout.dodopayments.com/buy/pdt_0NcM4QBwy0CDcPV9CXaNP"
