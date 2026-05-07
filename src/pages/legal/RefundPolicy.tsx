@@ -7,7 +7,7 @@ export default function RefundPolicy() {
       heading="Refund Policy"
       description="Refund policy for Natively Pro and the Natively API."
       canonicalPath="/refundpolicy"
-      lastUpdated="7 May 2026"
+      lastUpdated="25 April 2026"
     >
       <p className={P.p}>
         This is the full refund policy for <strong className={P.strong}>Natively Pro</strong> and the <strong className={P.strong}>Natively API</strong> service. We've tried to write it like a person, not a lawyer — please give it a read before purchasing.

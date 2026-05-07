@@ -38,7 +38,7 @@ export default function TermsAndConditions({ canonicalPath = "/termsandcondition
       heading="Terms & Conditions"
       description="Terms governing the Natively desktop app, Natively Pro, and the Natively API."
       canonicalPath={canonicalPath}
-      lastUpdated="7 May 2026"
+      lastUpdated="25 April 2026"
       toc={TOC}
     >
       <p className={P.p}>

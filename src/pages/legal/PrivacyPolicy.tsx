@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
       heading="Privacy Policy"
       description="How Natively handles your data: privacy-first, local-first, no central server for your meeting data."
       canonicalPath="/privacy"
-      lastUpdated="7 May 2026"
+      lastUpdated="25 April 2026"
     >
       <h2 id="overview" className={P.h2}>Overview</h2>
       <p className={P.p}>
