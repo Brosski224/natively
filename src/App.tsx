@@ -48,6 +48,9 @@ const FinalRoundAIAlternative = lazy(() => import('./pages/seo/FinalRoundAIAlter
 const NativelyVsCluely = lazy(() => import('./pages/seo/NativelyVsCluely'));
 const InterviewCopilot = lazy(() => import('./pages/seo/InterviewCopilot'));
 const FreeAIInterviewAssistant = lazy(() => import('./pages/seo/FreeAIInterviewAssistant'));
+const NativelyVsLockedInAI = lazy(() => import('./pages/seo/NativelyVsLockedInAI'));
+const NativelyVsInterviewCoder = lazy(() => import('./pages/seo/NativelyVsInterviewCoder'));
+const UndetectableInterviewAI = lazy(() => import('./pages/seo/UndetectableInterviewAI'));
 
 const queryClient = new QueryClient();
 
@@ -102,6 +105,10 @@ const App = () => (
               <Route path="/leetcode-ai-helper" element={<LeetCodeAIHelper />} />
               <Route path="/offline-ai-interview" element={<OfflineAIInterview />} />
 
+              <Route path="/natively-vs-lockedinai" element={<NativelyVsLockedInAI />} />
+              <Route path="/natively-vs-interviewcoder" element={<NativelyVsInterviewCoder />} />
+              <Route path="/undetectable-interview-ai" element={<UndetectableInterviewAI />} />
+
               <Route path="/blog/is-cluely-safe" element={<IsCluelySafe />} />
               <Route path="/blog/best-ai-interview-assistants" element={<BestAIInterviewAssistants />} />
 
@@ -133,6 +140,10 @@ const App = () => (
               <Route path="/ru/free-ai-interview-assistant" element={<FreeAIInterviewAssistant />} />
               <Route path="/ru/leetcode-ai-helper" element={<LeetCodeAIHelper />} />
               <Route path="/ru/offline-ai-interview" element={<OfflineAIInterview />} />
+
+              <Route path="/ru/natively-vs-lockedinai" element={<NativelyVsLockedInAI />} />
+              <Route path="/ru/natively-vs-interviewcoder" element={<NativelyVsInterviewCoder />} />
+              <Route path="/ru/undetectable-interview-ai" element={<UndetectableInterviewAI />} />
 
               <Route path="/ru/blog/is-cluely-safe" element={<IsCluelySafe />} />
               <Route path="/ru/blog/best-ai-interview-assistants" element={<BestAIInterviewAssistants />} />
