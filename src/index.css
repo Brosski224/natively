@@ -181,16 +181,42 @@
     --section-padding: 96px;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+    /* Prevent iOS Safari rubber-banding the page while a panel is being swiped. */
+    overscroll-behavior-y: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
   body {
     @apply bg-[var(--background-hex)] text-[var(--primary-text)] font-sans antialiased;
     font-family: var(--font-body);
     font-weight: 400;
-    overflow-x: hidden;
+    overflow-x: clip; /* `clip` is firmer than `hidden` and doesn't create a scroll container */
   }
 
   #root {
-    overflow-x: hidden;
+    overflow-x: clip;
+    /* Establishes a containing block so absolute backdrops can't escape horizontally */
+    isolation: isolate;
   }
+}
+
+/* ── Premium scrollbar — subtle, doesn't fight the design ── */
+@layer base {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(17, 24, 39, 0.14);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(17, 24, 39, 0.28); background-clip: padding-box; }
 }
 
 @layer utilities {

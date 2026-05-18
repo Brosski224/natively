@@ -137,7 +137,7 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
         // Load persisted mode
         window.electronAPI?.getActionButtonMode?.()?.then((mode: 'recap' | 'brainstorm') => {
             if (mode) setActionButtonMode(mode);
-        }).catch(() => {});
+        }).catch(() => { });
 
         // Listen for live changes from SettingsPopup / IPC
         const unsubscribe = window.electronAPI?.onActionButtonModeChanged?.((mode: 'recap' | 'brainstorm') => {
@@ -217,7 +217,7 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
     // Mouse Passthrough State
     const [isMousePassthrough, setIsMousePassthrough] = useState(false);
     useEffect(() => {
-        window.electronAPI?.getOverlayMousePassthrough?.().then(setIsMousePassthrough).catch(() => {});
+        window.electronAPI?.getOverlayMousePassthrough?.().then(setIsMousePassthrough).catch(() => { });
         const unsub = window.electronAPI?.onOverlayMousePassthroughChanged?.((v) => setIsMousePassthrough(v));
         return () => unsub?.();
     }, []);
@@ -732,7 +732,7 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
             cleanupToken();
             cleanupFinal();
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); // intentionally empty — these listeners must survive isExpanded changes
 
     // Quick Actions - Updated to use new Intelligence APIs
@@ -769,7 +769,7 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
             }]);
             // Scroll to bottom when user sends message
             setTimeout(() => {
-            	messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+                messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
             }, 50);
         }
 
@@ -875,10 +875,10 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
                 hasScreenshot: true,
                 screenshotPreview: currentAttachments[0].preview
             }]);
-        	// Scroll to bottom when user sends message
-        	setTimeout(() => {
-        		messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-        	}, 50);
+            // Scroll to bottom when user sends message
+            setTimeout(() => {
+                messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+            }, 50);
         }
 
         try {
@@ -910,10 +910,10 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
                 hasScreenshot: true,
                 screenshotPreview: currentAttachments[0].preview
             }]);
-        	// Scroll to bottom when user sends message
-        	setTimeout(() => {
-        		messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-        	}, 50);
+            // Scroll to bottom when user sends message
+            setTimeout(() => {
+                messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+            }, 50);
         }
 
         try {
@@ -1010,7 +1010,7 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
                                 text: '',
                             }];
                         }
-                    } catch {}
+                    } catch { }
                     // Normal completion
                     return [...prev.slice(0, -1), { ...lastMsg, isStreaming: false }];
                 }
@@ -1105,7 +1105,7 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
                                     text: '',
                                 }];
                             }
-                        } catch {}
+                        } catch { }
                         // Normal completion
                         return [...prev.slice(0, -1), { ...lastMsg, isStreaming: false }];
                     }
@@ -1180,7 +1180,7 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
                 hasScreenshot: currentAttachments.length > 0,
                 screenshotPreview: currentAttachments[0]?.preview
             }]);
-            
+
             // Scroll to bottom when user sends message
             setTimeout(() => {
                 messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -1883,7 +1883,7 @@ Provide only the answer, nothing else.`;
             else if (action === 'scrollDown') scrollContainerRef.current?.scrollBy({ top: 100, behavior: 'smooth' });
             else if (action === 'processScreenshots') generalHandlers.processScreenshots();
             else if (action === 'resetCancel') generalHandlers.resetCancel();
-            
+
             // Safety reset if it didn't trigger an expansion
             setTimeout(() => { isStealthRef.current = false; }, 500);
         });
@@ -2011,211 +2011,210 @@ Provide only the answer, nothing else.`;
                                         </div>
                                     )}
                                     <div ref={messagesEndRef} />
-                                                            {/* Premium 3D Jelly Quick Actions */}
-                            <div className={`flex items-center justify-center px-[13px] py-[12px] gap-[8px] border-t ${isLightTheme ? 'border-black/5' : 'border-white/10'}`} style={{ borderTopColor: isLightTheme ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.08)' }}>
-                                <button onClick={handleWhatToSay} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(37,99,235,0.35)] hover:shadow-[0_6px_16px_rgba(37,99,235,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #60A5FA 0%, #3B82F6 50%, #2563EB 100%)" }}>
-                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
-                                    <span className="relative flex items-center gap-[6px] drop-shadow-sm">
-                                        <Sparkles className="w-3.5 h-3.5" /> What to answer?
-                                    </span>
-                                </button>
-                                <button onClick={handleClarify} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(245,158,11,0.35)] hover:shadow-[0_6px_16px_rgba(245,158,11,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #FBBF24 0%, #F59E0B 50%, #D97706 100%)" }}>
-                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
-                                    <span className="relative flex items-center gap-[5px] drop-shadow-sm">
-                                        <HelpCircle className="w-3.5 h-3.5" /> Clarify
-                                    </span>
-                                </button>
-                                <button onClick={actionButtonMode === 'brainstorm' ? handleBrainstorm : handleRecap} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(99,102,241,0.35)] hover:shadow-[0_6px_16px_rgba(99,102,241,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #818CF8 0%, #6366F1 50%, #4F46E5 100%)" }}>
-                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
-                                    <span className="relative flex items-center gap-[5px] drop-shadow-sm">
-                                        {actionButtonMode === 'brainstorm' ? <Lightbulb className="w-3 h-3" /> : <RefreshCw className="w-3 h-3" />} {actionButtonMode === 'brainstorm' ? 'Brainstorm' : 'Recap'}
-                                    </span>
-                                </button>
-                                <button onClick={handleFollowUpQuestions} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(20,184,166,0.35)] hover:shadow-[0_6px_16px_rgba(20,184,166,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #2DD4BF 0%, #14B8A6 50%, #0D9488 100%)" }}>
-                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
-                                    <span className="relative flex items-center gap-[5px] drop-shadow-sm">
-                                        <ArrowRight className="w-3.5 h-3.5" /> Follow Up
-                                    </span>
-                                </button>
-                                <button
-                                    onClick={handleAnswerNow}
-                                    className={`relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 overflow-hidden group border-none ${
-                                        isManualRecording 
-                                        ? 'shadow-[0_4px_12px_rgba(239,68,68,0.35)] hover:shadow-[0_6px_16px_rgba(239,68,68,0.5)]' 
-                                        : 'shadow-[0_4px_12px_rgba(16,185,129,0.35)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.5)]'
-                                    }`}
-                                    style={{
-                                        background: isManualRecording 
-                                            ? "linear-gradient(160deg, #F87171 0%, #EF4444 50%, #DC2626 100%)"
-                                            : "linear-gradient(160deg, #34D399 0%, #10B981 50%, #059669 100%)"
-                                    }}
-                                >
-                                    <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
-                                    <span className="relative flex items-center gap-[5px] drop-shadow-sm">
-                                        {isManualRecording ? (
-                                            <>
-                                                <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Stop
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Mic className="w-3.5 h-3.5" /> Answer
-                                            </>
-                                        )}
-                                    </span>
-                                </button>
-                            </div>
-
-
-                            {/* Input Area */}
-                            <div className={`px-3 pb-[11px] pt-0 relative border-t ${isLightTheme ? 'border-black/5' : 'border-white/5'}`} style={{ borderTopColor: appearance.shellStyle?.borderColor }}>
-                                {/* Latent Context Preview (Attached Screenshot) */}
-                                {attachedContext.length > 0 && (
-                                    <div className={`mt-2 mb-2 rounded-lg p-2 transition-all duration-200 border ${subtleSurfaceClass}`} style={appearance.subtleStyle}>
-                                        <div className="flex items-center justify-between mb-1.5">
-                                            <span className="text-[11px] font-medium overlay-text-primary">
-                                                {attachedContext.length} screenshot{attachedContext.length > 1 ? 's' : ''} attached
+                                    {/* Premium 3D Jelly Quick Actions */}
+                                    <div className={`flex items-center justify-center px-[13px] py-[12px] gap-[8px] border-t ${isLightTheme ? 'border-black/5' : 'border-white/10'}`} style={{ borderTopColor: isLightTheme ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.08)' }}>
+                                        <button onClick={handleWhatToSay} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(37,99,235,0.35)] hover:shadow-[0_6px_16px_rgba(37,99,235,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #60A5FA 0%, #3B82F6 50%, #2563EB 100%)" }}>
+                                            <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                            <span className="relative flex items-center gap-[6px] drop-shadow-sm">
+                                                <Sparkles className="w-3.5 h-3.5" /> What to answer?
                                             </span>
-                                            <button
-                                                onClick={() => setAttachedContext([])}
-                                                className="p-1 rounded-full transition-colors overlay-icon-surface overlay-icon-surface-hover overlay-text-interactive"
-                                                title="Remove all"
-                                                style={appearance.iconStyle}
-                                            >
-                                                <X className="w-3.5 h-3.5" />
-                                            </button>
-                                        </div>
-                                        <div className="flex gap-1.5 overflow-x-auto max-w-full pb-1">
-                                            {attachedContext.map((ctx, idx) => (
-                                                <div key={ctx.path} className="relative group/thumb flex-shrink-0">
-                                                    <img
-                                                        src={ctx.preview}
-                                                        alt={`Screenshot ${idx + 1}`}
-                                                        className={`h-10 w-auto rounded border ${isLightTheme ? 'border-black/15' : 'border-white/20'}`}
-                                                    />
+                                        </button>
+                                        <button onClick={handleClarify} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(245,158,11,0.35)] hover:shadow-[0_6px_16px_rgba(245,158,11,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #FBBF24 0%, #F59E0B 50%, #D97706 100%)" }}>
+                                            <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                            <span className="relative flex items-center gap-[5px] drop-shadow-sm">
+                                                <HelpCircle className="w-3.5 h-3.5" /> Clarify
+                                            </span>
+                                        </button>
+                                        <button onClick={actionButtonMode === 'brainstorm' ? handleBrainstorm : handleRecap} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(99,102,241,0.35)] hover:shadow-[0_6px_16px_rgba(99,102,241,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #818CF8 0%, #6366F1 50%, #4F46E5 100%)" }}>
+                                            <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                            <span className="relative flex items-center gap-[5px] drop-shadow-sm">
+                                                {actionButtonMode === 'brainstorm' ? <Lightbulb className="w-3 h-3" /> : <RefreshCw className="w-3 h-3" />} {actionButtonMode === 'brainstorm' ? 'Brainstorm' : 'Recap'}
+                                            </span>
+                                        </button>
+                                        <button onClick={handleFollowUpQuestions} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(20,184,166,0.35)] hover:shadow-[0_6px_16px_rgba(20,184,166,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #2DD4BF 0%, #14B8A6 50%, #0D9488 100%)" }}>
+                                            <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                            <span className="relative flex items-center gap-[5px] drop-shadow-sm">
+                                                <ArrowRight className="w-3.5 h-3.5" /> Follow Up
+                                            </span>
+                                        </button>
+                                        <button
+                                            onClick={handleAnswerNow}
+                                            className={`relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 overflow-hidden group border-none ${isManualRecording
+                                                    ? 'shadow-[0_4px_12px_rgba(239,68,68,0.35)] hover:shadow-[0_6px_16px_rgba(239,68,68,0.5)]'
+                                                    : 'shadow-[0_4px_12px_rgba(16,185,129,0.35)] hover:shadow-[0_6px_16px_rgba(16,185,129,0.5)]'
+                                                }`}
+                                            style={{
+                                                background: isManualRecording
+                                                    ? "linear-gradient(160deg, #F87171 0%, #EF4444 50%, #DC2626 100%)"
+                                                    : "linear-gradient(160deg, #34D399 0%, #10B981 50%, #059669 100%)"
+                                            }}
+                                        >
+                                            <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
+                                            <span className="relative flex items-center gap-[5px] drop-shadow-sm">
+                                                {isManualRecording ? (
+                                                    <>
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Stop
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <Mic className="w-3.5 h-3.5" /> Answer
+                                                    </>
+                                                )}
+                                            </span>
+                                        </button>
+                                    </div>
+
+
+                                    {/* Input Area */}
+                                    <div className={`px-3 pb-[11px] pt-0 relative border-t ${isLightTheme ? 'border-black/5' : 'border-white/5'}`} style={{ borderTopColor: appearance.shellStyle?.borderColor }}>
+                                        {/* Latent Context Preview (Attached Screenshot) */}
+                                        {attachedContext.length > 0 && (
+                                            <div className={`mt-2 mb-2 rounded-lg p-2 transition-all duration-200 border ${subtleSurfaceClass}`} style={appearance.subtleStyle}>
+                                                <div className="flex items-center justify-between mb-1.5">
+                                                    <span className="text-[11px] font-medium overlay-text-primary">
+                                                        {attachedContext.length} screenshot{attachedContext.length > 1 ? 's' : ''} attached
+                                                    </span>
                                                     <button
-                                                        onClick={() => setAttachedContext(prev => prev.filter((_, i) => i !== idx))}
-                                                        className="absolute -top-1 -right-1 w-4 h-4 bg-red-500/80 hover:bg-red-500 rounded-full flex items-center justify-center opacity-0 group-hover/thumb:opacity-100 transition-opacity"
-                                                        title="Remove"
+                                                        onClick={() => setAttachedContext([])}
+                                                        className="p-1 rounded-full transition-colors overlay-icon-surface overlay-icon-surface-hover overlay-text-interactive"
+                                                        title="Remove all"
+                                                        style={appearance.iconStyle}
                                                     >
-                                                        <X className="w-2.5 h-2.5 text-white" />
+                                                        <X className="w-3.5 h-3.5" />
                                                     </button>
                                                 </div>
-                                            ))}
+                                                <div className="flex gap-1.5 overflow-x-auto max-w-full pb-1">
+                                                    {attachedContext.map((ctx, idx) => (
+                                                        <div key={ctx.path} className="relative group/thumb flex-shrink-0">
+                                                            <img
+                                                                src={ctx.preview}
+                                                                alt={`Screenshot ${idx + 1}`}
+                                                                className={`h-10 w-auto rounded border ${isLightTheme ? 'border-black/15' : 'border-white/20'}`}
+                                                            />
+                                                            <button
+                                                                onClick={() => setAttachedContext(prev => prev.filter((_, i) => i !== idx))}
+                                                                className="absolute -top-1 -right-1 w-4 h-4 bg-red-500/80 hover:bg-red-500 rounded-full flex items-center justify-center opacity-0 group-hover/thumb:opacity-100 transition-opacity"
+                                                                title="Remove"
+                                                            >
+                                                                <X className="w-2.5 h-2.5 text-white" />
+                                                            </button>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                                <span className="text-[10px] overlay-text-muted">Ask a question or click Answer</span>
+                                            </div>
+                                        )}
+
+                                        <div className={`relative group w-full mb-1 ${attachedContext.length === 0 ? 'mt-[6px]' : ''}`}>
+                                            <div className={`absolute inset-0 rounded-[14px] transition-all duration-300 pointer-events-none ${isLightTheme ? 'bg-gradient-to-b from-black/5 to-transparent' : 'bg-gradient-to-b from-white/5 to-transparent'}`} />
+                                            <input
+                                                ref={textInputRef}
+                                                type="text"
+                                                value={inputValue}
+                                                onChange={(e) => setInputValue(e.target.value)}
+                                                onKeyDown={(e) => e.key === 'Enter' && handleManualSubmit()}
+                                                className={`w-full border rounded-[14px] px-[16px] py-[10px] focus:outline-none transition-all duration-300 text-[13px] placeholder-transparent z-10 relative shadow-inner ${isLightTheme ? 'bg-black/5 border-black/10 text-black/90 focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]' : 'bg-black/40 border-white/10 text-white/90 focus:border-blue-500/50 focus:bg-black/60 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15)]'}`}
+                                                style={{ ...appearance.inputStyle, backdropFilter: 'blur(8px)' }}
+                                            />
+                                            {/* Custom Rich Placeholder */}
+                                            {!inputValue && (
+                                                <div
+                                                    className="absolute left-[16px] top-1/2 -translate-y-1/2 flex items-center pointer-events-none text-[13px] italic opacity-50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%] z-0 transition-opacity"
+                                                    style={{ color: appearance.inputStyle?.color || 'inherit' }}
+                                                >
+                                                    Ask anything — Natively knows your resume and this company...
+                                                </div>
+                                            )}
                                         </div>
-                                        <span className="text-[10px] overlay-text-muted">Ask a question or click Answer</span>
-                                    </div>
-                                )}
 
-                                <div className={`relative group w-full mb-1 ${attachedContext.length === 0 ? 'mt-[6px]' : ''}`}>
-                                    <div className={`absolute inset-0 rounded-[14px] transition-all duration-300 pointer-events-none ${isLightTheme ? 'bg-gradient-to-b from-black/5 to-transparent' : 'bg-gradient-to-b from-white/5 to-transparent'}`} />
-                                    <input
-                                        ref={textInputRef}
-                                        type="text"
-                                        value={inputValue}
-                                        onChange={(e) => setInputValue(e.target.value)}
-                                        onKeyDown={(e) => e.key === 'Enter' && handleManualSubmit()}
-                                        className={`w-full border rounded-[14px] px-[16px] py-[10px] focus:outline-none transition-all duration-300 text-[13px] placeholder-transparent z-10 relative shadow-inner ${isLightTheme ? 'bg-black/5 border-black/10 text-black/90 focus:border-blue-400 focus:bg-white focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]' : 'bg-black/40 border-white/10 text-white/90 focus:border-blue-500/50 focus:bg-black/60 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15)]'}`}
-                                        style={{...appearance.inputStyle, backdropFilter: 'blur(8px)'}}
-                                    />
-                                    {/* Custom Rich Placeholder */}
-                                    {!inputValue && (
-                                        <div 
-                                            className="absolute left-[16px] top-1/2 -translate-y-1/2 flex items-center pointer-events-none text-[13px] italic opacity-50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[90%] z-0 transition-opacity"
-                                            style={{ color: appearance.inputStyle?.color || 'inherit' }}
-                                        >
-                                            Ask anything — Natively knows your resume and this company...
-                                        </div>
-                                    )}
-                                </div>
+                                        {/* Bottom Row */}
+                                        <div className="flex items-center justify-between mt-[7px] px-[1px]">
+                                            <div className="flex items-center gap-[5px]">
+                                                <button
+                                                    onClick={(e) => {
+                                                        if (!contentRef.current) return;
+                                                        const contentRect = contentRef.current.getBoundingClientRect();
+                                                        const buttonRect = e.currentTarget.getBoundingClientRect();
+                                                        const GAP = 8;
+                                                        const x = window.screenX + buttonRect.left;
+                                                        const y = window.screenY + contentRect.bottom + GAP;
+                                                        window.electronAPI.toggleModelSelector({ x, y });
+                                                    }}
+                                                    className={`flex items-center gap-[5px] rounded-[7px] px-[9px] py-[4px] text-[10px] font-medium font-mono border transition-colors interaction-base interaction-press`}
+                                                    style={appearance.controlStyle}
+                                                >
+                                                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M5 1l1 2.5L8.5 4l-2 1.8.5 2.7L5 7 2.5 8.5 3 5.8 1 4l2.5-.5z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" /></svg>
+                                                    <span className="truncate min-w-0 max-w-[120px]">
+                                                        {(() => {
+                                                            const m = currentModel;
+                                                            if (m.startsWith('ollama-')) return m.replace('ollama-', '');
+                                                            if (m === 'gemini-3.1-flash-lite-preview') return 'Gemini 3.1 Flash';
+                                                            if (m === 'gemini-3.1-pro-preview') return 'Gemini 3.1 Pro';
+                                                            if (m === 'llama-3.3-70b-versatile') return 'Groq Llama 3.3';
+                                                            if (m === 'gpt-5.4') return 'GPT 5.4';
+                                                            if (m === 'claude-sonnet-4-6') return 'Sonnet 4.6';
+                                                            return m;
+                                                        })()}
+                                                    </span>
+                                                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none" style={{ marginLeft: '2px' }}><path d="M3 4l2 2 2-2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg>
+                                                </button>
 
-                                {/* Bottom Row */}
-                                <div className="flex items-center justify-between mt-[7px] px-[1px]">
-                                    <div className="flex items-center gap-[5px]">
-                                        <button
-                                            onClick={(e) => {
-                                                if (!contentRef.current) return;
-                                                const contentRect = contentRef.current.getBoundingClientRect();
-                                                const buttonRect = e.currentTarget.getBoundingClientRect();
-                                                const GAP = 8;
-                                                const x = window.screenX + buttonRect.left;
-                                                const y = window.screenY + contentRect.bottom + GAP;
-                                                window.electronAPI.toggleModelSelector({ x, y });
-                                            }}
-                                            className={`flex items-center gap-[5px] rounded-[7px] px-[9px] py-[4px] text-[10px] font-medium font-mono border transition-colors interaction-base interaction-press`}
-                                            style={appearance.controlStyle}
-                                        >
-                                            <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M5 1l1 2.5L8.5 4l-2 1.8.5 2.7L5 7 2.5 8.5 3 5.8 1 4l2.5-.5z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round"/></svg>
-                                            <span className="truncate min-w-0 max-w-[120px]">
-                                                {(() => {
-                                                    const m = currentModel;
-                                                    if (m.startsWith('ollama-')) return m.replace('ollama-', '');
-                                                    if (m === 'gemini-3.1-flash-lite-preview') return 'Gemini 3.1 Flash';
-                                                    if (m === 'gemini-3.1-pro-preview') return 'Gemini 3.1 Pro';
-                                                    if (m === 'llama-3.3-70b-versatile') return 'Groq Llama 3.3';
-                                                    if (m === 'gpt-5.4') return 'GPT 5.4';
-                                                    if (m === 'claude-sonnet-4-6') return 'Sonnet 4.6';
-                                                    return m;
-                                                })()}
-                                            </span>
-                                            <svg width="8" height="8" viewBox="0 0 10 10" fill="none" style={{ marginLeft: '2px' }}><path d="M3 4l2 2 2-2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
-                                        </button>
+                                                <div className="w-[1px] h-[13px] mx-0.5 opacity-50" style={{ backgroundColor: appearance.dividerStyle?.backgroundColor || (isLightTheme ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)') }} />
 
-                                        <div className="w-[1px] h-[13px] mx-0.5 opacity-50" style={{ backgroundColor: appearance.dividerStyle?.backgroundColor || (isLightTheme ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)') }} />
+                                                <div className="relative">
+                                                    <button
+                                                        onClick={(e) => {
+                                                            if (isSettingsOpen) {
+                                                                window.electronAPI.toggleSettingsWindow();
+                                                                return;
+                                                            }
+                                                            if (!contentRef.current) return;
+                                                            const contentRect = contentRef.current.getBoundingClientRect();
+                                                            const buttonRect = e.currentTarget.getBoundingClientRect();
+                                                            const GAP = 8;
+                                                            const x = window.screenX + buttonRect.left;
+                                                            const y = window.screenY + contentRect.bottom + GAP;
+                                                            window.electronAPI.toggleSettingsWindow({ x, y });
+                                                        }}
+                                                        className={`w-[26px] h-[26px] flex items-center justify-center rounded-[7px] border interaction-base interaction-press ${isSettingsOpen ? (isLightTheme ? 'bg-black/10' : 'bg-white/10') : ''}`}
+                                                        style={appearance.iconStyle}
+                                                    >
+                                                        <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2.2" stroke="currentColor" strokeWidth="1.2" /><path d="M7 1.5v1.3M7 11.2v1.3M1.5 7h1.3M11.2 7h1.3" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" /></svg>
+                                                    </button>
+                                                </div>
 
-                                        <div className="relative">
+                                                <div className="w-[1px] h-[13px] mx-0.5 opacity-50" style={{ backgroundColor: appearance.dividerStyle?.backgroundColor || (isLightTheme ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)') }} />
+
+                                                {/* Mouse Passthrough Toggle */}
+                                                <div className="relative">
+                                                    <button
+                                                        onClick={() => {
+                                                            const newState = !isMousePassthrough;
+                                                            setIsMousePassthrough(newState);
+                                                            window.electronAPI?.setOverlayMousePassthrough?.(newState);
+                                                        }}
+                                                        className={`w-[26px] h-[26px] flex items-center justify-center rounded-[7px] border interaction-base interaction-press ${isMousePassthrough ? 'text-sky-400 opacity-100' : ''}`}
+                                                        style={appearance.iconStyle}
+                                                    >
+                                                        <PointerOff className="w-[11px] h-[11px]" />
+                                                    </button>
+                                                </div>
+
+                                            </div>
+
                                             <button
-                                                onClick={(e) => {
-                                                    if (isSettingsOpen) {
-                                                        window.electronAPI.toggleSettingsWindow();
-                                                        return;
-                                                    }
-                                                    if (!contentRef.current) return;
-                                                    const contentRect = contentRef.current.getBoundingClientRect();
-                                                    const buttonRect = e.currentTarget.getBoundingClientRect();
-                                                    const GAP = 8;
-                                                    const x = window.screenX + buttonRect.left;
-                                                    const y = window.screenY + contentRect.bottom + GAP;
-                                                    window.electronAPI.toggleSettingsWindow({ x, y });
-                                                }}
-                                                className={`w-[26px] h-[26px] flex items-center justify-center rounded-[7px] border interaction-base interaction-press ${isSettingsOpen ? (isLightTheme ? 'bg-black/10' : 'bg-white/10') : ''}`}
-                                                style={appearance.iconStyle}
+                                                onClick={handleManualSubmit}
+                                                disabled={!inputValue.trim()}
+                                                className={`w-[26px] h-[26px] rounded-full flex items-center justify-center transition-all interaction-base interaction-press ${inputValue.trim() ? 'bg-[#007AFF] text-white shadow-lg shadow-blue-500/20 hover:bg-[#0071E3]' : 'opacity-60 cursor-not-allowed'}`}
+                                                style={inputValue.trim() ? undefined : { ...appearance.iconStyle, borderRadius: '50%' }}
                                             >
-                                                <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2.2" stroke="currentColor" strokeWidth="1.2"/><path d="M7 1.5v1.3M7 11.2v1.3M1.5 7h1.3M11.2 7h1.3" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/></svg>
+                                                <svg width="10" height="10" viewBox="0 0 11 11" fill="none"><path d="M5.5 8.5V2.5M3 5l2.5-2.5L8 5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
                                             </button>
                                         </div>
-
-                                        <div className="w-[1px] h-[13px] mx-0.5 opacity-50" style={{ backgroundColor: appearance.dividerStyle?.backgroundColor || (isLightTheme ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)') }} />
-
-                                        {/* Mouse Passthrough Toggle */}
-                                        <div className="relative">
-                                            <button
-                                                onClick={() => {
-                                                    const newState = !isMousePassthrough;
-                                                    setIsMousePassthrough(newState);
-                                                    window.electronAPI?.setOverlayMousePassthrough?.(newState);
-                                                }}
-                                                className={`w-[26px] h-[26px] flex items-center justify-center rounded-[7px] border interaction-base interaction-press ${isMousePassthrough ? 'text-sky-400 opacity-100' : ''}`}
-                                                style={appearance.iconStyle}
-                                            >
-                                                <PointerOff className="w-[11px] h-[11px]" />
-                                            </button>
-                                        </div>
-
                                     </div>
-
-                                    <button
-                                        onClick={handleManualSubmit}
-                                        disabled={!inputValue.trim()}
-                                        className={`w-[26px] h-[26px] rounded-full flex items-center justify-center transition-all interaction-base interaction-press ${inputValue.trim() ? 'bg-[#007AFF] text-white shadow-lg shadow-blue-500/20 hover:bg-[#0071E3]' : 'opacity-60 cursor-not-allowed'}`}
-                                        style={inputValue.trim() ? undefined : { ...appearance.iconStyle, borderRadius: '50%' }}
-                                    >
-                                        <svg width="10" height="10" viewBox="0 0 11 11" fill="none"><path d="M5.5 8.5V2.5M3 5l2.5-2.5L8 5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                                    </button>
                                 </div>
-                            </div>
-                        </div>
                     </div>
-                </motion.div>
+                    </motion.div>
                 )}
             </AnimatePresence>
         </div>

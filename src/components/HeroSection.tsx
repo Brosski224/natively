@@ -34,6 +34,22 @@ const HeroSection = () => {
       </div>
 
       <div className="max-content relative z-10 flex flex-col items-center text-center pt-8">
+        {/* Eyebrow tag — premium "agency-tier" detail */}
+        <motion.div
+          initial={{ opacity: 0, y: 8, filter: "blur(2px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 bg-white/70 backdrop-blur-md border border-black/5 shadow-[0_2px_12px_-2px_rgba(15,23,42,0.08)]"
+        >
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          </span>
+          <span className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#374151]">
+            Live · v2.5 out now
+          </span>
+        </motion.div>
+
         {/* Title */}
         <div className="mb-6 flex flex-col items-center w-full px-4 md:px-0">
           {/* Main Heading Line 1 */}

@@ -123,12 +123,21 @@ const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = fa
           </div>
           )}
 
-          {/* AI response */}
+          {/* AI response — mirrors the live app's markdown renderer */}
           {!hideMessages && (
-          <div className="px-4 pb-2 flex-1 min-h-0 overflow-hidden">
-            <p className="text-white/90 text-[14px] leading-relaxed font-normal whitespace-pre-wrap">
-              "A discounted cash flow model values a company by projecting future free cash flows and discounting them to present value using the weighted average cost of capital."
+          <div className="px-4 pb-2 markdown-demo text-white/90 text-[13.5px] leading-[1.55] font-normal">
+            <p className="mb-2">
+              A <strong className="font-semibold text-white">discounted cash flow</strong> model values a company by projecting future free cash flows and discounting them to present value.
             </p>
+            <p className="mb-1.5 text-white/80 text-[12.5px] uppercase tracking-[0.08em] font-medium">Three steps</p>
+            <ol className="list-decimal ml-[18px] space-y-0.5 mb-2.5 marker:text-white/50">
+              <li>Forecast unlevered free cash flows over <em className="italic text-white/85">5–10 years</em>.</li>
+              <li>Compute a terminal value with the <strong className="font-semibold text-white">Gordon Growth</strong> method.</li>
+              <li>Discount both back at the firm's <strong className="font-semibold text-white">WACC</strong>.</li>
+            </ol>
+            <code className="block rounded-md px-2.5 py-1.5 text-[11.5px] font-mono text-cyan-200 bg-white/[0.06] border border-white/[0.08] tracking-tight">
+              EV = Σ FCFₜ / (1+WACC)ᵗ + TV / (1+WACC)ⁿ
+            </code>
           </div>
           )}
 
