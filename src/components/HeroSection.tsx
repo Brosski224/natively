@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import JellyClayButton from "@/components/JellyClayButton";
 import NativelyInterfaceCard from "@/components/NativelyInterfaceCard";
 import { motion } from "framer-motion";
@@ -10,7 +11,36 @@ import heroVideo from "@/assets/hero.webm";
 import heroPoster from "@/assets/hero-poster.webp";
 
 const HeroSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [downloadCount, setDownloadCount] = useState<number>(56385);
+
+  useEffect(() => {
+    fetch("https://api.github.com/repos/Natively-AI-assistant/natively-cluely-ai-assistant/releases?per_page=100")
+      .then((res) => {
+        if (!res.ok) throw new Error("API error");
+        return res.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data)) {
+          let total = 0;
+          for (const release of data) {
+            if (release.assets && Array.isArray(release.assets)) {
+              for (const asset of release.assets) {
+                if (typeof asset.download_count === "number") {
+                  total += asset.download_count;
+                }
+              }
+            }
+          }
+          if (total > 0) {
+            setDownloadCount(total);
+          }
+        }
+      })
+      .catch((err) => {
+        console.warn("Failed to fetch GitHub releases download count, using fallback.", err);
+      });
+  }, []);
   return (
     <section className="relative pt-24 md:pt-32 pb-24 overflow-hidden min-h-screen flex items-center">
       {/* Backdrop Video - Full Width */}
@@ -120,7 +150,7 @@ const HeroSection = () => {
             />
           </div>
           <p className="text-sm text-gray-600 font-medium tracking-wide">
-            {t('hero.trusted')}
+            {t('hero.trusted', { count: new Intl.NumberFormat(i18n.language || 'en').format(downloadCount) })}
           </p>
 
         </motion.div>

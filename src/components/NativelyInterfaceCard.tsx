@@ -118,7 +118,7 @@ const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = fa
             <div className="relative px-4 py-2 rounded-full text-white text-[13px] font-semibold shadow-[0_8px_20px_rgba(37,99,235,0.35)] border border-white/20"
               style={{ background: "linear-gradient(160deg, #5B8EF0 0%, #3B6FE8 50%, #2D5FD4 100%)" }}>
               <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none" />
-              <span className="relative drop-shadow-sm">What should I answer?</span>
+              <span className="relative drop-shadow-sm">What is the difference between TCP and UDP?</span>
             </div>
           </div>
           )}
@@ -126,18 +126,12 @@ const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = fa
           {/* AI response — mirrors the live app's markdown renderer */}
           {!hideMessages && (
           <div className="px-4 pb-2 markdown-demo text-white/90 text-[13.5px] leading-[1.55] font-normal">
-            <p className="mb-2">
-              A <strong className="font-semibold text-white">discounted cash flow</strong> model values a company by projecting future free cash flows and discounting them to present value.
+            <p className="mb-2.5">
+              <strong className="font-semibold text-white">TCP</strong> is connection-oriented, guaranteeing that packets are delivered in order without data loss. <strong className="font-semibold text-white">UDP</strong> is connectionless, prioritizing speed by sending packets immediately without verification.
             </p>
-            <p className="mb-1.5 text-white/80 text-[12.5px] uppercase tracking-[0.08em] font-medium">Three steps</p>
-            <ol className="list-decimal ml-[18px] space-y-0.5 mb-2.5 marker:text-white/50">
-              <li>Forecast unlevered free cash flows over <em className="italic text-white/85">5–10 years</em>.</li>
-              <li>Compute a terminal value with the <strong className="font-semibold text-white">Gordon Growth</strong> method.</li>
-              <li>Discount both back at the firm's <strong className="font-semibold text-white">WACC</strong>.</li>
-            </ol>
-            <code className="block rounded-md px-2.5 py-1.5 text-[11.5px] font-mono text-cyan-200 bg-white/[0.06] border border-white/[0.08] tracking-tight">
-              EV = Σ FCFₜ / (1+WACC)ᵗ + TV / (1+WACC)ⁿ
-            </code>
+            <p className="text-white/85">
+              Use <strong className="font-semibold text-white">TCP</strong> for reliable data transmission like APIs and databases, and <strong className="font-semibold text-white">UDP</strong> for latency-sensitive applications like video streaming and live audio.
+            </p>
           </div>
           )}
 

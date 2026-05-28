@@ -20,7 +20,7 @@
     "title_words": ["AI", "for", "Meetings"],
     "subtitle_line1": "Natively takes perfect meeting notes and gives real-time answers,",
     "subtitle_line2": "all while completely undetectable",
-    "trusted": "Trusted by 7,000+ Users",
+    "trusted": "{{count}}+ Downloads",
     "cta": "Get for Mac",
     "interface_title": "What should I say?",
     "interface_desc": "Natively is the ultimate hybrid AI assistant. Run models 100% locally for zero cloud exposure, or plug in OpenAI/Claude for cloud-grade reasoning. Invisible, undetectable, and totally free.",
