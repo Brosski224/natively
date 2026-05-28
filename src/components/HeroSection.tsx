@@ -46,7 +46,7 @@ const HeroSection = () => {
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
           </span>
           <span className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#374151]">
-            Live · v2.5 out now
+            Live · v2.7 out now
           </span>
         </motion.div>
 
