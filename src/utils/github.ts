@@ -25,7 +25,13 @@ export async function fetchLatestRelease(signal?: AbortSignal): Promise<LatestAs
     try {
         const response = await fetch(
             "https://api.github.com/repos/Natively-AI-assistant/natively-cluely-ai-assistant/releases/latest",
-            { signal }
+            { 
+                signal,
+                headers: {
+                    "Cache-Control": "no-cache",
+                    "Pragma": "no-cache"
+                }
+            }
         );
         
         if (!response.ok) {

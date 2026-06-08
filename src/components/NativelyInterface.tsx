@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useRef, useLayoutEffect, useMemo } from 'react';
 import {
     Sparkles,
@@ -732,7 +733,6 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
             cleanupToken();
             cleanupFinal();
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); // intentionally empty — these listeners must survive isExpanded changes
 
     // Quick Actions - Updated to use new Intelligence APIs
@@ -1010,7 +1010,9 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
                                 text: '',
                             }];
                         }
-                    } catch { }
+                    } catch {
+                        // Ignore JSON parse error if text is not JSON
+                    }
                     // Normal completion
                     return [...prev.slice(0, -1), { ...lastMsg, isStreaming: false }];
                 }
@@ -1105,7 +1107,9 @@ const NativelyInterface: React.FC<NativelyInterfaceProps> = ({ onEndMeeting, ove
                                     text: '',
                                 }];
                             }
-                        } catch { }
+                        } catch {
+                            // Ignore JSON parse error if text is not JSON
+                        }
                         // Normal completion
                         return [...prev.slice(0, -1), { ...lastMsg, isStreaming: false }];
                     }
@@ -1671,9 +1675,6 @@ Provide only the answer, nothing else.`;
             } else if (isShortcutPressed(e, 'answer')) {
                 e.preventDefault();
                 handleAnswerNow();
-            } else if (isShortcutPressed(e, 'clarify')) {
-                e.preventDefault();
-                handleClarify();
             } else if (isShortcutPressed(e, 'codeHint')) {
                 e.preventDefault();
                 handleCodeHint();
@@ -2011,7 +2012,9 @@ Provide only the answer, nothing else.`;
                                         </div>
                                     )}
                                     <div ref={messagesEndRef} />
-                                    {/* Premium 3D Jelly Quick Actions */}
+                                </div>
+                            )}
+                            {/* Premium 3D Jelly Quick Actions */}
                                     <div className={`flex items-center justify-center px-[13px] py-[12px] gap-[8px] border-t ${isLightTheme ? 'border-black/5' : 'border-white/10'}`} style={{ borderTopColor: isLightTheme ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.08)' }}>
                                         <button onClick={handleWhatToSay} className="relative flex items-center justify-center px-[14px] py-[7px] rounded-full text-[11px] font-semibold text-white transition-all hover:scale-105 active:scale-95 duration-300 shadow-[0_4px_12px_rgba(37,99,235,0.35)] hover:shadow-[0_6px_16px_rgba(37,99,235,0.5)] overflow-hidden group border-none" style={{ background: "linear-gradient(160deg, #60A5FA 0%, #3B82F6 50%, #2563EB 100%)" }}>
                                             <div className="absolute top-0.5 left-2 right-2 h-[45%] rounded-full bg-gradient-to-b from-white/70 to-white/5 blur-[0.5px] pointer-events-none group-hover:from-white/80 transition-all" />
@@ -2213,12 +2216,11 @@ Provide only the answer, nothing else.`;
                                         </div>
                                     </div>
                                 </div>
-                    </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
-    );
-};
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            );
+        };
 
 export default NativelyInterface;

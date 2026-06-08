@@ -1,11 +1,17 @@
 import { ChevronUp, ChevronDown } from "lucide-react";
 import logo from "../../assets/logo.webp";
 
+import { CSSProperties } from "react";
+
 interface TopPillProps {
     expanded: boolean;
     onToggle: () => void;
     onQuit: () => void;
-    appearance: any; // using any to align with parent interface
+    appearance: {
+        pillStyle?: CSSProperties;
+        iconStyle?: CSSProperties;
+        chipStyle?: CSSProperties;
+    };
     onLogoClick?: () => void;
 }
 

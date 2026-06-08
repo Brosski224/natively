@@ -20,7 +20,18 @@ const mockChartData = [
   { time: '13:15', price: 0.0428 },
 ];
 
-const CustomTooltip = ({ active, payload }: any) => {
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    value: number;
+    payload: {
+      time: string;
+      price: number;
+    };
+  }>;
+}
+
+const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white px-3 py-2 rounded-xl shadow-lg border border-black/5" style={{ fontFamily: "Geist, sans-serif" }}>

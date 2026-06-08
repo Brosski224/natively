@@ -81,7 +81,7 @@ function getDownloadInfo(platform: OSType, dynamicAssets: LatestAssets | null = 
         macArm64: dynamicAssets?.macArm64 || `${BASE_URL}/v${MACOS.VERSION}/${MACOS.ARM64}`,
         macIntel: dynamicAssets?.macIntel || `${BASE_URL}/v${MACOS.VERSION}/${MACOS.INTEL}`,
         winInstaller: dynamicAssets?.winInstaller || `${BASE_URL}/v${WINDOWS.VERSION}/${WINDOWS.INSTALLER}`,
-        winPortable: dynamicAssets?.winPortable || `${BASE_URL}/v${WINDOWS.VERSION}/${WINDOWS.PORTABLE}`,
+        winPortable: dynamicAssets?.winPortable || dynamicAssets?.winInstaller || `${BASE_URL}/v${WINDOWS.VERSION}/${WINDOWS.PORTABLE}`,
     };
 
     switch (platform) {

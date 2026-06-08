@@ -1,14 +1,24 @@
 
 export type OSType = 'mac-arm64' | 'mac-intel' | 'windows' | 'linux';
 
+interface NavigatorWithUAData extends Navigator {
+    userAgentData?: {
+        getHighEntropyValues: (hints: string[]) => Promise<{
+            platform?: string;
+            architecture?: string;
+        }>;
+    };
+}
+
 /**
  * Detects the user's operating system and macOS architecture
  */
 export async function detectPlatform(): Promise<OSType> {
+    const nav = navigator as NavigatorWithUAData;
     // Try modern User-Agent Client Hints API first (Chromium-based browsers)
-    if ('userAgentData' in navigator && (navigator as any).userAgentData) {
+    if (nav.userAgentData) {
         try {
-            const uaData = await (navigator as any).userAgentData.getHighEntropyValues([
+            const uaData = await nav.userAgentData.getHighEntropyValues([
                 'platform',
                 'architecture'
             ]);
