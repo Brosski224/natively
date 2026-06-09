@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import { lazy, Suspense } from "react";
 
 const FeaturesSection = lazy(() => import("@/components/FeaturesSection"));
+const UseCasesSection = lazy(() => import("@/components/UseCasesSection"));
 const ModesSection = lazy(() => import("@/components/ModesSection"));
 const StepsSection = lazy(() => import("@/components/StepsSection"));
 const ComparisonSection = lazy(() => import("@/components/ComparisonSection"));
@@ -26,6 +27,7 @@ const Index = () => {
         {/* 2. Wrap others in Suspense so they load in background */}
         <Suspense fallback={<div className="min-h-[50vh]" />}>
           <FeaturesSection />
+          <UseCasesSection />
           <ModesSection />
           <StepsSection />
           <ComparisonSection />

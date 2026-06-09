@@ -175,8 +175,14 @@ ABI / `napi::Buffer`), SQLite with `sqlite-vec` for local vector search.
 - Docs: https://natively.software/docs/ai-interview-assistant
 - Pricing / Pro: https://natively.software/pro
 
+## Demo Video
+- Natively AI: Interview Assistant — Demo (YouTube): https://youtu.be/a20tER4PVS4
+  Shows Natively giving real-time on-screen coding/interview help via an invisible,
+  screen-share-undetectable overlay on macOS and Windows.
+
 ## Project & Community
 - GitHub: https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant
+- YouTube: https://www.youtube.com/@evinjohn
 - Telegram: https://t.me/nativelyaichat
 - LinkedIn: https://www.linkedin.com/company/nativley-ai
 - X (company): https://x.com/nativelyHQ

@@ -41,6 +41,34 @@ export const pages = {
   NativelyVsLockedInAI: lazyWithPreload(() => import("./pages/seo/NativelyVsLockedInAI")),
   NativelyVsInterviewCoder: lazyWithPreload(() => import("./pages/seo/NativelyVsInterviewCoder")),
   UndetectableInterviewAI: lazyWithPreload(() => import("./pages/seo/UndetectableInterviewAI")),
+
+  // Meeting / notes vertical
+  AIMeetingAssistant: lazyWithPreload(() => import("./pages/seo/AIMeetingAssistant")),
+  AINoteTaker: lazyWithPreload(() => import("./pages/seo/AINoteTaker")),
+  SalesCallAssistant: lazyWithPreload(() => import("./pages/seo/SalesCallAssistant")),
+  LectureNoteTaker: lazyWithPreload(() => import("./pages/seo/LectureNoteTaker")),
+
+  // Fireflies / Otter comparison + alternative
+  NativelyVsFireflies: lazyWithPreload(() => import("./pages/seo/NativelyVsFireflies")),
+  NativelyVsOtter: lazyWithPreload(() => import("./pages/seo/NativelyVsOtter")),
+  FirefliesAlternative: lazyWithPreload(() => import("./pages/seo/FirefliesAlternative")),
+  OtterAlternative: lazyWithPreload(() => import("./pages/seo/OtterAlternative")),
+
+  // Missing interview pages
+  SystemDesignInterviewAssistant: lazyWithPreload(() => import("./pages/seo/SystemDesignInterviewAssistant")),
+  BehavioralInterviewAssistant: lazyWithPreload(() => import("./pages/seo/BehavioralInterviewAssistant")),
+  InterviewAnswerGenerator: lazyWithPreload(() => import("./pages/seo/InterviewAnswerGenerator")),
+  LiveInterviewAssistant: lazyWithPreload(() => import("./pages/seo/LiveInterviewAssistant")),
+
+  // Programmatic: interview-questions/<role>
+  InterviewQuestionsSWE: lazyWithPreload(() => import("./pages/programmatic/routes/InterviewQuestionsSWE")),
+  InterviewQuestionsPM: lazyWithPreload(() => import("./pages/programmatic/routes/InterviewQuestionsPM")),
+  InterviewQuestionsDS: lazyWithPreload(() => import("./pages/programmatic/routes/InterviewQuestionsDS")),
+  InterviewQuestionsAI: lazyWithPreload(() => import("./pages/programmatic/routes/InterviewQuestionsAI")),
+
+  // Programmatic: system-design/<product>
+  SystemDesignUber: lazyWithPreload(() => import("./pages/programmatic/routes/SystemDesignUber")),
+  SystemDesignWhatsApp: lazyWithPreload(() => import("./pages/programmatic/routes/SystemDesignWhatsApp")),
 } satisfies Record<string, PreloadableComponent>;
 
 export type PageKey = keyof typeof pages;
@@ -81,6 +109,29 @@ const pathToKey: Record<string, PageKey> = {
   "/undetectable-interview-ai": "UndetectableInterviewAI",
   "/blog/is-cluely-safe": "IsCluelySafe",
   "/blog/best-ai-interview-assistants": "BestAIInterviewAssistants",
+
+  "/ai-meeting-assistant": "AIMeetingAssistant",
+  "/ai-note-taker": "AINoteTaker",
+  "/sales-call-assistant": "SalesCallAssistant",
+  "/lecture-note-taker": "LectureNoteTaker",
+
+  "/natively-vs-fireflies": "NativelyVsFireflies",
+  "/natively-vs-otter": "NativelyVsOtter",
+  "/fireflies-alternative": "FirefliesAlternative",
+  "/otter-alternative": "OtterAlternative",
+
+  "/system-design-interview-assistant": "SystemDesignInterviewAssistant",
+  "/behavioral-interview-assistant": "BehavioralInterviewAssistant",
+  "/interview-answer-generator": "InterviewAnswerGenerator",
+  "/live-interview-assistant": "LiveInterviewAssistant",
+
+  "/interview-questions/software-engineer": "InterviewQuestionsSWE",
+  "/interview-questions/product-manager": "InterviewQuestionsPM",
+  "/interview-questions/data-scientist": "InterviewQuestionsDS",
+  "/interview-questions/ai-engineer": "InterviewQuestionsAI",
+
+  "/system-design/uber": "SystemDesignUber",
+  "/system-design/whatsapp": "SystemDesignWhatsApp",
 };
 
 // Preload the page chunk for the current location so hydration is synchronous.

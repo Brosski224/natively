@@ -41,6 +41,17 @@ const Footer = () => {
       ],
     },
     {
+      titleKey: "footer.meeting_ai",
+      links: [
+        { labelKey: "footer.meeting_assistant", href: "/ai-meeting-assistant" },
+        { labelKey: "footer.note_taker", href: "/ai-note-taker" },
+        { labelKey: "footer.sales_assistant", href: "/sales-call-assistant" },
+        { labelKey: "footer.lecture_notes", href: "/lecture-note-taker" },
+        { labelKey: "footer.fireflies_alt", href: "/fireflies-alternative" },
+        { labelKey: "footer.otter_alt", href: "/otter-alternative" },
+      ],
+    },
+    {
       titleKey: "footer.blog",
       links: [
         { labelKey: "footer.interview_guide", href: "/blog/ai-interview-assistant-guide" },
@@ -75,7 +86,7 @@ const Footer = () => {
           </div>
 
           {/* Links Columns */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 md:pr-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 md:pr-12">
             {columns.map((col, i) => (
               <div key={i}>
                 <h4 className="font-semibold text-[#111827] mb-4 font-geist">{t(col.titleKey)}</h4>

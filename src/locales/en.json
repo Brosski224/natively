@@ -75,6 +75,74 @@
     "title": "Built to get the offer.",
     "replay": "Replay Demo"
   },
+  "pricing": {
+    "title": "Simple pricing.",
+    "subtitle": "Start free with your own keys, or let us run the infrastructure.",
+    "promo_code": "Promo code",
+    "promo_discount": "off any plan",
+    "plans_title": "Managed API Plans",
+    "plans_subtitle": "AI generation, speech-to-text, and web search — fully hosted. No setup.",
+    "free_trial": "Free trial · 10 AI req · 10 min STT · 2 searches · No card required",
+    "popular_badge": "Most Popular",
+    "get_plan": "Get {{name}}",
+    "per_month": "/mo",
+    "ai_requests": "{{count}} AI requests",
+    "stt_minutes": "{{count}} min speech-to-text",
+    "web_searches": "{{count}} web searches",
+    "pro_badge": "+ Pro",
+    "insider_discount": "for 20% off",
+    "lifetime_footer": "One-time purchase · No subscription · yours forever",
+    "pro_label": "Natively Pro",
+    "pro_title_main": "Built to get",
+    "pro_title_accent": "the offer.",
+    "pro_subtitle": "Connect your own API keys. One payment unlocks all 7 modes — no subscription, no metering.",
+    "pro_cta": "See Pro in action",
+    "yearly_title": "Yearly License",
+    "yearly_desc": "All Pro features. Renews annually.",
+    "yearly_cta": "Get Yearly →",
+    "lifetime_title": "Lifetime License",
+    "lifetime_desc": "One payment. All future updates included.",
+    "lifetime_badge": "Best value",
+    "lifetime_feat1": "Resume & JD context awareness",
+    "lifetime_feat2": "Live negotiation coaching",
+    "lifetime_feat3": "7 expert interview modes",
+    "lifetime_feat4": "All future updates",
+    "lifetime_cta": "Get Lifetime →",
+    "features": {
+      "modes": {
+        "title": "Modes Manager",
+        "desc": "7 expert personas that hard-override the LLM — Technical Interview, Sales, Recruiting, Lecture & more."
+      },
+      "resume": {
+        "title": "Resume Intelligence",
+        "desc": "AI ingests your full resume so every answer is grounded in your lived experience, not generic MDN docs."
+      },
+      "context": {
+        "title": "Custom Context Intelligence",
+        "desc": "Provide any custom files or documentation to ground the AI completely in your specific domain knowledge."
+      },
+      "negotiation": {
+        "title": "Negotiation Assistance",
+        "desc": "Live salary coaching with real-time counters and anchor strategies based on current market bands."
+      },
+      "system": {
+        "title": "System Design",
+        "desc": "Chain screenshots for architecture questions. OCR extracts diagrams and renders answers in the invisible overlay."
+      },
+      "mock": {
+        "title": "Mock Interviews",
+        "desc": "Strict hiring-manager persona with STAR coaching and live gap analysis against your identity graph."
+      },
+      "jd": {
+        "title": "JD Intelligence",
+        "desc": "Paste any job description. AI gap-analyzes your profile against the role and surfaces exactly what to highlight."
+      },
+      "company": {
+        "title": "Company Research",
+        "desc": "Real-time intel on culture, market positioning, and salary bands before you walk in."
+      }
+    }
+  },
   "transcription": {
     "title": "Real-time transcription",
     "providers_count": "8+",
@@ -137,7 +205,14 @@
     "ai_coding_exams_blog": "AI for Coding Exams",
     "interview_copilots": "How Interview Copilots Work",
     "top_ai_tools": "Top 5 AI Tools (2026)",
-    "preparing_screenings": "Preparing for Screenings"
+    "preparing_screenings": "Preparing for Screenings",
+    "meeting_ai": "Meeting AI",
+    "meeting_assistant": "AI Meeting Assistant",
+    "note_taker": "AI Note Taker",
+    "sales_assistant": "Sales Call Assistant",
+    "lecture_notes": "Lecture Note Taker",
+    "fireflies_alt": "Fireflies Alternative",
+    "otter_alt": "Otter Alternative"
   },
   "download_modal": {
     "downloaded": "Downloaded",

@@ -25,6 +25,11 @@ const {
   LeetCodeAIHelper, OfflineAIInterview, DocsAIInterviewAssistant, FinalRoundAIAlternative,
   NativelyVsCluely, InterviewCopilot, FreeAIInterviewAssistant, NativelyVsLockedInAI,
   NativelyVsInterviewCoder, UndetectableInterviewAI,
+  AIMeetingAssistant, AINoteTaker, SalesCallAssistant, LectureNoteTaker,
+  NativelyVsFireflies, NativelyVsOtter, FirefliesAlternative, OtterAlternative,
+  SystemDesignInterviewAssistant, BehavioralInterviewAssistant, InterviewAnswerGenerator, LiveInterviewAssistant,
+  InterviewQuestionsSWE, InterviewQuestionsPM, InterviewQuestionsDS, InterviewQuestionsAI,
+  SystemDesignUber, SystemDesignWhatsApp,
 } = pages;
 
 const queryClient = new QueryClient();
@@ -105,6 +110,32 @@ const App = () => {
               <Route path="/blog/is-cluely-safe" element={<IsCluelySafe />} />
               <Route path="/blog/best-ai-interview-assistants" element={<BestAIInterviewAssistants />} />
 
+              {/* Meeting / notes vertical */}
+              <Route path="/ai-meeting-assistant" element={<AIMeetingAssistant />} />
+              <Route path="/ai-note-taker" element={<AINoteTaker />} />
+              <Route path="/sales-call-assistant" element={<SalesCallAssistant />} />
+              <Route path="/lecture-note-taker" element={<LectureNoteTaker />} />
+
+              {/* Fireflies / Otter */}
+              <Route path="/natively-vs-fireflies" element={<NativelyVsFireflies />} />
+              <Route path="/natively-vs-otter" element={<NativelyVsOtter />} />
+              <Route path="/fireflies-alternative" element={<FirefliesAlternative />} />
+              <Route path="/otter-alternative" element={<OtterAlternative />} />
+
+              {/* Missing interview pages */}
+              <Route path="/system-design-interview-assistant" element={<SystemDesignInterviewAssistant />} />
+              <Route path="/behavioral-interview-assistant" element={<BehavioralInterviewAssistant />} />
+              <Route path="/interview-answer-generator" element={<InterviewAnswerGenerator />} />
+              <Route path="/live-interview-assistant" element={<LiveInterviewAssistant />} />
+
+              {/* Programmatic */}
+              <Route path="/interview-questions/software-engineer" element={<InterviewQuestionsSWE />} />
+              <Route path="/interview-questions/product-manager" element={<InterviewQuestionsPM />} />
+              <Route path="/interview-questions/data-scientist" element={<InterviewQuestionsDS />} />
+              <Route path="/interview-questions/ai-engineer" element={<InterviewQuestionsAI />} />
+              <Route path="/system-design/uber" element={<SystemDesignUber />} />
+              <Route path="/system-design/whatsapp" element={<SystemDesignWhatsApp />} />
+
               <Route path="/ru" element={<Index />} />
               <Route path="/ru/pro" element={<Pro />} />
               <Route path="/ru/ai-interview-assistant" element={<AIInterviewAssistant />} />
@@ -140,6 +171,28 @@ const App = () => {
 
               <Route path="/ru/blog/is-cluely-safe" element={<IsCluelySafe />} />
               <Route path="/ru/blog/best-ai-interview-assistants" element={<BestAIInterviewAssistants />} />
+
+              <Route path="/ru/ai-meeting-assistant" element={<AIMeetingAssistant />} />
+              <Route path="/ru/ai-note-taker" element={<AINoteTaker />} />
+              <Route path="/ru/sales-call-assistant" element={<SalesCallAssistant />} />
+              <Route path="/ru/lecture-note-taker" element={<LectureNoteTaker />} />
+
+              <Route path="/ru/natively-vs-fireflies" element={<NativelyVsFireflies />} />
+              <Route path="/ru/natively-vs-otter" element={<NativelyVsOtter />} />
+              <Route path="/ru/fireflies-alternative" element={<FirefliesAlternative />} />
+              <Route path="/ru/otter-alternative" element={<OtterAlternative />} />
+
+              <Route path="/ru/system-design-interview-assistant" element={<SystemDesignInterviewAssistant />} />
+              <Route path="/ru/behavioral-interview-assistant" element={<BehavioralInterviewAssistant />} />
+              <Route path="/ru/interview-answer-generator" element={<InterviewAnswerGenerator />} />
+              <Route path="/ru/live-interview-assistant" element={<LiveInterviewAssistant />} />
+
+              <Route path="/ru/interview-questions/software-engineer" element={<InterviewQuestionsSWE />} />
+              <Route path="/ru/interview-questions/product-manager" element={<InterviewQuestionsPM />} />
+              <Route path="/ru/interview-questions/data-scientist" element={<InterviewQuestionsDS />} />
+              <Route path="/ru/interview-questions/ai-engineer" element={<InterviewQuestionsAI />} />
+              <Route path="/ru/system-design/uber" element={<SystemDesignUber />} />
+              <Route path="/ru/system-design/whatsapp" element={<SystemDesignWhatsApp />} />
 
               <Route path="*" element={<NotFound />} />
             </Routes>

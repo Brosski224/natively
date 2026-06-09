@@ -1,10 +1,11 @@
 "use client";
 import { useState, useRef, memo } from "react";
+import { useTranslation } from "react-i18next";
 import { motion, useMotionValue, useMotionTemplate } from "@/lib/motion";
 import { Brain, Mic2, Globe, FileText, Building2, Target, Layers, Scan, TrendingUp, UserCheck, Database, ArrowUpRight } from "lucide-react";
 
 const EASE_OUT: [number, number, number, number] = [0.23, 1, 0.32, 1];
-const PROMO = "INSIDER25";
+const PROMO = "INSIDER20";
 
 const plans = [
   {
@@ -44,21 +45,21 @@ const plans = [
 type Plan = typeof plans[number];
 
 const proFeatures = [
-  { icon: Layers,    label: "Modes Manager",               desc: "7 expert personas that hard-override the LLM — Technical Interview, Sales, Recruiting, Lecture & more." },
-  { icon: UserCheck, label: "Resume Intelligence",         desc: "AI ingests your full resume so every answer is grounded in your lived experience, not generic MDN docs." },
-  { icon: Database,  label: "Custom Context Intelligence", desc: "Provide any custom files or documentation to ground the AI completely in your specific domain knowledge." },
-  { icon: TrendingUp,label: "Negotiation Assistance",      desc: "Live salary coaching with real-time counters and anchor strategies based on current market bands." },
-  { icon: Scan,      label: "System Design",               desc: "Chain screenshots for architecture questions. OCR extracts diagrams and renders answers in the invisible overlay.", comingSoon: true },
-  { icon: Target,    label: "Mock Interviews",             desc: "Strict hiring-manager persona with STAR coaching and live gap analysis against your identity graph.", comingSoon: true },
-  { icon: FileText,  label: "JD Intelligence",             desc: "Paste any job description. AI gap-analyzes your profile against the role and surfaces exactly what to highlight." },
-  { icon: Building2, label: "Company Research",            desc: "Real-time intel on culture, market positioning, and salary bands before you walk in." },
-];
+  { icon: Layers,    key: "modes",        comingSoon: false },
+  { icon: UserCheck, key: "resume",       comingSoon: false },
+  { icon: Database,  key: "context",      comingSoon: false },
+  { icon: TrendingUp,key: "negotiation",  comingSoon: false },
+  { icon: Scan,      key: "system",       comingSoon: true },
+  { icon: Target,    key: "mock",         comingSoon: true },
+  { icon: FileText,  key: "jd",           comingSoon: false },
+  { icon: Building2, key: "company",      comingSoon: false },
+] as const;
 
 /* ─────────────────────────────────────────────────────────────
    SpotlightCard — cursor-aware radial glow on card border.
    Uses useMotionValue so mouse tracking NEVER triggers re-render.
    Isolated with memo to prevent parent re-render cascade.
-───────────────────────────────────────────────────────────── */
+ ───────────────────────────────────────────────────────────── */
 const SpotlightCard = memo(function SpotlightCard({
   children,
   className = "",
@@ -101,7 +102,7 @@ const SpotlightCard = memo(function SpotlightCard({
       {/* Spotlight overlay — GPU-composited opacity transition only */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 animate-duration-300"
         style={{
           background: glow,
           borderRadius: "inherit",
@@ -117,14 +118,14 @@ const SpotlightCard = memo(function SpotlightCard({
    AmbientGlow — isolated perpetual motion for BYOK dark bg.
    Memo-isolated so it NEVER causes parent re-renders.
    GPU-only: only animates transform (scale/rotate), never layout.
-───────────────────────────────────────────────────────────── */
+ ───────────────────────────────────────────────────────────── */
 const AmbientGlow = memo(function AmbientGlow() {
   return (
     <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div
         className="absolute w-[800px] h-[800px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(250,204,21,0.045) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(250,204,21,0.05) 0%, transparent 65%)",
           top: "-25%", right: "-12%",
           willChange: "transform",
         }}
@@ -161,8 +162,9 @@ const fadeUpFast = {
 
 /* ─────────────────────────────────────────────────────────────
    PricingSection
-───────────────────────────────────────────────────────────── */
+ ───────────────────────────────────────────────────────────── */
 export default function PricingSection() {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState<Plan>(plans[1]);
 
   return (
@@ -173,13 +175,13 @@ export default function PricingSection() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div>
             <h2
-              className="hero-headline !text-black leading-[1.0] mb-5"
+              className="hero-headline !text-black leading-[1.0] mb-5 tracking-tight"
               style={{ fontSize: "clamp(40px, 8vw, 96px)", letterSpacing: "-0.038em" }}
             >
-              Simple pricing.
+              {t('pricing.title')}
             </h2>
             <p className="text-[18px] text-[#6B7280] font-geist leading-relaxed" style={{ maxWidth: "46ch" }}>
-              Start free with your own keys, or let us run the infrastructure.
+              {t('pricing.subtitle')}
             </p>
           </div>
 
@@ -189,16 +191,20 @@ export default function PricingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: EASE_OUT }}
-            className="shrink-0 flex items-center gap-4 px-6 py-4 rounded-2xl self-start md:self-end"
-            style={{ background: "#FEFCE8", border: "1px solid #FEF08A" }}
+            className="shrink-0 flex items-center gap-5 px-6 py-4 rounded-2xl self-start md:self-end backdrop-blur-md transition-all duration-300"
+            style={{ 
+              background: "linear-gradient(135deg, rgba(254,240,138,0.25) 0%, rgba(254,240,138,0.08) 100%)", 
+              border: "1px solid rgba(250,204,21,0.35)",
+              boxShadow: "0 8px 30px rgba(250,204,21,0.06), inset 0 1px 0 rgba(255,255,255,0.7)"
+            }}
           >
             <div>
-              <p className="text-[10px] font-semibold text-[#92400E] uppercase tracking-widest mb-0.5">Promo code</p>
+              <p className="text-[10px] font-bold text-[#92400E] uppercase tracking-widest mb-0.5">{t('pricing.promo_code')}</p>
               <p className="text-[20px] font-bold font-mono text-[#78350F] tracking-widest">{PROMO}</p>
             </div>
             <div className="text-right">
-              <p className="text-[28px] font-bold text-[#CA8A04] leading-none">25%</p>
-              <p className="text-[11px] text-[#92400E] font-medium mt-0.5">off any plan</p>
+              <p className="text-[28px] font-bold text-[#CA8A04] leading-none">20%</p>
+              <p className="text-[11px] text-[#92400E] font-semibold mt-0.5">{t('pricing.promo_discount')}</p>
             </div>
           </motion.div>
         </div>
@@ -206,20 +212,26 @@ export default function PricingSection() {
 
       {/* ── 2. API Plans ────────────────────────────────────── */}
       <div className="max-content pb-16 md:pb-24">
-        <div className="rounded-[40px] p-6 md:p-8" style={{ background: "#f5f5f7" }}>
+        <div 
+          className="rounded-[40px] p-6 md:p-8 border border-black/5" 
+          style={{ 
+            background: "linear-gradient(180deg, #F9F9FB 0%, #F4F4F7 100%)",
+            boxShadow: "inset 0 1px 2px rgba(255,255,255,0.8)"
+          }}
+        >
 
           <div className="mb-7">
             <p className="text-[12px] font-semibold text-[#9CA3AF] uppercase tracking-widest mb-1.5">
-              Managed API Plans
+              {t('pricing.plans_title')}
             </p>
             <p className="text-[15px] text-[#4B5563] font-geist">
-              AI generation, speech-to-text, and web search — fully hosted. No setup.
+              {t('pricing.plans_subtitle')}
             </p>
           </div>
 
           {/* Stagger grid */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5"
             variants={stagger}
             initial="hidden"
             whileInView="show"
@@ -227,30 +239,51 @@ export default function PricingSection() {
           >
             {plans.map((plan) => {
               const isSelected = selected.id === plan.id;
+              
+              const planThemeColor = plan.id === "standard"
+                ? "#3b82f6"
+                : plan.id === "pro"
+                ? "#10b981"
+                : plan.id === "max"
+                ? "#8b5cf6"
+                : "#f59e0b";
+
               return (
                 <motion.div key={plan.id} variants={fadeUp} className="relative">
                   {/* "Most Popular" floating badge */}
                   {plan.id === "pro" && (
                     <div className={`absolute -top-3 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded-full
                       text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-colors duration-300
-                      ${isSelected ? "bg-emerald-400 text-black" : "bg-[#111827] text-white"}`}>
-                      Most Popular
+                      ${isSelected ? "bg-emerald-400 text-black shadow-[0_4px_12px_rgba(16,185,129,0.3)]" : "bg-[#111827] text-white"}`}>
+                      {t('pricing.popular_badge')}
                     </div>
                   )}
 
                   <SpotlightCard
                     isDark={isSelected}
                     onClick={() => setSelected(plan)}
-                    className="flex flex-col text-left p-6 rounded-[28px] h-full transition-all duration-300"
+                    className="flex flex-col text-left p-6 rounded-[28px] h-full transition-all duration-300 relative border border-transparent"
                     style={{
-                      background: isSelected ? "#111827" : "#ffffff",
+                      background: isSelected ? "#0F121D" : "rgba(255,255,255,0.75)",
+                      backdropFilter: isSelected ? undefined : "blur(12px)",
+                      border: isSelected ? `1px solid ${planThemeColor}35` : "1px solid rgba(0,0,0,0.04)",
                       boxShadow: isSelected
-                        ? "0 24px 60px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.06)"
-                        : "0 2px 8px rgba(0,0,0,0.06)",
+                        ? `0 20px 45px ${planThemeColor}12, inset 0 1px 0 rgba(255,255,255,0.06)`
+                        : "0 4px 14px rgba(0,0,0,0.02)",
                     }}
                   >
+                    {/* Glowing bleeding-down background for selected cards */}
+                    {isSelected && (
+                      <div
+                        className="absolute top-0 left-0 right-0 h-40 pointer-events-none opacity-45 rounded-t-[28px]"
+                        style={{
+                          background: `radial-gradient(130px circle at 50% 0%, ${planThemeColor}50, transparent)`
+                        }}
+                      />
+                    )}
+
                     {/* Name + Pro badge */}
-                    <div className="flex items-center gap-2 mb-5">
+                    <div className="flex items-center gap-2 mb-5 relative z-10">
                       <span className={`text-[14px] font-semibold tracking-tight transition-colors duration-300
                         ${isSelected ? "text-white/65" : "text-[#6B7280]"}`}>
                         {plan.name}
@@ -260,13 +293,13 @@ export default function PricingSection() {
                           ${isSelected
                             ? "bg-emerald-500/15 border-emerald-500/25 text-emerald-400"
                             : "bg-emerald-50 border-emerald-100 text-emerald-700"}`}>
-                          + Pro
+                          {t('pricing.pro_badge')}
                         </span>
                       )}
                     </div>
 
                     {/* Price — tight tracked number */}
-                    <div className="mb-6">
+                    <div className="mb-6 relative z-10">
                       <div className="flex items-baseline gap-1">
                         <span
                           className={`font-semibold leading-none tabular-nums transition-colors duration-300
@@ -276,21 +309,21 @@ export default function PricingSection() {
                           ${plan.price}
                         </span>
                         <span className={`text-[13px] ml-0.5 transition-colors duration-300
-                          ${isSelected ? "text-white/30" : "text-[#9CA3AF]"}`}>/mo</span>
+                          ${isSelected ? "text-white/30" : "text-[#9CA3AF]"}`}>{t('pricing.per_month')}</span>
                       </div>
                     </div>
 
                     {/* Quotas */}
-                    <div className="space-y-2.5 mb-7 flex-1">
+                    <div className="space-y-2.5 mb-7 flex-1 relative z-10">
                       {([
-                        { Icon: Brain, label: `${plan.ai.toLocaleString()} AI requests` },
-                        { Icon: Mic2,  label: `${plan.stt} min speech-to-text` },
-                        { Icon: Globe, label: `${plan.search} web searches` },
+                        { Icon: Brain, label: t('pricing.ai_requests', { count: plan.ai.toLocaleString() }) },
+                        { Icon: Mic2,  label: t('pricing.stt_minutes', { count: plan.stt }) },
+                        { Icon: Globe, label: t('pricing.web_searches', { count: plan.search }) },
                       ] as const).map(({ Icon, label }) => (
                         <div key={label} className="flex items-center gap-2.5">
                           <div className={`w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0 transition-colors duration-300
-                            ${isSelected ? "bg-white/10" : "bg-[#F3F4F6]"}`}>
-                            <Icon size={9} className={`transition-colors duration-300 ${isSelected ? "text-white/50" : "text-[#9CA3AF]"}`} />
+                            ${isSelected ? "bg-white/5" : "bg-[#F3F4F6]"}`}>
+                            <Icon size={9} className="transition-colors duration-300" style={{ color: isSelected ? planThemeColor : "#9CA3AF" }} />
                           </div>
                           <span className={`text-[12px] font-geist transition-colors duration-300 ${isSelected ? "text-white/50" : "text-[#6B7280]"}`}>
                             {label}
@@ -306,14 +339,22 @@ export default function PricingSection() {
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       whileTap={{ scale: 0.97, transition: { duration: 0.1, ease: EASE_OUT } }}
-                      className={`w-full py-3 min-h-[48px] md:min-h-0 rounded-[14px] text-[13px] font-semibold text-center flex justify-center items-center
-                        transition-colors duration-200
+                      className={`w-full py-3 min-h-[48px] md:min-h-0 rounded-[14px] text-[13px] font-bold text-center flex justify-center items-center
+                        transition-all duration-300 relative z-10
                         ${isSelected
-                          ? "bg-white text-[#111827] hover:bg-white/90"
+                          ? "text-black hover:brightness-110 shadow-lg"
                           : "bg-[#F0F0F2] text-[#111827] hover:bg-[#E5E5EA]"
                         }`}
+                      style={{
+                        background: isSelected
+                          ? `linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%)`
+                          : undefined,
+                        boxShadow: isSelected
+                          ? `0 6px 18px ${planThemeColor}20`
+                          : undefined
+                      }}
                     >
-                      Get {plan.name}
+                      {t('pricing.get_plan', { name: plan.name })}
                     </motion.a>
                   </SpotlightCard>
                 </motion.div>
@@ -327,26 +368,26 @@ export default function PricingSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.35, duration: 0.5, ease: EASE_OUT }}
-            className="mt-5 inline-flex flex-wrap items-center gap-x-3 gap-y-1.5 px-4 py-2.5 rounded-[14px]"
-            style={{ background: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.85)" }}
+            className="mt-5 inline-flex flex-wrap items-center gap-x-3 gap-y-1.5 px-4 py-2.5 rounded-[14px] border border-black/[0.03]"
+            style={{ background: "rgba(255,255,255,0.75)", boxShadow: "0 2px 6px rgba(0,0,0,0.01)" }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
             <span className="text-[12px] text-[#6B7280] font-geist">
-              Free trial · 10 AI req · 10 min STT · 2 searches · No card required
+              {t('pricing.free_trial')}
             </span>
             <span className="hidden md:inline text-[11px] font-mono font-semibold text-[#92400E]">{PROMO}</span>
-            <span className="hidden md:inline text-[11px] text-[#9CA3AF]">for 25% off</span>
+            <span className="hidden md:inline text-[11px] text-[#9CA3AF]">{t('pricing.insider_discount')}</span>
           </motion.div>
         </div>
       </div>
 
       {/* ── 3. Pro — editorial dark section ─────────────────── */}
-      <div className="relative overflow-hidden" style={{ background: "#171717" }}>
+      <div className="relative overflow-hidden" style={{ background: "#0A0A0A" }}>
         <AmbientGlow />
 
         {/* Grain texture */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-[0.045]"
+          className="absolute inset-0 pointer-events-none opacity-[0.035]"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
             backgroundSize: "200px 200px",
@@ -356,7 +397,7 @@ export default function PricingSection() {
         {/* Amber horizon line */}
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[1px] pointer-events-none"
-          style={{ background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.2), transparent)" }}
+          style={{ background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.25), transparent)" }}
         />
 
         <div className="max-content py-16 lg:py-24 relative">
@@ -370,7 +411,7 @@ export default function PricingSection() {
             transition={{ duration: 0.65, ease: EASE_OUT }}
           >
             <p className="text-[10px] font-bold text-amber-400/50 uppercase tracking-[0.3em] mb-4 font-geist">
-              Natively Pro
+              {t('pricing.pro_label')}
             </p>
             <h2
               className="text-white mb-6"
@@ -382,28 +423,28 @@ export default function PricingSection() {
                 fontWeight: 400,
               }}
             >
-              Built to get<br />
-              <em style={{ color: "#f59e0b", fontStyle: "italic" }}>the offer.</em>
+              {t('pricing.pro_title_main')}<br />
+              <em style={{ color: "#f59e0b", fontStyle: "italic" }}>
+                {t('pricing.pro_title_accent')}
+              </em>
             </h2>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-              <p className="text-[15px] text-white/35 font-geist leading-relaxed" style={{ maxWidth: "46ch" }}>
-                Connect your own API keys. One payment unlocks all 7 modes — no subscription, no metering.
+              <p className="text-[15px] text-white/45 font-geist leading-relaxed" style={{ maxWidth: "46ch" }}>
+                {t('pricing.pro_subtitle')}
               </p>
               <a
-                href="https://natively.software/pro"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/pro"
                 className="shrink-0 inline-flex items-center justify-center min-h-[48px] md:min-h-0 gap-1.5 text-[11px] font-bold uppercase tracking-wider
-                  text-[#fbbf24] px-5 py-2 md:px-4 rounded-full transition-all duration-300 group
+                  text-[#fbbf24] px-5 py-2.5 md:px-4 rounded-full transition-all duration-300 group
                   hover:bg-[#fbbf24]/20 hover:border-[#fbbf24]/40"
                 style={{
                   background: "rgba(245,158,11,0.08)",
-                  border: "1px solid rgba(245,158,11,0.2)",
+                  border: "1px solid rgba(245,158,11,0.22)",
                   boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)"
                 }}
               >
-                See Pro in action
+                {t('pricing.pro_cta')}
                 <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
               </a>
             </div>
@@ -420,41 +461,44 @@ export default function PricingSection() {
               whileInView="show"
               viewport={{ once: true, margin: "-40px" }}
             >
-              {proFeatures.map((f) => (
-                <motion.div key={f.label} variants={fadeUpFast} className="h-full">
-                  <SpotlightCard
-                    isDark={true}
-                    className="flex items-start gap-3.5 p-4 rounded-[20px] h-full"
-                    style={{
-                      background: "rgba(255,255,255,0.02)",
-                      border: "1px solid rgba(255,255,255,0.05)",
-                      backdropFilter: "blur(12px)"
-                    }}
-                  >
-                    <div
-                      className="w-9 h-9 rounded-[12px] flex items-center justify-center shrink-0 mt-0.5"
+              {proFeatures.map((f) => {
+                const title = t(`pricing.features.${f.key}.title`);
+                const desc = t(`pricing.features.${f.key}.desc`);
+                return (
+                  <motion.div key={f.key} variants={fadeUpFast} className="h-full">
+                    <SpotlightCard
+                      isDark={true}
+                      className="flex items-start gap-3.5 p-4 rounded-[20px] h-full transition-all duration-300 border border-white/[0.03] hover:border-amber-500/20 hover:bg-white/[0.04]"
                       style={{
-                        background: "linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.02) 100%)",
-                        border: "1px solid rgba(245,158,11,0.15)",
-                        boxShadow: "inset 0 1px 1px rgba(255,255,255,0.1)",
+                        background: "rgba(255,255,255,0.015)",
+                        backdropFilter: "blur(12px)"
                       }}
                     >
-                      <f.icon size={15} style={{ color: "#fbbf24", opacity: 0.9 }} />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-0.5">
-                        <p className="text-[14px] font-semibold text-white/90 font-geist tracking-tight">{f.label}</p>
-                        {('comingSoon' in f && f.comingSoon) && (
-                          <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-full border bg-amber-400/10 border-amber-400/20 text-amber-400/80 uppercase tracking-wider">
-                            Soon
-                          </span>
-                        )}
+                      <div
+                        className="w-9 h-9 rounded-[12px] flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-105"
+                        style={{
+                          background: "linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.02) 100%)",
+                          border: "1px solid rgba(245,158,11,0.18)",
+                          boxShadow: "inset 0 1px 1px rgba(255,255,255,0.1)",
+                        }}
+                      >
+                        <f.icon size={15} style={{ color: "#fbbf24", opacity: 0.9 }} className="transition-opacity duration-300 group-hover:opacity-100" />
                       </div>
-                      <p className="text-[12px] text-white/40 font-geist leading-snug line-clamp-2" title={f.desc}>{f.desc}</p>
-                    </div>
-                  </SpotlightCard>
-                </motion.div>
-              ))}
+                      <div>
+                        <div className="flex items-center gap-2 mb-0.5">
+                          <p className="text-[14px] font-semibold text-white/90 font-geist tracking-tight">{title}</p>
+                          {f.comingSoon && (
+                            <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-full border bg-amber-400/10 border-amber-400/20 text-amber-400/80 uppercase tracking-wider">
+                              Soon
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[12px] text-white/40 font-geist leading-snug line-clamp-2" title={desc}>{desc}</p>
+                      </div>
+                    </SpotlightCard>
+                  </motion.div>
+                );
+              })}
             </motion.div>
 
             {/* Right — license cards */}
@@ -466,64 +510,6 @@ export default function PricingSection() {
               transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.15 }}
             >
 
-              {/* $NAT Token Holder Access */}
-              <motion.a
-                href="https://app.printr.money/trade/0xba1e50273ec14ca52b3fa64a5054c39470c2835392c6ecd06876f5bccd597d7b"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileTap={{ scale: 0.98, transition: { duration: 0.1 } }}
-                className="block"
-              >
-                <SpotlightCard
-                  isDark={true}
-                  className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-3 p-5 sm:p-4 rounded-[20px] cursor-pointer transition-all duration-300 hover:bg-white/[0.04] overflow-hidden"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(6,182,212,0.04) 100%)",
-                    border: "1px solid rgba(139,92,246,0.25)",
-                    backdropFilter: "blur(12px)",
-                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
-                  }}
-                >
-                  {/* Top shimmer line */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-px pointer-events-none"
-                    style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.6), rgba(6,182,212,0.4), transparent)" }}
-                  />
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <p
-                        className="transition-colors"
-                        style={{ fontFamily: "'Instrument Serif', serif", fontSize: "20px", fontWeight: 400, color: "#ffffff" }}
-                      >
-                        $NAT Token Holder
-                      </p>
-                      <span
-                        className="text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider"
-                        style={{
-                          background: "linear-gradient(135deg, rgba(139,92,246,0.25) 0%, rgba(6,182,212,0.15) 100%)",
-                          border: "1px solid rgba(139,92,246,0.3)",
-                          color: "#a78bfa",
-                        }}
-                      >
-                        Crypto
-                      </span>
-                    </div>
-                    <p className="text-[12px] font-geist" style={{ color: "rgba(255,255,255,0.4)" }}>
-                      Hold the required $NAT threshold · Pro unlocks automatically.
-                    </p>
-                  </div>
-                  <div
-                    className="shrink-0 px-4 sm:px-3.5 py-2.5 sm:py-2 rounded-[12px] sm:rounded-[10px] text-[13px] sm:text-[12px] font-semibold whitespace-nowrap transition-all duration-300 text-center"
-                    style={{
-                      background: "linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(6,182,212,0.1) 100%)",
-                      border: "1px solid rgba(139,92,246,0.25)",
-                      color: "#a78bfa",
-                    }}
-                  >
-                    Buy $NAT →
-                  </div>
-                </SpotlightCard>
-              </motion.a>
 
               {/* Yearly */}
               <motion.a
@@ -535,10 +521,9 @@ export default function PricingSection() {
               >
                 <SpotlightCard
                   isDark={true}
-                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-3 p-5 sm:p-4 rounded-[20px] cursor-pointer transition-all duration-300 hover:bg-white/[0.04]"
+                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-3 p-5 sm:p-4 rounded-[20px] cursor-pointer transition-all duration-300 border border-white/[0.06] hover:border-amber-500/25 hover:bg-white/[0.04]"
                   style={{
                     background: "rgba(255,255,255,0.02)",
-                    border: "1px solid rgba(255,255,255,0.08)",
                     backdropFilter: "blur(12px)",
                     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)",
                   }}
@@ -548,9 +533,9 @@ export default function PricingSection() {
                       className="text-white mb-0.5 tracking-tight group-hover:text-amber-100 transition-colors"
                       style={{ fontFamily: "'Instrument Serif', serif", fontSize: "20px", fontWeight: 400 }}
                     >
-                      Yearly License
+                      {t('pricing.yearly_title')}
                     </p>
-                    <p className="text-[12px] text-white/40 font-geist">All Pro features. Renews annually.</p>
+                    <p className="text-[12px] text-white/40 font-geist">{t('pricing.yearly_desc')}</p>
                   </div>
                   <div
                     className="shrink-0 px-4 sm:px-3.5 py-2.5 sm:py-2 rounded-[12px] sm:rounded-[10px] text-[13px] sm:text-[12px] font-semibold text-white/60
@@ -558,7 +543,7 @@ export default function PricingSection() {
                       group-hover:text-white group-hover:bg-white/[0.12] group-hover:border-white/[0.15]"
                     style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)" }}
                   >
-                    Get Yearly →
+                    {t('pricing.yearly_cta')}
                   </div>
                 </SpotlightCard>
               </motion.a>
@@ -573,20 +558,20 @@ export default function PricingSection() {
               >
                 <SpotlightCard
                   isDark={true}
-                  className="group relative flex flex-col gap-5 p-6 rounded-[24px] cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
+                  className="group relative flex flex-col gap-5 p-6 rounded-[24px] cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(245,158,11,0.18)]"
                   style={{
-                    background: "linear-gradient(165deg, rgba(245,158,11,0.08) 0%, rgba(10,10,10,0.5) 100%)",
-                    border: "1px solid rgba(245,158,11,0.25)",
+                    background: "linear-gradient(165deg, rgba(245,158,11,0.1) 0%, rgba(10,10,10,0.6) 100%)",
+                    border: "1px solid rgba(245,158,11,0.3)",
                     backdropFilter: "blur(20px)",
-                    boxShadow: "0 25px 50px -12px rgba(245,158,11,0.15), inset 0 1px 0 rgba(255,255,255,0.1)",
+                    boxShadow: "0 20px 45px -12px rgba(245,158,11,0.12), inset 0 1px 0 rgba(255,255,255,0.1)",
                   }}
                 >
                   {/* Top specular line */}
-                  <div className="absolute top-0 left-0 right-0 h-px pointer-events-none opacity-60"
-                    style={{ background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.8), transparent)" }} />
+                  <div className="absolute top-0 left-0 right-0 h-px pointer-events-none opacity-70"
+                    style={{ background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.85), transparent)" }} />
 
                   {/* Corner glow */}
-                  <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-amber-500/20 blur-3xl pointer-events-none group-hover:bg-amber-500/30 transition-colors duration-500" />
+                  <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-amber-500/20 blur-3xl pointer-events-none group-hover:bg-amber-500/32 transition-colors duration-500" />
 
                   <div className="flex items-start justify-between gap-3 relative z-10 w-full">
                     <div className="pr-2">
@@ -594,25 +579,30 @@ export default function PricingSection() {
                         className="mb-1"
                         style={{ fontFamily: "'Instrument Serif', serif", fontSize: "28px", fontWeight: 400, color: "#fbbf24", fontStyle: "italic", lineHeight: 1 }}
                       >
-                        Lifetime License
+                        {t('pricing.lifetime_title')}
                       </p>
-                      <p className="text-[11px] sm:text-[12px] text-white/40 font-geist leading-snug">One payment. All future updates included.</p>
+                      <p className="text-[11px] sm:text-[12px] text-white/40 font-geist leading-snug">{t('pricing.lifetime_desc')}</p>
                     </div>
                     <span
-                      className="shrink-0 text-[8px] sm:text-[9px] font-bold px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full uppercase tracking-[0.1em] mt-1
-                        group-hover:bg-amber-500/20 group-hover:border-amber-400/40 transition-all duration-300"
-                      style={{ background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.25)", color: "#fbbf24" }}
+                      className="shrink-0 text-[8px] sm:text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-[0.1em] mt-1
+                        bg-amber-500/15 border border-amber-500/30 text-amber-400
+                        group-hover:bg-amber-500/22 group-hover:border-amber-400/45 transition-all duration-300"
                     >
-                      Best value
+                      {t('pricing.lifetime_badge')}
                     </span>
                   </div>
 
                   <ul className="flex flex-col gap-2.5 relative z-10">
-                    {["Resume & JD context awareness", "Live negotiation coaching", "7 expert interview modes", "All future updates"].map((feat) => (
-                      <li key={feat} className="flex items-center gap-2.5 text-[12px] text-white/70 font-geist font-medium">
+                    {[
+                      t('pricing.lifetime_feat1'),
+                      t('pricing.lifetime_feat2'),
+                      t('pricing.lifetime_feat3'),
+                      t('pricing.lifetime_feat4')
+                    ].map((feat) => (
+                      <li key={feat} className="flex items-center gap-2.5 text-[12px] text-white/75 font-geist font-medium">
                         <div
-                          className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(245,158,11,0.2)]"
-                          style={{ background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)" }}
+                          className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(245,158,11,0.25)]"
+                          style={{ background: "rgba(245,158,11,0.18)", border: "1px solid rgba(245,158,11,0.35)" }}
                         >
                           <svg width="7" height="7" viewBox="0 0 10 10" fill="none">
                             <path d="M2.5 5l2 2 3-3" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -628,14 +618,14 @@ export default function PricingSection() {
                       transition-all duration-300 group-hover:brightness-110 group-hover:scale-[1.02]"
                     style={{
                       background: "linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%)",
-                      boxShadow: "0 8px 32px rgba(245,158,11,0.4), inset 0 2px 0 rgba(255,255,255,0.3), inset 0 -2px 0 rgba(0,0,0,0.1)",
+                      boxShadow: "0 8px 32px rgba(245,158,11,0.45), inset 0 2px 0 rgba(255,255,255,0.35), inset 0 -2px 0 rgba(0,0,0,0.1)",
                     }}
                   >
-                    Get Lifetime →
+                    {t('pricing.lifetime_cta')}
                   </div>
 
                   <p className="text-center text-[10px] text-white/30 font-geist -mt-1.5 relative z-10">
-                    One-time purchase · No subscription · yours forever
+                    {t('pricing.lifetime_footer')}
                   </p>
                 </SpotlightCard>
               </motion.a>

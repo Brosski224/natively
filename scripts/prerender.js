@@ -334,6 +334,184 @@ const seoRoutes = [
             title: 'Незаметный ИИ для собеседований — Невидимый ИИ-ассистент | Natively',
             desc: 'Единственный ИИ-ассистент для собеседований с нулевым сетевым трафиком в локальном режиме. Natively работает 100% на устройстве — без облачных запросов и обнаруживаемых данных.'
         }
+    },
+
+    // ===================================================================
+    // MEETING / NOTES VERTICAL (English-first; RU body backfill = 60-day roadmap)
+    // skipRu omits the /ru/ prerender + hreflang so we never ship English body
+    // under lang="ru". App.tsx still has /ru routes, but they're not indexed.
+    // ===================================================================
+    {
+        path: '/ai-meeting-assistant',
+        title: 'AI Meeting Assistant — Live Notes, Local & Private | Natively',
+        desc: 'Natively is a free AI meeting assistant for Zoom, Teams, and Google Meet. Live transcription, real-time answers, and automatic notes — running locally as an invisible overlay, not a bot that joins your call.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "Does the AI meeting assistant join my call as a participant?", a: "No. Natively runs as a separate native overlay on your own computer, not as a bot inside the meeting. It captures audio locally, so it never appears in the participant list or in recordings." },
+            { q: "Is my meeting data private?", a: "In local mode, audio, transcripts, and notes stay on your device with zero outbound network traffic. Natively is open source (AGPL-3.0), so the data handling is fully auditable." }
+        ]
+    },
+    {
+        path: '/ai-note-taker',
+        title: 'AI Note Taker for Meetings — Local, Free & Private | Natively',
+        desc: 'Natively is a free AI note taker that records, transcribes, and summarizes your meetings locally on your device. Automatic notes, speaker labels, and Markdown export — no bot in your call, no data in the cloud.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "Is there a free AI note taker that works offline?", a: "Yes. Natively's note taking is free, and with Ollama and on-device Whisper it works completely offline — transcription and summarization both run locally." },
+            { q: "Can I export my meeting notes?", a: "Yes. Every meeting can be exported to Markdown, JSON, or plain text from the local dashboard." }
+        ]
+    },
+    {
+        path: '/sales-call-assistant',
+        title: 'AI Sales Call Assistant — Real-Time Talk Tracks | Natively',
+        desc: 'Natively is a private AI sales call assistant. Get real-time objection handling, talk-track suggestions, and automatic call notes during live sales calls — running locally on your device, invisible to the prospect.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "Can the prospect tell I'm using a sales assistant?", a: "No. Natively runs as a hidden overlay on your own computer rather than joining the call as a bot, so there's no extra participant and nothing appears in the prospect's screen share or recording." },
+            { q: "Will my call recordings be stored in the cloud?", a: "Not in local mode. Audio, transcripts, and notes stay on your device with zero outbound traffic. If you use a bring-your-own-key cloud model, only the specific text request is sent — never the raw call audio." }
+        ]
+    },
+    {
+        path: '/lecture-note-taker',
+        title: 'AI Lecture Note Taker — Transcribe Classes Offline | Natively',
+        desc: 'Natively is a free AI lecture note taker that transcribes and summarizes classes locally on your laptop. Works offline, handles multi-hour lectures, and lets you search every class — no subscription, no cloud.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "Can it transcribe a lecture without internet?", a: "Yes. With Ollama and on-device Whisper, Natively transcribes and summarizes entirely offline, so it works in lecture halls where Wi-Fi is unreliable." },
+            { q: "Does it handle long, multi-hour lectures?", a: "Yes. Epoch summarization breaks long sessions into coherent segments, so even a three-hour seminar produces structured, readable notes." }
+        ]
+    },
+
+    // ===================================================================
+    // FIREFLIES / OTTER (verified pricing; English-first)
+    // ===================================================================
+    {
+        path: '/natively-vs-fireflies',
+        title: 'Natively vs Fireflies: Local AI vs Cloud Notetaker (2026)',
+        desc: 'Natively vs Fireflies.ai — an honest comparison. Fireflies is a mature cloud meeting notetaker with deep integrations; Natively is a free, local-first AI assistant with real-time help and no bot in your call.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true
+    },
+    {
+        path: '/natively-vs-otter',
+        title: 'Natively vs Otter.ai: Local Meeting AI vs Cloud (2026)',
+        desc: 'Natively vs Otter.ai — a fair comparison. Otter is a popular cloud transcription and notes service; Natively is a free, local-first meeting assistant with real-time help and on-device privacy.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true
+    },
+    {
+        path: '/fireflies-alternative',
+        title: 'Best Fireflies Alternative — Free, Local & Private | Natively',
+        desc: 'Looking for a Fireflies.ai alternative? Natively is a free, local-first meeting assistant — no bot in your call, no transcripts in the cloud, real-time help, and no per-seat subscription. Works offline via Ollama.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "Is there a free Fireflies alternative?", a: "Yes. Natively is free using your own API key or fully free and offline with Ollama. There's no per-seat subscription and no monthly-minute cap in local mode." },
+            { q: "Can I take meeting notes without a bot joining the call?", a: "Yes. Natively captures audio locally as an invisible overlay, so nothing joins your meeting as a participant and nothing shows up in recordings." }
+        ]
+    },
+    {
+        path: '/otter-alternative',
+        title: 'Best Otter.ai Alternative — Local, Free & Unlimited | Natively',
+        desc: 'Looking for an Otter.ai alternative? Natively transcribes and summarizes meetings locally on your device — no cloud upload, no 300-minute cap, real-time help, and free with Ollama.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "Is there an Otter alternative without a minute limit?", a: "Yes. In local mode (Ollama), Natively has no monthly-minute cap — transcription runs on your own hardware, so you can record as much as you like for free." },
+            { q: "Does Natively transcribe without uploading my audio?", a: "Yes. On-device Whisper transcribes locally, so your audio never leaves your machine in local mode." }
+        ]
+    },
+
+    // ===================================================================
+    // MISSING INTERVIEW PAGES (English-first)
+    // ===================================================================
+    {
+        path: '/system-design-interview-assistant',
+        title: 'AI System Design Interview Assistant — Real-Time Help | Natively',
+        desc: 'Natively is a local AI system design interview assistant. Get real-time architecture prompts, trade-off analysis, and scaling guidance during live system design rounds — private, on-device, and free.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "Can an AI assistant really help during a live system design interview?", a: "Yes — by keeping you structured. It suggests the next dimension to cover and surfaces trade-offs you haven't mentioned, in under half a second, so you present a coherent design instead of freezing." },
+            { q: "Does it support both system design and coding rounds?", a: "Yes. Natively covers system design, coding/algorithm, and behavioral rounds in one app." }
+        ]
+    },
+    {
+        path: '/behavioral-interview-assistant',
+        title: 'AI Behavioral Interview Assistant — STAR Answers Live | Natively',
+        desc: 'Natively is a local AI behavioral interview assistant. Get real-time STAR-method structure, natural human-sounding answers, and resume-grounded examples during live behavioral rounds — private and free.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "Will the answers sound robotic?", a: "No. The human persona system phrases suggestions to sound natural and conversational, matching your tone, so you can deliver them authentically." },
+            { q: "Can it use my real experience?", a: "Yes. With Natively Pro you can load your resume and the job description, so the assistant suggests STAR stories drawn from your actual background." }
+        ]
+    },
+    {
+        path: '/interview-answer-generator',
+        title: 'AI Interview Answer Generator — Real-Time Responses | Natively',
+        desc: 'Natively is a real-time AI interview answer generator. It hears the question and suggests a clear, natural answer in under 500 ms — for coding, behavioral, and system design rounds. Local, private, and free.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "How fast does it generate an answer?", a: "End-to-end latency is under 500 milliseconds, fast enough that the suggestion is ready while you're still acknowledging the question." },
+            { q: "Do the answers sound generated?", a: "The human persona system phrases responses to sound natural, and accent/dialect matching adapts them to your speaking style." }
+        ]
+    },
+    {
+        path: '/live-interview-assistant',
+        title: 'Live Interview Assistant — Real-Time AI Help On Calls | Natively',
+        desc: 'Natively is a live interview assistant that helps you in real time during the call — live transcription, instant answers, and on-screen code analysis with sub-500 ms latency. Local, invisible, and free.',
+        schemaType: 'SoftwareApplication',
+        skipRu: true,
+        faqs: [
+            { q: "How is a live interview assistant different from interview prep?", a: "Prep tools help before the interview; a live assistant helps during it. Natively transcribes the actual conversation and surfaces answers in real time." },
+            { q: "Does it work on Zoom and Teams?", a: "Yes. Because Natively captures your system audio rather than plugging into a specific platform, it works with Zoom, Microsoft Teams, Google Meet, and any other video call app." }
+        ]
+    },
+
+    // ===================================================================
+    // PROGRAMMATIC: interview-questions/<role> + system-design/<product>
+    // ===================================================================
+    {
+        path: '/interview-questions/software-engineer',
+        title: 'Software Engineer Interview Questions (2026) — With Answers Approach',
+        desc: 'Common software engineer interview questions for 2026 — coding, system design, and behavioral — each with a clear approach to structuring a strong answer.',
+        skipRu: true
+    },
+    {
+        path: '/interview-questions/product-manager',
+        title: 'Product Manager Interview Questions (2026) — With Answer Frameworks',
+        desc: 'Common product manager interview questions for 2026 — product sense, execution, strategy, and behavioral — each with a framework for structuring a strong answer.',
+        skipRu: true
+    },
+    {
+        path: '/interview-questions/data-scientist',
+        title: 'Data Scientist Interview Questions (2026) — With Answer Approaches',
+        desc: 'Common data scientist interview questions for 2026 — statistics, machine learning, SQL, and case studies — each with a clear approach to answering well.',
+        skipRu: true
+    },
+    {
+        path: '/interview-questions/ai-engineer',
+        title: 'AI Engineer Interview Questions (2026) — LLMs, RAG & MLOps',
+        desc: 'Common AI engineer interview questions for 2026 — LLMs, RAG, prompt engineering, evaluation, and ML systems — each with a clear approach to answering well.',
+        skipRu: true
+    },
+    {
+        path: '/system-design/uber',
+        title: 'System Design: Uber (Ride-Hailing) — Interview Walk-Through',
+        desc: 'How to design a ride-hailing system like Uber in a system design interview: requirements, geospatial matching, real-time location, scaling, and the trade-offs interviewers want to hear.',
+        skipRu: true
+    },
+    {
+        path: '/system-design/whatsapp',
+        title: 'System Design: WhatsApp (Chat) — Interview Walk-Through',
+        desc: 'How to design a messaging system like WhatsApp in a system design interview: real-time delivery, message storage, online presence, group chat, and the trade-offs interviewers expect.',
+        skipRu: true
     }
 ];
 
