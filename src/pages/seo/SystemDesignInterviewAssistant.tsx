@@ -5,7 +5,7 @@ export default function SystemDesignInterviewAssistant() {
   return (
     <SEOTemplate
       title="AI System Design Interview Assistant — Real-Time Help | Natively"
-      description="Natively is a local AI system design interview assistant. Get real-time architecture prompts, trade-off analysis, and scaling guidance during live system design rounds — private, on-device, and free."
+      description="A local AI system design interview assistant: real-time architecture prompts, trade-off analysis, and scaling guidance during live rounds — private and free."
       canonicalPath="/system-design-interview-assistant"
       h1="The AI System Design Interview Assistant"
       ru={{

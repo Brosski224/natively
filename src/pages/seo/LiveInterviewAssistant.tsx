@@ -5,7 +5,7 @@ export default function LiveInterviewAssistant() {
   return (
     <SEOTemplate
       title="Live Interview Assistant — Real-Time AI Help On Calls | Natively"
-      description="Natively is a live interview assistant that helps you in real time during the call — live transcription, instant answers, and on-screen code analysis with sub-500 ms latency. Local, invisible, and free."
+      description="A live interview assistant for real time during the call — live transcription, instant answers, and on-screen code analysis at sub-500 ms latency. Local, invisible, free."
       canonicalPath="/live-interview-assistant"
       h1="The Live Interview Assistant for Real-Time Calls"
       ru={{

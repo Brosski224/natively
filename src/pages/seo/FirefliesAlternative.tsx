@@ -5,7 +5,7 @@ export default function FirefliesAlternative() {
   return (
     <SEOTemplate
       title="Best Fireflies Alternative — Free, Local & Private | Natively"
-      description="Looking for a Fireflies.ai alternative? Natively is a free, local-first meeting assistant — no bot in your call, no transcripts in the cloud, real-time help, and no per-seat subscription. Works offline via Ollama."
+      description="The best Fireflies.ai alternative: Natively is a free, local-first meeting assistant — no bot in your call, no cloud transcripts, no per-seat subscription. Works offline."
       canonicalPath="/fireflies-alternative"
       h1="The Best Fireflies Alternative for Private, Local Meetings"
       ru={{

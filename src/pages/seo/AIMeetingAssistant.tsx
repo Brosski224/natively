@@ -5,7 +5,7 @@ export default function AIMeetingAssistant() {
   return (
     <SEOTemplate
       title="AI Meeting Assistant — Live Notes, Local & Private | Natively"
-      description="Natively is a free AI meeting assistant for Zoom, Teams, and Google Meet. Live transcription, real-time answers, and automatic notes — running locally on your device as an invisible overlay, not a bot that joins your call."
+      description="A free, local AI meeting assistant for Zoom, Teams & Google Meet. Live transcription, real-time answers, and automatic notes — invisible, no bot joins your call."
       canonicalPath="/ai-meeting-assistant"
       h1="The AI Meeting Assistant That Runs On Your Device"
       ru={{

@@ -5,7 +5,7 @@ export default function InterviewAnswerGenerator() {
   return (
     <SEOTemplate
       title="AI Interview Answer Generator — Real-Time Responses | Natively"
-      description="Natively is a real-time AI interview answer generator. It hears the question and suggests a clear, natural answer in under 500 ms — for coding, behavioral, and system design rounds. Local, private, and free."
+      description="A real-time AI interview answer generator: hears the question and suggests a clear, natural answer in under 500 ms — coding, behavioral, system design. Local and free."
       canonicalPath="/interview-answer-generator"
       h1="The Real-Time AI Interview Answer Generator"
       ru={{

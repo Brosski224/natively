@@ -5,7 +5,7 @@ export default function NativelyVsFireflies() {
   return (
     <SEOTemplate
       title="Natively vs Fireflies: Local AI vs Cloud Notetaker (2026)"
-      description="Natively vs Fireflies.ai — an honest comparison. Fireflies is a mature cloud meeting notetaker with deep integrations; Natively is a free, local-first AI assistant with real-time help and no bot in your call. See which fits."
+      description="Natively vs Fireflies.ai: Fireflies is a cloud notetaker with deep integrations; Natively is free, local-first, with real-time help and no bot in your call."
       canonicalPath="/natively-vs-fireflies"
       h1="Natively vs Fireflies: Which Meeting AI Should You Use?"
       ru={{

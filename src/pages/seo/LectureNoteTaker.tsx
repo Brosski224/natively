@@ -5,7 +5,7 @@ export default function LectureNoteTaker() {
   return (
     <SEOTemplate
       title="AI Lecture Note Taker — Transcribe Classes Offline | Natively"
-      description="Natively is a free AI lecture note taker that transcribes and summarizes classes locally on your laptop. Works offline, handles multi-hour lectures, and lets you search every class — no subscription, no cloud."
+      description="A free AI lecture note taker that transcribes and summarizes classes on your laptop. Works offline, handles multi-hour lectures — no subscription, no cloud."
       canonicalPath="/lecture-note-taker"
       h1="An AI Lecture Note Taker That Works Offline, All Semester"
       ru={{

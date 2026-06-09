@@ -5,7 +5,7 @@ export default function OtterAlternative() {
   return (
     <SEOTemplate
       title="Best Otter.ai Alternative — Local, Free & Unlimited | Natively"
-      description="Looking for an Otter.ai alternative? Natively transcribes and summarizes meetings locally on your device — no cloud upload, no 300-minute cap, real-time help, and free with Ollama. A private alternative to Otter."
+      description="The best Otter.ai alternative: Natively transcribes and summarizes meetings locally — no cloud upload, no 300-minute cap, real-time help, and free with Ollama."
       canonicalPath="/otter-alternative"
       h1="The Best Otter.ai Alternative: Local, Private, No Minute Caps"
       ru={{

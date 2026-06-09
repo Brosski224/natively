@@ -5,7 +5,7 @@ export default function NativelyVsOtter() {
   return (
     <SEOTemplate
       title="Natively vs Otter.ai: Local Meeting AI vs Cloud (2026)"
-      description="Natively vs Otter.ai — a fair comparison. Otter is a popular cloud transcription and notes service; Natively is a free, local-first meeting assistant with real-time help and on-device privacy. See which one fits you."
+      description="Natively vs Otter.ai: Otter is a popular cloud transcription service; Natively is a free, local-first meeting assistant with real-time help and on-device privacy."
       canonicalPath="/natively-vs-otter"
       h1="Natively vs Otter.ai: The Honest Comparison"
       ru={{

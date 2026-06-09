@@ -5,7 +5,7 @@ export default function AINoteTaker() {
   return (
     <SEOTemplate
       title="AI Note Taker for Meetings — Local, Free & Private | Natively"
-      description="Natively is a free AI note taker that records, transcribes, and summarizes your meetings locally on your device. Automatic notes, speaker labels, and Markdown export — no bot in your call, no data in the cloud."
+      description="A free AI note taker that transcribes and summarizes meetings locally. Automatic notes, speaker labels, and Markdown export — no bot in your call, no cloud."
       canonicalPath="/ai-note-taker"
       h1="A Local AI Note Taker That Keeps Your Meetings Private"
       ru={{

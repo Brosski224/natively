@@ -5,7 +5,7 @@ export default function BehavioralInterviewAssistant() {
   return (
     <SEOTemplate
       title="AI Behavioral Interview Assistant — STAR Answers Live | Natively"
-      description="Natively is a local AI behavioral interview assistant. Get real-time STAR-method structure, natural human-sounding answers, and resume-grounded examples during live behavioral rounds — private and free."
+      description="A local AI behavioral interview assistant: real-time STAR-method structure, natural human-sounding answers, and resume-grounded examples — private and free."
       canonicalPath="/behavioral-interview-assistant"
       h1="The AI Behavioral Interview Assistant"
       ru={{

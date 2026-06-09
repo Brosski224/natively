@@ -5,7 +5,7 @@ export default function SalesCallAssistant() {
   return (
     <SEOTemplate
       title="AI Sales Call Assistant — Real-Time Talk Tracks | Natively"
-      description="Natively is a private AI sales call assistant. Get real-time objection handling, talk-track suggestions, and automatic call notes during live sales calls — running locally on your device, invisible to the prospect."
+      description="A private AI sales call assistant: real-time objection handling, talk-track suggestions, and auto call notes — local on your device, invisible to the prospect."
       canonicalPath="/sales-call-assistant"
       h1="The AI Sales Call Assistant That Stays On Your Side of the Screen"
       ru={{
