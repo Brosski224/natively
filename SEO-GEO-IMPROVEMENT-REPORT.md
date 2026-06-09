@@ -137,8 +137,22 @@ real Q&A or a full design walk-through) to satisfy the quality gate.
 ### Technical fixes / housekeeping
 
 - `public/sitemap.xml`: 18 new `<loc>` entries.
-- `public/llms.txt`: demo-video section + YouTube link (committed from pending).
-- Prerender now emits **77 pages** (was 59), all passing the content/H1 assertion that fails the build on an empty render.
+- `public/llms.txt`: demo-video section + YouTube link, plus the meeting-vertical and new interview pages added to Key URLs for AI-citation discovery.
+- Prerender now emits **79 pages** (was 59), all passing the content/H1 assertion that fails the build on an empty render.
+
+### Post-launch fixes (follow-up pass)
+
+A second sweep found and fixed several issues — some introduced this round, some pre-existing:
+
+- **Per-page SoftwareApplication schema.** `schemaType: 'SoftwareApplication'` was a no-op; it now emits a page-scoped block (page URL + locale-correct description) on each declaring route.
+- **Base-template JSON-LD leak.** The static `index.html` shipped 7 JSON-LD blocks that the prerender copied onto every interior page (homepage `SoftwareApplication`/`WebPage`/`VideoObject`/`FAQPage`/`BreadcrumbList` all bled through). Interior pages now strip the 5 homepage-specific types and keep only site-level `Organization` + `WebSite` plus their own page-scoped Breadcrumb/FAQ/SoftwareApplication.
+- **`/pro` was never prerendered.** The pricing/conversion page (linked 50+ times) wasn't in `seoRoutes`, so crawlers got homepage meta + a root canonical on the `/pro` URL. Added to `seoRoutes` and the sitemap, EN + RU; now renders with correct localized title/desc, per-locale canonical, H1, and hreflang.
+- **Meta descriptions too long.** The 12 new landing/comparison pages had 199–224-char descriptions (Google truncates ~160). Tightened to ~155–170, front-loaded, kept in sync between the page component and `prerender.js`.
+- **Programmatic titles too long.** Three interview-questions titles ran 66–68 chars; shortened to 52–55.
+- **`/ru` links to English-only pages.** Footer + RelatedLinks on `/ru` pages prefixed `/ru`, sending Russian visitors to `/ru/<page>` URLs that aren't prerendered or indexed and render English content. `LocaleLink` now keeps links to `ENGLISH_ONLY_PATHS` (single source of truth in `src/config/locales.ts`) on the bare canonical path.
+- **Lint.** Typed the homepage `UseCasesSection` icon field as `LucideIcon` (was `any`).
+
+After these fixes: full broken-internal-link scan across all 79 pages is **clean**, no duplicate titles, all JSON-LD valid, every page has exactly one H1 and a valid `<html lang>`.
 
 ---
 
@@ -146,15 +160,16 @@ real Q&A or a full design walk-through) to satisfy the quality gate.
 
 - `npx tsc --noEmit` — **clean** (zero type errors).
 - `npm run lint` — no new issues in added files (only a pre-existing error in a `.remember/tmp` scratch file, unrelated).
-- `npm run build` + `postbuild` prerender — **77/77 pages** rendered with full body content; all 18 new pages present in `dist/`.
-- Broken-link scan — no stale `/natively-alternative` references.
+- `npm run build` + `postbuild` prerender — **79/79 pages** rendered with full body content; all 18 new pages + `/pro` (EN/RU) present in `dist/`.
+- Full broken-internal-link scan across all 79 pages — **0 broken links**.
 - Duplicate `<title>` scan — none (besides intentional shared-canonical T&C).
-- JSON-LD validity — every `ld+json` block on sampled new pages parses (9/9, 8/8, 8/8).
-- Prerendered-HTML spot checks — H1, canonical, hreflang, breadcrumb/FAQ schema, internal links, homepage use-cases band, and footer column all confirmed in `dist/`.
+- JSON-LD validity — every `ld+json` block on sampled pages parses; each page carries exactly one accurate set (no schema leak).
+- Sitewide checks — every page has exactly one `<h1>` and a valid `<html lang>`; descriptions ~155–170 chars, titles ≤66.
+- Prerendered-HTML spot checks — H1, canonical, hreflang, breadcrumb/FAQ/SoftwareApplication schema, internal links, homepage use-cases band, and footer column all confirmed in `dist/`.
 
 > Note: the local prerender step is known to be intermittently flaky against system
 > Chrome (`ERR_CONNECTION_REFUSED` on a random route); it has built-in retries and a
-> re-run produces a clean 77/77. This affects local builds only, not page quality.
+> re-run produces a clean 79/79. This affects local builds only, not page quality.
 
 ---
 
