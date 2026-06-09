@@ -5,7 +5,9 @@
 // UNIQUE intro and 8+ real questions with genuine approach notes — never thin
 // boilerplate. Do NOT mass-generate role pages from a template string; each role's
 // questions and guidance are hand-written. To add a role: append an entry here AND
-// register the route in routes.tsx, App.tsx, scripts/prerender.js, and sitemap.xml.
+// register the route in routes.tsx, App.tsx, and scripts/prerender.js (including its
+// source file in ROUTE_SOURCE_FILES). sitemap.xml is generated from prerender.js — no
+// manual edit needed.
 
 export interface InterviewQuestion {
   q: string;

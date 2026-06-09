@@ -4,7 +4,8 @@
 // gate: each entry is a hand-written, genuinely useful design walk-through (unique
 // intro + requirements + a real component breakdown + scaling notes), never a
 // templated stub. To add one: append here AND register the route in routes.tsx,
-// App.tsx, scripts/prerender.js, and sitemap.xml.
+// App.tsx, and scripts/prerender.js (including its source file in ROUTE_SOURCE_FILES).
+// sitemap.xml is generated from prerender.js — no manual edit needed.
 
 export interface DesignSection {
   heading: string;

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import express from 'express';
 import puppeteer from 'puppeteer-core';
@@ -275,37 +276,45 @@ const seoRoutes = [
             desc: 'Мы протестировали 7 ИИ-ассистентов для собеседований в 2026. Сравнение FinalRoundAI, Cluely, Natively и других по приватности, стоимости и поддержке кодинга.'
         }
     },
+    // Legal / utility pages. Prerendered for direct visitors, but excludeFromSitemap
+    // keeps them out of sitemap.xml — they carry no search intent and the two /t&c
+    // aliases canonicalize to /termsandconditions anyway.
     {
         path: '/refundpolicy',
         title: 'Refund Policy — Natively',
         desc: 'Refund policy for Natively Pro and the Natively API.',
-        skipRu: true
+        skipRu: true,
+        excludeFromSitemap: true
     },
     {
         path: '/privacy',
         title: 'Privacy Policy — Natively',
         desc: 'How Natively handles your data: privacy-first, local-first, no central server for your meeting data.',
-        skipRu: true
+        skipRu: true,
+        excludeFromSitemap: true
     },
     {
         path: '/termsandconditions',
         title: 'Terms & Conditions — Natively',
         desc: 'Terms governing the Natively desktop app, Natively Pro, and the Natively API.',
-        skipRu: true
+        skipRu: true,
+        excludeFromSitemap: true
     },
     {
         path: '/nativelypro/t&c',
         title: 'Terms & Conditions — Natively',
         desc: 'Terms governing the Natively desktop app, Natively Pro, and the Natively API.',
         canonical: '/termsandconditions',
-        skipRu: true
+        skipRu: true,
+        excludeFromSitemap: true
     },
     {
         path: '/nativelyapi/t&c',
         title: 'Terms & Conditions — Natively',
         desc: 'Terms governing the Natively desktop app, Natively Pro, and the Natively API.',
         canonical: '/termsandconditions',
-        skipRu: true
+        skipRu: true,
+        excludeFromSitemap: true
     },
     {
         path: '/interview-copilot',
@@ -598,6 +607,147 @@ function expandRoutes() {
         }
     }
     return jobs;
+}
+
+// ---------------------------------------------------------------------------
+// Sitemap generation (driven by the SAME seoRoutes array as the prerender)
+// ---------------------------------------------------------------------------
+//
+// public/sitemap.xml is generated, not hand-edited. Adding a route above adds it
+// to the sitemap automatically — no separate list to keep in sync. Routes opt out
+// with excludeFromSitemap (legal/utility pages). Each URL's <lastmod> comes from
+// the git commit date of the page's source file, so dates are per-page and
+// meaningful (not a single uniform stamp).
+
+// Map a route path to the source file whose git history dates it. Mirrors the
+// pathToKey + pages tables in src/routes.tsx; kept here because prerender.js runs
+// in plain Node and can't import the .tsx module. A path absent from this map (or
+// a file with no git history) falls back to the build date — safe, just less precise.
+const ROUTE_SOURCE_FILES = {
+    '/': 'src/pages/Index.tsx',
+    '/pro': 'src/pages/Pro.tsx',
+    '/ai-interview-assistant': 'src/pages/seo/AIInterviewAssistant.tsx',
+    '/cluely-alternative': 'src/pages/seo/NativelyAlternative.tsx',
+    '/ai-coding-interview-helper': 'src/pages/seo/AICodingInterviewHelper.tsx',
+    '/local-ai-assistant': 'src/pages/seo/LocalAIAssistant.tsx',
+    '/blog/ai-interview-assistant-guide': 'src/pages/blog/AIInterviewAssistantGuide.tsx',
+    '/blog/local-ai-vs-cloud-ai-assistants': 'src/pages/blog/LocalAIVsCloudAIAssistants.tsx',
+    '/blog/how-ai-can-help-with-coding-interviews': 'src/pages/blog/HowAICanHelpWithCodingInterviews.tsx',
+    '/ai-assistant-for-coding-interviews': 'src/pages/seo/AIAssistantForCodingInterviews.tsx',
+    '/how-ai-helps-in-coding-interviews': 'src/pages/seo/HowAIHelpsInCodingInterviews.tsx',
+    '/local-ai-coding-assistant': 'src/pages/seo/LocalAICodingAssistant.tsx',
+    '/ai-tools-for-technical-interviews': 'src/pages/seo/AIToolsForTechnicalInterviews.tsx',
+    '/blog/how-ai-interview-assistants-work': 'src/pages/blog/HowAIInterviewAssistantsWork.tsx',
+    '/blog/best-ai-tools-for-coding-interviews': 'src/pages/blog/BestAIToolsForCodingInterviews.tsx',
+    '/blog/preparing-for-technical-interviews-with-ai': 'src/pages/blog/PreparingForTechnicalInterviewsWithAI.tsx',
+    '/docs/ai-interview-assistant': 'src/pages/seo/DocsAIInterviewAssistant.tsx',
+    '/finalroundai-alternative': 'src/pages/seo/FinalRoundAIAlternative.tsx',
+    '/natively-vs-cluely': 'src/pages/seo/NativelyVsCluely.tsx',
+    '/interview-copilot': 'src/pages/seo/InterviewCopilot.tsx',
+    '/free-ai-interview-assistant': 'src/pages/seo/FreeAIInterviewAssistant.tsx',
+    '/leetcode-ai-helper': 'src/pages/seo/LeetCodeAIHelper.tsx',
+    '/offline-ai-interview': 'src/pages/seo/OfflineAIInterview.tsx',
+    '/natively-vs-lockedinai': 'src/pages/seo/NativelyVsLockedInAI.tsx',
+    '/natively-vs-interviewcoder': 'src/pages/seo/NativelyVsInterviewCoder.tsx',
+    '/undetectable-interview-ai': 'src/pages/seo/UndetectableInterviewAI.tsx',
+    '/blog/is-cluely-safe': 'src/pages/blog/IsCluelySafe.tsx',
+    '/blog/best-ai-interview-assistants': 'src/pages/blog/BestAIInterviewAssistants.tsx',
+    '/ai-meeting-assistant': 'src/pages/seo/AIMeetingAssistant.tsx',
+    '/ai-note-taker': 'src/pages/seo/AINoteTaker.tsx',
+    '/sales-call-assistant': 'src/pages/seo/SalesCallAssistant.tsx',
+    '/lecture-note-taker': 'src/pages/seo/LectureNoteTaker.tsx',
+    '/natively-vs-fireflies': 'src/pages/seo/NativelyVsFireflies.tsx',
+    '/natively-vs-otter': 'src/pages/seo/NativelyVsOtter.tsx',
+    '/fireflies-alternative': 'src/pages/seo/FirefliesAlternative.tsx',
+    '/otter-alternative': 'src/pages/seo/OtterAlternative.tsx',
+    '/system-design-interview-assistant': 'src/pages/seo/SystemDesignInterviewAssistant.tsx',
+    '/behavioral-interview-assistant': 'src/pages/seo/BehavioralInterviewAssistant.tsx',
+    '/interview-answer-generator': 'src/pages/seo/InterviewAnswerGenerator.tsx',
+    '/live-interview-assistant': 'src/pages/seo/LiveInterviewAssistant.tsx',
+    '/interview-questions/software-engineer': 'src/pages/programmatic/routes/InterviewQuestionsSWE.tsx',
+    '/interview-questions/product-manager': 'src/pages/programmatic/routes/InterviewQuestionsPM.tsx',
+    '/interview-questions/data-scientist': 'src/pages/programmatic/routes/InterviewQuestionsDS.tsx',
+    '/interview-questions/ai-engineer': 'src/pages/programmatic/routes/InterviewQuestionsAI.tsx',
+    '/interview-questions/google-software-engineer': 'src/pages/programmatic/routes/InterviewQuestionsGoogleSWE.tsx',
+    '/interview-questions/meta-software-engineer': 'src/pages/programmatic/routes/InterviewQuestionsMetaSWE.tsx',
+    '/interview-questions/amazon-software-engineer': 'src/pages/programmatic/routes/InterviewQuestionsAmazonSWE.tsx',
+    '/interview-questions/microsoft-software-engineer': 'src/pages/programmatic/routes/InterviewQuestionsMicrosoftSWE.tsx',
+    '/system-design/uber': 'src/pages/programmatic/routes/SystemDesignUber.tsx',
+    '/system-design/whatsapp': 'src/pages/programmatic/routes/SystemDesignWhatsApp.tsx',
+    '/system-design/netflix': 'src/pages/programmatic/routes/SystemDesignNetflix.tsx',
+    '/system-design/twitter': 'src/pages/programmatic/routes/SystemDesignTwitter.tsx',
+};
+
+// Today's date (UTC, YYYY-MM-DD) — the fallback lastmod when git has no date.
+const BUILD_DATE = new Date().toISOString().slice(0, 10);
+
+// Last git commit date (YYYY-MM-DD) for a repo-relative file, or null if the file
+// is untracked / git is unavailable (e.g. a source tarball with no .git). Cached so
+// repeated lookups in one build are free.
+const gitDateCache = new Map();
+function gitLastModified(relPath) {
+    if (gitDateCache.has(relPath)) return gitDateCache.get(relPath);
+    let date = null;
+    try {
+        const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', relPath], {
+            cwd: path.resolve(__dirname, '..'),
+            encoding: 'utf8',
+            stdio: ['ignore', 'pipe', 'ignore'],
+        }).trim();
+        if (/^\d{4}-\d{2}-\d{2}$/.test(out)) date = out;
+    } catch (_) { /* git missing or file untracked → fall back */ }
+    gitDateCache.set(relPath, date);
+    return date;
+}
+
+// Resolve a route's <lastmod>: git date of its source file, else the build date.
+function routeLastmod(route) {
+    const src = ROUTE_SOURCE_FILES[route.path];
+    return (src && gitLastModified(src)) || BUILD_DATE;
+}
+
+// Build sitemap.xml from the expanded route×locale jobs. One <url> per rendered
+// page (default + each non-skipRu locale), excluding excludeFromSitemap routes.
+// No <priority>/<changefreq> — Google ignores both.
+function buildSitemapXml(jobs) {
+    const seen = new Set();
+    const entries = [];
+    for (const job of jobs) {
+        if (job.route.excludeFromSitemap) continue;
+        const loc = `${SITE}${job.urlPath}`;
+        if (seen.has(loc)) continue; // defensive: never emit a duplicate <loc>
+        seen.add(loc);
+        entries.push({ loc, lastmod: routeLastmod(job.route) });
+    }
+    const body = entries
+        .map((e) => `  <url>\n    <loc>${e.loc}</loc>\n    <lastmod>${e.lastmod}</lastmod>\n  </url>`)
+        .join('\n');
+    return {
+        xml: `<?xml version="1.0" encoding="UTF-8"?>\n` +
+            `<!-- Generated by scripts/prerender.js from seoRoutes — do not edit by hand. -->\n` +
+            `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`,
+        count: entries.length,
+    };
+}
+
+// Write the generated sitemap to dist/ (served in prod) and public/ (committed, so
+// it's reviewable in PRs and served by `vite dev`/`vite preview`).
+function writeSitemap(jobs) {
+    const { xml, count } = buildSitemapXml(jobs);
+    const targets = [
+        path.join(distPath, 'sitemap.xml'),
+        path.resolve(__dirname, '..', 'public', 'sitemap.xml'),
+    ];
+    for (const target of targets) {
+        try {
+            fs.writeFileSync(target, xml);
+        } catch (err) {
+            // dist must succeed; public is best-effort (may be read-only in some CI).
+            if (target.includes(`${path.sep}dist${path.sep}`)) throw err;
+            console.warn(`  (sitemap: could not write ${target}: ${err.message})`);
+        }
+    }
+    console.log(`Sitemap written: ${count} URLs.`);
 }
 
 // Build the static hreflang + JSON-LD tags appended just before </head>.
@@ -1040,6 +1190,10 @@ async function prerender() {
         fs.mkdirSync(outDir, { recursive: true });
         fs.writeFileSync(path.join(outDir, 'index.html'), html);
     }
+
+    // Regenerate sitemap.xml from the same expanded routes we just prerendered, so
+    // the sitemap can never drift from the set of pages that actually exist.
+    writeSitemap(jobs);
 
     console.log(`Prerender complete: ${results.length} pages written with full body content.`);
 }
