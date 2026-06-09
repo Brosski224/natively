@@ -24,3 +24,32 @@ export const PREFIXED_LOCALES: SupportedLocale[] = SUPPORTED_LOCALES.filter(
 export function isSupportedLocale(value: string): value is SupportedLocale {
   return (SUPPORTED_LOCALES as readonly string[]).includes(value);
 }
+
+// Pages that ship English-only for now (RU body content is a planned fast-follow).
+// They are prerendered at the bare path only (skipRu in scripts/prerender.js) and
+// have no /ru/ entry in the sitemap. Links to them must therefore NOT be locale-
+// prefixed even when rendered on a /ru/ page — otherwise a Russian visitor would
+// land on a /ru/<page> URL that isn't prerendered or indexed and renders English
+// content. LocaleLink consults this set and keeps these links on the bare path.
+// When a page gets full RU content, remove it here AND drop skipRu in prerender.js
+// AND add its /ru/ sitemap entry.
+export const ENGLISH_ONLY_PATHS: ReadonlySet<string> = new Set([
+  '/ai-meeting-assistant',
+  '/ai-note-taker',
+  '/sales-call-assistant',
+  '/lecture-note-taker',
+  '/natively-vs-fireflies',
+  '/natively-vs-otter',
+  '/fireflies-alternative',
+  '/otter-alternative',
+  '/system-design-interview-assistant',
+  '/behavioral-interview-assistant',
+  '/interview-answer-generator',
+  '/live-interview-assistant',
+  '/interview-questions/software-engineer',
+  '/interview-questions/product-manager',
+  '/interview-questions/data-scientist',
+  '/interview-questions/ai-engineer',
+  '/system-design/uber',
+  '/system-design/whatsapp',
+]);
