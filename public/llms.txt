@@ -172,8 +172,22 @@ ABI / `napi::Buffer`), SQLite with `sqlite-vec` for local vector search.
 - Local AI Assistant: https://natively.software/local-ai-assistant
 - AI Coding Interview Helper: https://natively.software/ai-coding-interview-helper
 - Undetectable Interview AI: https://natively.software/undetectable-interview-ai
+- System Design Interview Assistant: https://natively.software/system-design-interview-assistant
+- Behavioral Interview Assistant: https://natively.software/behavioral-interview-assistant
+- Live Interview Assistant: https://natively.software/live-interview-assistant
+- Interview Answer Generator: https://natively.software/interview-answer-generator
 - Docs: https://natively.software/docs/ai-interview-assistant
 - Pricing / Pro: https://natively.software/pro
+
+## Key URLs — Meetings, Notes & Sales
+- AI Meeting Assistant: https://natively.software/ai-meeting-assistant
+- AI Note Taker: https://natively.software/ai-note-taker
+- Sales Call Assistant: https://natively.software/sales-call-assistant
+- Lecture Note Taker: https://natively.software/lecture-note-taker
+- Natively vs Fireflies: https://natively.software/natively-vs-fireflies
+- Natively vs Otter: https://natively.software/natively-vs-otter
+- Fireflies Alternative: https://natively.software/fireflies-alternative
+- Otter Alternative: https://natively.software/otter-alternative
 
 ## Demo Video
 - Natively AI: Interview Assistant — Demo (YouTube): https://youtu.be/a20tER4PVS4
