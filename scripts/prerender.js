@@ -49,6 +49,18 @@ const seoRoutes = [
         }
     },
     {
+        // Pricing / Pro page. Uses SEOHead (Helmet) — title/desc here MUST match
+        // src/pages/Pro.tsx's SEOHead props so the prerendered head equals what
+        // Helmet emits on hydration. Genuinely bilingual (full RU content).
+        path: '/pro',
+        title: 'Natively Pro vs Free | Interactive Demo & Comparison',
+        desc: 'Compare Natively Free (Ollama/BYOK) and Natively Pro. Try the live interactive simulation to compare real-time transcription, answers, and negotiation features.',
+        ru: {
+            title: 'Natively Pro vs Free | Интерактивное демо и сравнение',
+            desc: 'Сравните Natively Free (Ollama/BYOK) и Natively Pro. Проверьте разницу в ответах, транскрипции и функциях для переговоров по зарплате.'
+        }
+    },
+    {
         path: '/ai-interview-assistant',
         title: 'Best AI Interview Assistant — Ace Coding Interviews | Natively',
         desc: 'Discover how an AI interview assistant running entirely locally on your device can help you ace technical and coding interviews without compromising your privacy.',
