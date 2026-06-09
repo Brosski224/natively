@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, memo } from "react";
-import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "@/lib/motion";
 import { Brain, Mic2, Globe, FileText, Building2, Target, Layers, Scan, TrendingUp, UserCheck, Database, ArrowUpRight } from "lucide-react";
 
 const EASE_OUT: [number, number, number, number] = [0.23, 1, 0.32, 1];

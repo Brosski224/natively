@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Crawl-delay: 1
 
 User-agent: GPTBot
 Allow: /
@@ -29,3 +28,5 @@ User-agent: CCBot
 Disallow: /
 
 Sitemap: https://natively.software/sitemap.xml
+
+# AI assistant context file: https://natively.software/llms.txt

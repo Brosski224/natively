@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, memo } from "react";
-import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from "@/lib/motion";
 import {
   Zap, Code2, TrendingUp, Users, Briefcase, CalendarDays, BookOpen,
   FileText, Check, MoreHorizontal, Paperclip, LayoutGrid,

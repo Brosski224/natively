@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import NativelyInterfaceCard from "./NativelyInterfaceCard";
 
 // Visually matched waveform from the image

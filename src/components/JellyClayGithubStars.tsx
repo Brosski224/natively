@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Star } from "lucide-react";
 
 function Digit({ value, index }: { value: number; index: number }) {

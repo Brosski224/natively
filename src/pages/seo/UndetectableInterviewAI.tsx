@@ -55,6 +55,139 @@ export default function UndetectableInterviewAI() {
                 </table>
               </div>
             </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Три слоя невидимости в Natively</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Слой 1: Нулевой сетевой трафик (локальный режим)</h3>
+              <p className="mb-4">
+                При использовании Natively с Ollama и локальной моделью (Llama 3, DeepSeek, Mistral или любой моделью в формате GGUF) приложение выполняет <strong>ноль исходящих сетевых запросов</strong> во время вашей сессии собеседования. Инструмент сетевого мониторинга, наблюдающий за вашим соединением, не увидит никакого трафика к ИИ-API — потому что его нет. ИИ работает целиком на CPU/GPU вашей машины.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Слой 2: Невидимый экранный оверлей</h3>
+              <p className="mb-4">
+                Natively отображает подсказки через <strong>оверлей системного уровня</strong>, который не появляется в записях экрана, демонстрациях экрана или скриншотах, захваченных программами видеоконференций. Когда вы демонстрируете экран в Zoom, Google Meet или Microsoft Teams, интервьюеры видят только то, что вы хотите им показать. Интерфейс Natively для них невидим.
+              </p>
+              <p className="mb-4">
+                Это тот же принцип, что используется в телесуфлёрах для презентаций и проекционных дисплеях — оверлей существует на вашем экране, но исключён из вывода захвата экрана.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Слой 3: Архитектура нативного приложения</h3>
+              <p className="mb-4">
+                В отличие от браузерных расширений или приложений на базе Electron с более заметным следом, Natively построен как нативное приложение для macOS и Windows. Оно не внедряется в браузеры, не требует повышенных прав сверх доступа к записи экрана и микрофону и работает с минимальной сигнатурой процесса.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Обнаруживаемый против неопределяемого: сравнение</h2>
+
+              <div className="overflow-x-auto my-8">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-muted/50 text-foreground">
+                      <th className="p-4 border-b border-border/50 font-semibold">Вектор обнаружения</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Облачные ИИ-инструменты (Cluely, FinalRoundAI и др.)</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Natively (локальный режим)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Сетевой мониторинг</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Обнаруживаем — исходящие вызовы ИИ-API</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Неопределяем — нулевой исходящий трафик</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Демонстрация / запись экрана</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Виден как отдельное окно приложения</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Невидим — исключён из захвата экрана</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Прокторинговое ПО</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Помечается прокторинговыми инструментами сетевого уровня</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Не помечается — нет сетевых вызовов для обнаружения</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Мониторинг корпоративного VPN</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Трафик ИИ-API виден в логах VPN</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Нет трафика — офлайн-обработка ИИ</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Анализ DNS / файрвола</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Резолвит домены ИИ-провайдеров (openai.com, anthropic.com)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Нет DNS-запросов во время собеседования</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Работа в ограниченных сетях</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Не работает, если домены ИИ-API заблокированы</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да — интернет не требуется</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Настройка Natively для максимальной неопределяемости</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 1: Установите Ollama</h3>
+              <p className="mb-4">
+                Ollama — это бесплатная среда выполнения локального ИИ с открытым исходным кодом. Скачайте её с ollama.com и установите на свой Mac или Windows-машину. Она работает в фоновом режиме и предоставляет локальные языковые модели для Natively.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 2: Загрузите локальную модель</h3>
+              <p className="mb-4">
+                Выполните <code className="bg-muted px-2 py-1 rounded text-sm">ollama pull llama3</code> или <code className="bg-muted px-2 py-1 rounded text-sm">ollama pull deepseek-coder</code>, чтобы скачать локальную ИИ-модель. DeepSeek Coder специально оптимизирован для задач на собеседованиях по программированию. Llama 3 отлично подходит для системного дизайна и поведенческих вопросов.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 3: Настройте Natively на использование локальной модели</h3>
+              <p className="mb-4">
+                В настройках Natively выберите «Ollama» в качестве ИИ-провайдера и укажите загруженную модель. С этого момента вся обработка ИИ происходит локально. Вы можете полностью отключить интернет, и Natively продолжит работать на протяжении всего собеседования.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 4: Начните собеседование</h3>
+              <p className="mb-4">
+                Запустите Natively, предоставьте разрешения на запись экрана и микрофон и начните собеседование. Natively пассивно слушает, распознаёт вопросы и выводит подсказки ИИ в свой невидимый оверлей. Ваш интервьюер не видит ничего. Ваши сетевые логи не показывают ничего. Ваша запись экрана не показывает ничего.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Облачный режим: всё ещё приватнее, чем у конкурентов</h2>
+              <p className="mb-4">
+                Если вы предпочитаете облачные ИИ-модели (GPT-4o, Claude 3.5 Sonnet, Gemini Pro) для более сложных рассуждений, Natively поддерживает модель <strong>Bring Your Own Key (BYOK)</strong>. Вы предоставляете собственный API-ключ от OpenAI, Anthropic, Google или OpenRouter — Natively никогда не имеет доступа к вашим учётным данным или биллингу.
+              </p>
+              <p className="mb-4">
+                В облачном режиме BYOK трафик действительно покидает ваше устройство — но направляется к ИИ-провайдеру, которому вы уже доверяете, через ваш собственный аккаунт, а не через стороннего посредника вроде Cluely или FinalRoundAI. Ваши данные собеседования регулируются вашими собственными условиями API, а не политикой конфиденциальности вендора инструмента для интервью.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Часто задаваемые вопросы</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Является ли Natively полностью неопределяемым?</h3>
+              <p className="mb-4">
+                В локальном режиме (Ollama) Natively генерирует нулевой исходящий сетевой трафик во время собеседования. Оверлей исключён из записей экрана. Никакие домены ИИ-API не запрашиваются. На уровне сети и экрана он неопределяем. Единственное исключение — если проктор физически наблюдает за вашим экраном, но это касается любого ассистента.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Может ли прокторинговое ПО обнаружить Natively?</h3>
+              <p className="mb-4">
+                Большинство прокторингового ПО работает за счёт мониторинга сетевого трафика, захвата скриншотов или ограничения запущенных процессов. Natively в локальном режиме не оставляет сетевого следа. Его оверлей исключён из захватов экрана. Оно работает как обычное нативное настольное приложение, неотличимое от любого другого приложения для продуктивности.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Почему облачные инструменты вроде Cluely обнаруживаемы?</h3>
+              <p className="mb-4">
+                Облачные инструменты вынуждены отправлять ваш экран или аудио на удалённые ИИ-серверы, чтобы генерировать подсказки. Это создаёт исходящий трафик в реальном времени к идентифицируемым эндпоинтам (например, api.openai.com, cluely.com). В наблюдаемых сетях этот трафик логируется и может быть проанализирован. Локальный режим Natively полностью это устраняет.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Какие локальные ИИ-модели лучше всего подходят для технических собеседований?</h3>
+              <p className="mb-4">
+                Для задач по программированию: <strong>DeepSeek Coder V2</strong> (отличные рассуждения об алгоритмах), <strong>Qwen2.5 Coder</strong> (силён в паттернах LeetCode). Для системного дизайна и поведенческих вопросов: <strong>Llama 3.1 8B или 70B</strong> (широкие рассуждения), <strong>Mistral 7B</strong> (быстрые ответы на стандартном оборудовании). Все доступны через Ollama бесплатно.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Работает ли Natively в ограниченных корпоративных сетях?</h3>
+              <p className="mb-4">
+                Да. Если корпоративная сеть блокирует домены ИИ-API или ограничивает исходящий трафик, облачные инструменты вроде FinalRoundAI и LockedIn AI перестанут работать. Natively в локальном режиме не устанавливает исходящих соединений — он работает одинаково в любой сети, включая изолированные (air-gapped) среды.
+              </p>
+            </section>
           </>
         )
       }}

@@ -15,22 +15,26 @@ export default function FinalRoundAIAlternative() {
         children: (
           <>
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Почему разработчики ищут альтернативу FinalRoundAI</h2>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Почему разработчики переходят с FinalRoundAI</h2>
               <p className="mb-4">
-                FinalRoundAI — популярный инструмент подготовки к собеседованиям с 10 миллионами пользователей. Но есть три критических проблемы: цена ($25–50/месяц), облачная архитектура (ваши данные уходят на чужие серверы) и требование постоянного интернет-соединения. Natively решает все три.
+                FinalRoundAI — один из самых популярных ИИ-инструментов для собеседований: более 10 млн пользователей, сильная узнаваемость бренда и набор функций для подготовки. Но у него есть три критические проблемы, которые заставляют разработчиков искать альтернативы: <strong>стоимость ($25–50/месяц)</strong>, <strong>облачная архитектура</strong> (ваш экран и аудио уходят на их серверы) и <strong>зависимость от интернета</strong> во время живых собеседований.
               </p>
               <p className="mb-4">
-                Как ведущая <LocaleLink to="/local-ai-assistant" className="text-primary hover:underline">локальная альтернатива</LocaleLink>, Natively работает полностью на вашем устройстве — без подписки, без передачи данных, без задержки сети. Это настоящая альтернатива FinalRoundAI для разработчиков, которые ценят приватность и скорость.
+                Natively решает все три. Как единственный по-настоящему <strong>гибридный ИИ-ассистент для собеседований</strong>, Natively даёт вам выбор: обрабатывать всё на 100% локально на вашем устройстве для абсолютной приватности через Ollama или подключить свой ключ OpenAI/Anthropic/Gemini для премиального облачного уровня рассуждений без привязки к подписке.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Natively vs FinalRoundAI: Детальное сравнение</h2>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Natively vs FinalRoundAI: прямое сравнение</h2>
+              <p className="mb-4">
+                Вот прямое, фактическое сравнение Natively и FinalRoundAI по параметрам, которые важнее всего для инженеров, готовящихся к техническим собеседованиям.
+              </p>
+
               <div className="overflow-x-auto my-8">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-muted/50 text-foreground">
-                      <th className="p-4 border-b border-border/50 font-semibold">Критерий</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Функция</th>
                       <th className="p-4 border-b border-border/50 font-semibold">FinalRoundAI</th>
                       <th className="p-4 border-b border-border/50 font-semibold">Natively</th>
                     </tr>
@@ -38,23 +42,23 @@ export default function FinalRoundAIAlternative() {
                   <tbody className="text-sm">
                     <tr>
                       <td className="p-4 border-b border-border/50 font-medium">Цена</td>
-                      <td className="p-4 border-b border-border/50 text-red-400">$25–50/месяц</td>
-                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Бесплатно (Free tier)</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">$25–50 / месяц</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Бесплатно (основные функции)</td>
                     </tr>
                     <tr>
                       <td className="p-4 border-b border-border/50 font-medium">Обработка данных</td>
-                      <td className="p-4 border-b border-border/50 text-muted-foreground">Облако (удалённые серверы)</td>
-                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">100% локально</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Облачные серверы (сторонние)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">100% на устройстве</td>
                     </tr>
                     <tr>
-                      <td className="p-4 border-b border-border/50 font-medium">Интернет во время интервью</td>
-                      <td className="p-4 border-b border-border/50 text-red-400">Обязателен</td>
-                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Не требуется</td>
+                      <td className="p-4 border-b border-border/50 font-medium">Требуется интернет во время собеседования</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Да — всегда</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Нет — полностью работает офлайн</td>
                     </tr>
                     <tr>
                       <td className="p-4 border-b border-border/50 font-medium">Приватность</td>
-                      <td className="p-4 border-b border-border/50 text-muted-foreground">Данные на серверах компании</td>
-                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Полный суверенитет данных</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Данные хранятся на их серверах</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Никакие данные не покидают устройство</td>
                     </tr>
                     <tr>
                       <td className="p-4 border-b border-border/50 font-medium">Помощь с кодингом в реальном времени</td>
@@ -62,9 +66,29 @@ export default function FinalRoundAIAlternative() {
                       <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
                     </tr>
                     <tr>
-                      <td className="p-4 border-b border-border/50 font-medium">Открытый исходный код</td>
-                      <td className="p-4 border-b border-border/50 text-muted-foreground">Нет</td>
+                      <td className="p-4 border-b border-border/50 font-medium">Поведенческое собеседование (STAR)</td>
                       <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Поддержка системного дизайна</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Открытый код</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Нет (проприетарный)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да — полностью проверяемый</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Нативность для macOS</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Десктоп-приложение (Electron)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да — нативная производительность</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Риск обнаружения в сети</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Высокий (облачные API-вызовы)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Нулевой (нет исходящего трафика)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -72,9 +96,70 @@ export default function FinalRoundAIAlternative() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Почему Natively — лучшая бесплатная альтернатива FinalRoundAI</h2>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Проблема приватности FinalRoundAI</h2>
               <p className="mb-4">
-                Пользователи FinalRoundAI платят $25–50 в месяц за облачный сервис, который отправляет их данные на сторонние серверы. Natively предлагает аналогичные возможности — помощь с кодингом в реальном времени, расшифровку аудио, поддержку поведенческих вопросов — но бесплатно и без передачи данных.
+                Основной продукт FinalRoundAI — Interview Copilot — слушает аудио вашего живого собеседования и отправляет его на свои серверы для ИИ-обработки. Это означает, что ваши вопросы на собеседовании, ваши ответы и любая проприетарная информация, обсуждаемая во время звонка, передаётся и потенциально хранится на облачной инфраструктуре FinalRoundAI.
+              </p>
+              <p className="mb-4">
+                Для инженеров, проходящих собеседования в компаниях под NDA, это создаёт реальный юридический и этический риск. Вы можете непреднамеренно раскрыть конфиденциальные технические вопросы или внутренние системные архитектуры третьей стороне.
+              </p>
+              <p className="mb-4">
+                Natively полностью устраняет этот риск. Весь захват аудио, расшифровка и вывод ИИ работают локально на вашей машине. <LocaleLink to="/ai-coding-interview-helper" className="text-primary hover:underline">ИИ-помощник для собеседований по кодингу</LocaleLink> никогда не передаёт никаких данных за пределы вашего устройства.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Реальная стоимость FinalRoundAI</h2>
+              <p className="mb-4">
+                Платные планы FinalRoundAI варьируются от $25 до $50 в месяц. За типичный период поиска работы в 3–6 месяцев это $75–$300, потраченных на облачный сервис с доступом по подписке.
+              </p>
+              <p className="mb-4">
+                Natively <strong>бесплатен для основных функций</strong>. Вы можете использовать свой собственный API-ключ (OpenAI, Anthropic, Google Gemini, OpenRouter или кастомные API) — или работать полностью офлайн, используя Ollama с локальными моделями вроде Llama 3 или DeepSeek. Общая стоимость использования Natively за весь поиск работы, включая API-вызовы по схеме BYOK, обычно составляет менее $5.
+              </p>
+              <p className="mb-4">
+                Предпочитаете полностью управляемый облачный опыт «всё работает само» вроде FinalRoundAI? За небольшую долю стоимости вы можете включить <strong>Natively API</strong>, который автоматически и «из коробки» берёт на себя всю обработку STT (Speech-to-Text) и оркестрацию премиальных LLM, не уступая им в простоте использования и без лишних хлопот.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Кому стоит выбрать Natively вместо FinalRoundAI</h2>
+              <p className="mb-4">
+                Natively — лучший выбор, если вы:
+              </p>
+              <ul className="list-disc list-inside space-y-2 mb-4">
+                <li>Хотите <strong>нулевую плату за подписку</strong> — используйте свой API-ключ или Ollama</li>
+                <li>Нуждаетесь в <strong>работе офлайн</strong> — без интернета во время собеседований</li>
+                <li>Цените <strong>приватность данных</strong> — чтобы ничего не покидало ваше устройство</li>
+                <li>Проходите собеседования в компаниях со строгими <strong>требованиями NDA или безопасности</strong></li>
+                <li>Хотите <strong>инструмент с открытым кодом</strong>, который можно инспектировать и которому можно доверять</li>
+                <li>Сосредоточены на <strong>технических собеседованиях / собеседованиях по кодингу</strong> (LeetCode, системный дизайн, алгоритмы)</li>
+              </ul>
+              <p className="mb-4">
+                FinalRoundAI может быть предпочтительнее, если вам нужна обширная библиотека готовых сценариев практики и у вас нет опасений по поводу приватности при облачной обработке.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Часто задаваемые вопросы</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Полностью ли бесплатен Natively как альтернатива FinalRoundAI?</h3>
+              <p className="mb-4">
+                Да. Основные функции помощи на собеседованиях у Natively бесплатны. Вы можете использовать его со своим собственным API-ключом ($0,01–$0,05 за сессию собеседования у большинства провайдеров) или работать полностью бесплатно, используя Ollama с локальными моделями.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Может ли Natively заменить FinalRoundAI для собеседований по кодингу?</h3>
+              <p className="mb-4">
+                Безусловно. Natively предоставляет помощь в реальном времени для алгоритмических задач в стиле LeetCode, вопросов по системному дизайну и поведенческих собеседований — те же сценарии, на которые нацелен FinalRoundAI. Ключевое отличие в том, что Natively делает это локально, без зависимости от облака.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Есть ли у Natively функция пробного собеседования, как у FinalRoundAI?</h3>
+              <p className="mb-4">
+                Natively сосредоточен на помощи в реальном времени во время живых собеседований и практических сессий. Для структурированной практики пробных собеседований вы можете сочетать локальный ИИ Natively с любой платформой для кодинга.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Как мигрировать с FinalRoundAI на Natively?</h3>
+              <p className="mb-4">
+                Скачайте Natively с natively.software, настройте предпочитаемого ИИ-провайдера (или настройте Ollama для бесплатных локальных моделей) — и вы готовы. Миграция данных не нужна — Natively начинает с чистого листа на вашем устройстве.
               </p>
             </section>
           </>

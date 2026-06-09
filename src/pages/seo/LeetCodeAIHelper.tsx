@@ -15,12 +15,191 @@ export default function LeetCodeAIHelper() {
         children: (
           <>
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Почему LeetCode-задачи сложны на реальных интервью</h2>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Почему LeetCode сложнее на живом собеседовании</h2>
               <p className="mb-4">
-                Выполнение LeetCode-задач на собеседованиях сложнее, чем дома. Стресс, ограничение по времени и необходимость объяснять своё мышление вслух — всё это снижает когнитивную производительность. ИИ-помощник даёт вам точку опоры для начала решения.
+                Решать LeetCode-задачи дома и решать их вживую в рамках 45-минутного собеседования — принципиально разный опыт. Тревога перед оценкой, необходимость проговаривать ход мыслей вслух и нависающее ограничение по времени подавляют те когнитивные паттерны, на которые вы опираетесь во время тренировок.
               </p>
               <p className="mb-4">
-                Natively анализирует задачу прямо с вашего экрана и предлагает оптимальный алгоритмический подход за доли секунды — без облака, без задержки сети.
+                Локальный ИИ-помощник даёт вам мгновенную точку опоры — увидев оптимальный алгоритмический подход боковым зрением, вы сразу снижаете панику «чистого листа», которая сбивает с толку даже способных инженеров.
+              </p>
+              <p className="mb-4">
+                Natively считывает задачу прямо с вашего экрана, определяет оптимальную структуру данных и алгоритм и отображает структурированный подход за миллисекунды — всё это работает локально, не создавая никакого сетевого трафика.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Как Natively работает в роли ИИ-помощника для LeetCode</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 1: Распознавание задачи через экранный OCR</h3>
+              <p className="mb-4">
+                Когда LeetCode-задача появляется на вашем экране — будь то в браузере, в общей среде для кодинга вроде CoderPad или в интерфейсе HackerRank — локальный OCR-движок Natively захватывает и разбирает условие задачи в реальном времени. Копировать-вставлять ничего не нужно.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 2: Определение алгоритма</h3>
+              <p className="mb-4">
+                ИИ Natively анализирует задачу и определяет подходящий алгоритмический паттерн:
+              </p>
+              <ul className="list-disc list-inside space-y-2 mb-4">
+                <li><strong>Два указателя (Two Pointers)</strong> — для отсортированных массивов, проверки палиндромов, задач с контейнерами</li>
+                <li><strong>Скользящее окно (Sliding Window)</strong> — для задач оптимизации подмассивов/подстрок</li>
+                <li><strong>Бинарный поиск (Binary Search)</strong> — для отсортированных массивов, сужения пространства поиска</li>
+                <li><strong>BFS/DFS</strong> — для обхода деревьев, графов и матриц</li>
+                <li><strong>Динамическое программирование</strong> — для задач оптимизации, подсчёта и мемоизации</li>
+                <li><strong>Куча/Очередь с приоритетом (Heap/Priority Queue)</strong> — для K-го наибольшего/наименьшего, планирования</li>
+                <li><strong>Префиксное дерево (Trie)</strong> — для задач с префиксами/словарями</li>
+                <li><strong>Система непересекающихся множеств (Union-Find)</strong> — для задач связности и группировки</li>
+              </ul>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 3: Генерация решения</h3>
+              <p className="mb-4">
+                ИИ генерирует полное решение с:
+              </p>
+              <ul className="list-disc list-inside space-y-2 mb-4">
+                <li>Оптимальной временной сложностью (Big-O) и пространственной сложностью</li>
+                <li>Пошаговым словесным объяснением, которое вы можете проговорить интервьюеру</li>
+                <li>Полной реализацией кода на выбранном вами языке (Python, Java, C++, JavaScript, Go и др.)</li>
+                <li>Выявлением и обработкой граничных случаев</li>
+              </ul>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 4: Отображение в невидимом оверлее</h3>
+              <p className="mb-4">
+                Всё это появляется в прозрачном оверлее Natively — невидимом для демонстрации экрана, невидимом для интервьюера, видимом только вам. Вы бросаете взгляд, понимаете подход и объясняете его естественно своими словами.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Категории задач LeetCode: как Natively справляется с каждой</h2>
+
+              <div className="overflow-x-auto my-8">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-muted/50 text-foreground">
+                      <th className="p-4 border-b border-border/50 font-semibold">Категория задач</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Распространённые паттерны</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Вывод Natively</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Массивы / Строки</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Два указателя, скользящее окно, префиксные суммы</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Паттерн + решение за O(n)</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Деревья</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">DFS, BFS, рекурсия, обход по уровням</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Тип обхода + рекурсивное решение</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Графы</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">DFS, BFS, Дейкстра, Union-Find</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Выбор алгоритма + реализация через список смежности</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Динамическое программирование</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">1D/2D DP, мемоизация, табуляция</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Определение состояния + рекуррентное соотношение</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Бинарный поиск</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Поиск в отсортированных/повёрнутых массивах</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Логика левого/правого указателя + условие</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Куча / Очередь с приоритетом</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">K-й элемент, слияние K отсортированных, Дейкстра</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Настройка min/max-кучи + логика push/pop</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Почему локальная обработка важна для помощи на LeetCode-собеседованиях</h2>
+              <p className="mb-4">
+                У облачных ИИ-помощников для LeetCode есть фундаментальная проблема: <strong>задержка</strong>. Когда вы прорабатываете задачу на бинарный поиск и вам нужно проверить условие завершения, ожидание 3–5 секунд ответа от облачного API создаёт неестественную паузу, которую интервьюеры замечают.
+              </p>
+              <p className="mb-4">
+                Локальный вывод Natively выполняется менее чем за секунду на любом современном Mac (M1+) или Windows-машине с 8 ГБ+ ОЗУ. Ответ появляется ещё до того, как вы дочитаете задачу — естественно, плавно и незаметно.
+              </p>
+              <p className="mb-4">
+                Кроме того, облачные помощники для LeetCode генерируют непрерывный API-трафик во время сессий. Подкованные в сетях интервьюеры или прокторинговые платформы с мониторингом трафика могут это обнаружить. Natively с Ollama генерирует <strong>нулевой исходящий сетевой трафик</strong>.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Лучшие ИИ-модели для помощи с LeetCode в Natively</h2>
+              <p className="mb-4">
+                Не все ИИ-модели одинаково хороши в задачах по программированию. Вот как варианты ранжируются именно для LeetCode:
+              </p>
+              <div className="overflow-x-auto my-8">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-muted/50 text-foreground">
+                      <th className="p-4 border-b border-border/50 font-semibold">Модель</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Качество на LeetCode</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Стоимость</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Примечания</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">DeepSeek Coder 33B (Ollama)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500">⭐⭐⭐⭐⭐</td>
+                      <td className="p-4 border-b border-border/50 text-green-500">$0 (Бесплатно)</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Лучшая бесплатная модель для кода, работает локально</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Claude 3.5 Sonnet (BYOK)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500">⭐⭐⭐⭐⭐</td>
+                      <td className="p-4 border-b border-border/50 text-yellow-500">~$0.05/сессия</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Лучшее общее качество для сложного DP</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">GPT-4o (BYOK)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500">⭐⭐⭐⭐⭐</td>
+                      <td className="p-4 border-b border-border/50 text-yellow-500">~$0.03/сессия</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Отлично для объяснения алгоритмов</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Qwen2.5 Coder 7B (Ollama)</td>
+                      <td className="p-4 border-b border-border/50 text-yellow-500">⭐⭐⭐⭐</td>
+                      <td className="p-4 border-b border-border/50 text-green-500">$0 (Бесплатно)</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Хороша для Python/JS, быстра на 8 ГБ ОЗУ</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Llama 3.1 8B (Ollama)</td>
+                      <td className="p-4 border-b border-border/50 text-yellow-500">⭐⭐⭐</td>
+                      <td className="p-4 border-b border-border/50 text-green-500">$0 (Бесплатно)</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Компетентный общий код, быстрая</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Часто задаваемые вопросы</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Может ли ИИ решать задачи уровня LeetCode Hard?</h3>
+              <p className="mb-4">
+                Топовые ИИ-модели (Claude 3.5, GPT-4o, DeepSeek Coder) могут правильно решать многие задачи уровня LeetCode Hard, особенно стандартные паттерны. Иногда они испытывают трудности с очень нестандартными или сильно ограниченными задачами. Для подавляющего большинства типичных для собеседований Hard-задач ИИ предоставит правильное или близкое к правильному решение с надлежащим анализом.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Работает ли Natively на HackerRank, CoderPad и CodeSignal?</h3>
+              <p className="mb-4">
+                Да. Natively считывает ваш экран через локальный OCR, поэтому работает с любой платформой для кодинга, включая LeetCode, HackerRank, CoderPad, CodeSignal и Karat. Он захватывает условие задачи независимо от платформы.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">С какими языками помогает ИИ для LeetCode?</h3>
+              <p className="mb-4">
+                Natively поддерживает все основные языки для собеседований: Python, Java, C++, JavaScript, TypeScript, Go, Rust, C#, Ruby и Kotlin. Укажите предпочитаемый язык в настройках Natively, и весь вывод кода будет ему соответствовать.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Не пометят ли меня за использование ИИ для LeetCode во время собеседования?</h3>
+              <p className="mb-4">
+                При использовании Natively с Ollama сетевой трафик не генерируется — поэтому сетевой мониторинг не может обнаружить использование. Оверлей невидим для демонстрации экрана. Основной вектор обнаружения для любого ИИ-инструмента — поведенческий: неестественно быстрые ответы, неспособность объяснить код или нетипичные движения глаз. Использование ИИ как системы подсказок (а не как машины для копирования-вставки) сохраняет естественное поведение.
               </p>
             </section>
           </>

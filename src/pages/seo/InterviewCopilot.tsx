@@ -24,15 +24,155 @@ export default function InterviewCopilot() {
               </p>
             </section>
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Ключевые функции локального копилота</h2>
-              <ul className="list-disc list-inside space-y-2 mb-4">
-                <li>Помощь с алгоритмами и LeetCode-задачами в реальном времени</li>
-                <li>Поддержка вопросов по системному дизайну</li>
-                <li>STAR-структура для поведенческих вопросов</li>
-                <li>Полностью офлайн с Ollama (бесплатно)</li>
-                <li>Невидимый оверлей для вашего экрана</li>
-                <li>Работает с Zoom, Google Meet, Teams</li>
-              </ul>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Зачем выбирать локальный копилот для собеседований?</h2>
+              <p className="mb-4">
+                Облачные копилоты для собеседований передают ваше аудио и содержимое экрана на удалённые серверы для обработки ИИ. Это порождает три проблемы:
+              </p>
+              <ol className="list-decimal list-inside space-y-3 mb-4">
+                <li><strong>Риск для приватности</strong> — ваши вопросы с собеседования, ваш код и конфиденциальная информация компании передаются на сторонний сервер.</li>
+                <li><strong>Обнаруживаемость в сети</strong> — облачные API-вызовы во время живого собеседования могут быть обнаружены инструментами сетевого мониторинга, которые используют продвинутые работодатели.</li>
+                <li><strong>Задержка</strong> — обращения к облачным серверам туда-обратно добавляют заметную задержку. В динамичном собеседовании по программированию такая заминка выглядит подозрительно.</li>
+              </ol>
+              <p className="mb-4">
+                Natively решает все три. Обработка происходит целиком на вашем оборудовании, генерируя <strong>нулевой сетевой трафик</strong> во время сессии собеседования. Ответы появляются за миллисекунды — с аппаратным ускорением через Apple Neural Engine или GPU.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Как Natively работает в роли вашего копилота для собеседований</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">1. Транскрипция аудио в реальном времени</h3>
+              <p className="mb-4">
+                Natively использует локальную реализацию модели Whisper от OpenAI для транскрипции вопросов интервьюера в реальном времени. Это работает целиком на устройстве — никакое аудио никуда не отправляется.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">2. Захват экрана и OCR</h3>
+              <p className="mb-4">
+                Приложение захватывает ваш экран с помощью нативных API macOS и Windows, затем выполняет OCR для разбора редакторов кода, демонстрируемых экранов и условий задач. Это даёт ИИ полный контекст того, над чем вы работаете.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">3. Локальный вывод LLM</h3>
+              <p className="mb-4">
+                Natively передаёт транскрибированный вопрос и контекст экрана локальной языковой модели — будь то модель, размещённая в Ollama (Llama 3, DeepSeek, Mistral), или предоставленный вами облачный API-ключ (OpenAI, Anthropic, Gemini). Результат вывода мгновенно появляется на вашем экране в виде прозрачного оверлея.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">4. Невидимый оверлей</h3>
+              <p className="mb-4">
+                Окно оверлея настроено так, чтобы быть невидимым для инструментов записи и демонстрации экрана. Ваш интервьюер видит только ваш редактор кода и ваше лицо — Natively остаётся полностью скрытым.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Функции копилота для собеседований: что покрывает Natively</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Алгоритмы и задачи LeetCode</h3>
+              <p className="mb-4">
+                Когда задача в стиле LeetCode появляется на экране или произносится интервьюером, Natively анализирует её, определяет оптимальный алгоритм или структуру данных и генерирует решение с объяснением. Он охватывает массивы, деревья, графы, динамическое программирование, бинарный поиск и многое другое.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Собеседования по системному дизайну</h3>
+              <p className="mb-4">
+                Для вопросов по системному дизайну Natively формирует структурированную разбивку: архитектура компонентов, подход к масштабируемости, выбор базы данных, стратегия кэширования и обсуждение компромиссов. Вывод откалиброван под уровень роли (SDE I против Staff Engineer) на основе вашего описания вакансии.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Поведенческие вопросы (метод STAR)</h3>
+              <p className="mb-4">
+                Когда обнаруживаются поведенческие вопросы — «Расскажите о случае, когда...» или «Опишите ситуацию, где...» — Natively предоставляет каркас фреймворка STAR и может вывести релевантные примеры из загруженного вами резюме.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Технические вопросы и ответы</h3>
+              <p className="mb-4">
+                Для общих технических вопросов (отладка, особенности языка, анализ сложности выполнения) Natively даёт краткие, точные ответы, которые вы можете естественно развить своими словами.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Natively против облачных копилотов для собеседований: сравнение</h2>
+
+              <div className="overflow-x-auto my-8">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-muted/50 text-foreground">
+                      <th className="p-4 border-b border-border/50 font-semibold">Функция</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Natively (локально)</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Облачные копилоты (FinalRoundAI и др.)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Приватность данных</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Никакие данные не покидают устройство</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Аудио/экран отправляются в облако</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Скорость ответа</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Менее секунды (аппаратное ускорение)</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">2–5 с (обращение по сети туда-обратно)</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Сетевой трафик во время собеседования</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Нулевой</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Непрерывные API-вызовы</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Работа офлайн</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да (с Ollama)</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Нет</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Стоимость</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Бесплатно / Оплата за API</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Подписка $25–50/мес</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Открытый исходный код</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Нет</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Начало работы с копилотом Natively для собеседований</h2>
+              <p className="mb-4">
+                Настройка Natively как вашего копилота для собеседований занимает менее 5 минут:
+              </p>
+              <ol className="list-decimal list-inside space-y-3 mb-4">
+                <li>Скачайте Natively с <strong>natively.software</strong> (macOS или Windows)</li>
+                <li>Выберите ИИ-бэкенд: вставьте свой ключ OpenAI/Anthropic или установите Ollama для полностью бесплатной офлайн-настройки</li>
+                <li>Предоставьте разрешения на запись экрана и микрофон в системных настройках</li>
+                <li>Разместите оверлей там, где ваши глаза естественно отдыхают во время видеозвонков</li>
+                <li>Откройте следующее собеседование и позвольте Natively сделать остальное</li>
+              </ol>
+              <p className="mb-4">
+                <LocaleLink to="/ai-coding-interview-helper" className="text-primary hover:underline">ИИ-помощник по кодингу на собеседованиях</LocaleLink> начинает работать сразу — без аккаунта, без активации подписки.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Часто задаваемые вопросы о копилотах для собеседований</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Какой лучший бесплатный ИИ-копилот для собеседований?</h3>
+              <p className="mb-4">
+                Natively — лучший бесплатный ИИ-копилот для собеседований. Основные функции бесплатны, и вы можете запускать его полностью офлайн через Ollama — за $0 в API-сборах. Другие копилоты вроде FinalRoundAI требуют подписки в $25–50/мес.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Можно ли обнаружить копилоты для собеседований?</h3>
+              <p className="mb-4">
+                Облачные копилоты для собеседований потенциально могут быть обнаружены через мониторинг сетевого трафика (постоянные API-вызовы к ИИ-серверам) или поведенческий анализ. Natively генерирует нулевой сетевой трафик во время сессий при использовании Ollama, что делает его неопределяемым на сетевом уровне. Оверлей также невидим для ПО демонстрации экрана.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Этично ли использовать копилот для собеседований?</h3>
+              <p className="mb-4">
+                Это неоднозначная тема. Многие инженеры используют копилоты для собеседований для тренировки и обретения уверенности. Для помощи в живом собеседовании политики компаний различаются. Natively позволяет вам принять осознанное решение: это открытый инструмент под вашим контролем, в отличие от непрозрачных облачных продуктов.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Работает ли Natively с задачами по программированию на HackerRank или CoderPad?</h3>
+              <p className="mb-4">
+                Да. Natively захватывает ваш экран — включая платформы для кодинга вроде HackerRank, CoderPad, LeetCode и CodeSignal — и предоставляет контекстную помощь ИИ на основе того, что отображается и что говорит интервьюер.
+              </p>
             </section>
           </>
         )

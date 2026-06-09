@@ -40,7 +40,7 @@
   <meta property="og:type" content="website" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@nativelyapp" />
+  <meta name="twitter:site" content="@nativelyHQ" />
   <meta name="twitter:title" content="Natively — Free AI Interview Assistant & Meeting Copilot | Undetectable, Local" />
   <meta name="twitter:description"
     content="AI for interviews & meetings with live coding help, instant answers, and auto notes. Unlike Cluely or FinalRoundAI, invisible during your call — and completely free." />
@@ -56,7 +56,7 @@
     "applicationCategory": "DeveloperApplication",
     "applicationSubCategory": "AI Interview Assistant",
     "operatingSystem": "macOS, Windows",
-    "softwareVersion": "2.0.5",
+    "softwareVersion": "2.7.0",
     "description": "Natively is the most flexible AI interview assistant — run it 100% locally with Ollama for zero cloud exposure, or plug in your own OpenAI/Anthropic/Gemini key for cloud-grade AI. Privacy or power, your call. Natively is a local AI interview assistant that runs entirely on your device. It provides real-time coding interview help, live transcription, meeting notes, and on-screen AI answers during technical interviews — with zero cloud dependency and complete privacy.",
     "featureList": [
       "Real-time coding interview assistance",
@@ -102,50 +102,6 @@
         "url": "https://natively.software/"
       }
     ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "127",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Arjun S." },
-        "reviewBody": "Natively saved me hundreds of dollars. I was paying $50/month for FinalRoundAI, switched to Natively and it runs completely offline — no cloud pings, no subscription. Landed two offers using it.",
-        "datePublished": "2025-12-08"
-      },
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Mei L." },
-        "reviewBody": "The local-only mode is a game-changer. My company network blocks outbound AI APIs during remote interviews, but Natively runs offline so there's zero detectability. Passed two FAANG rounds.",
-        "datePublished": "2025-11-21"
-      },
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Daniel K." },
-        "reviewBody": "Compared to Cluely and LockedIn AI, Natively is the only one that actually runs on your machine. No cloud lag, no privacy risk, and it's free. Doesn't get better than this.",
-        "datePublished": "2026-01-15"
-      },
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Priya M." },
-        "reviewBody": "Finally an AI interview tool that respects privacy. Natively helped me through LeetCode hard problems and system design rounds — completely local, completely free. Got the job!",
-        "datePublished": "2026-02-03"
-      },
-      {
-        "@type": "Review",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "author": { "@type": "Person", "name": "Tomás R." },
-        "reviewBody": "I was skeptical but Natively outperformed Interview Coder for LeetCode questions and cost me nothing. The offline mode works perfectly even when traveling with spotty wifi.",
-        "datePublished": "2026-03-10"
-      }
-    ],
     "downloadUrl": "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/releases/download",
     "releaseNotes": "https://natively.software/",
     "creator": {
@@ -172,8 +128,17 @@
     },
     "description": "Natively builds local-first AI tools that help developers and professionals succeed in technical interviews and meetings without sacrificing privacy.",
     "foundingDate": "2024",
+    "founder": {
+      "@type": "Person",
+      "name": "Evin John",
+      "url": "https://x.com/evinjohnn",
+      "sameAs": ["https://x.com/evinjohnn"]
+    },
     "sameAs": [
-      "https://twitter.com/nativelyapp",
+      "https://x.com/nativelyHQ",
+      "https://www.linkedin.com/company/nativley-ai",
+      "https://www.producthunt.com/products/natively-ai-2",
+      "https://news.ycombinator.com/item?id=46923304",
       "https://github.com/Natively-AI-assistant"
     ],
     "contactPoint": {
@@ -185,7 +150,7 @@
   }
   </script>
 
-  <!-- Schema: WebSite with SearchAction (Sitelinks Searchbox) -->
+  <!-- Schema: WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -194,14 +159,30 @@
     "alternateName": ["Natively AI", "Natively App", "Natively Software"],
     "url": "https://natively.software/",
     "description": "Local AI interview assistant for coding interviews, technical questions, and real-time meeting help.",
-    "inLanguage": ["en", "ru"],
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://natively.software/?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
+    "inLanguage": ["en", "ru"]
+  }
+  </script>
+
+  <!-- Schema: WebPage with SpeakableSpecification (flags AI/voice-citable passages) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Natively — Free AI Interview Assistant & Meeting Copilot",
+    "url": "https://natively.software/",
+    "description": "Natively is a local-first AI interview assistant that runs entirely on your device for real-time coding interview help, live transcription, and meeting notes — with zero cloud dependency.",
+    "inLanguage": "en",
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://natively.software/og-image.png"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "h2", ".faq-question", ".faq-answer"]
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://natively.software/"
     }
   }
   </script>
@@ -241,7 +222,7 @@
         "name": "What is the best AI tool for coding interviews in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Natively is considered the best local AI tool for coding interviews in 2026 because it runs entirely on-device (macOS and Windows), requires no internet connection during sessions, and is completely invisible to screen-sharing software. Unlike cloud-based tools such as Cluely, FinalRoundAI, LockedIn AI, and Interview Coder, Natively generates zero network traffic during an interview, making it undetectable while providing instant AI-powered coding guidance — and it's free."
+          "text": "Natively is considered the best AI tool for coding interviews in 2026 because it is the only assistant that runs in three modes: fully local via Ollama (Llama, DeepSeek, Mistral) for zero cloud exposure, cloud via your own OpenAI, Anthropic, or Gemini key (BYOK), or a managed Natively API. It runs on-device on macOS and Windows and stays invisible to screen-sharing software through a system-level overlay. For example, during a live LeetCode round, Natively reads the on-screen problem via local OCR and surfaces an approach plus Big-O analysis in a discreet overlay. Unlike cloud-only tools such as Cluely, FinalRoundAI, LockedIn AI, and Interview Coder — which stream your audio and screen to remote servers and can be flagged by network monitoring — Natively in local mode generates zero outbound network traffic, making it undetectable at the network layer. It is free to start, with no credit card required for the local and BYOK tiers."
         }
       },
       {
@@ -273,7 +254,7 @@
         "name": "Is Natively free to use?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Natively offers a free tier that includes core AI interview assistance features with no account required. A Premium plan at $19 per month unlocks unlimited sessions, advanced AI models, custom templates, and priority support. You can download and start using Natively for free immediately."
+          "text": "Yes. Natively offers a genuinely free tier with no account and no credit card required. In free mode you can run it 100% locally with Ollama — models like Llama 3.1, DeepSeek Coder, and Mistral run on your own hardware at $0 in API costs forever — or connect your own OpenAI, Anthropic, or Gemini key (BYOK) and pay only your provider's per-token rate, which is typically a fraction of a subscription. For comparison, FinalRoundAI runs around $50 per month and Interview Coder around $60 per month, both with no free local option. Natively's optional Premium plan is $19 per month and adds unlimited sessions, priority access to higher-capacity models, custom templates, and priority support, plus the fully managed Natively API that handles speech-to-text and the LLM for you. You can download Natively and start using the free tier immediately on macOS or Windows."
         }
       },
       {
@@ -281,7 +262,7 @@
         "name": "How is Natively different from Cluely?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Natively is a local-first alternative to Cluely. While Cluely routes data through the cloud, Natively runs its AI models entirely on your device. This means no subscription to a remote inference API, no network traffic during your interview, lower latency for real-time suggestions, and complete data privacy. Natively also supports both macOS and Windows."
+          "text": "Natively is a local-first alternative to Cluely with a fundamentally different architecture. Cluely is cloud-only — it routes your audio and screen to its servers for processing and requires a paid subscription. Natively lets you choose: run AI models entirely on your device with Ollama (no data ever leaves your machine), bring your own OpenAI/Anthropic/Gemini key, or use the managed Natively API. In local mode this means no remote inference subscription, zero outbound network traffic during your interview, lower latency because inference happens on your CPU/GPU rather than over a round-trip to a datacenter, and complete data privacy. A practical example: if your interviewer's company monitors outbound connections during a screen-share, Cluely's API calls can be flagged, whereas Natively in local mode produces no network footprint at all. Natively is also purpose-built for technical and coding interviews (Cluely focuses on general meetings) and supports both macOS — Apple Silicon and Intel — and Windows."
         }
       },
       {
@@ -313,7 +294,7 @@
         "name": "Does Natively require an internet connection during the interview?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Once Natively is installed and the local AI model is downloaded, it operates completely offline. You do not need an internet connection during your interview session. This is a core design principle — the application is built for air-gapped, privacy-first operation."
+          "text": "It depends on the mode you choose, and that flexibility is unique to Natively. In local mode, once the app is installed and your Ollama model is downloaded, Natively operates completely offline — you can run an entire interview in airplane mode with no internet at all, because transcription (local Whisper) and the language model both execute on your device. This air-gapped, privacy-first operation is a core design principle and the reason Natively produces zero detectable network traffic. If you instead opt for cloud mode using your own OpenAI, Anthropic, or Gemini key, or the managed Natively API, an internet connection is required because those requests reach the provider's servers. Cloud-only competitors such as Cluely, FinalRoundAI, and LockedIn AI never offer the offline option — they always require connectivity. With Natively you decide per session whether you want maximum AI power (cloud) or maximum privacy and zero footprint (local)."
         }
       },
       {
@@ -377,7 +358,7 @@
         "name": "How does Natively compare to LockedIn AI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Both Natively and LockedIn AI offer real-time interview assistance, but the core difference is where AI runs. LockedIn AI is cloud-based — it sends your audio and screen data to remote servers, which creates network traffic that can be detected on corporate or monitored networks. Natively runs entirely on your device: no cloud calls, no detectable traffic, no data leaving your machine. Natively also has a permanently free tier, while LockedIn AI's advanced features require a paid plan."
+          "text": "Both Natively and LockedIn AI offer real-time interview assistance, but the core difference is where the AI runs and who controls your data. LockedIn AI is cloud-based — it sends your audio and screen data to remote servers, which creates outbound network traffic that proctoring tools or a corporate firewall can detect during a monitored interview. Natively can run entirely on your device with Ollama: no cloud calls, no detectable traffic, and no data leaving your machine. For example, on a locked-down work laptop where outbound AI APIs are blocked, LockedIn AI would fail or be flagged, while Natively in local mode keeps working because nothing leaves the device. Natively also has a permanently free local tier and a BYOK option where you pay only your provider's token cost, whereas LockedIn AI's advanced features require a paid subscription. If you do want cloud-grade models, Natively still lets you plug in your own key — so you get LockedIn AI's power without giving up the local, private fallback."
         }
       },
       {
@@ -393,7 +374,7 @@
         "name": "Is Natively truly undetectable during online interviews?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Natively is designed to be undetectable at every layer. It does not appear as a separate window in screen-share recordings — it uses a system-level overlay. In local mode (using Ollama), it generates zero outbound network traffic, so network monitoring tools see nothing unusual. Unlike cloud-based tools like Cluely or FinalRoundAI that make visible API calls, Natively's local inference creates no network footprint during your interview."
+          "text": "Yes — Natively is designed to be undetectable at both the visual and network layers, and the network layer is where most tools get caught. Visually, Natively does not appear as a separate window or participant in Zoom, Google Meet, or Teams screen shares because it renders as a system-level overlay that is excluded from captured content. At the network layer, when you run in local mode with Ollama, all transcription and AI inference happen on your own CPU or GPU, so Natively generates zero outbound network traffic — a firewall or proctoring agent watching for unusual connections sees nothing. This is the key distinction from cloud-based tools like Cluely, FinalRoundAI, and LockedIn AI, which must make visible API calls to remote servers that monitoring software can flag. Note that detectability only holds in local mode: if you choose cloud mode with your own API key, those requests do travel over the network like any other tool's would."
         }
       }
     ]

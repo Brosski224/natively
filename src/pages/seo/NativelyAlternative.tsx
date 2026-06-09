@@ -94,7 +94,7 @@ export default function NativelyAlternative() {
         </p>
       </section>
     </>) }}
-      canonicalPath="/natively-alternative"
+      canonicalPath="/cluely-alternative"
       h1="The Best Local AI Alternative for Private Interviews"
     >
       <section>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "@/lib/motion";
 import nativelyLogo from "@/assets/logo.webp";
 import { useTranslation } from "react-i18next";
 

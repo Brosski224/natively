@@ -25,11 +25,164 @@ export default function FreeAIInterviewAssistant() {
             </section>
             <section>
               <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Три способа использовать Natively бесплатно</h2>
-              <ol className="list-decimal list-inside space-y-3 mb-4">
-                <li><strong>Ollama (полностью бесплатно, офлайн)</strong> — установите Ollama, скачайте Llama 3 или DeepSeek, используйте без интернета и без API-ключей</li>
-                <li><strong>Собственный API-ключ</strong> — используйте OpenAI или Anthropic по цене ~$0.01–0.05 за сессию</li>
-                <li><strong>Бесплатный тир Natively</strong> — лимитированное использование без ввода карты</li>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Вариант 1: Ollama (полностью бесплатно, полностью офлайн)</h3>
+              <p className="mb-4">
+                Самая мощная бесплатная конфигурация. Установите <a href="https://ollama.ai" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Ollama</a> на свой Mac или Windows-машину, загрузите модель (Llama 3.1, DeepSeek Coder или Mistral) и настройте Natively на её использование. Ваши общие расходы на API: <strong>$0.00</strong>. Эта конфигурация работает полностью офлайн — интернет-соединение во время собеседования не требуется.
+              </p>
+              <p className="mb-4">
+                Рекомендуемые бесплатные модели для собеседований по кодингу:
+              </p>
+              <ul className="list-disc list-inside space-y-1 mb-4">
+                <li><strong>DeepSeek Coder 6.7B</strong> — отлично для алгоритмов и генерации кода</li>
+                <li><strong>Llama 3.1 8B</strong> — сильные универсальные рассуждения</li>
+                <li><strong>Mistral 7B</strong> — быстрая, эффективная, хорошие технические рассуждения</li>
+                <li><strong>Qwen2.5 Coder 7B</strong> — специализирована на задачах с кодом</li>
+              </ul>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Вариант 2: Собственный API-ключ (~$0.01–0.05/собеседование)</h3>
+              <p className="mb-4">
+                Если вам нужен доступ к более мощным моделям (GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro), вы можете использовать собственный API-ключ. Natively отправляет в API только конкретный вопрос — а не непрерывный аудиопоток — сохраняя ваши расходы минимальными.
+              </p>
+              <p className="mb-4">
+                Типичная стоимость за сессию собеседования: <strong>$0.02–0.10</strong>. Сравните это с $25–50/мес у FinalRoundAI.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Вариант 3: Бесплатный тариф Natively</h3>
+              <p className="mb-4">
+                Бесплатный тариф Natively включает основные функции помощи на собеседованиях без необходимости указывать способ оплаты. Перейдите на Premium ($19/мес) для неограниченных сессий и доступа к продвинутым конфигурациям моделей.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Что включает бесплатный ИИ-ассистент для собеседований</h2>
+              <div className="overflow-x-auto my-8">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-muted/50 text-foreground">
+                      <th className="p-4 border-b border-border/50 font-semibold">Функция</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Бесплатно (Ollama/BYOK)</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Premium ($19/мес)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Помощь с кодингом в реальном времени</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓ Без ограничений</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓ Без ограничений</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Решение алгоритмических задач</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Поддержка системного дизайна</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Поведенческие собеседования (STAR)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Невидимый оверлей</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Офлайн-режим (Ollama)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Поддержка облачного API (BYOK)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓ Любой провайдер</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓ Любой провайдер</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Продвинутые конфигурации моделей</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Базовые</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓ Полный доступ</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Приоритетные ИИ-модели</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Стандартные</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">✓ GPT-4o, Claude 3.5</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Бесплатно против платно: сколько реально стоят ИИ-ассистенты для собеседований</h2>
+              <p className="mb-4">
+                Вот реалистичное сравнение стоимости для типичного поиска работы продолжительностью 3 месяца с еженедельными собеседованиями:
+              </p>
+              <div className="overflow-x-auto my-8">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-muted/50 text-foreground">
+                      <th className="p-4 border-b border-border/50 font-semibold">Инструмент</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Стоимость в месяц</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Итого за 3 месяца</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Приватность данных</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">FinalRoundAI</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">$25–50</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">$75–$150</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Хранится в облаке</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Natively + Ollama</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">$0.00</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">$0.00</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">100% локально</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Natively + BYOK (OpenAI)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">~$0.50–$2</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">~$1.50–$6</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Ваш API-ключ</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Natively Premium</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">$19</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">$57</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">100% локально</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Как настроить бесплатный ИИ-ассистент для собеседований за 5 минут</h2>
+              <ol className="list-decimal list-inside space-y-4 mb-4">
+                <li>
+                  <strong>Скачайте Natively</strong> — Зайдите на natively.software и скачайте для macOS (M1/M2/M3 или Intel) либо Windows.
+                </li>
+                <li>
+                  <strong>Установите Ollama</strong> (для работы за $0) — Скачайте Ollama с <a href="https://ollama.ai" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">ollama.ai</a> и выполните <code className="bg-muted px-1 rounded">ollama pull llama3.1</code> или <code className="bg-muted px-1 rounded">ollama pull deepseek-coder</code>
+                </li>
+                <li>
+                  <strong>Предоставьте разрешения</strong> — В системных настройках macOS предоставьте Natively доступ к записи экрана и микрофону.
+                </li>
+                <li>
+                  <strong>Настройте ИИ-провайдера</strong> — В настройках Natively выберите Ollama и загруженную модель. Или вставьте свой API-ключ OpenAI/Anthropic.
+                </li>
+                <li>
+                  <strong>Начните собеседование</strong> — Запустите Natively, разместите оверлей и начните следующее техническое собеседование.
+                </li>
               </ol>
+              <p className="mb-4">
+                <LocaleLink to="/ai-coding-interview-helper" className="text-primary hover:underline">ИИ-помощник по кодингу на собеседованиях</LocaleLink> активируется автоматически, когда обнаруживает вопросы по программированию или паттерны разговора на собеседовании.
+              </p>
             </section>
           </>
         )

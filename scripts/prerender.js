@@ -1,13 +1,49 @@
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import express from 'express';
+import puppeteer from 'puppeteer-core';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
 
+const SITE = 'https://natively.software';
+const PORT = 4178;
+
+// Locales to prerender. 'en' is the default (bare path); others are served under
+// a /<locale>/ prefix. Keep this in sync with src/config/locales.ts — prerender.js
+// runs in plain Node and cannot import the app's .ts module. To add a locale:
+// register its JSON in src/i18n.ts, add it here, and add a `<locale>: {...}` block
+// to each route below.
+const SUPPORTED_LOCALES = ['en', 'ru'];
+const DEFAULT_LOCALE = 'en';
+
+// Routes that do not render a meaningful <h1> (e.g. embedded iframe pages). They are
+// still prerendered for meta/schema, but skip the "<h1> content settled" assertion.
+const NO_H1_ROUTES = new Set(['/pro']);
+
+// Minimum non-whitespace character count expected inside #root for a real content
+// page. The PageLoader spinner is a tiny SVG wrapper, well under this.
+const MIN_ROOT_CONTENT_CHARS = 500;
+
 // Define Routes and their specific SEO metadata (for Social Media crawlers & Google caching)
 const seoRoutes = [
+    {
+        // Homepage. Index.tsx does NOT use Helmet, so its <head> stays as the rich
+        // index.html template. preserveDefaultHead keeps the hand-tuned EN head as-is;
+        // the /ru/ variant still gets localized title/desc injected.
+        path: '/',
+        noHelmet: true,
+        preserveDefaultHead: true,
+        title: 'Free AI Interview Assistant & Meeting Copilot | Natively',
+        desc: 'AI for interviews & meetings with live coding help, instant answers, and auto notes. Unlike Cluely or FinalRoundAI, invisible during your call — and completely free.',
+        ru: {
+            title: 'Бесплатный ИИ-ассистент для собеседований и встреч | Natively',
+            desc: 'ИИ для собеседований и встреч: помощь с кодингом в реальном времени, мгновенные ответы и авто-заметки. В отличие от Cluely и FinalRoundAI — невидим во время звонка и полностью бесплатен.'
+        }
+    },
     {
         path: '/ai-interview-assistant',
         title: 'Best AI Interview Assistant — Ace Coding Interviews | Natively',
@@ -16,15 +52,6 @@ const seoRoutes = [
         ru: {
             title: 'Лучший ИИ-ассистент для собеседований | Natively',
             desc: 'Узнайте, как ИИ-ассистент, работающий полностью локально на вашем устройстве, поможет пройти технические и код-собеседования без компромиссов с приватностью.'
-        }
-    },
-    {
-        path: '/cluely-alternative',
-        title: 'The Top Local Cluely Alternative for Coding Interviews | Natively',
-        desc: 'Looking for an alternative to Cluely? Natively provides a 100% local, ultra-fast, and deeply private AI meeting assistant for technical interviews.',
-        ru: {
-            title: 'Лучшая локальная альтернатива Cluely | Natively',
-            desc: 'Ищете альтернативу Cluely? Natively — 100% локальный, сверхбыстрый и приватный ИИ-ассистент для технических собеседований.'
         }
     },
     {
@@ -184,15 +211,6 @@ const seoRoutes = [
         }
     },
     {
-        path: '/interview-copilot',
-        title: 'Local AI Interview Copilot — Real-Time Coding Help | Natively',
-        desc: 'Natively is the only local AI interview copilot that runs 100% on your device. Real-time coding, algorithm, and system design answers during live interviews — zero cloud, zero cost.',
-        ru: {
-            title: 'Локальный ИИ-копилот для собеседований — Помощь в реальном времени | Natively',
-            desc: 'Natively — единственный локальный ИИ-копилот для собеседований, работающий 100% на вашем устройстве. Помощь с кодингом и системным дизайном без облака.'
-        }
-    },
-    {
         path: '/free-ai-interview-assistant',
         title: 'Free AI Interview Assistant — No Subscription Required | Natively',
         desc: 'The best free AI interview assistant for coding interviews. Natively runs locally — no subscription, no credit card, no cloud. Works with Ollama for fully offline, $0 operation.',
@@ -224,6 +242,7 @@ const seoRoutes = [
         title: 'Is Cluely Safe? Privacy Facts Every User Must Know (2026)',
         desc: 'Is Cluely safe to use? We analyze Cluely data practices, cloud architecture, and privacy risks — and show why local alternatives like Natively protect your interview data.',
         schemaType: 'Article',
+        publishedDate: '2026-01-22T09:00:00Z',
         ru: {
             title: 'Безопасен ли Cluely? Факты о конфиденциальности (2026)',
             desc: 'Безопасен ли Cluely? Мы анализируем практику работы с данными Cluely и риски конфиденциальности — и объясняем, почему локальные альтернативы лучше.'
@@ -234,6 +253,7 @@ const seoRoutes = [
         title: '7 Best AI Interview Assistants in 2026 (Tested & Ranked)',
         desc: 'We tested 7 AI interview assistants in 2026. Compare FinalRoundAI, Cluely, Natively, LockedIn AI, and more — ranked by privacy, cost, coding support, and real-time performance.',
         schemaType: 'Article',
+        publishedDate: '2026-02-18T09:00:00Z',
         ru: {
             title: '7 лучших ИИ-ассистентов для интервью в 2026 (Протестировано и рейтинг)',
             desc: 'Мы протестировали 7 ИИ-ассистентов для собеседований в 2026. Сравнение FinalRoundAI, Cluely, Natively и других по приватности, стоимости и поддержке кодинга.'
@@ -284,85 +304,103 @@ const seoRoutes = [
             title: 'Локальный ИИ-копилот для собеседований — Помощь в реальном времени | Natively',
             desc: 'Natively — единственный локальный ИИ-копилот для собеседований, работающий 100% на вашем устройстве. Помощь с кодингом и системным дизайном без облака.'
         }
+    },
+    {
+        path: '/natively-vs-lockedinai',
+        title: 'Natively vs LockedIn AI: Which Is Better? (2026) | Free & Private',
+        desc: 'Compare Natively vs LockedIn AI for real-time interview assistance. Natively is 100% local, works offline, and has a free tier — LockedIn AI requires cloud and a paid plan.',
+        schemaType: 'SoftwareApplication',
+        ru: {
+            title: 'Natively против LockedIn AI: что лучше? (2026) | Бесплатно и приватно',
+            desc: 'Сравнение Natively и LockedIn AI для помощи на собеседованиях. Natively работает 100% локально, офлайн и имеет бесплатный тариф — LockedIn AI требует облако и платную подписку.'
+        }
+    },
+    {
+        path: '/natively-vs-interviewcoder',
+        title: 'Natively vs Interview Coder: Free LeetCode AI Alternative (2026)',
+        desc: 'Compare Natively vs Interview Coder for LeetCode and technical interview help. Natively is free, runs 100% locally, and covers all interview types — not just coding.',
+        schemaType: 'SoftwareApplication',
+        ru: {
+            title: 'Natively против Interview Coder: бесплатная альтернатива для LeetCode (2026)',
+            desc: 'Сравнение Natively и Interview Coder для LeetCode и технических собеседований. Natively бесплатен, работает 100% локально и охватывает все типы интервью — не только кодинг.'
+        }
+    },
+    {
+        path: '/undetectable-interview-ai',
+        title: 'Undetectable Interview AI — Invisible AI Assistant for Interviews | Natively',
+        desc: 'The only AI interview assistant with zero network traffic in local mode. Natively runs 100% on-device — no cloud pings, no detectable outbound data. Stay invisible during any technical interview.',
+        schemaType: 'SoftwareApplication',
+        ru: {
+            title: 'Незаметный ИИ для собеседований — Невидимый ИИ-ассистент | Natively',
+            desc: 'Единственный ИИ-ассистент для собеседований с нулевым сетевым трафиком в локальном режиме. Natively работает 100% на устройстве — без облачных запросов и обнаруживаемых данных.'
+        }
     }
 ];
 
-async function prerenderMetaTags() {
-    console.log('Starting Blazing Fast Static Meta-Tag injection...');
-    
-    const indexPath = path.join(distPath, 'index.html');
-    if (!fs.existsSync(indexPath)) {
-        console.error('dist/index.html not found. Did the Vite build fail?');
-        process.exit(1);
-    }
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
 
-    const templateHTML = fs.readFileSync(indexPath, 'utf-8');
+const escapeAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 
+// Expand seoRoutes × SUPPORTED_LOCALES into a flat list of render jobs.
+// Default locale renders at the bare path; other locales render under /<locale>/.
+function expandRoutes() {
+    const jobs = [];
     for (const route of seoRoutes) {
-        console.log(`Injecting Tags for ${route.path}...`);
+        for (const locale of SUPPORTED_LOCALES) {
+            const isDefault = locale === DEFAULT_LOCALE;
+            const localeMeta = route[locale]; // e.g. route.ru = { title, desc, ... }
 
-        // Replace Title TAG
-        let newHTML = templateHTML.replace(
-            /<title>.*<\/title>/i,
-            `<title>${route.title}</title>`
-        );
+            // Skip a non-default locale if the route opts out or has no translation.
+            if (!isDefault && (route.skipRu || !localeMeta)) continue;
 
-        // Replace Description TAG
-        newHTML = newHTML.replace(
-            /<meta\s+name=["']description["']\s+content=["'][^"']*["']\s*\/?>/i,
-            `<meta name="description" content="${route.desc}" />`
-        );
+            const isRoot = route.path === '/';
+            const urlPath = isDefault ? route.path : `/${locale}${route.path}`;
+            const outDir = isDefault
+                ? (isRoot ? distPath : path.join(distPath, route.path.slice(1)))
+                : (isRoot ? path.join(distPath, locale) : path.join(distPath, locale, route.path.slice(1)));
 
-        // Replace OG TAGS
-        newHTML = newHTML.replace(
-            /<meta\s+property=["']og:title["']\s+content=["'][^"']*["']\s*\/?>/i,
-            `<meta property="og:title" content="${route.title}" />`
-        );
-        newHTML = newHTML.replace(
-            /<meta\s+property=["']og:description["']\s+content=["'][^"']*["']\s*\/?>/i,
-            `<meta property="og:description" content="${route.desc}" />`
-        );
-        newHTML = newHTML.replace(
-            /<meta\s+property=["']og:url["']\s+content=["'][^"']*["']\s*\/?>/i,
-            `<meta property="og:url" content="https://natively.software${route.path}" />`
-        );
+            const title = (!isDefault && localeMeta) ? localeMeta.title : route.title;
+            const desc = (!isDefault && localeMeta) ? localeMeta.desc : route.desc;
 
-        // Replace Twitter TAGS
-        newHTML = newHTML.replace(
-            /<meta\s+name=["']twitter:title["']\s+content=["'][^"']*["']\s*\/?>/i,
-            `<meta name="twitter:title" content="${route.title}" />`
-        );
-        newHTML = newHTML.replace(
-            /<meta\s+name=["']twitter:description["']\s+content=["'][^"']*["']\s*\/?>/i,
-            `<meta name="twitter:description" content="${route.desc}" />`
-        );
+            jobs.push({ route, locale, isDefault, urlPath, outDir, title, desc });
+        }
+    }
+    return jobs;
+}
 
-        // Inject hreflang tags for multilingual SEO
-        const hreflangTags = route.skipRu
-            ? `\n  <link rel="alternate" hreflang="en" href="https://natively.software${route.path}" />\n  <link rel="alternate" hreflang="x-default" href="https://natively.software${route.path}" />`
-            : `\n  <link rel="alternate" hreflang="en" href="https://natively.software${route.path}" />\n  <link rel="alternate" hreflang="ru" href="https://natively.software/ru${route.path}" />\n  <link rel="alternate" hreflang="x-default" href="https://natively.software${route.path}" />`;
-        
-        // Ensure canonical tag matches the route (or an explicit canonical if provided)
-        const canonicalPath = route.canonical || route.path;
-        newHTML = newHTML.replace(
-            /<link\s+rel=["']canonical["']\s+href=["'][^"']*["']\s*\/?>/i,
-            `<link rel="canonical" href="https://natively.software${canonicalPath}" />`
-        );
+// Build the static hreflang + JSON-LD tags appended just before </head>.
+// These are static (not Helmet-managed), so they don't participate in hydration.
+function buildSchemaTags(route) {
+    // hreflang: one <link> per locale that this route actually renders, plus x-default.
+    const localesForRoute = SUPPORTED_LOCALES.filter(
+        (l) => l === DEFAULT_LOCALE || (!route.skipRu && route[l])
+    );
+    const hreflangTags = localesForRoute
+        .map((l) => {
+            const href = l === DEFAULT_LOCALE
+                ? `${SITE}${route.path}`
+                : `${SITE}/${l}${route.path}`;
+            return `\n  <link rel="alternate" hreflang="${l}" href="${href}" />`;
+        })
+        .join('') +
+        `\n  <link rel="alternate" hreflang="x-default" href="${SITE}${route.path}" />`;
 
-        // Generate JSON-LD Schemas
-        const schemas = [];
-        
-        // 1. Breadcrumb Schema
+    const schemas = [];
+
+    // 1. Breadcrumb — skip on the homepage (index.html already ships one).
+    if (route.path !== '/') {
         const pathParts = route.path.split('/').filter(Boolean);
         const breadcrumbItems = [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://natively.software/" }
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE}/` }
         ];
         pathParts.forEach((part, i) => {
             breadcrumbItems.push({
                 "@type": "ListItem",
                 "position": i + 2,
-                "name": part.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-                "item": `https://natively.software/${pathParts.slice(0, i + 1).join('/')}`
+                "name": part.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+                "item": `${SITE}/${pathParts.slice(0, i + 1).join('/')}`
             });
         });
         schemas.push({
@@ -370,90 +408,332 @@ async function prerenderMetaTags() {
             "@type": "BreadcrumbList",
             "itemListElement": breadcrumbItems
         });
-
-        // 2. Article/Software Schema
-        if (route.schemaType === 'Article') {
-            schemas.push({
-                "@context": "https://schema.org",
-                "@type": "Article",
-                "headline": route.title,
-                "description": route.desc,
-                "author": { "@type": "Organization", "name": "Natively" },
-                "publisher": { "@type": "Organization", "name": "Natively", "logo": { "@type": "ImageObject", "url": "https://natively.software/logowebsite.png" } },
-                "datePublished": "2024-04-19T18:00:00Z",
-                "dateModified": new Date().toISOString()
-            });
-        }
-
-        // 3. FAQ Schema
-        if (route.faqs) {
-            schemas.push({
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": route.faqs.map(f => ({
-                    "@type": "Question",
-                    "name": f.q,
-                    "acceptedAnswer": { "@type": "Answer", "text": f.a }
-                }))
-            });
-        }
-
-        const schemaTags = schemas.map(s => `\n  <script type="application/ld+json">${JSON.stringify(s)}</script>`).join('');
-        newHTML = newHTML.replace('</head>', `${hreflangTags}${schemaTags}\n</head>`);
-
-        // Save generated HTML to nested folder matching the route path
-        const dir = path.join(distPath, route.path.slice(1));
-        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-        
-        fs.writeFileSync(path.join(dir, 'index.html'), newHTML);
-        console.log(`Successfully mapped ${route.path}`);
-
-        // Generate /ru/ variant if Russian translations exist (skip for routes that opt out)
-        if (route.ru && !route.skipRu) {
-            const ruPath = `/ru${route.path}`;
-            console.log(`Injecting Tags for ${ruPath}...`);
-
-            let ruHTML = templateHTML.replace(
-                /<title>.*<\/title>/i,
-                `<title>${route.ru.title}</title>`
-            );
-
-            ruHTML = ruHTML.replace(
-                /<meta\s+name=["']description["']\s+content=["'][^"']*["']\s*\/?>/i,
-                `<meta name="description" content="${route.ru.desc}" />`
-            );
-
-            ruHTML = ruHTML.replace(
-                /<meta\s+property=["']og:title["']\s+content=["'][^"']*["']\s*\/?>/i,
-                `<meta property="og:title" content="${route.ru.title}" />`
-            );
-            ruHTML = ruHTML.replace(
-                /<meta\s+property=["']og:description["']\s+content=["'][^"']*["']\s*\/?>/i,
-                `<meta property="og:description" content="${route.ru.desc}" />`
-            );
-            ruHTML = ruHTML.replace(
-                /<meta\s+property=["']og:url["']\s+content=["'][^"']*["']\s*\/?>/i,
-                `<meta property="og:url" content="https://natively.software${ruPath}" />`
-            );
-
-            ruHTML = ruHTML.replace(
-                /<meta\s+name=["']twitter:title["']\s+content=["'][^"']*["']\s*\/?>/i,
-                `<meta name="twitter:title" content="${route.ru.title}" />`
-            );
-            ruHTML = ruHTML.replace(
-                /<meta\s+name=["']twitter:description["']\s+content=["'][^"']*["']\s*\/?>/i,
-                `<meta name="twitter:description" content="${route.ru.desc}" />`
-            );
-
-            const ruDir = path.join(distPath, `ru${route.path.slice(1)}`);
-            if (!fs.existsSync(ruDir)) fs.mkdirSync(ruDir, { recursive: true });
-            
-            fs.writeFileSync(path.join(ruDir, 'index.html'), ruHTML);
-            console.log(`Successfully mapped ${ruPath}`);
-        }
     }
-    
-    console.log('Static Route Injection complete. Vercel build will now succeed.');
+
+    // 2. Article schema with named Person author + real publish date.
+    if (route.schemaType === 'Article') {
+        schemas.push({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": route.title,
+            "description": route.desc,
+            "author": {
+                "@type": "Person",
+                "name": "Evin John",
+                "url": "https://x.com/evinjohnn",
+                "sameAs": ["https://x.com/evinjohnn"]
+            },
+            "publisher": { "@type": "Organization", "name": "Natively", "logo": { "@type": "ImageObject", "url": `${SITE}/logowebsite.png` } },
+            "datePublished": route.publishedDate || "2025-01-15T09:00:00Z",
+            "dateModified": new Date().toISOString()
+        });
+    }
+
+    // 3. FAQ schema for routes that declare inline FAQs.
+    if (route.faqs) {
+        schemas.push({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": route.faqs.map((f) => ({
+                "@type": "Question",
+                "name": f.q,
+                "acceptedAnswer": { "@type": "Answer", "text": f.a }
+            }))
+        });
+    }
+
+    const schemaTags = schemas
+        .map((s) => `\n  <script type="application/ld+json">${JSON.stringify(s)}</script>`)
+        .join('');
+
+    return `${hreflangTags}${schemaTags}`;
 }
 
-prerenderMetaTags().catch(console.error);
+// Remove the FIRST occurrence of a base (non-Helmet) head tag matching `re`.
+// Helmet emits its own copy marked data-rh="true"; the base copy from index.html
+// would otherwise duplicate it. We only ever strip tags WITHOUT data-rh.
+function stripBaseTag(html, re) {
+    return html.replace(re, (m) => (/data-rh=/.test(m) ? m : ''));
+}
+
+// Post-capture: normalize the <head> so there is exactly one canonical/description/
+// og/twitter per page, append static hreflang + JSON-LD, and set <html lang>.
+//
+// Two cases:
+//  - Helmet pages (SEO/blog via SEOTemplate): Helmet's data-rh="true" tags are
+//    authoritative. We strip the duplicate base tags that index.html shipped and
+//    leave Helmet's in place. (Helmet already replaces <title> in-place, no dup.)
+//  - Non-Helmet pages (homepage/legal/pro): no data-rh tags exist, so we inject the
+//    route's own title/desc/canonical/og/twitter. The EN homepage keeps its
+//    hand-tuned head untouched (preserveDefaultHead).
+function finalizeHtml(html, job) {
+    const { route, urlPath, isDefault, title, desc } = job;
+    const canonicalPath = isDefault ? (route.canonical || route.path) : urlPath;
+    const canonicalUrl = `${SITE}${canonicalPath}`;
+
+    let out = html;
+    const helmetActive = /data-rh=["']true["']/.test(out);
+
+    if (helmetActive) {
+        // Drop the base duplicates; keep Helmet's data-rh copies as the single source.
+        out = stripBaseTag(out, /<link\s+rel=["']canonical["'][^>]*>/i);
+        out = stripBaseTag(out, /<meta\s+name=["']description["'][^>]*>/i);
+        out = stripBaseTag(out, /<meta\s+property=["']og:title["'][^>]*>/i);
+        out = stripBaseTag(out, /<meta\s+property=["']og:description["'][^>]*>/i);
+        out = stripBaseTag(out, /<meta\s+property=["']og:url["'][^>]*>/i);
+        out = stripBaseTag(out, /<meta\s+name=["']twitter:title["'][^>]*>/i);
+        out = stripBaseTag(out, /<meta\s+name=["']twitter:description["'][^>]*>/i);
+    } else {
+        // Non-Helmet page: inject route meta unless the EN homepage opted to keep its head.
+        const injectMeta = !(isDefault && route.preserveDefaultHead);
+        if (injectMeta) {
+            out = out.replace(/<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
+            out = out.replace(/<meta\s+name=["']description["'][^>]*>/i,
+                `<meta name="description" content="${escapeAttr(desc)}" />`);
+            out = out.replace(/<meta\s+property=["']og:title["'][^>]*>/i,
+                `<meta property="og:title" content="${escapeAttr(title)}" />`);
+            out = out.replace(/<meta\s+property=["']og:description["'][^>]*>/i,
+                `<meta property="og:description" content="${escapeAttr(desc)}" />`);
+            out = out.replace(/<meta\s+name=["']twitter:title["'][^>]*>/i,
+                `<meta name="twitter:title" content="${escapeAttr(title)}" />`);
+            out = out.replace(/<meta\s+name=["']twitter:description["'][^>]*>/i,
+                `<meta name="twitter:description" content="${escapeAttr(desc)}" />`);
+        }
+
+        // Canonical + og:url for non-Helmet pages (replace base copy, else inject).
+        if (/<link\s+rel=["']canonical["'][^>]*>/i.test(out)) {
+            out = out.replace(/<link\s+rel=["']canonical["'][^>]*>/i,
+                `<link rel="canonical" href="${escapeAttr(canonicalUrl)}" />`);
+        } else {
+            out = out.replace('</head>',
+                `  <link rel="canonical" href="${escapeAttr(canonicalUrl)}" />\n</head>`);
+        }
+        out = out.replace(/<meta\s+property=["']og:url["'][^>]*>/i,
+            `<meta property="og:url" content="${escapeAttr(canonicalUrl)}" />`);
+    }
+
+    // <html lang="..">
+    out = out.replace(/<html\s+lang=["'][^"']*["']/i, `<html lang="${job.locale}"`);
+
+    // Append static hreflang + JSON-LD just before </head> (static, not Helmet-managed).
+    out = out.replace('</head>', `${buildSchemaTags(route)}\n</head>`);
+
+    return out;
+}
+
+// Assert the captured #root actually contains rendered content, not the spinner.
+// `metrics` is measured in-page against the live DOM (reliable), not via regex.
+function assertRendered(metrics, job) {
+    const { rootChars, hasH1 } = metrics;
+    const needsH1 = !NO_H1_ROUTES.has(job.route.path);
+
+    if (rootChars < MIN_ROOT_CONTENT_CHARS || (needsH1 && !hasH1)) {
+        throw new Error(
+            `Prerender FAILED for ${job.urlPath}: rootContentChars=${rootChars} hasH1=${hasH1} ` +
+            `(needsH1=${needsH1}). Likely captured the loading spinner or an empty shell.`
+        );
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Chromium launch (env-branched: @sparticuz in CI, system Chrome locally)
+// ---------------------------------------------------------------------------
+
+async function launchBrowser() {
+    const isCI = !!process.env.VERCEL || !!process.env.CI;
+
+    if (isCI) {
+        const chromium = (await import('@sparticuz/chromium')).default;
+        return puppeteer.launch({
+            args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+            executablePath: await chromium.executablePath(),
+            headless: chromium.headless,
+            defaultViewport: { width: 1280, height: 900 }
+        });
+    }
+
+    // Local dev: puppeteer-core ships no browser, so point at a system Chrome.
+    const candidates = [
+        process.env.PUPPETEER_EXECUTABLE_PATH,
+        '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+        '/Applications/Chromium.app/Contents/MacOS/Chromium',
+        '/usr/bin/google-chrome',
+        '/usr/bin/chromium-browser',
+        '/usr/bin/chromium'
+    ].filter(Boolean);
+    const executablePath = candidates.find((p) => { try { return fs.existsSync(p); } catch { return false; } });
+    if (!executablePath) {
+        throw new Error(
+            'No Chrome/Chromium found for prerender. Set PUPPETEER_EXECUTABLE_PATH to a Chrome binary.'
+        );
+    }
+    // Use a dedicated, throwaway profile dir. Without this, puppeteer drives the
+    // same Chrome binary against the user's DEFAULT profile — if the developer has
+    // Chrome open, the two instances collide and capture fails intermittently with
+    // ERR_CONNECTION_REFUSED / navigation timeouts. An isolated profile makes local
+    // runs deterministic regardless of what else is running.
+    const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'natively-prerender-'));
+    return puppeteer.launch({
+        executablePath,
+        headless: true,
+        args: ['--no-sandbox'],
+        userDataDir,
+        defaultViewport: { width: 1280, height: 900 }
+    });
+}
+
+// ---------------------------------------------------------------------------
+// Static server over dist/ (express 5: use a middleware SPA fallback)
+// ---------------------------------------------------------------------------
+
+function startServer() {
+    const app = express();
+    // Serve real static assets, but NOT the prerendered route folders' index.html —
+    // we capture from the pristine template by letting unknown paths fall through to
+    // the root index.html. `index: false` stops express.static from auto-serving
+    // dist/<route>/index.html for /<route>.
+    app.use(express.static(distPath, { index: false, extensions: [] }));
+    app.use((_req, res) => res.sendFile(path.join(distPath, 'index.html')));
+    return new Promise((resolve) => {
+        const server = app.listen(PORT, () => resolve(server));
+    });
+}
+
+// ---------------------------------------------------------------------------
+// Capture one route in one locale
+// ---------------------------------------------------------------------------
+
+async function captureRoute(browser, job) {
+    const page = await browser.newPage();
+    try {
+        // Abort all cross-origin requests. The app fires runtime fetches to
+        // api.github.com (download counts, GitHub stars), Google Analytics, and
+        // Google Fonts; under waitUntil:'networkidle0' a slow or rate-limited
+        // third-party response stalls capture past the timeout — flaky, and the
+        // all-or-nothing write then discards every good capture in the run. None
+        // of these affect the captured HTML: components have static fallbacks
+        // (e.g. download count defaults), and fonts/analytics don't change markup.
+        // Same-origin requests (our JS/CSS chunks on localhost) proceed normally;
+        // the in-page "<h1> settled" wait remains the real readiness signal.
+        await page.setRequestInterception(true);
+        page.on('request', (req) => {
+            try {
+                const host = new URL(req.url()).hostname;
+                if (host === 'localhost' || host === '127.0.0.1') req.continue();
+                else req.abort();
+            } catch (_) {
+                req.abort();
+            }
+        });
+
+        // Seed the language BEFORE any app script runs, so the module-load
+        // detectLanguage() in src/i18n.ts renders the right locale from first paint.
+        // Also flag the prerender pass so client-only chrome (toasters/analytics) is
+        // omitted from the captured HTML — matching the client's first hydration paint
+        // (where the same chrome is also deferred until after mount).
+        await page.evaluateOnNewDocument((loc, def) => {
+            try {
+                window.__PRERENDER__ = true;
+                if (loc === def) localStorage.removeItem('lang');
+                else localStorage.setItem('lang', loc);
+            } catch (_) { /* ignore */ }
+        }, job.locale, DEFAULT_LOCALE);
+
+        await page.goto(`http://localhost:${PORT}${job.urlPath}`, {
+            waitUntil: 'networkidle0',
+            timeout: 45000
+        });
+
+        // Wait until the app has rendered real content (not the PageLoader spinner).
+        if (!NO_H1_ROUTES.has(job.route.path)) {
+            await page.waitForFunction(() => {
+                const h1 = document.querySelector('main h1, h1');
+                return !!h1 && h1.textContent.trim().length > 0;
+            }, { timeout: 25000 });
+        } else {
+            // Pages without an <h1>: just wait for #root to have substantive content.
+            await page.waitForFunction((min) => {
+                const root = document.getElementById('root');
+                return !!root && root.textContent.replace(/\s+/g, '').length > min;
+            }, { timeout: 25000 }, 50);
+        }
+
+        const { html, rootChars, hasH1 } = await page.evaluate(() => {
+            const root = document.getElementById('root');
+            const rootText = root ? root.textContent.replace(/\s+/g, '') : '';
+            return {
+                html: '<!doctype html>\n' + document.documentElement.outerHTML,
+                rootChars: rootText.length,
+                hasH1: !!document.querySelector('#root h1')
+            };
+        });
+        return { html, rootChars, hasH1 };
+    } finally {
+        await page.close();
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Orchestration
+// ---------------------------------------------------------------------------
+
+async function prerender() {
+    console.log('Starting full-body prerender (headless capture)...');
+
+    const indexPath = path.join(distPath, 'index.html');
+    if (!fs.existsSync(indexPath)) {
+        console.error('dist/index.html not found. Did the Vite build fail?');
+        process.exit(1);
+    }
+
+    const jobs = expandRoutes();
+    console.log(`Rendering ${jobs.length} route×locale combinations...`);
+
+    const server = await startServer();
+    let browser;
+    const results = []; // { outDir, html } — buffered, written after browser closes
+
+    try {
+        browser = await launchBrowser();
+        for (const job of jobs) {
+            process.stdout.write(`  → ${job.urlPath} (${job.locale}) ... `);
+            // Retry transient capture failures (navigation timeout, flaky socket).
+            // The whole run is all-or-nothing — one unretried flake on page 30 of 59
+            // discards every prior capture — so a couple of cheap retries here pay for
+            // themselves. assertRendered still guards against capturing empty shells.
+            const MAX_ATTEMPTS = 3;
+            let lastErr;
+            for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+                try {
+                    const { html: captured, rootChars, hasH1 } = await captureRoute(browser, job);
+                    assertRendered({ rootChars, hasH1 }, job);
+                    results.push({ outDir: job.outDir, html: finalizeHtml(captured, job) });
+                    console.log(`ok (${rootChars} chars)${attempt > 1 ? ` [attempt ${attempt}]` : ''}`);
+                    lastErr = null;
+                    break;
+                } catch (err) {
+                    lastErr = err;
+                    if (attempt < MAX_ATTEMPTS) process.stdout.write(`retry ${attempt}… `);
+                }
+            }
+            if (lastErr) throw lastErr;
+        }
+    } finally {
+        if (browser) await browser.close();
+        server.close();
+    }
+
+    // Write everything only after the browser is closed, so a freshly-written
+    // dist/<route>/index.html can never be re-captured mid-run.
+    for (const { outDir, html } of results) {
+        fs.mkdirSync(outDir, { recursive: true });
+        fs.writeFileSync(path.join(outDir, 'index.html'), html);
+    }
+
+    console.log(`Prerender complete: ${results.length} pages written with full body content.`);
+}
+
+prerender().catch((err) => {
+    console.error(err);
+    process.exit(1);
+});

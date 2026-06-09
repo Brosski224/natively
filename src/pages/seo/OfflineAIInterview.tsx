@@ -24,13 +24,128 @@ export default function OfflineAIInterview() {
               </p>
             </section>
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Настройка офлайн-режима</h2>
-              <ol className="list-decimal list-inside space-y-3 mb-4">
-                <li>Установите Ollama с ollama.ai</li>
-                <li>Скачайте модель: <code className="bg-muted px-1 rounded">ollama pull deepseek-coder</code></li>
-                <li>Настройте Natively на использование Ollama</li>
-                <li>Готово — ваш интернет-кабель можно отключить</li>
-              </ol>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Как работает офлайн-помощь ИИ на собеседованиях с Natively + Ollama</h2>
+              <p className="mb-4">
+                Ollama — это среда выполнения с открытым исходным кодом, позволяющая скачивать и запускать большие языковые модели прямо на вашем Mac или Windows-машине. При настройке с Natively весь ИИ-конвейер работает локально:
+              </p>
+              <ul className="list-disc list-inside space-y-2 mb-6">
+                <li><strong>Транскрипция аудио</strong> — выполняется через локальную модель Whisper (Deepgram или облачный STT не нужны)</li>
+                <li><strong>Захват экрана и OCR</strong> — выполняется через нативные API macOS/Windows, целиком на устройстве</li>
+                <li><strong>Вывод LLM</strong> — выполняется через Ollama на вашем локальном GPU или CPU</li>
+                <li><strong>Отображение ответа</strong> — рендерится локально в прозрачном оверлее</li>
+              </ul>
+              <p className="mb-4">
+                После начального скачивания модели (разовая операция, требующая интернета) приложение работает неограниченно долго без какого-либо сетевого соединения.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Настройка вашего офлайн ИИ-ассистента для собеседований</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 1: Установите Ollama</h3>
+              <p className="mb-4">
+                Скачайте Ollama с <a href="https://ollama.ai" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">ollama.ai</a>. Доступно для macOS (Apple Silicon + Intel) и Windows. Установка занимает менее 2 минут.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 2: Скачайте модель, оптимизированную для кода</h3>
+              <p className="mb-4">Откройте терминал и выполните одну из этих команд в зависимости от вашего оборудования:</p>
+
+              <div className="bg-muted/30 rounded-lg p-4 mb-4 font-mono text-sm">
+                <p className="text-muted-foreground mb-2"># Лучше всего для собеседований по кодингу (рекомендуется 16 ГБ+ ОЗУ):</p>
+                <p className="text-green-400">ollama pull deepseek-coder:33b</p>
+                <p className="text-muted-foreground mt-4 mb-2"># Хороший баланс для Mac с 8 ГБ ОЗУ:</p>
+                <p className="text-green-400">ollama pull deepseek-coder:6.7b</p>
+                <p className="text-muted-foreground mt-4 mb-2"># Универсальная + быстрая (8 ГБ+ ОЗУ):</p>
+                <p className="text-green-400">ollama pull llama3.1:8b</p>
+                <p className="text-muted-foreground mt-4 mb-2"># Специализированная модель для кода (лёгкая):</p>
+                <p className="text-green-400">ollama pull qwen2.5-coder:7b</p>
+              </div>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 3: Установите Natively</h3>
+              <p className="mb-4">
+                Скачайте Natively с <LocaleLink to="/" className="text-primary hover:underline">natively.software</LocaleLink>. Установите .dmg (macOS) или .exe (Windows) и предоставьте разрешения на запись экрана и микрофон.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 4: Настройте Ollama в качестве ИИ-провайдера</h3>
+              <p className="mb-4">
+                В настройках Natively выберите <strong>Ollama</strong> в качестве ИИ-провайдера и укажите загруженную модель. Natively автоматически подключится к локальному серверу Ollama, работающему на <code className="bg-muted px-1 rounded">localhost:11434</code>.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Шаг 5: Протестируйте перед собеседованием</h3>
+              <p className="mb-4">
+                Проведите тестовую сессию с отключённым интернетом, чтобы подтвердить полностью офлайн-работу. Включите режим полёта, запустите Natively и убедитесь, что он отвечает на вопросы. Если отвечает — вы готовы.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Требования к оборудованию для офлайн-помощи ИИ на собеседованиях</h2>
+
+              <div className="overflow-x-auto my-8">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-muted/50 text-foreground">
+                      <th className="p-4 border-b border-border/50 font-semibold">Оборудование</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Рекомендуемая модель</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Производительность</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Apple M1/M2/M3 (8 ГБ ОЗУ)</td>
+                      <td className="p-4 border-b border-border/50">DeepSeek Coder 6.7B / Qwen2.5 7B</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Отлично — ускорение Neural Engine</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Apple M1/M2/M3 Pro/Max (16 ГБ+ ОЗУ)</td>
+                      <td className="p-4 border-b border-border/50">DeepSeek Coder 33B</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Выдающаяся — качество, близкое к облаку</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Windows (NVIDIA GPU 8 ГБ+)</td>
+                      <td className="p-4 border-b border-border/50">DeepSeek Coder 6.7B / Llama 3.1 8B</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Отлично — вывод на GPU</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Windows (только CPU, 16 ГБ ОЗУ)</td>
+                      <td className="p-4 border-b border-border/50">Llama 3.1 8B / Mistral 7B</td>
+                      <td className="p-4 border-b border-border/50 text-yellow-500">Хорошо — медленнее, но работоспособно</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Intel Mac (8 ГБ ОЗУ)</td>
+                      <td className="p-4 border-b border-border/50">Mistral 7B / Qwen2.5 7B</td>
+                      <td className="p-4 border-b border-border/50 text-yellow-500">Приемлемо — время ответа 5–15 с</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mb-4">
+                Для наилучшего офлайн-опыта идеален Mac на Apple Silicon (M1 или новее) с 16 ГБ единой памяти. Ускорение Neural Engine обеспечивает время ответа менее 2 секунд даже для сложных объяснений алгоритмов.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Часто задаваемые вопросы</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Может ли Natively работать на 100% офлайн вообще без интернета?</h3>
+              <p className="mb-4">
+                Да. С настроенным Ollama Natively требует интернет только для начального скачивания модели. После этого он работает неограниченно долго в режиме полёта. Без API-ключей. Без облачных вызовов.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Как офлайн-ИИ сравнивается с облачным ИИ для собеседований по кодингу?</h3>
+              <p className="mb-4">
+                Для стандартных задач в стиле LeetCode DeepSeek Coder 33B, работающий локально, показывает результаты, сопоставимые с GPT-3.5, и приближается к качеству GPT-4 на большинстве вопросов по алгоритмам. Для очень сложных задач на рассуждение облачные модели (Claude 3.5, GPT-4o) всё ещё имеют преимущество — но вы можете использовать BYOK для доступа к ним, сохраняя при этом локальную транскрипцию приватной.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Работает ли офлайн-режим с невидимым оверлеем?</h3>
+              <p className="mb-4">
+                Да. Невидимый оверлей — это базовая функция Natively, независимая от ИИ-бэкенда. Она работает одинаково как в офлайн-режиме (Ollama), так и в облачном (BYOK).
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Является ли Natively единственным офлайн ИИ-ассистентом для собеседований?</h3>
+              <p className="mb-4">
+                Да. По состоянию на 2026 год Natively — единственный специально созданный ИИ-ассистент для собеседований, поддерживающий полноценную офлайн-работу через Ollama. Конкуренты вроде FinalRoundAI, Cluely и LockedIn AI требуют постоянного интернет-соединения.
+              </p>
             </section>
           </>
         )

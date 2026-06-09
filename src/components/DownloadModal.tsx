@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "@/lib/motion";
 import { X, CheckCircle2, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";

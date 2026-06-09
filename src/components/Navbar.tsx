@@ -7,7 +7,7 @@ import { useLocalePath } from "@/components/LocaleLink";
 import { useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import previewVideo from "@/assets/preview.mp4";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { useTranslation } from "react-i18next";
 
 const GITHUB_URL = "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant/releases/latest";

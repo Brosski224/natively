@@ -15,22 +15,26 @@ export default function NativelyVsLockedInAI() {
         children: (
           <>
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">LockedIn AI: популярный, но облачный</h2>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">LockedIn AI: популярный, но зависимый от облака</h2>
               <p className="mb-4">
-                LockedIn AI — известный AI-ассистент для собеседований с более чем 869,000 пользователей. Он предлагает двухуровневую систему AI Copilot + AI Coach в реальном времени. Но есть критическая проблема: все данные обрабатываются в облаке. Ваше аудио и видео уходят на серверы LockedIn AI.
+                LockedIn AI создал большую базу пользователей — более 869,000 человек — благодаря своей двухуровневой системе AI Copilot + AI Coach. Он работает в Zoom, Google Meet и Microsoft Teams и предлагает ответы в реальном времени во время собеседований. Для многих пользователей это полезный инструмент.
               </p>
               <p className="mb-4">
-                Natively решает эту проблему. Как <LocaleLink to="/local-ai-assistant" className="text-primary hover:underline">100% локальный AI-ассистент</LocaleLink>, Natively не отправляет никаких данных за пределы вашего устройства.
+                Но у LockedIn AI есть фундаментальное архитектурное ограничение: <strong>вся ИИ-обработка происходит в облаке</strong>. Ваше аудио, ваши вопросы на собеседовании и ваши ответы передаются на удалённые серверы. Это создаёт две проблемы: обнаруживаемый сетевой трафик и риск для приватности.
+              </p>
+              <p className="mb-4">
+                Natively применяет противоположный подход. Как <LocaleLink to="/local-ai-assistant" className="text-primary hover:underline">100% локальный ИИ-ассистент для собеседований</LocaleLink>, вся обработка происходит на вашем устройстве — без облачных вызовов, без сетевого трафика, без передачи данных за пределы вашей машины.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Natively vs LockedIn AI: таблица сравнения</h2>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Natively vs LockedIn AI: полное сравнение</h2>
+
               <div className="overflow-x-auto my-8">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-muted/50 text-foreground">
-                      <th className="p-4 border-b border-border/50 font-semibold">Критерий</th>
+                      <th className="p-4 border-b border-border/50 font-semibold">Функция</th>
                       <th className="p-4 border-b border-border/50 font-semibold">LockedIn AI</th>
                       <th className="p-4 border-b border-border/50 font-semibold">Natively</th>
                     </tr>
@@ -38,32 +42,121 @@ export default function NativelyVsLockedInAI() {
                   <tbody className="text-sm">
                     <tr>
                       <td className="p-4 border-b border-border/50 font-medium">Цена</td>
-                      <td className="p-4 border-b border-border/50 text-yellow-400">Платные планы</td>
-                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Бесплатно (Free tier)</td>
+                      <td className="p-4 border-b border-border/50 text-yellow-400">Платные планы для полного доступа</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Бесплатный тариф — основные функции включены</td>
                     </tr>
                     <tr>
                       <td className="p-4 border-b border-border/50 font-medium">Обработка данных</td>
-                      <td className="p-4 border-b border-border/50 text-red-400">Облако (удалённые серверы)</td>
-                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">100% локально на устройстве</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Облачные серверы — аудио отправляется удалённо</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">100% на устройстве — ничего не покидает машину</td>
                     </tr>
                     <tr>
                       <td className="p-4 border-b border-border/50 font-medium">Работа без интернета</td>
-                      <td className="p-4 border-b border-border/50 text-red-400">Нет — требует интернет</td>
-                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да — полностью офлайн</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Нет — требуется интернет-соединение</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да — полностью работает офлайн</td>
                     </tr>
                     <tr>
-                      <td className="p-4 border-b border-border/50 font-medium">Сетевой трафик</td>
-                      <td className="p-4 border-b border-border/50 text-red-400">Высокий — API-вызовы в облако</td>
-                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Нулевой в локальном режиме</td>
+                      <td className="p-4 border-b border-border/50 font-medium">Сетевой трафик во время собеседования</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Высокий — передаёт данные в облачные API</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Нулевой в локальном режиме (Ollama)</td>
                     </tr>
                     <tr>
-                      <td className="p-4 border-b border-border/50 font-medium">Открытый исходный код</td>
-                      <td className="p-4 border-b border-border/50 text-muted-foreground">Нет</td>
+                      <td className="p-4 border-b border-border/50 font-medium">Приватность</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Данные обрабатываются на серверах LockedIn AI</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Никакие данные не передаются с вашего устройства</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Помощь с кодингом в реальном времени</td>
                       <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Поведенческое собеседование (STAR)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Поддержка системного дизайна</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Работа в корпоративном VPN / ограниченных сетях</td>
+                      <td className="p-4 border-b border-border/50 text-red-400">Блокируется, если облачные API ограничены</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да — облачные вызовы не нужны</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Открытый код</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Нет (проприетарный)</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да — полностью проверяемый</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border-b border-border/50 font-medium">Свой API-ключ (BYOK)</td>
+                      <td className="p-4 border-b border-border/50 text-muted-foreground">Нет</td>
+                      <td className="p-4 border-b border-border/50 text-green-500 font-medium">Да — OpenAI, Anthropic, Gemini, OpenRouter</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Проблема приватности LockedIn AI</h2>
+              <p className="mb-4">
+                В собственных schema-данных LockedIn AI описывает себя как «ИИ-помощника для собеседований и встреч, спроектированного для бесшовной интеграции с Zoom, Teams, Meet и платформами для кодинга». О чём он не говорит в первую очередь: аудио вашего собеседования обрабатывается на их облачной инфраструктуре.
+              </p>
+              <p className="mb-4">
+                Это важно в двух сценариях. Во-первых, если вы находитесь в корпоративной или контролируемой сети, где необычный трафик к ИИ-API может быть помечен. Во-вторых, если вы обсуждаете проприетарные технические системы во время собеседования — эти детали теперь находятся на серверах LockedIn AI.
+              </p>
+              <p className="mb-4">
+                Natively работает по иной модели. В <LocaleLink to="/offline-ai-interview" className="text-primary hover:underline">офлайн-режиме с использованием Ollama</LocaleLink> приложение не делает ни одного исходящего сетевого запроса во время вашего собеседования. Нечего обнаруживать, нечего логировать удалённо и нечего передавать за пределы вашего устройства.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Сравнение стоимости: Natively vs LockedIn AI</h2>
+              <p className="mb-4">
+                Бесплатный тариф LockedIn AI предоставляет ограниченный доступ. Полные функции — продлённые сессии собеседований, приоритетные ответы ИИ, расширенный коучинг — требуют платного плана. За типичный период поиска работы в 3–6 месяцев это выливается в значительную сумму.
+              </p>
+              <p className="mb-4">
+                Бесплатный тариф Natively включает основную ИИ-помощь на собеседованиях без необходимости создавать аккаунт. Если вам нужна производительность ИИ облачного уровня без привязки к подписке, используйте свой собственный API-ключ (OpenAI, Anthropic, Gemini) — типичная стоимость составляет менее $0,05 за сессию собеседования. Или используйте Ollama с локальными моделями вроде Llama 3 или DeepSeek — совершенно бесплатно и неограниченно.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Кому стоит выбрать Natively вместо LockedIn AI</h2>
+              <ul className="list-disc list-inside space-y-2 mb-4">
+                <li>Инженерам в <strong>корпоративных или ограниченных сетях</strong>, где облачные API-вызовы контролируются или блокируются</li>
+                <li>Кандидатам, проходящим собеседования в компаниях, где <strong>NDA или конфиденциальность</strong> запрещают делиться техническими вопросами вовне</li>
+                <li>Разработчикам, которые хотят <strong>нулевую плату за подписку</strong> — используйте свой API-ключ или Ollama</li>
+                <li>Всем, кто хочет <strong>полный суверенитет данных</strong> над содержимым своих собеседований</li>
+                <li>Пользователям, которые предпочитают <strong>открытое, проверяемое ПО</strong>, которое можно инспектировать</li>
+                <li>Кандидатам в регионах с <strong>нестабильным интернетом</strong> — Natively полностью работает офлайн</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">Часто задаваемые вопросы</h2>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Бесплатен ли Natively по сравнению с LockedIn AI?</h3>
+              <p className="mb-4">
+                Да. У Natively есть постоянно бесплатный тариф с основными функциями ИИ-помощи на собеседованиях. Расширенные функции LockedIn AI требуют платного плана. Вы можете использовать Natively бесплатно неограниченно с помощью Ollama и локальных моделей или подключить свой API-ключ для ИИ облачного уровня по минимальной стоимости.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Может ли Natively работать там, где не может LockedIn AI (корпоративные сети)?</h3>
+              <p className="mb-4">
+                Да. LockedIn AI требует доступа в интернет для передачи данных в свои облачные API. Если вы находитесь в корпоративном VPN, который блокирует или контролирует внешние ИИ-API-вызовы, LockedIn AI либо не сработает, либо сгенерирует подозрительный трафик. Natively в локальном режиме (Ollama) не делает ни одного исходящего соединения во время вашего собеседования — он работает одинаково в любой сети.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Есть ли у Natively все функции, что и у LockedIn AI?</h3>
+              <p className="mb-4">
+                Natively покрывает основные сценарии: помощь с кодингом в реальном времени, фреймворк STAR для поведенческих собеседований, рекомендации по системному дизайну, расшифровку встреч и подсказки с учётом резюме. Двойной режим Copilot + Coach у LockedIn AI уникален, но локальная архитектура Natively обеспечивает более приватный и безопасный для сети опыт в тех же основных сценариях собеседований.
+              </p>
+
+              <h3 className="text-xl font-medium text-foreground mt-8 mb-4">Как перейти с LockedIn AI на Natively?</h3>
+              <p className="mb-4">
+                Скачайте Natively с natively.software. Настройте Ollama для бесплатного локального ИИ или добавьте свой ключ OpenAI/Anthropic/Gemini. Миграция данных не нужна — Natively начинает с чистого листа на вашем устройстве и готов к работе за несколько минут.
+              </p>
             </section>
           </>
         )

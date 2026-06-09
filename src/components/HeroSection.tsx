@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import JellyClayButton from "@/components/JellyClayButton";
 import NativelyInterfaceCard from "@/components/NativelyInterfaceCard";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { useTranslation } from "react-i18next";
 
 import heroBackdropMp4 from "@/assets/hero.mp4";

@@ -1,5 +1,5 @@
 import { memo, useRef, useEffect, useState } from "react";
-import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "@/lib/motion";
 import { Coins, Crown, Zap, Shield, Users, ArrowUpRight, Copy, Check, TrendingUp } from "lucide-react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts';
 
