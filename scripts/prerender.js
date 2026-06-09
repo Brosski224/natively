@@ -658,7 +658,7 @@ function buildSchemaTags(route, job) {
                 "url": "https://x.com/evinjohnn",
                 "sameAs": ["https://x.com/evinjohnn"]
             },
-            "publisher": { "@type": "Organization", "name": "Natively", "logo": { "@type": "ImageObject", "url": `${SITE}/logowebsite.png` } },
+            "publisher": { "@type": "Organization", "name": "Natively AI", "logo": { "@type": "ImageObject", "url": `${SITE}/og-image.png` } },
             "datePublished": route.publishedDate || "2025-01-15T09:00:00Z",
             "dateModified": new Date().toISOString()
         });
@@ -690,9 +690,9 @@ function buildSchemaTags(route, job) {
             },
             "creator": {
                 "@type": "Organization",
-                "name": "Natively",
+                "name": "Natively AI",
                 "url": `${SITE}/`,
-                "logo": `${SITE}/logowebsite.png`
+                "logo": `${SITE}/og-image.png`
             }
         });
     }
