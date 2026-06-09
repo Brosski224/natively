@@ -32,7 +32,7 @@ export const ROLE_QUESTION_SETS: RoleQuestionSet[] = [
   {
     path: "/interview-questions/software-engineer",
     role: "Software Engineer",
-    title: "Software Engineer Interview Questions (2026) — With Answers Approach",
+    title: "Software Engineer Interview Questions (2026) | Natively",
     description:
       "Common software engineer interview questions for 2026 — coding, system design, and behavioral — each with a clear approach to structuring a strong answer.",
     h1: "Software Engineer Interview Questions (2026)",
@@ -105,7 +105,7 @@ export const ROLE_QUESTION_SETS: RoleQuestionSet[] = [
   {
     path: "/interview-questions/product-manager",
     role: "Product Manager",
-    title: "Product Manager Interview Questions (2026) — With Answer Frameworks",
+    title: "Product Manager Interview Questions (2026) | Natively",
     description:
       "Common product manager interview questions for 2026 — product sense, execution, strategy, and behavioral — each with a framework for structuring a strong answer.",
     h1: "Product Manager Interview Questions (2026)",
@@ -178,7 +178,7 @@ export const ROLE_QUESTION_SETS: RoleQuestionSet[] = [
   {
     path: "/interview-questions/data-scientist",
     role: "Data Scientist",
-    title: "Data Scientist Interview Questions (2026) — With Answer Approaches",
+    title: "Data Scientist Interview Questions (2026) | Natively",
     description:
       "Common data scientist interview questions for 2026 — statistics, machine learning, SQL, and case studies — each with a clear approach to answering well.",
     h1: "Data Scientist Interview Questions (2026)",
