@@ -12,6 +12,10 @@ const distPath = path.resolve(__dirname, '../dist');
 const SITE = 'https://natively.software';
 const PORT = 4178;
 
+// App-level constants for per-page SoftwareApplication JSON-LD. Keep the version in
+// sync with the homepage SoftwareApplication block in index.html and llms.txt.
+const APP_VERSION = '2.7.0';
+
 // Locales to prerender. 'en' is the default (bare path); others are served under
 // a /<locale>/ prefix. Keep this in sync with src/config/locales.ts — prerender.js
 // runs in plain Node and cannot import the app's .ts module. To add a locale:
@@ -550,7 +554,12 @@ function expandRoutes() {
 
 // Build the static hreflang + JSON-LD tags appended just before </head>.
 // These are static (not Helmet-managed), so they don't participate in hydration.
-function buildSchemaTags(route) {
+// `job` carries the locale-resolved url/desc so per-page schema matches the page
+// it's emitted on (e.g. the /ru/ URL and RU description on a Russian render).
+function buildSchemaTags(route, job) {
+    // Locale-resolved page URL + description (fall back to the EN route values).
+    const pageUrl = job ? `${SITE}${job.urlPath}` : `${SITE}${route.path}`;
+    const pageDesc = job ? job.desc : route.desc;
     // hreflang: one <link> per locale that this route actually renders, plus x-default.
     const localesForRoute = SUPPORTED_LOCALES.filter(
         (l) => l === DEFAULT_LOCALE || (!route.skipRu && route[l])
@@ -607,7 +616,40 @@ function buildSchemaTags(route) {
         });
     }
 
-    // 3. FAQ schema for routes that declare inline FAQs.
+    // 3. SoftwareApplication schema for product/landing pages that declare it.
+    // Lean, page-scoped variant of the homepage entity in index.html: same app
+    // identity (name, OS, version, free offer) but this page's own URL and copy,
+    // so each landing page is a self-contained, citable description of the app.
+    // The homepage index.html still carries the full multi-tier pricing entity;
+    // we intentionally don't duplicate all 5 offers on every page (avoids drift).
+    if (route.schemaType === 'SoftwareApplication') {
+        schemas.push({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Natively",
+            "url": pageUrl,
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "macOS, Windows",
+            "softwareVersion": APP_VERSION,
+            "description": pageDesc,
+            "offers": {
+                "@type": "Offer",
+                "name": "Free (BYOK / Ollama)",
+                "price": "0",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": `${SITE}/`
+            },
+            "creator": {
+                "@type": "Organization",
+                "name": "Natively",
+                "url": `${SITE}/`,
+                "logo": `${SITE}/logowebsite.png`
+            }
+        });
+    }
+
+    // 4. FAQ schema for routes that declare inline FAQs.
     if (route.faqs) {
         schemas.push({
             "@context": "https://schema.org",
@@ -634,6 +676,22 @@ function stripBaseTag(html, re) {
     return html.replace(re, (m) => (/data-rh=/.test(m) ? m : ''));
 }
 
+// The base index.html ships a homepage-scoped SoftwareApplication JSON-LD block
+// (the one with `applicationSubCategory` + the full multi-tier offers list). Like
+// the other static schema in the template, it's captured onto every prerendered
+// interior page. On non-home pages it's wrong (its url is the site root) and, for
+// pages that declare schemaType: 'SoftwareApplication', it would collide with the
+// correct page-scoped block buildSchemaTags appends. Strip it from non-home pages
+// so each page carries at most one, page-accurate SoftwareApplication entity.
+// `applicationSubCategory` is unique to the homepage block, so it's a safe marker
+// that never removes the page-scoped block (which omits that field).
+function stripBaseSoftwareApplication(html) {
+    return html.replace(
+        /<script type=["']application\/ld\+json["']>[\s\S]*?<\/script>/g,
+        (m) => (m.includes('"applicationSubCategory"') ? '' : m),
+    );
+}
+
 // Post-capture: normalize the <head> so there is exactly one canonical/description/
 // og/twitter per page, append static hreflang + JSON-LD, and set <html lang>.
 //
@@ -651,6 +709,13 @@ function finalizeHtml(html, job) {
 
     let out = html;
     const helmetActive = /data-rh=["']true["']/.test(out);
+
+    // Drop the homepage's SoftwareApplication block from interior pages (it leaks in
+    // from the base template). The homepage keeps it; pages that declare
+    // schemaType get their own page-scoped block appended below instead.
+    if (route.path !== '/') {
+        out = stripBaseSoftwareApplication(out);
+    }
 
     if (helmetActive) {
         // Drop the base duplicates; keep Helmet's data-rh copies as the single source.
@@ -694,7 +759,7 @@ function finalizeHtml(html, job) {
     out = out.replace(/<html\s+lang=["'][^"']*["']/i, `<html lang="${job.locale}"`);
 
     // Append static hreflang + JSON-LD just before </head> (static, not Helmet-managed).
-    out = out.replace('</head>', `${buildSchemaTags(route)}\n</head>`);
+    out = out.replace('</head>', `${buildSchemaTags(route, job)}\n</head>`);
 
     return out;
 }
