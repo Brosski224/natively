@@ -34,6 +34,14 @@ export const pages = {
   LeetCodeAIHelper: lazyWithPreload(() => import("./pages/seo/LeetCodeAIHelper")),
   OfflineAIInterview: lazyWithPreload(() => import("./pages/seo/OfflineAIInterview")),
 
+  // Interview-vertical cluster blog posts
+  IsAIInterviewAssistantDetectable: lazyWithPreload(() => import("./pages/blog/IsAIInterviewAssistantDetectable")),
+  HowToUseAIInJobInterview: lazyWithPreload(() => import("./pages/blog/HowToUseAIInJobInterview")),
+  BestFreeAIInterviewAssistant: lazyWithPreload(() => import("./pages/blog/BestFreeAIInterviewAssistant")),
+  InterviewCopilotPricing: lazyWithPreload(() => import("./pages/blog/InterviewCopilotPricing")),
+  InterviewCopilotBYOK: lazyWithPreload(() => import("./pages/blog/InterviewCopilotBYOK")),
+  AIInterviewAssistantPrivacy: lazyWithPreload(() => import("./pages/blog/AIInterviewAssistantPrivacy")),
+
   // Meeting-vertical blog posts
   BestAIMeetingAssistants: lazyWithPreload(() => import("./pages/blog/BestAIMeetingAssistants")),
   BestFirefliesAlternatives: lazyWithPreload(() => import("./pages/blog/BestFirefliesAlternatives")),
@@ -123,6 +131,12 @@ const pathToKey: Record<string, PageKey> = {
   "/undetectable-interview-ai": "UndetectableInterviewAI",
   "/blog/is-cluely-safe": "IsCluelySafe",
   "/blog/best-ai-interview-assistants": "BestAIInterviewAssistants",
+  "/blog/is-ai-interview-assistant-detectable": "IsAIInterviewAssistantDetectable",
+  "/blog/how-to-use-ai-in-job-interview": "HowToUseAIInJobInterview",
+  "/blog/best-free-ai-interview-assistant": "BestFreeAIInterviewAssistant",
+  "/blog/interview-copilot-pricing": "InterviewCopilotPricing",
+  "/blog/interview-copilot-byok-local-llm": "InterviewCopilotBYOK",
+  "/blog/ai-interview-assistant-privacy": "AIInterviewAssistantPrivacy",
   "/blog/best-ai-meeting-assistants": "BestAIMeetingAssistants",
   "/blog/best-fireflies-alternatives": "BestFirefliesAlternatives",
   "/blog/local-meeting-notes-without-bot": "LocalMeetingNotesWithoutBot",

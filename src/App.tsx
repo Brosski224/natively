@@ -22,6 +22,8 @@ const {
   AIAssistantForCodingInterviews, HowAIHelpsInCodingInterviews, LocalAICodingAssistant,
   AIToolsForTechnicalInterviews, HowAIInterviewAssistantsWork, BestAIToolsForCodingInterviews,
   PreparingForTechnicalInterviewsWithAI, IsCluelySafe, BestAIInterviewAssistants,
+  IsAIInterviewAssistantDetectable, HowToUseAIInJobInterview, BestFreeAIInterviewAssistant,
+  InterviewCopilotPricing, InterviewCopilotBYOK, AIInterviewAssistantPrivacy,
   BestAIMeetingAssistants, BestFirefliesAlternatives, LocalMeetingNotesWithoutBot, AINoteTakerPrivacyGuide,
   LeetCodeAIHelper, OfflineAIInterview, DocsAIInterviewAssistant, FinalRoundAIAlternative,
   NativelyVsCluely, InterviewCopilot, FreeAIInterviewAssistant, NativelyVsLockedInAI,
@@ -111,6 +113,12 @@ const App = () => {
 
               <Route path="/blog/is-cluely-safe" element={<IsCluelySafe />} />
               <Route path="/blog/best-ai-interview-assistants" element={<BestAIInterviewAssistants />} />
+              <Route path="/blog/is-ai-interview-assistant-detectable" element={<IsAIInterviewAssistantDetectable />} />
+              <Route path="/blog/how-to-use-ai-in-job-interview" element={<HowToUseAIInJobInterview />} />
+              <Route path="/blog/best-free-ai-interview-assistant" element={<BestFreeAIInterviewAssistant />} />
+              <Route path="/blog/interview-copilot-pricing" element={<InterviewCopilotPricing />} />
+              <Route path="/blog/interview-copilot-byok-local-llm" element={<InterviewCopilotBYOK />} />
+              <Route path="/blog/ai-interview-assistant-privacy" element={<AIInterviewAssistantPrivacy />} />
               <Route path="/blog/best-ai-meeting-assistants" element={<BestAIMeetingAssistants />} />
               <Route path="/blog/best-fireflies-alternatives" element={<BestFirefliesAlternatives />} />
               <Route path="/blog/local-meeting-notes-without-bot" element={<LocalMeetingNotesWithoutBot />} />
@@ -183,6 +191,12 @@ const App = () => {
 
               <Route path="/ru/blog/is-cluely-safe" element={<IsCluelySafe />} />
               <Route path="/ru/blog/best-ai-interview-assistants" element={<BestAIInterviewAssistants />} />
+              <Route path="/ru/blog/is-ai-interview-assistant-detectable" element={<IsAIInterviewAssistantDetectable />} />
+              <Route path="/ru/blog/how-to-use-ai-in-job-interview" element={<HowToUseAIInJobInterview />} />
+              <Route path="/ru/blog/best-free-ai-interview-assistant" element={<BestFreeAIInterviewAssistant />} />
+              <Route path="/ru/blog/interview-copilot-pricing" element={<InterviewCopilotPricing />} />
+              <Route path="/ru/blog/interview-copilot-byok-local-llm" element={<InterviewCopilotBYOK />} />
+              <Route path="/ru/blog/ai-interview-assistant-privacy" element={<AIInterviewAssistantPrivacy />} />
               <Route path="/ru/blog/best-ai-meeting-assistants" element={<BestAIMeetingAssistants />} />
               <Route path="/ru/blog/best-fireflies-alternatives" element={<BestFirefliesAlternatives />} />
               <Route path="/ru/blog/local-meeting-notes-without-bot" element={<LocalMeetingNotesWithoutBot />} />

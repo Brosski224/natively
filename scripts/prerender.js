@@ -277,6 +277,102 @@ const seoRoutes = [
         }
     },
     {
+        path: '/blog/is-ai-interview-assistant-detectable',
+        title: 'Is an AI Interview Assistant Detectable? (2026) | Natively',
+        desc: 'Is an AI interview assistant detectable? How proctoring, screen share, and network monitoring catch tools — and why a local, zero-traffic assistant is hardest to detect.',
+        schemaType: 'Article',
+        publishedDate: '2026-03-04T09:00:00Z',
+        faqs: [
+            { q: "Is an AI interview assistant detectable?", a: "It can be detected three ways: through screen sharing, through proctoring software, and through network monitoring. Cloud tools are exposed to all three because they transmit data to external servers. A local assistant that generates no network traffic and keeps its overlay out of screen capture is significantly harder to detect, though no tool is guaranteed 100% undetectable." },
+            { q: "Can employers detect AI through network monitoring?", a: "Yes, for cloud tools. Any cloud AI assistant continuously sends your audio and screen to its servers, creating outbound traffic that network-monitoring tools can flag. A local tool running via Ollama generates zero network traffic, so there is nothing to monitor at the network level." },
+            { q: "Does Natively appear in screen share?", a: "No. Natively's overlay is excluded from screen capture, so it does not appear in screen shares or recordings. In local mode it also generates no network traffic and works fully offline." }
+        ],
+        ru: {
+            title: 'Можно ли обнаружить ИИ-ассистента для собеседований? (2026)',
+            desc: 'Можно ли обнаружить ИИ-ассистента для собеседований? Как прокторинг, демонстрация экрана и мониторинг сети ловят инструменты — и почему локальный ассистент без трафика обнаружить сложнее.'
+        }
+    },
+    {
+        path: '/blog/how-to-use-ai-in-job-interview',
+        title: 'How to Use AI in a Job Interview (2026 Step-by-Step) | Natively',
+        desc: 'How to use AI in a job interview: a step-by-step guide to setup, live coding help, behavioral and system-design answers, plus the ethics and detection risks to know first.',
+        schemaType: 'Article',
+        publishedDate: '2026-03-18T09:00:00Z',
+        faqs: [
+            { q: "How do you use AI in a job interview?", a: "Choose a tool with the right architecture, set it up and test it in advance, then use it for real-time coding help (screenshot the prompt for OCR analysis), behavioral answers (STAR framework), and system design (trade-off reminders). Glance at prompts and explain the logic in your own words to maintain eye contact." },
+            { q: "Is it allowed to use AI in an interview?", a: "It depends on the company. Many employers prohibit AI use during interviews, and some assessments run under proctoring or confidentiality agreements. Always understand the rules and risk profile before using any tool, since no tool is guaranteed undetectable." },
+            { q: "What is the best way to use AI for coding interviews?", a: "Use it as a safety net for syntax and edge cases, not for mindless copying. Screenshot the problem so the AI can parse it and suggest a solution structure, then write and explain the code yourself so you demonstrate real understanding." }
+        ],
+        ru: {
+            title: 'Как использовать ИИ на собеседовании (2026, пошагово)',
+            desc: 'Как использовать ИИ на собеседовании: пошаговое руководство по настройке, помощи с кодингом, поведенческим вопросам и системному дизайну — плюс этика и риски обнаружения.'
+        }
+    },
+    {
+        path: '/blog/best-free-ai-interview-assistant',
+        title: 'Best Free AI Interview Assistant in 2026 (No Credit Card) | Natively',
+        desc: 'Looking for a free AI interview assistant? Most tools are free trials only. Here are the genuinely free options in 2026 — including a $0 local route with no subscription.',
+        schemaType: 'Article',
+        publishedDate: '2026-04-08T09:00:00Z',
+        faqs: [
+            { q: "What is the best free AI interview assistant?", a: "Natively is the best genuinely-free option because, run locally via Ollama, it costs exactly $0 forever with no card and no session cap. Most competitors advertise 'free' tiers that are really time-limited trials or freemium plans with caps." },
+            { q: "Is there a free AI interview assistant with no credit card?", a: "Yes. Natively's local mode (via Ollama) and BYOK mode both require no card. In local mode the cost is zero; in BYOK mode the app is free and you pay only your own model provider for the tokens you use." },
+            { q: "What's the difference between free and a free trial?", a: "A free trial is time-limited or capped and eventually requires payment. A genuinely free tool has no timer, no session cap, and asks for no card — which is what running Natively locally via Ollama provides." }
+        ],
+        ru: {
+            title: 'Лучший бесплатный ИИ-ассистент для собеседований 2026',
+            desc: 'Ищете бесплатного ИИ-ассистента для собеседований? Большинство инструментов — только пробный период. Вот действительно бесплатные варианты 2026 года, включая режим за $0 без подписки.'
+        }
+    },
+    {
+        path: '/blog/interview-copilot-pricing',
+        title: 'Interview Copilot Pricing Compared (2026) | Natively',
+        desc: 'Interview copilot pricing compared in 2026: Cluely, Final Round AI, LockedIn AI, Interview Coder, and Natively (free/BYOK). See which copilot is genuinely free vs paid.',
+        schemaType: 'Article',
+        publishedDate: '2026-04-22T09:00:00Z',
+        faqs: [
+            { q: "How much does an interview copilot cost?", a: "Cloud copilots typically run $25–70/month: Final Round AI is roughly $25–50/mo and LockedIn AI roughly $55–70/mo, with Cluely and Interview Coder on paid subscriptions. Natively is free in local and BYOK modes, with an optional managed API from $8 to $35/month." },
+            { q: "Is there a free interview copilot?", a: "Yes. Natively is free forever in local mode via Ollama, and its BYOK mode keeps the app free while you pay only your own model provider for tokens used. The paid Natively API tier is optional." },
+            { q: "Why is Natively free when other copilots charge a subscription?", a: "Cloud copilots run AI inference and transcription on their own servers, so they must charge a subscription. Natively moves that processing to your device (local via Ollama) or your own API key (BYOK), so the app itself can stay free." }
+        ],
+        ru: {
+            title: 'Сравнение цен на ИИ-копилоты для собеседований (2026)',
+            desc: 'Сравнение цен на ИИ-копилоты для собеседований в 2026: Cluely, Final Round AI, LockedIn AI, Interview Coder и Natively (бесплатно/BYOK). Какой копилот действительно бесплатный.'
+        }
+    },
+    {
+        path: '/blog/interview-copilot-byok-local-llm',
+        title: 'BYOK & Local-LLM Interview Copilot: Bring Your Own Key | Natively',
+        desc: 'A BYOK interview copilot lets you use your own OpenAI, Anthropic, Gemini, or Groq key — or run a local LLM via Ollama for $0. Here\'s how bring-your-own-key copilots work.',
+        schemaType: 'Article',
+        publishedDate: '2026-05-06T09:00:00Z',
+        faqs: [
+            { q: "What is a BYOK interview copilot?", a: "BYOK (bring-your-own-key) means the copilot uses your own API key or a local model instead of its own closed cloud model. Natively supports BYOK with OpenAI, Anthropic, Gemini, Groq, or any OpenAI-compatible endpoint — giving you the same AI power as cloud competitors without their subscription." },
+            { q: "Can I run an interview copilot with a local LLM?", a: "Yes. Natively runs fully locally via Ollama with models like Llama, Mistral, CodeLlama, and Gemma plus local Whisper — 100% offline, zero network traffic, and zero cost." },
+            { q: "Is BYOK cheaper than a subscription?", a: "Usually, yes. With BYOK you pay your model provider only for the tokens you actually use — often cents per interview session — versus a fixed $25–70/month subscription regardless of usage." }
+        ],
+        ru: {
+            title: 'ИИ-копилот с BYOK и локальной LLM: свой ключ | Natively',
+            desc: 'Копилот с BYOK позволяет использовать собственный ключ OpenAI, Anthropic, Gemini или Groq — либо запускать локальную LLM через Ollama за $0. Как работают копилоты со своим ключом.'
+        }
+    },
+    {
+        path: '/blog/ai-interview-assistant-privacy',
+        title: 'AI Interview Assistant Privacy: What You Need to Know | Natively',
+        desc: 'AI interview assistant privacy explained: where your audio and screen data go, the NDA and breach risks of cloud tools, and why local on-device processing is the safe choice.',
+        schemaType: 'Article',
+        publishedDate: '2026-05-20T09:00:00Z',
+        faqs: [
+            { q: "Are AI interview assistants private?", a: "Cloud-based ones are not fully private: they transmit your audio, screen content, and responses to third-party servers. A local assistant like Natively processes everything on your device, so in local mode there is no telemetry and zero network traffic, and the open-source code (AGPL-3.0) lets anyone verify it." },
+            { q: "What are the privacy risks of cloud interview assistants?", a: "Three main risks: NDA violation (interview material under NDA is sent to a third party), data breach (any cloud service can be hacked, exposing career-sensitive data), and retroactive policy changes you don't control. Local processing removes all three." },
+            { q: "Is my interview data stored anywhere with Natively?", a: "In Natively's local mode, data stays in your device's local memory and is not serialized to external servers. Nothing is transmitted, so there is no cloud copy of your interview." }
+        ],
+        ru: {
+            title: 'Приватность ИИ-ассистента для собеседований: что нужно знать',
+            desc: 'Приватность ИИ-ассистента для собеседований: куда уходят ваши аудио и данные экрана, риски NDA и утечек у облачных инструментов, и почему локальная обработка безопаснее.'
+        }
+    },
+    {
         path: '/blog/best-ai-meeting-assistants',
         title: '7 Best AI Meeting Assistants in 2026 (Tested & Ranked)',
         desc: 'We tested 7 AI meeting assistants in 2026. Compare Otter, Fireflies, Cluely, Natively, Fathom, tl;dv, and Granola — ranked by privacy, cost, real-time help, and local processing.',
@@ -716,6 +812,12 @@ const ROUTE_SOURCE_FILES = {
     '/undetectable-interview-ai': 'src/pages/seo/UndetectableInterviewAI.tsx',
     '/blog/is-cluely-safe': 'src/pages/blog/IsCluelySafe.tsx',
     '/blog/best-ai-interview-assistants': 'src/pages/blog/BestAIInterviewAssistants.tsx',
+    '/blog/is-ai-interview-assistant-detectable': 'src/pages/blog/IsAIInterviewAssistantDetectable.tsx',
+    '/blog/how-to-use-ai-in-job-interview': 'src/pages/blog/HowToUseAIInJobInterview.tsx',
+    '/blog/best-free-ai-interview-assistant': 'src/pages/blog/BestFreeAIInterviewAssistant.tsx',
+    '/blog/interview-copilot-pricing': 'src/pages/blog/InterviewCopilotPricing.tsx',
+    '/blog/interview-copilot-byok-local-llm': 'src/pages/blog/InterviewCopilotBYOK.tsx',
+    '/blog/ai-interview-assistant-privacy': 'src/pages/blog/AIInterviewAssistantPrivacy.tsx',
     '/blog/best-ai-meeting-assistants': 'src/pages/blog/BestAIMeetingAssistants.tsx',
     '/blog/best-fireflies-alternatives': 'src/pages/blog/BestFirefliesAlternatives.tsx',
     '/blog/local-meeting-notes-without-bot': 'src/pages/blog/LocalMeetingNotesWithoutBot.tsx',

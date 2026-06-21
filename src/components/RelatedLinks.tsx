@@ -19,8 +19,8 @@ interface RelatedItem {
 const RELATED: Record<string, RelatedItem[]> = {
   "/ai-interview-assistant": [
     { to: "/interview-copilot", label: "Local AI Interview Copilot", ru: "Локальный ИИ-копилот для собеседований" },
-    { to: "/behavioral-interview-assistant", label: "Behavioral Interview Assistant", ru: "ИИ-ассистент для поведенческих собеседований" },
-    { to: "/system-design-interview-assistant", label: "System Design Interview Assistant", ru: "ИИ-ассистент по системному дизайну" },
+    { to: "/blog/how-to-use-ai-in-job-interview", label: "How to Use AI in a Job Interview", ru: "Как использовать ИИ на собеседовании" },
+    { to: "/blog/is-ai-interview-assistant-detectable", label: "Is an AI Assistant Detectable?", ru: "Можно ли обнаружить ИИ-ассистента?" },
     { to: "/blog/best-ai-interview-assistants", label: "7 Best AI Interview Assistants (2026)", ru: "7 лучших ИИ-ассистентов (2026)" },
   ],
   "/ai-coding-interview-helper": [
@@ -103,14 +103,14 @@ const RELATED: Record<string, RelatedItem[]> = {
   ],
   "/interview-copilot": [
     { to: "/live-interview-assistant", label: "Live Interview Assistant", ru: "Ассистент для живых собеседований" },
-    { to: "/interview-answer-generator", label: "Interview Answer Generator", ru: "ИИ-генератор ответов для собеседований" },
-    { to: "/undetectable-interview-ai", label: "Undetectable Interview AI", ru: "Незаметный ИИ для собеседований" },
+    { to: "/blog/interview-copilot-pricing", label: "Interview Copilot Pricing Compared", ru: "Сравнение цен на ИИ-копилоты" },
+    { to: "/blog/interview-copilot-byok-local-llm", label: "BYOK & Local-LLM Copilot", ru: "Копилот с BYOK и локальной LLM" },
     { to: "/cluely-alternative", label: "The Best Cluely Alternative", ru: "Лучшая альтернатива Cluely" },
   ],
   "/free-ai-interview-assistant": [
-    { to: "/offline-ai-interview", label: "Offline AI Interview Assistant", ru: "Офлайн ИИ-ассистент для собеседований" },
+    { to: "/blog/best-free-ai-interview-assistant", label: "Best Free AI Interview Assistant", ru: "Лучший бесплатный ИИ-ассистент" },
     { to: "/interview-copilot", label: "Local AI Interview Copilot", ru: "Локальный ИИ-копилот для собеседований" },
-    { to: "/finalroundai-alternative", label: "The Best FinalRoundAI Alternative", ru: "Лучшая альтернатива FinalRoundAI" },
+    { to: "/blog/interview-copilot-pricing", label: "Interview Copilot Pricing Compared", ru: "Сравнение цен на ИИ-копилоты" },
     { to: "/ai-interview-assistant", label: "What is an AI Interview Assistant?", ru: "Что такое ИИ-ассистент для собеседований?" },
   ],
   "/offline-ai-interview": [
@@ -120,17 +120,17 @@ const RELATED: Record<string, RelatedItem[]> = {
     { to: "/leetcode-ai-helper", label: "LeetCode AI Helper", ru: "ИИ-помощник для LeetCode" },
   ],
   "/undetectable-interview-ai": [
-    { to: "/offline-ai-interview", label: "Offline AI Interview Assistant", ru: "Офлайн ИИ-ассистент для собеседований" },
+    { to: "/blog/is-ai-interview-assistant-detectable", label: "Is an AI Assistant Detectable?", ru: "Можно ли обнаружить ИИ-ассистента?" },
     { to: "/local-ai-assistant", label: "Secure Local AI Assistant", ru: "Безопасный локальный ИИ-ассистент" },
     { to: "/cluely-alternative", label: "The Best Cluely Alternative", ru: "Лучшая альтернатива Cluely" },
-    { to: "/blog/is-cluely-safe", label: "Is Cluely Safe?", ru: "Безопасен ли Cluely?" },
+    { to: "/blog/ai-interview-assistant-privacy", label: "AI Interview Assistant Privacy", ru: "Приватность ИИ-ассистента для собеседований" },
   ],
   // Blog posts
   "/blog/ai-interview-assistant-guide": [
     { to: "/ai-interview-assistant", label: "What is an AI Interview Assistant?", ru: "Что такое ИИ-ассистент для собеседований?" },
-    { to: "/interview-copilot", label: "Local AI Interview Copilot", ru: "Локальный ИИ-копилот для собеседований" },
+    { to: "/blog/how-to-use-ai-in-job-interview", label: "How to Use AI in a Job Interview", ru: "Как использовать ИИ на собеседовании" },
     { to: "/blog/best-ai-interview-assistants", label: "7 Best AI Interview Assistants (2026)", ru: "7 лучших ИИ-ассистентов (2026)" },
-    { to: "/free-ai-interview-assistant", label: "Free AI Interview Assistant", ru: "Бесплатный ИИ-ассистент для собеседований" },
+    { to: "/blog/best-free-ai-interview-assistant", label: "Best Free AI Interview Assistant", ru: "Лучший бесплатный ИИ-ассистент" },
   ],
   "/blog/local-ai-vs-cloud-ai-assistants": [
     { to: "/local-ai-assistant", label: "Secure Local AI Assistant", ru: "Безопасный локальный ИИ-ассистент" },
@@ -164,15 +164,53 @@ const RELATED: Record<string, RelatedItem[]> = {
   ],
   "/blog/is-cluely-safe": [
     { to: "/cluely-alternative", label: "The Best Cluely Alternative", ru: "Лучшая альтернатива Cluely" },
-    { to: "/natively-vs-cluely", label: "Natively vs Cluely", ru: "Natively против Cluely" },
-    { to: "/undetectable-interview-ai", label: "Undetectable Interview AI", ru: "Незаметный ИИ для собеседований" },
+    { to: "/blog/ai-interview-assistant-privacy", label: "AI Interview Assistant Privacy", ru: "Приватность ИИ-ассистента для собеседований" },
+    { to: "/blog/is-ai-interview-assistant-detectable", label: "Is an AI Assistant Detectable?", ru: "Можно ли обнаружить ИИ-ассистента?" },
     { to: "/local-ai-assistant", label: "Secure Local AI Assistant", ru: "Безопасный локальный ИИ-ассистент" },
   ],
   "/blog/best-ai-interview-assistants": [
     { to: "/finalroundai-alternative", label: "The Best FinalRoundAI Alternative", ru: "Лучшая альтернатива FinalRoundAI" },
     { to: "/natively-vs-cluely", label: "Natively vs Cluely", ru: "Natively против Cluely" },
     { to: "/interview-copilot", label: "Local AI Interview Copilot", ru: "Локальный ИИ-копилот для собеседований" },
-    { to: "/leetcode-ai-helper", label: "LeetCode AI Helper", ru: "ИИ-помощник для LeetCode" },
+    { to: "/blog/interview-copilot-pricing", label: "Interview Copilot Pricing Compared", ru: "Сравнение цен на ИИ-копилоты" },
+  ],
+
+  // ---- Interview-vertical cluster blog posts ----
+  "/blog/is-ai-interview-assistant-detectable": [
+    { to: "/blog/ai-interview-assistant-privacy", label: "AI Interview Assistant Privacy", ru: "Приватность ИИ-ассистента для собеседований" },
+    { to: "/undetectable-interview-ai", label: "Undetectable Interview AI", ru: "Незаметный ИИ для собеседований" },
+    { to: "/blog/is-cluely-safe", label: "Is Cluely Safe?", ru: "Безопасен ли Cluely?" },
+    { to: "/blog/how-ai-interview-assistants-work", label: "How AI Interview Assistants Work", ru: "Как работают ИИ-ассистенты для собеседований" },
+  ],
+  "/blog/how-to-use-ai-in-job-interview": [
+    { to: "/ai-interview-assistant", label: "What is an AI Interview Assistant?", ru: "Что такое ИИ-ассистент для собеседований?" },
+    { to: "/blog/is-ai-interview-assistant-detectable", label: "Is an AI Assistant Detectable?", ru: "Можно ли обнаружить ИИ-ассистента?" },
+    { to: "/interview-copilot", label: "Local AI Interview Copilot", ru: "Локальный ИИ-копилот для собеседований" },
+    { to: "/behavioral-interview-assistant", label: "Behavioral Interview Assistant", ru: "ИИ-ассистент для поведенческих собеседований" },
+  ],
+  "/blog/best-free-ai-interview-assistant": [
+    { to: "/free-ai-interview-assistant", label: "Free AI Interview Assistant", ru: "Бесплатный ИИ-ассистент для собеседований" },
+    { to: "/blog/interview-copilot-byok-local-llm", label: "BYOK & Local-LLM Copilot", ru: "Копилот с BYOK и локальной LLM" },
+    { to: "/blog/best-ai-interview-assistants", label: "7 Best AI Interview Assistants (2026)", ru: "7 лучших ИИ-ассистентов (2026)" },
+    { to: "/blog/interview-copilot-pricing", label: "Interview Copilot Pricing Compared", ru: "Сравнение цен на ИИ-копилоты" },
+  ],
+  "/blog/interview-copilot-pricing": [
+    { to: "/blog/best-free-ai-interview-assistant", label: "Best Free AI Interview Assistant", ru: "Лучший бесплатный ИИ-ассистент" },
+    { to: "/blog/interview-copilot-byok-local-llm", label: "BYOK & Local-LLM Copilot", ru: "Копилот с BYOK и локальной LLM" },
+    { to: "/interview-copilot", label: "Local AI Interview Copilot", ru: "Локальный ИИ-копилот для собеседований" },
+    { to: "/blog/best-ai-interview-assistants", label: "7 Best AI Interview Assistants (2026)", ru: "7 лучших ИИ-ассистентов (2026)" },
+  ],
+  "/blog/interview-copilot-byok-local-llm": [
+    { to: "/blog/interview-copilot-pricing", label: "Interview Copilot Pricing Compared", ru: "Сравнение цен на ИИ-копилоты" },
+    { to: "/blog/ai-interview-assistant-privacy", label: "AI Interview Assistant Privacy", ru: "Приватность ИИ-ассистента для собеседований" },
+    { to: "/local-ai-assistant", label: "Secure Local AI Assistant", ru: "Безопасный локальный ИИ-ассистент" },
+    { to: "/blog/best-free-ai-interview-assistant", label: "Best Free AI Interview Assistant", ru: "Лучший бесплатный ИИ-ассистент" },
+  ],
+  "/blog/ai-interview-assistant-privacy": [
+    { to: "/blog/is-ai-interview-assistant-detectable", label: "Is an AI Assistant Detectable?", ru: "Можно ли обнаружить ИИ-ассистента?" },
+    { to: "/blog/is-cluely-safe", label: "Is Cluely Safe?", ru: "Безопасен ли Cluely?" },
+    { to: "/local-ai-assistant", label: "Secure Local AI Assistant", ru: "Безопасный локальный ИИ-ассистент" },
+    { to: "/blog/interview-copilot-byok-local-llm", label: "BYOK & Local-LLM Copilot", ru: "Копилот с BYOK и локальной LLM" },
   ],
 
   // ---- Meeting-vertical blog posts ----
