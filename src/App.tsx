@@ -25,7 +25,7 @@ const {
   IsAIInterviewAssistantDetectable, HowToUseAIInJobInterview, BestFreeAIInterviewAssistant,
   InterviewCopilotPricing, InterviewCopilotBYOK, AIInterviewAssistantPrivacy,
   BestAIMeetingAssistants, BestFirefliesAlternatives, LocalMeetingNotesWithoutBot, AINoteTakerPrivacyGuide,
-  BestAIMeetingAssistantTools, CallAssistantProductiveMeetings,
+  BestAIMeetingAssistantTools, CallAssistantProductiveMeetings, BlogIndex,
   LeetCodeAIHelper, OfflineAIInterview, DocsAIInterviewAssistant, FinalRoundAIAlternative,
   NativelyVsCluely, InterviewCopilot, FreeAIInterviewAssistant, NativelyVsLockedInAI,
   NativelyVsInterviewCoder, UndetectableInterviewAI,
@@ -86,6 +86,7 @@ const App = () => {
               <Route path="/ai-coding-interview-helper" element={<AICodingInterviewHelper />} />
               <Route path="/local-ai-assistant" element={<LocalAIAssistant />} />
 
+              <Route path="/blog" element={<BlogIndex />} />
               <Route path="/blog/ai-interview-assistant-guide" element={<AIInterviewAssistantGuide />} />
               <Route path="/blog/local-ai-vs-cloud-ai-assistants" element={<LocalAIVsCloudAIAssistants />} />
               <Route path="/blog/how-ai-can-help-with-coding-interviews" element={<HowAICanHelpWithCodingInterviews />} />
@@ -166,6 +167,7 @@ const App = () => {
               <Route path="/ru/ai-coding-interview-helper" element={<AICodingInterviewHelper />} />
               <Route path="/ru/local-ai-assistant" element={<LocalAIAssistant />} />
 
+              <Route path="/ru/blog" element={<BlogIndex />} />
               <Route path="/ru/blog/ai-interview-assistant-guide" element={<AIInterviewAssistantGuide />} />
               <Route path="/ru/blog/local-ai-vs-cloud-ai-assistants" element={<LocalAIVsCloudAIAssistants />} />
               <Route path="/ru/blog/how-ai-can-help-with-coding-interviews" element={<HowAICanHelpWithCodingInterviews />} />

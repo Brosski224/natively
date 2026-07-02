@@ -24,6 +24,7 @@ const Navbar = () => {
     { label: "Product Hunt", href: "https://www.producthunt.com/products/natively-ai-2?utm_source=other&utm_medium=social" },
     { label: "Hacker News", href: "https://news.ycombinator.com/item?id=46923304" },
     { label: t('nav.github'), href: "https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant" },
+    { label: t('nav.blog'), href: localePath("/blog") },
     { label: "$NAT", href: "https://app.printr.money/trade/0xba1e50273ec14ca52b3fa64a5054c39470c2835392c6ecd06876f5bccd597d7b", isToken: true },
     { label: t('nav.pro'), href: localePath("/pro"), isPro: true },
   ];

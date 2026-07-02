@@ -54,12 +54,12 @@ const Footer = () => {
     {
       titleKey: "footer.blog",
       links: [
+        { labelKey: "footer.blog_all", href: "/blog" },
+        { labelKey: "footer.best_meeting_assistants", href: "/blog/best-ai-meeting-assistants" },
+        { labelKey: "footer.call_assistant_productive", href: "/blog/how-a-call-assistant-makes-meetings-productive" },
+        { labelKey: "footer.note_taker_privacy", href: "/blog/ai-note-taker-privacy-guide" },
         { labelKey: "footer.interview_guide", href: "/blog/ai-interview-assistant-guide" },
-        { labelKey: "footer.local_vs_cloud", href: "/blog/local-ai-vs-cloud-ai-assistants" },
-        { labelKey: "footer.ai_coding_exams_blog", href: "/blog/how-ai-can-help-with-coding-interviews" },
-        { labelKey: "footer.interview_copilots", href: "/blog/how-ai-interview-assistants-work" },
         { labelKey: "footer.top_ai_tools", href: "/blog/best-ai-tools-for-coding-interviews" },
-        { labelKey: "footer.preparing_screenings", href: "/blog/preparing-for-technical-interviews-with-ai" },
       ],
     },
     {

@@ -9,6 +9,7 @@
   "nav": {
     "preview": "Демо",
     "github": "GitHub",
+    "blog": "Блог",
     "pro": "Pro",
     "donate": "Поддержать",
     "download": "Скачать",
@@ -200,6 +201,10 @@
     "how_ai_helps": "Как ИИ помогает",
     "local_coding": "Локальный ИИ-помощник для кода",
     "tech_ai_tools": "Топ ИИ-инструменты для техсобеседований",
+    "blog_all": "Все статьи",
+    "best_meeting_assistants": "Лучшие ИИ для встреч",
+    "call_assistant_productive": "Продуктивные встречи с ИИ",
+    "note_taker_privacy": "Приватны ли ИИ-нотетейкеры?",
     "interview_guide": "Гид по ИИ-ассистентам для собеседований",
     "local_vs_cloud": "Локальный vs Облачный ИИ",
     "ai_coding_exams_blog": "ИИ для код-экзаменов",

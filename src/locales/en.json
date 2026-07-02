@@ -9,6 +9,7 @@
   "nav": {
     "preview": "Preview",
     "github": "GitHub",
+    "blog": "Blog",
     "pro": "Pro",
     "donate": "Donate",
     "download": "Download",
@@ -200,6 +201,10 @@
     "how_ai_helps": "How AI Helps You",
     "local_coding": "Local Coding Copilot",
     "tech_ai_tools": "Top Technical AI Tools",
+    "blog_all": "All Articles",
+    "best_meeting_assistants": "Best AI Meeting Assistants",
+    "call_assistant_productive": "Productive Meetings with AI",
+    "note_taker_privacy": "Are AI Note-Takers Private?",
     "interview_guide": "Interview Assistant Guide",
     "local_vs_cloud": "Local vs Cloud AI",
     "ai_coding_exams_blog": "AI for Coding Exams",

@@ -134,6 +134,16 @@ const seoRoutes = [
             desc: 'Документация ИИ-ассистента Natively для собеседований. Краткое объяснение того, как работают локальные ИИ-копилоты, их преимущества в приватности и функциональность.'
         }
     },
+    // BLOG INDEX — the archive/listing page linking every post below.
+    {
+        path: '/blog',
+        title: 'Natively Blog — Private AI for Meetings & Interviews',
+        desc: 'Guides and comparisons on private AI assistants for meetings, calls, and interviews — privacy, real-time help, and local on-device processing.',
+        ru: {
+            title: 'Блог Natively — приватный ИИ для встреч и собеседований',
+            desc: 'Руководства и сравнения по приватным ИИ-ассистентам для встреч, звонков и собеседований — приватность, помощь в реальном времени и локальная обработка.'
+        }
+    },
     // BLOG POSTS
     {
         path: '/blog/ai-interview-assistant-guide',
@@ -826,6 +836,7 @@ const ROUTE_SOURCE_FILES = {
     '/cluely-alternative': 'src/pages/seo/NativelyAlternative.tsx',
     '/ai-coding-interview-helper': 'src/pages/seo/AICodingInterviewHelper.tsx',
     '/local-ai-assistant': 'src/pages/seo/LocalAIAssistant.tsx',
+    '/blog': 'src/pages/blog/BlogIndex.tsx',
     '/blog/ai-interview-assistant-guide': 'src/pages/blog/AIInterviewAssistantGuide.tsx',
     '/blog/local-ai-vs-cloud-ai-assistants': 'src/pages/blog/LocalAIVsCloudAIAssistants.tsx',
     '/blog/how-ai-can-help-with-coding-interviews': 'src/pages/blog/HowAICanHelpWithCodingInterviews.tsx',
