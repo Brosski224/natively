@@ -51,8 +51,8 @@ const NativelyInterfaceCard = ({ className = "", isMobile = false, isStatic = fa
         initial: isMobile ? { opacity: 0, y: 20 } : { opacity: 0, x: "-50%" },
         animate: isMobile ? { opacity: 1, y: 0 } : { opacity: 1, x: "-50%" },
         transition: isMobile
-          ? { delay: 2.2, duration: 1, ease: "easeOut" }
-          : { delay: 5.5, duration: 1.4, ease: [0.22, 1, 0.36, 1] },
+          ? { duration: 1, ease: "easeOut" }
+          : { duration: 1.4, ease: [0.22, 1, 0.36, 1] },
       };
 
   return (
