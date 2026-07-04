@@ -4,6 +4,9 @@ import {
   useMotionValue,
   useSpring,
   useReducedMotion,
+  useScroll,
+  useTransform,
+  useMotionTemplate,
   animate,
 } from "@/lib/motion";
 import JellyClayButton from "@/components/JellyClayButton";
@@ -14,9 +17,7 @@ import mountainVideo from "@/assets/bg.mp4";
 import mountainPoster from "@/assets/bg.png";
 
 // ===========================================================================
-// Animation primitives — shared between the hero container and its children
-// so we never duplicate timing or easing values. Resolved at render time to
-// honour prefers-reduced-motion.
+// Animation primitives
 // ===========================================================================
 
 const EASE_OUT_EXPO = [0.22, 1, 0.36, 1] as const;
@@ -60,71 +61,37 @@ const COUNT_DURATION_S = 1.7;
 const PARALLAX_MAX_X_PX = 10;
 const PARALLAX_MAX_Y_PX = 6;
 
+// === Pinned rounded-card hero =============================================
+// The section's *scroll track* (sectionRef) is taller than the viewport.
+// The visible content is `sticky top-0`, so it stays locked in place for
+// the whole track — that's what gives us room for:
+//   phase A [0    -> ZOOM_END]     : bg zooms out, padding/radius flatten
+//   phase B [HD_START -> HD_END]   : HeroDesktop fades + lifts in (overlaps
+//                                     the tail of phase A)
+//   phase C [HD_END -> 1]          : everything holds fully revealed while
+//                                     the user keeps scrolling — the pin
+//                                     doesn't release until progress hits 1,
+//                                     so we never jump to the next section
+//                                     right as HD appears.
+// All useTransform calls below clamp to their start/end range, so the
+// values naturally freeze once progress moves past the phase's window.
+const BG_SCALE_START = 1.22; // zoomed-in crop on first paint
+const BG_SCALE_END = 1.0;
+const BG_Y_PX = 40;
+const CARD_RADIUS_START_REM = 2; // 32px, matches md:rounded-[2rem]
+const CARD_RADIUS_END_REM = 0;
+const SECTION_PAD_CLAMP = "clamp(16px, 2vw, 24px)"; // ~ p-4 md:p-6
+
+const ZOOM_END = 0.32; // frame flattens + video settles by here ("slight scroll")
+const HD_START = 0.24; // HeroDesktop starts fading in slightly before zoom finishes
+const HD_END = 0.5; // fully revealed here — everything after this is just hold time
+
+// How much extra scroll track the pin gets. Bigger = longer hold before the
+// next section is allowed to appear. ~1.2x viewport height of "hold" room.
+const PIN_TRACK_VH = 220;
+
 const NOISE_DATA_URL =
   "url(\"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
-
-// ===========================================================================
-// Background — autoplay-friendly hero video with poster fallback.
-// Reduced-motion users get the static poster image instead.
-// ===========================================================================
-
-const HeroBackground = ({
-  prefersReducedMotion,
-}: {
-  prefersReducedMotion: boolean;
-}) => (
-  <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-    {prefersReducedMotion ? (
-      <img
-        src={mountainPoster}
-        alt=""
-        aria-hidden="true"
-        className="h-full w-full object-cover object-center"
-        draggable={false}
-      />
-    ) : (
-      <video
-        src={mountainVideo}
-        poster={mountainPoster}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        tabIndex={-1}
-        className="h-full w-full object-cover object-center"
-      />
-    )}
-
-    {/* Atmospheric overlays — keeping the top dim so the headline stays
-        legible without washing the sky out to white. */}
-    <div
-      className="absolute inset-0"
-      style={{
-        background:
-          "radial-gradient(70% 60% at 50% 110%, rgba(255,255,255,0.55), transparent 70%)",
-      }}
-    />
-    <div
-      className="absolute inset-x-0 top-0 h-1/2"
-      style={{
-        background:
-          "linear-gradient(to bottom, rgba(17,24,39,0.18), transparent)",
-      }}
-    />
-    <div
-      className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/15 to-transparent"
-    />
-    <div
-      className="absolute inset-0 opacity-[0.04] mix-blend-multiply"
-      style={{
-        backgroundImage: NOISE_DATA_URL,
-        backgroundSize: "180px 180px",
-      }}
-    />
-  </div>
-);
 
 // ===========================================================================
 // Component
@@ -173,8 +140,7 @@ const HeroSection = () => {
   }, []);
 
   // -------------------------------------------------------------------------
-  // Smoothly-animated download counter — Motion's animate() interpolates from
-  // 0 to the latest fetched total. Updates a locale-formatted string state.
+  // Smoothly-animated download counter.
   // -------------------------------------------------------------------------
   const [formattedCount, setFormattedCount] = useState<string>(
     new Intl.NumberFormat(i18n.language || "en").format(0),
@@ -201,8 +167,7 @@ const HeroSection = () => {
   }, [downloadCount, i18n.language, prefersReducedMotion]);
 
   // -------------------------------------------------------------------------
-  // Mouse parallax on the desktop preview wrapper only. Spring-smoothed, with
-  // movement strictly bounded by PARALLAX_MAX_X_PX / PARALLAX_MAX_Y_PX.
+  // Mouse parallax on the HeroDesktop wrapper only.
   // -------------------------------------------------------------------------
   const desktopRef = useRef<HTMLDivElement | null>(null);
   const pointerX = useMotionValue(0);
@@ -243,6 +208,59 @@ const HeroSection = () => {
   };
 
   // -------------------------------------------------------------------------
+  // Scroll-driven state, tracked against the tall outer wrapper so the
+  // sticky inner content has room to animate + hold before releasing.
+  // -------------------------------------------------------------------------
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Outer card padding: shrinks to 0 over phase A only, then holds at 0.
+  const padProgress = useTransform(scrollYProgress, [0, ZOOM_END], [1, 0]);
+  const sectionPadding = useMotionTemplate`calc(${SECTION_PAD_CLAMP} * ${padProgress})`;
+
+  // BG video: zoomed in -> settled, over phase A only.
+  const bgScale = useTransform(
+    scrollYProgress,
+    [0, ZOOM_END],
+    [BG_SCALE_START, BG_SCALE_END],
+  );
+  const bgY = useTransform(scrollYProgress, [0, ZOOM_END], [0, BG_Y_PX]);
+
+  // Card border radius: rounded -> square, over phase A only.
+  const cardRadius = useTransform(
+    scrollYProgress,
+    [0, ZOOM_END],
+    [`${CARD_RADIUS_START_REM}rem`, `${CARD_RADIUS_END_REM}rem`],
+  );
+  const cardRadiusStyle = useMotionTemplate`${cardRadius}`;
+
+  // HeroDesktop reveal: fades + lifts in during phase B, then holds fully
+  // visible for the remainder of the pin (phase C).
+  const desktopOpacity = useTransform(scrollYProgress, [HD_START, HD_END], [0, 1]);
+  const desktopY = useTransform(scrollYProgress, [HD_START, HD_END], [24, 0]);
+
+  // Track reveal state in React so aria-hidden / pointer-events stay correct
+  // (reading a motion value's .get() during render would go stale, since it
+  // doesn't trigger a re-render on its own).
+  const [isDesktopVisible, setIsDesktopVisible] = useState(
+    prefersReducedMotion,
+  );
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setIsDesktopVisible(true);
+      return;
+    }
+    const unsubscribe = desktopOpacity.on("change", (latest: number) => {
+      setIsDesktopVisible(latest > 0.05);
+    });
+    return () => unsubscribe();
+  }, [desktopOpacity, prefersReducedMotion]);
+
+  // -------------------------------------------------------------------------
   // Resolved variants that respect prefers-reduced-motion.
   // -------------------------------------------------------------------------
   const containerVariants = prefersReducedMotion
@@ -253,124 +271,190 @@ const HeroSection = () => {
     : heroItemVariants;
 
   // -------------------------------------------------------------------------
-  // Translated content resolved once per render.
+  // Translated content.
   // -------------------------------------------------------------------------
   const titleWords = t("hero.title_words", { returnObjects: true }) as string[];
   const joinedTitleWords = titleWords.join(" ");
   const trustedLabel = t("hero.trusted", { count: formattedCount });
 
+  // Reduced-motion users don't need the long pin track (nothing animates,
+  // so extra empty scroll space would just feel like dead space).
+  const trackHeight = prefersReducedMotion ? "100svh" : `${PIN_TRACK_VH}vh`;
+
   return (
     <section
+      ref={sectionRef}
       aria-labelledby="hero-heading"
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-white pt-24 pb-20 md:min-h-screen md:pt-28 md:pb-24"
+      style={{ height: trackHeight }}
+      className="relative w-full bg-black"
     >
-      <HeroBackground
-        prefersReducedMotion={Boolean(prefersReducedMotion)}
-      />
-
-      {/* Foreground content */}
+      {/* Pinned viewport-height layer. Stays fixed in place for the whole
+          scroll track above, giving the animation room to play + hold. */}
       <motion.div
-        className="mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-14 px-6 md:grid-cols-[0.95fr_1.05fr] md:gap-16 md:px-10 lg:gap-20"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        style={{ padding: sectionPadding }}
+        className="sticky top-0 isolate h-[100svh] w-full overflow-hidden bg-black md:h-screen"
       >
-        {/* Left column */}
-        <div className="relative max-w-[640px]">
-          {/* Live badge */}
-          <motion.span
-            variants={itemVariants}
-            className="inline-flex items-center gap-2.5 rounded-full border border-black/[0.08] bg-white/70 px-3.5 py-1.5 shadow-[0_1px_2px_rgba(17,24,39,0.04),0_8px_24px_-12px_rgba(17,24,39,0.08)] backdrop-blur-md transition-[transform,box-shadow,border-color,background-color] duration-300 ease-out hover:-translate-y-[1px] hover:border-black/[0.14] hover:bg-white/85 hover:shadow-[0_1px_2px_rgba(17,24,39,0.06),0_12px_32px_-14px_rgba(17,24,39,0.12)]"
-          >
-            <span aria-hidden="true" className="relative inline-flex h-2 w-2">
-              <motion.span
+        {/* The card: rounded + inset on first paint, flattens to a
+            full-bleed square as padding/radius animate to 0. */}
+        <motion.div
+          className="relative h-full w-full overflow-hidden rounded-2xl bg-black shadow-[0_30px_90px_-30px_rgba(0,0,0,0.75)] ring-1 ring-white/10 md:rounded-[2rem]"
+          style={{ borderRadius: cardRadiusStyle }}
+        >
+          {/* Background video / poster */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            {prefersReducedMotion ? (
+              <motion.img
+                src={mountainPoster}
+                alt=""
                 aria-hidden="true"
-                className="absolute inline-flex h-full w-full rounded-full bg-emerald-400/60"
-                animate={{
-                  opacity: [0.35, 0.9, 0.35],
-                  scale: [0.85, 1.15, 0.85],
-                }}
-                transition={{
-                  duration: 2.6,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                }}
+                draggable={false}
+                style={{ scale: bgScale, y: bgY }}
+                className="h-full w-full origin-center object-cover object-center will-change-transform"
               />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            <span className="text-[10.5px] font-medium uppercase tracking-[0.22em] text-neutral-600">
-              Live · v2.7 out now
-            </span>
-          </motion.span>
+            ) : (
+              <motion.video
+                src={mountainVideo}
+                poster={mountainPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                aria-hidden="true"
+                tabIndex={-1}
+                style={{ scale: bgScale, y: bgY }}
+                className="h-full w-full origin-center object-cover object-center will-change-transform"
+              />
+            )}
 
-          {/* Headline */}
-          <h1
-            id="hero-heading"
-            className="mt-10 font-serif font-light leading-[0.95] tracking-[-0.045em] text-neutral-900 text-[clamp(2.5rem,6vw,5.5rem)]"
+            {/* Atmospheric overlays — dark vignette so white text stays
+                legible over the video regardless of footage brightness. */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.7) 100%)",
+              }}
+            />
+            <div
+              className="absolute inset-0 opacity-[0.05] mix-blend-overlay"
+              style={{
+                backgroundImage: NOISE_DATA_URL,
+                backgroundSize: "180px 180px",
+              }}
+            />
+          </div>
+
+          {/* Foreground — vertical stack, nudged slightly above true center */}
+          <motion.div
+            className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] flex-col items-center justify-center gap-8 px-6 pb-[16vh] pt-10 text-center md:px-10 md:gap-10 md:pb-[18vh]"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <motion.span variants={itemVariants} className="block">
-              {t("hero.title_line1")}
-            </motion.span>
+            {/* Live badge */}
             <motion.span
               variants={itemVariants}
-              className="block bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-500 bg-clip-text text-transparent"
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/[0.12] bg-white/[0.06] px-3.5 py-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.2),0_8px_24px_-12px_rgba(0,0,0,0.4)] backdrop-blur-md transition-[transform,box-shadow,border-color,background-color] duration-300 ease-out hover:-translate-y-[1px] hover:border-white/[0.2] hover:bg-white/[0.1]"
             >
-              {joinedTitleWords}
-            </motion.span>
-          </h1>
-
-          {/* Subtitle */}
-          <motion.p
-            variants={itemVariants}
-            className="mt-7 max-w-[480px] text-[17px] leading-[1.55] text-neutral-600 md:text-[18px]"
-          >
-            {t("hero.subtitle_line1")}{" "}
-            <span className="text-neutral-500">
-              {t("hero.subtitle_line2")}
-            </span>
-          </motion.p>
-
-          {/* CTA + metadata */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-10 flex flex-col items-start gap-5"
-          >
-            <JellyClayButton className="text-base" />
-
-            <div
-              role="list"
-              aria-label="Product highlights"
-              className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-500"
-            >
-              <span
-                role="listitem"
-                className="font-semibold tabular-nums text-neutral-900"
-              >
-                {trustedLabel}
+              <span aria-hidden="true" className="relative inline-flex h-2 w-2">
+                <motion.span
+                  aria-hidden="true"
+                  className="absolute inline-flex h-full w-full rounded-full bg-emerald-400/60"
+                  animate={{
+                    opacity: [0.35, 0.9, 0.35],
+                    scale: [0.85, 1.15, 0.85],
+                  }}
+                  transition={{
+                    duration: 2.6,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                  }}
+                />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
-              <span
-                aria-hidden="true"
-                className="hidden h-3 w-px bg-neutral-300/80 sm:inline-block"
-              />
-              <span role="listitem">Open Source</span>
-              <span
-                aria-hidden="true"
-                className="hidden h-3 w-px bg-neutral-300/80 sm:inline-block"
-              />
-              <span role="listitem">Free</span>
-            </div>
-          </motion.div>
-        </div>
+              <span className="text-[10.5px] font-medium uppercase tracking-[0.22em] text-neutral-300">
+                Live · v2.7 out now
+              </span>
+            </motion.span>
 
-        {/* Right column with parallax */}
-        <motion.div
-          ref={desktopRef}
-          onMouseMove={handleParallaxMove}
-          onMouseLeave={handleParallaxLeave}
-          style={{ x: springX, y: springY }}
-          className="relative mx-auto w-[760px] max-w-none will-change-transform"
-        >
-          <HeroDesktop />
+            {/* Headline */}
+            <h1
+              id="hero-heading"
+              className="mx-auto max-w-[920px] font-serif font-light leading-[0.95] tracking-[-0.045em] text-white text-[clamp(2.25rem,6vw,5.5rem)]"
+            >
+              <motion.span variants={itemVariants} className="block">
+                {t("hero.title_line1")}
+              </motion.span>
+              <motion.span
+                variants={itemVariants}
+                className="block bg-gradient-to-r from-white via-neutral-300 to-neutral-500 bg-clip-text text-transparent"
+              >
+                {joinedTitleWords}
+              </motion.span>
+            </h1>
+
+            {/* Subtitle */}
+            <motion.p
+              variants={itemVariants}
+              className="mx-auto max-w-[560px] text-[17px] leading-[1.55] text-neutral-300 md:text-[18px]"
+            >
+              {t("hero.subtitle_line1")}{" "}
+              <span className="text-neutral-400">
+                {t("hero.subtitle_line2")}
+              </span>
+            </motion.p>
+
+            {/* CTA + metadata */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col items-center gap-5"
+            >
+              <JellyClayButton className="text-base" />
+
+              <div
+                role="list"
+                aria-label="Product highlights"
+                className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-400"
+              >
+                <span
+                  role="listitem"
+                  className="font-semibold tabular-nums text-white"
+                >
+                  {trustedLabel}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="hidden h-3 w-px bg-white/20 sm:inline-block"
+                />
+                <span role="listitem">Open Source</span>
+                <span
+                  aria-hidden="true"
+                  className="hidden h-3 w-px bg-white/20 sm:inline-block"
+                />
+                <span role="listitem">Free</span>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* HeroDesktop — absolutely positioned so it never occupies layout
+              space (and never pushes the text off-center) while hidden.
+              Fades + lifts in during phase B, holds through phase C. */}
+          <motion.div
+            ref={desktopRef}
+            onMouseMove={handleParallaxMove}
+            onMouseLeave={handleParallaxLeave}
+            style={{
+              x: springX,
+              y: prefersReducedMotion ? springY : desktopY,
+              opacity: desktopOpacity,
+              pointerEvents: isDesktopVisible ? "auto" : "none",
+            }}
+            aria-hidden={!isDesktopVisible}
+            className="absolute bottom-[6vh] left-1/2 z-20 w-[760px] max-w-[calc(100vw-64px)] -translate-x-1/2 will-change-transform md:max-w-[calc(100vw-96px)]"
+          >
+            <HeroDesktop />
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>
